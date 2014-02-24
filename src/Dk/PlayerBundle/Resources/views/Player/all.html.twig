@@ -1,3 +1,7 @@
-{% for player in players %}
-  {{ player.nickname }}
-{% endfor %}
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% for player in players %}
+        {{ player.nickname }}
+    {% endfor %}
+{% endblock %}
