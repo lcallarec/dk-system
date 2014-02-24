@@ -1,0 +1,5 @@
+players:
+    path:   /all
+    defaults:  { _controller: DkPlayerBundle:Player:showAll }
+    requirements:
+        _method:  GET
