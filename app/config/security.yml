@@ -11,7 +11,7 @@ security:
 
     providers:
         db:
-            entity: { class: DkPlayerBundle:Player, property: nickname }
+            entity: { class: DkPlayerBundle:Player, property: email }
             
     firewalls:
         main:
