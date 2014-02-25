@@ -3,12 +3,13 @@
 namespace Dk\CharacterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Dk\PlayerBundle\Entity\Player;
 
 /**
  * PlayerCharacter
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\CharacterBundle\Entity\PlayerCharacterRepository")
+ * @ORM\Entity(repositoryClass="Dk\CharacterBundle\Repository\PlayerCharacterRepository")
  */
 class PlayerCharacter
 {
@@ -21,6 +22,12 @@ class PlayerCharacter
      */
     private $id;
 
+    /**
+     * @var Player
+     *
+     * @ORM\ManyToOne(targetEntity="Dk\PlayerBundle\Entity\Player", inversedBy="characters", cascade={"all"})
+     */
+    private $player;
     /**
      * @var string
      *
@@ -90,5 +97,28 @@ class PlayerCharacter
     public function getLastname()
     {
         return $this->lastname;
+    }
+    
+    /**
+     * Get the player who own this character
+     * 
+     * @return Player
+     */
+    public function getPlayer()
+    {
+        return $this->player;
+    }
+    
+    /**
+     * Associate a player to this character
+     * 
+     * @param \Dk\PlayerBundle\Entity\Player $player
+     * @return \Dk\CharacterBundle\Entity\PlayerCharacter
+     */
+    public function setPlayer(Player $player)
+    {
+        $this->player = $player;
+        
+        return $this;
     }
 }
