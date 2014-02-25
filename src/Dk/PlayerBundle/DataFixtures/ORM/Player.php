@@ -30,7 +30,7 @@ class LoadPlayerData implements FixtureInterface, ContainerAwareInterface
 
    
         $player->setNickname('Laurent');
-        //$player->setEmail('l.callarec@gmail.com');
+        $player->setEmail('l.callarec@gmail.com');
 
         
         $character = new PlayerCharacter();
@@ -47,7 +47,7 @@ class LoadPlayerData implements FixtureInterface, ContainerAwareInterface
 //        $player->setPassword('azer');
 //        
 //        $manager->persist($player);
-//        
+      
         $manager->flush();
     }
 
