@@ -40,6 +40,12 @@ class Player implements UserInterface, \Serializable
     private $nickname;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Email(message="Cet email est invalide", checkMX=true)
+     */
+    private $email;    
+    
+    /**
      * @ORM\Column(type="string", length=32)
      */
     private $salt;
@@ -74,6 +80,16 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
+     * Get nickname
+     *
+     * @return string 
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+    
+    /**
      * Set nickname
      *
      * @param string $nickname
@@ -87,13 +103,26 @@ class Player implements UserInterface, \Serializable
     }
 
     /**
-     * Get nickname
+     * Get email
      *
      * @return string 
      */
-    public function getNickname()
+    public function getEmail()
     {
-        return $this->nickname;
+        return $this->email;
+    }
+    
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Player
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
     }
     
     /**
