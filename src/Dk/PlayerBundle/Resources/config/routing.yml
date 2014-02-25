@@ -3,3 +3,9 @@ players:
     defaults:  { _controller: DkPlayerBundle:Player:showAll }
     requirements:
         _method:  GET
+
+manage_player:
+    path:   /manage/{id}
+    defaults:  { _controller: DkPlayerBundle:Player:manage, id: null }
+    requirements:
+        id: \d+
