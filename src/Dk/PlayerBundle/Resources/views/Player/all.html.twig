@@ -2,6 +2,9 @@
 
 {% block body %}
     <h1 class="page-header">Liste des joueurs</h1>
+    <a href="{{ path('manage_player') }}" id="create-player">
+        Créer un nouveau joueur
+    </a>
     {% if players is not empty %}
         <ul>
         {% for player in players %}
