@@ -16,6 +16,12 @@ class LoadPlayerData implements FixtureInterface
         $player->setNickname('Laurent');
 
         $manager->persist($player);
+        
+        $player = new Player();
+        $player->setNickname('Tiphaine');
+
+        $manager->persist($player);
+        
         $manager->flush();
     }
 }
