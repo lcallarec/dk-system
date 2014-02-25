@@ -1,8 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1 class="page-header">Modification du joueur {{ form.vars.value.nickname }}</h1>
+
+    <h1 class="page-header">
+        {% if  form.vars.value.id %}
+            Modification du joueur {{ form.vars.value.nickname }}
+        {% else %}
+            Création d'un nouveau joueur
+        {% endif %}
+    </h1>
     {{ form_start(form) }}
+        
         {{ form_errors(form) }}
         
         <div>
@@ -12,4 +20,5 @@
         </div>
     
     {{ form_end(form) }}
+
 {% endblock %}
