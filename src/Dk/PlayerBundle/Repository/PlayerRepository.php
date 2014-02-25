@@ -12,4 +12,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class PlayerRepository extends EntityRepository
 {
+    /**
+     * Get all players joined by their characters
+     * @return mixed
+     */
+    public function findWithCharacters()
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT p, c FROM DkPlayerBundle:Player p
+                LEFT JOIN p.characters c'
+            );
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 }
