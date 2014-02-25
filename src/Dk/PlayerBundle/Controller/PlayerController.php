@@ -51,7 +51,7 @@ class PlayerController extends Controller
                 
                 $em->flush();
                 
-                return $this->render('DkPlayerBundle:Player:all.html.twig');
+                return $this->forward('DkPlayerBundle:Player:showAll');
                 
             } else {
                 
