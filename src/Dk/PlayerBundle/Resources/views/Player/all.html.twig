@@ -8,7 +8,9 @@
     {% if players is not empty %}
         <ul>
         {% for player in players %}
-            <li><a href="{{ path('manage_player', {id: player.id}) }}" id="player-{{ player.id}}">{{ player.nickname }}</a></li>
+            <li>
+                <a href="{{ path('manage_player', {id: player.id}) }}" id="player-{{ player.id}}">{{ player.nickname }} <small>({{ player.characters|length }} characters)</small></a>
+            </li>
         {% endfor %}
         </ul>
     {% else %}
