@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="page-header">Modification du joueur {{ form.vars.value.nickname }}</h1>
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        
+        <div>
+            {{ form_label(form.nickname) }}
+            {{ form_errors(form.nickname) }}
+            {{ form_widget(form.nickname) }}
+        </div>
+    
+    {{ form_end(form) }}
+{% endblock %}
