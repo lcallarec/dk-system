@@ -3,6 +3,7 @@
 namespace Dk\PlayerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Player
@@ -24,7 +25,14 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="nickname", type="string", length=255)
+     * @ORM\Column(name="nickname", type="string", length=50)
+     * @Assert\NotBlank(message="Le nickname ne doit pas être vide")
+    * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Votre nickname doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nickname ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $nickname;
 
