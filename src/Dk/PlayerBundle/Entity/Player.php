@@ -4,7 +4,8 @@ namespace Dk\PlayerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Doctrine\Common\Collections\ArrayCollection;
+use Dk\CharacterBundle\Entity\PlayerCharacter;
 /**
  * Player
  *
@@ -36,7 +37,18 @@ class Player
      */
     private $nickname;
 
-
+    /**
+     *
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Dk\CharacterBundle\Entity\PlayerCharacter", mappedBy="player", cascade={"all"})
+     */
+    private $characters;
+    
+    public function __construct()
+    {
+        $this->characters = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -68,5 +80,30 @@ class Player
     public function getNickname()
     {
         return $this->nickname;
+    }
+    
+    /**
+     * Get all characters owned by this player
+     * 
+     * @return ArrayCollection
+     */
+    public function getCharacters()
+    {
+        return $this->characters;
+    }
+    
+    /**
+     * Add a character to the collection
+     * 
+     * @param PlayerCharacter $character
+     * @return Player
+     */
+    public function addCharacter(PlayerCharacter $character)
+    {
+        $character->setPlayer($this);
+        
+        $this->characters->add($character);
+        
+        return $this;
     }
 }
