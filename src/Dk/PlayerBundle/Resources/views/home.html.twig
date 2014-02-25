@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="page-header">Bienvenue au Dk²</h1>
+    
+    <h2>Inscription</h2>
+    
+    {% include 'DkPlayerBundle:Security:login.html.twig' with {error: null, last_username: null }%}
+
+{% endblock %}
