@@ -12,8 +12,8 @@ class PlayerController extends Controller
      */
     public function showAllAction()
     {
-        $players = $this->get('doctrine')->getRepository('DkPlayerBundle:Player')->findAll();
-        
+        $players = $this->get('doctrine')->getRepository('DkPlayerBundle:Player')->findWithCharacters();
+         
         return $this->render('DkPlayerBundle:Player:all.html.twig', ['players' => $players]);
     }
     
