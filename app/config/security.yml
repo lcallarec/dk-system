@@ -17,10 +17,12 @@ security:
         main:
             provider: db
             anonymous: ~
+            pattern: ^/
             form_login:
                 login_path:  /login
                 check_path:  /login_check
-                default_target_path: /player/all
+                default_target_path: /private/player/all
 
     access_control:
+        - { path: ^/private, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
