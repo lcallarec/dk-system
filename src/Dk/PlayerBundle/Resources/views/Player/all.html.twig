@@ -10,6 +10,14 @@
         {% for player in players %}
             <li>
                 <a href="{{ path('manage_player', {id: player.id}) }}" id="player-{{ player.id}}">{{ player.nickname }} <small>({{ player.characters|length }} characters)</small></a>
+                <a href="{{ path('manage_pc') }}" class="btn btn-primary">Créer un nouveau personnage</a>
+                {% if players is not empty %}
+                <ul>
+                    {% for pc in player.characters %}
+                        <li><a href="{{ path('manage_pc', {id: pc.id}) }}">{{pc.firstname}} {{pc.lastname}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
             </li>
         {% endfor %}
         </ul>
@@ -18,4 +26,5 @@
         Aucun joueur n'est enregistré.
     </div>
     {% endif %}
+     
 {% endblock %}
