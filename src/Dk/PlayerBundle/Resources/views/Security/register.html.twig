@@ -16,6 +16,12 @@
                 {{ form_errors(register_form.email) }}            
                 {{ form_widget(register_form.email, {attr: {class: "form-control" }}) }}
             </div>
+
+            <div class="form-group">
+                {{ form_label(register_form.password) }}
+                {{ form_errors(register_form.password) }}            
+                {{ form_widget(register_form.password, {attr: {class: "form-control" }}) }}
+            </div>
             
             <div class="form-group">
                 {{ form_label(register_form.account_type) }}
