@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Dk\PlayerBundle\DkPlayerBundle(),
             new Dk\CharacterBundle\DkCharacterBundle(),
+            new Dk\CampaignBundle\DkCampaignBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
