@@ -28,29 +28,53 @@ class LoadPlayerData extends AbstractFixture implements FixtureInterface, Contai
         
         $encoder = $efactory->getEncoder($player);
         $password = $encoder->encodePassword('azer', $player->getSalt());
+        
         $player->setPassword($password);
 
    
-        $player->setNickname('Laurent');
-        $player->setEmail('l.callarec@gmail.com');
-
+        $player
+                ->setNickname('Laurent')
+                ->setEmail('l.callarec@gmail.com')
+                ->setRoles(['ROLE_MASTER'])
+        ;
         
         $character = new PlayerCharacter($player);
-        $character->setFirstname('Lamache');
-        $character->setLastname('Gordillo');
-       
+        
+        $character
+                ->setFirstname('Lamache')
+                ->setLastname('Gordillo')
+        ;
+        
         $player->addCharacter($character);
         $this->addReference('pc-1', $character);
         
         $character = new PlayerCharacter($player);
-        $character->setFirstname('Chew');
-        $character->setLastname('Bakka');
+            
+        $character
+                ->setFirstname('Chew')
+                ->setLastname('Bakka')
+        ;
         
         $player->addCharacter($character);
         $this->addReference('pc-2', $character);
-
-        
+ 
         $manager->persist($player);
+        
+        $player = new Player();
+        
+        $encoder = $efactory->getEncoder($player);
+        $password = $encoder->encodePassword('azer', $player->getSalt());
+        
+        $player->setPassword($password);
+        
+        $player
+                ->setNickname('Autre')
+                ->setEmail('lcallarec@openmailbox.org')
+                ->setRoles(['ROLE_PLAYER'])
+        ;
+        
+        $manager->persist($player);                
+                
         $manager->flush();
     }
 
