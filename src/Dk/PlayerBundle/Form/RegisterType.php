@@ -38,6 +38,6 @@ class RegisterType extends PlayerType
      */
     public function getName()
     {
-        return 'player';
+        return 'register';
     }
 }
