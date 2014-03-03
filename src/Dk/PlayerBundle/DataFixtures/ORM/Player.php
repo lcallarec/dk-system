@@ -5,10 +5,11 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Dk\PlayerBundle\Entity\Player;
 use Dk\CharacterBundle\Entity\PlayerCharacter;
 
-class LoadPlayerData implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
+class LoadPlayerData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
     /**
      * @var ContainerInterface
@@ -39,8 +40,9 @@ class LoadPlayerData implements FixtureInterface, ContainerAwareInterface, Order
         
         $player->addCharacter($character);
                 
+        $this->addReference('player-1', $player);
+        
         $manager->persist($player);
-     
         $manager->flush();
     }
 
