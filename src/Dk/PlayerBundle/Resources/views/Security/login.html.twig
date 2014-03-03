@@ -6,21 +6,18 @@
         {% if error %}
             <div>{{ error.message | trans({}, 'security') }}</div>
         {% endif %}
-
-        <form action="{{ path('login_check') }}" method="post">
-            <label for="username">Login :</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" />
-
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="_password" />
-
-            {#
-                Si vous voulez contrôler l'URL vers laquelle l'utilisateur est redirigé en cas de succès
-                (plus de détails ci-dessous)
-                <input type="hidden" name="_target_path" value="/account" />
-            #}
-
-            <button type="submit">login</button>
-        </form>
+        
+        {{ form_start(login_form, {action: path('login_check'), method: 'POST'}) }}
+        
+            {{form_label(login_form.email) }}
+            {{form_widget(login_form.email) }}
+            
+            {{form_label(login_form.password) }}
+            {{form_widget(login_form.password) }}
+                
+            {{form_widget(login_form.submit) }}
+            
+        {{ form_end(login_form) }}
+        
     </section>
 {% endblock %}
