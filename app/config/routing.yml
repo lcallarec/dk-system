@@ -5,6 +5,9 @@ homepage:
 login:
     pattern:   /login
     defaults:  { _controller: DkPlayerBundle:Security:login }
+
+logout:
+    pattern:   /logout
     
 login_check:
     pattern:   /login_check
@@ -20,3 +23,7 @@ dk_character:
 dk_campaign:
     resource: "@DkCampaignBundle/Resources/config/routing.yml"
     prefix:   /private/campaign
+    
+dk_ruleset:
+    resource: "@DkRulesetBundle/Resources/config/routing.yml"
+    prefix:   /private/ruleset
