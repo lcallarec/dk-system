@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Dk\PlayerBundle\DkPlayerBundle(),
             new Dk\CharacterBundle\DkCharacterBundle(),
             new Dk\CampaignBundle\DkCampaignBundle(),
+            new Dk\RulesetBundle\DkRulesetBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
