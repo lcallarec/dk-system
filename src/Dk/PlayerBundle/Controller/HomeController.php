@@ -4,6 +4,7 @@ namespace Dk\PlayerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Dk\PlayerBundle\Form\RegisterType;
+use Dk\PlayerBundle\Form\LoginType;
 
 class HomeController extends Controller
 {
@@ -21,11 +22,13 @@ class HomeController extends Controller
         }
         
         $registerForm = $this->createForm(new RegisterType());
+        $loginForm    = $this->createForm(new LoginType());
         
         return $this->render('DkPlayerBundle::home.html.twig', [
             'error'         => $error,
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-            'register_form' => $registerForm->createView()
+            'register_form' => $registerForm->createView(),
+            'login_form'    => $loginForm->createView()
         ]);
     }
   
