@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="page-header">
+        {% if  form.vars.value.id %}
+            Modification du personnage {{ form.vars.value.firstname }}
+        {% else %}
+            Création d'un nouveau personnage joueur
+        {% endif %}
+    </h1>
+    {{ form_start(form) }}
+
+        <div>
+            {{ form_label(form.firstname) }}
+            {{ form_errors(form.firstname) }}
+            {{ form_widget(form.firstname) }}
+        </div>
+
+        <div>
+            {{ form_label(form.lastname) }}
+            {{ form_errors(form.lastname) }}
+            {{ form_widget(form.lastname) }}
+        </div>
+        
+    {{ form_end(form) }}
+
+
+{% endblock %}
