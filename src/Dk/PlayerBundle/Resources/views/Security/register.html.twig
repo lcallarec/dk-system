@@ -3,7 +3,22 @@
         <h2 class="page-header">
            Ouvrir un compte
         </h2>
-       {{ form(register_form) }}
+       {{ form_start(register_form, {action: path('login_check'), method: 'POST'}) }}
+        
+            {{form_label(register_form.nickname) }}
+            {{ form_errors(register_form.nickname) }}
+            {{form_widget(register_form.nickname) }}
+            
+            {{form_label(register_form.email) }}
+            {{ form_errors(register_form.email) }}            
+            {{form_widget(register_form.email) }}
+                
+            {{form_label(register_form.account_type) }}
+            {{form_widget(register_form.account_type) }}
+            
+            {{form_widget(register_form.submit) }}
+            
+        {{ form_end(register_form) }}
         
     </section>
 {% endblock %}
