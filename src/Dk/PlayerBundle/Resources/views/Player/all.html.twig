@@ -14,7 +14,13 @@
                 {% if players is not empty %}
                 <ul>
                     {% for pc in player.characters %}
-                        <li><a href="{{ path('manage_pc', {id: pc.id}) }}">{{pc.firstname}} {{pc.lastname}}</a></li>
+                        <li>
+                            <a href="{{ path('manage_pc', {id: pc.id}) }}">{{pc.firstname}} {{pc.lastname}}</a>
+                            {% if pc.campaign is not empty %}
+                                <small>campagne: <strong>{{ pc.campaign.name }}</strong></small>
+                            {% endif %}
+                        </li>
+
                     {% endfor %}
                 </ul>
                 {% endif %}
