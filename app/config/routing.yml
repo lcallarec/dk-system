@@ -12,4 +12,8 @@ login_check:
 dk_player:
     resource: "@DkPlayerBundle/Resources/config/routing.yml"
     prefix:   /private/player
+    
+dk_character:
+    resource: "@DkCharacterBundle/Resources/config/routing.yml"
+    prefix:   /private/character    
 
