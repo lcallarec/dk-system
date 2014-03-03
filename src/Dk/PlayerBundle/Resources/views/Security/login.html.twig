@@ -7,15 +7,18 @@
             <div>{{ error.message | trans({}, 'security') }}</div>
         {% endif %}
         
-        {{ form_start(login_form, {action: path('login_check'), method: 'POST'}) }}
-        
-            {{form_label(login_form.email) }}
-            {{form_widget(login_form.email) }}
+        {{ form_start(login_form, {action: path('login_check'), method: 'post', role: 'form'}) }}
+            <div class="form-group">
+                {{form_label(login_form.email) }}
+                {{form_widget(login_form.email, {attr: {class: "form-control" }}) }}
+            </div>
             
-            {{form_label(login_form.password) }}
-            {{form_widget(login_form.password) }}
-                
-            {{form_widget(login_form.submit) }}
+            <div class="form-group">
+                {{form_label(login_form.password) }}
+                {{form_widget(login_form.password, {attr: {class: "form-control" }}) }}
+            </div>
+            
+                {{form_widget(login_form.submit, {attr: {class: 'btn btn-primary'}}) }}
             
         {{ form_end(login_form) }}
         
