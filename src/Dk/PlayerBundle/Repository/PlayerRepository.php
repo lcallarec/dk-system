@@ -20,8 +20,9 @@ class PlayerRepository extends EntityRepository
     {
         $query = $this->getEntityManager()
             ->createQuery('
-                SELECT p, c FROM DkPlayerBundle:Player p
-                LEFT JOIN p.characters c'
+                SELECT p, pc, c FROM DkPlayerBundle:Player p
+                LEFT JOIN p.characters pc
+                LEFT JOIN pc.campaign c'
             );
 
         try {
