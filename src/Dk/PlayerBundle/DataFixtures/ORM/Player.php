@@ -38,10 +38,17 @@ class LoadPlayerData extends AbstractFixture implements FixtureInterface, Contai
         $character = new PlayerCharacter($player);
         $character->setFirstname('Lamache');
         $character->setLastname('Gordillo');
+       
+        $player->addCharacter($character);
+        $this->addReference('pc-1', $character);
+        
+        $character = new PlayerCharacter($player);
+        $character->setFirstname('Chew');
+        $character->setLastname('Bakka');
         
         $player->addCharacter($character);
-                
-        $this->addReference('pc-1', $character);
+        $this->addReference('pc-2', $character);
+
         
         $manager->persist($player);
         $manager->flush();
