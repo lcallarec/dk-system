@@ -34,7 +34,7 @@ class Campaign
      * ArrayCollection of PlayerCharacters
      * @var ArrayCollection  
      * 
-     * @ORM\OneToMany(targetEntity="Dk\CharacterBundle\Entity\PlayerCharacter", mappedBy="campaign")
+     * @ORM\OneToMany(targetEntity="Dk\CharacterBundle\Entity\PlayerCharacter", mappedBy="campaign", cascade={"all"})
      */
     private $playerCharacters;
     
@@ -91,14 +91,27 @@ class Campaign
      * @param \Dk\CharacterBundle\Entity\PlayerCharacter $playerCaracters
      * @return \Dk\CampaignBundle\Entity\Campaign
      */
-    public function addPlayerCharacter(PlayerCharacter $playerCaracters)
+    public function addPlayerCharacter(PlayerCharacter $playerCharacter)
     {
-        $playerCaracters->setCampaign($this);
-        
-        $this->playerCharacters->add($playerCaracters);
+        $playerCharacter->setCampaign($this);
+
+        $this->playerCharacters->add($playerCharacter);
         
         return $this;
     }
     
-    
+    /**
+     * Remove a player character from this campaign
+     * 
+     * @param \Dk\CharacterBundle\Entity\PlayerCharacter $playerCaracter
+     * @return \Dk\CampaignBundle\Entity\Campaign
+     */
+    public function removePlayerCharacter(PlayerCharacter $playerCharacter)
+    {
+       $playerCharacter->setCampaign(null);
+       
+       $this->playerCharacters->removeElement($playerCharacter);
+       
+       return $this;
+    }
 }
