@@ -16,6 +16,7 @@ class PlayerType extends AbstractType
     {
         $builder
             ->add('nickname')
+            ->add('password', 'password')                
             ->add('submit', 'submit')
         ;
     }
