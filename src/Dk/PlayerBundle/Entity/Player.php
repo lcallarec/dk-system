@@ -70,6 +70,15 @@ class Player implements UserInterface, \Serializable
     }
     
     /**
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNickname();
+    }
+    
+    /**
      * Get id
      *
      * @return integer 
