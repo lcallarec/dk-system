@@ -15,7 +15,7 @@ class LoginType extends PlayerType
     {
         $builder
             ->add('email')
-            ->add('password')
+            ->add('password', 'password')
             ->add('submit', 'submit', ['label' => 'se connecter'])
         ;
     }
