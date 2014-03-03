@@ -1,8 +1,6 @@
 <?php
-
 namespace Dk\PlayerBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -15,11 +13,14 @@ class RegisterType extends PlayerType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
+        
         $builder
             ->add('account_type', 'choice', [
                 'mapped'  => false,
-                'choices' => ['ROLE_USER' => 'joueur']
+                'choices' => ['ROLE_PLAYER' => 'joueur', 'ROLE_MASTER' => 'maître']
             ])
+            ->add('email')
+            ->add('submit', 'submit', ['label' => 'créer son compte'])
         ;
     }
     
