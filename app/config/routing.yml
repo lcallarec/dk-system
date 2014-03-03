@@ -17,3 +17,6 @@ dk_character:
     resource: "@DkCharacterBundle/Resources/config/routing.yml"
     prefix:   /private/character    
 
+dk_campaign:
+    resource: "@DkCampaignBundle/Resources/config/routing.yml"
+    prefix:   /private/campaign
