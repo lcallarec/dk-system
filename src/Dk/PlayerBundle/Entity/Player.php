@@ -40,6 +40,14 @@ class Player implements UserInterface, \Serializable
     private $nickname;
 
     /**
+     *
+     * @var array
+     * @ORM\Column(name="role", type="array")
+     * @Assert\NotBlank(message="Le type de compte doit être spéicifé")
+     */
+    private $roles;
+    
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Email(message="Cet email est invalide", checkMX=true)
      */
@@ -171,9 +179,19 @@ class Player implements UserInterface, \Serializable
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return $this->roles;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+        
+        return $this;
+    }
+    
     /**
      * @inheritDoc
      */
