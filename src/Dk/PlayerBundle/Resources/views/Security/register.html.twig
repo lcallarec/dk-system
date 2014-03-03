@@ -3,20 +3,26 @@
         <h2 class="page-header">
            Ouvrir un compte
         </h2>
-       {{ form_start(register_form, {action: path('login_check'), method: 'POST'}) }}
+       {{ form_start(register_form, {action: path('login_check'), method: 'POST', role: 'form'}) }}
         
-            {{form_label(register_form.nickname) }}
-            {{ form_errors(register_form.nickname) }}
-            {{form_widget(register_form.nickname) }}
+            <div class="form-group">
+                {{ form_label(register_form.nickname) }}
+                {{ form_errors(register_form.nickname) }}
+                {{ form_widget(register_form.nickname, {attr: {class: "form-control" }}) }}
+            </div>
             
-            {{form_label(register_form.email) }}
-            {{ form_errors(register_form.email) }}            
-            {{form_widget(register_form.email) }}
-                
-            {{form_label(register_form.account_type) }}
-            {{form_widget(register_form.account_type) }}
+            <div class="form-group">
+                {{ form_label(register_form.email) }}
+                {{ form_errors(register_form.email) }}            
+                {{ form_widget(register_form.email, {attr: {class: "form-control" }}) }}
+            </div>
             
-            {{form_widget(register_form.submit) }}
+            <div class="form-group">
+                {{ form_label(register_form.account_type) }}
+                {{ form_widget(register_form.account_type, {attr: {class: "form-control" }}) }}
+            </div>
+             
+            {{form_widget(register_form.submit, {attr: {class: 'btn btn-primary'}}) }}
             
         {{ form_end(register_form) }}
         
