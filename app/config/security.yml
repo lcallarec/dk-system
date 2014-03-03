@@ -19,7 +19,7 @@ security:
             anonymous: ~
             pattern: ^/
             form_login:
-                login_path:  /login
+                login_path:  /
                 check_path:  /login_check
                 default_target_path: /private/player/all
             logout:

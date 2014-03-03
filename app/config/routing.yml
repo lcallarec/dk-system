@@ -1,11 +1,9 @@
 homepage:
     pattern:   /
     defaults:  { _controller: DkPlayerBundle:Home:index }
-
-login:
-    pattern:   /login
-    defaults:  { _controller: DkPlayerBundle:Security:login }
-
+    requirements:
+        _method: GET
+        
 logout:
     pattern:   /logout
     
