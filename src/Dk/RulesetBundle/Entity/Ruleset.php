@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Ruleset
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\RulesetBundle\Entity\RulesetRepository")
+ * @ORM\Entity(repositoryClass="Dk\RulesetBundle\Repository\RulesetRepository")
  */
 class Ruleset
 {
