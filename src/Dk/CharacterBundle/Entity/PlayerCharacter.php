@@ -42,6 +42,10 @@ class PlayerCharacter
      */
     private $lastname;
 
+    public function __construct(Player $player)
+    {
+        $this->setPlayer($player);
+    }
 
     /**
      * Get id
@@ -121,4 +125,5 @@ class PlayerCharacter
         
         return $this;
     }
+
 }
