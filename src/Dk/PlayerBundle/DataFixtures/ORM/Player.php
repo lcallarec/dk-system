@@ -8,7 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Dk\PlayerBundle\Entity\Player;
 use Dk\CharacterBundle\Entity\PlayerCharacter;
 
-class LoadPlayerData implements FixtureInterface, ContainerAwareInterface
+class LoadPlayerData implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
     /**
      * @var ContainerInterface
@@ -20,11 +20,11 @@ class LoadPlayerData implements FixtureInterface, ContainerAwareInterface
      */
     public function load(ObjectManager $manager)
     {
-        $factory = $this->container->get('security.encoder_factory');
+        $efactory = $this->container->get('security.encoder_factory');
 
         $player = new Player();
         
-        $encoder = $factory->getEncoder($player);
+        $encoder = $efactory->getEncoder($player);
         $password = $encoder->encodePassword('azer', $player->getSalt());
         $player->setPassword($password);
 
@@ -33,21 +33,14 @@ class LoadPlayerData implements FixtureInterface, ContainerAwareInterface
         $player->setEmail('l.callarec@gmail.com');
 
         
-        $character = new PlayerCharacter();
+        $character = new PlayerCharacter($player);
         $character->setFirstname('Lamache');
         $character->setLastname('Gordillo');
         
         $player->addCharacter($character);
                 
         $manager->persist($player);
-        
-//        $player = new Player();
-//        $player->setNickname('Tiphaine');
-//        //$player->setEmail('lcallarec@openmailbox.org');
-//        $player->setPassword('azer');
-//        
-//        $manager->persist($player);
-      
+     
         $manager->flush();
     }
 
@@ -58,6 +51,14 @@ class LoadPlayerData implements FixtureInterface, ContainerAwareInterface
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 1;
     }
     
 }
