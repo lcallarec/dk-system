@@ -26,7 +26,7 @@ class PlayerCharacter
     /**
      * @var Player
      *
-     * @ORM\ManyToOne(targetEntity="Dk\PlayerBundle\Entity\Player", inversedBy="characters", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Dk\PlayerBundle\Entity\Player", inversedBy="characters")
      */
     private $player;
     
@@ -95,7 +95,7 @@ class PlayerCharacter
      * @param \Dk\CampaignBundle\Entity\Campaign $campaign
      * @return self
      */
-    public function setCampaign(Campaign $campaign)
+    public function setCampaign(Campaign $campaign = null)
     {
         $this->campaign = $campaign;
         
