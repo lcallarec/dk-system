@@ -4,6 +4,7 @@ namespace Dk\CharacterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Dk\PlayerBundle\Entity\Player;
+use Dk\CampaignBundle\Entity\Campaign;
 
 /**
  * PlayerCharacter
@@ -28,6 +29,13 @@ class PlayerCharacter
      * @ORM\ManyToOne(targetEntity="Dk\PlayerBundle\Entity\Player", inversedBy="characters", cascade={"all"})
      */
     private $player;
+    
+    /**
+     * @var Campaign
+     * @ORM\ManyToOne(targetEntity="Dk\CampaignBundle\Entity\Campaign", inversedBy="playerCharacters")
+     */
+    private $campaign;
+    
     /**
      * @var string
      *
@@ -48,6 +56,21 @@ class PlayerCharacter
     }
 
     /**
+     * Get the string representation of a PlayerCharacter object
+     * @return string
+     */
+    public function __toString()
+    {
+        $s = $this->firstname;
+        
+        if($this->lastname) {
+            $s .= sprintf(' %s', $this->lastname);
+        }
+        
+        return $s;
+    }
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -57,6 +80,28 @@ class PlayerCharacter
         return $this->id;
     }
 
+    /**
+     * Get the campaign where this caracter is playing
+     * 
+     * @return Campaign
+     */
+    public function getCampaign()
+    {
+        return $this->campaign;
+    }
+    
+    /**
+     * Set the campaign where this caracter is playing 
+     * @param \Dk\CampaignBundle\Entity\Campaign $campaign
+     * @return self
+     */
+    public function setCampaign(Campaign $campaign)
+    {
+        $this->campaign = $campaign;
+        
+        return $this;
+    }
+    
     /**
      * Set firstname
      *
