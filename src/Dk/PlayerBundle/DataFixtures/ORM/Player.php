@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Dk\PlayerBundle\Entity\Player;
 use Dk\CharacterBundle\Entity\PlayerCharacter;
 
@@ -40,7 +41,7 @@ class LoadPlayerData extends AbstractFixture implements FixtureInterface, Contai
         
         $player->addCharacter($character);
                 
-        $this->addReference('player-1', $player);
+        $this->addReference('pc-1', $character);
         
         $manager->persist($player);
         $manager->flush();
