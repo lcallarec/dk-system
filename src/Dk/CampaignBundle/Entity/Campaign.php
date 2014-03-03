@@ -3,6 +3,8 @@
 namespace Dk\CampaignBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Dk\CharacterBundle\Entity\PlayerCharacter;
 
 /**
  * Campaign
@@ -28,7 +30,19 @@ class Campaign
      */
     private $name;
 
-
+    /**
+     * ArrayCollection of PlayerCharacters
+     * @var ArrayCollection  
+     * 
+     * @ORM\OneToMany(targetEntity="Dk\CharacterBundle\Entity\PlayerCharacter", mappedBy="campaign")
+     */
+    private $playerCharacters;
+    
+    public function __construct()
+    {
+        $this->playerCharacters = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -61,4 +75,30 @@ class Campaign
     {
         return $this->name;
     }
+    
+    /**
+     * Get a collection of player characters playing in this campaign
+     * @return ArrayCollection
+     */
+    public function getPlayerCharacters()
+    {
+        return $this->playerCharacters;
+    }
+    
+    /**
+     * Add a player character to this campaign
+     * 
+     * @param \Dk\CharacterBundle\Entity\PlayerCharacter $playerCaracters
+     * @return \Dk\CampaignBundle\Entity\Campaign
+     */
+    public function addPlayerCharacter(PlayerCharacter $playerCaracters)
+    {
+        $playerCaracters->setCampaign($this);
+        
+        $this->playerCharacters->add($playerCaracters);
+        
+        return $this;
+    }
+    
+    
 }
