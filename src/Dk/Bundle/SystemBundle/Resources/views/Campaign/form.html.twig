@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="page-header">
+        {% if  form.vars.value.id %}
+            Modification de la campagne {{ form.vars.value.name }}
+        {% else %}
+            Création d'une nouvelle campagne
+        {% endif %}
+    </h1>
+    {{ form_start(form) }}
+
+        <div>
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+    
+    {{ form_end(form) }}
+
+{% endblock %}
