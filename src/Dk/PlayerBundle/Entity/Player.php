@@ -50,6 +50,7 @@ class Player implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Email(message="Cet email est invalide", checkMX=true)
+     * @Assert\Uniqu
      */
     private $email;    
     
@@ -185,8 +186,12 @@ class Player implements UserInterface, \Serializable
     /**
      * @inheritDoc
      */
-    public function setRoles(array $roles)
+    public function setRoles($roles = [])
     {
+        if(!is_array($roles) && $roles) {
+            $roles = [$roles];
+        }
+        
         $this->roles = $roles;
         
         return $this;
