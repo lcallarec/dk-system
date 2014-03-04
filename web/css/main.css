@@ -24,5 +24,12 @@ body {
     #panel-content {
         padding-left: 270px;
     }
-
-
+    
+div.list-group-item.active,
+div.list-group-item.active:hover,
+div.list-group-item.active:focus {
+    background-color: #428BCA;
+    border-color: #428BCA;
+    color: #FFFFFF;
+    z-index: 2;
+}    
