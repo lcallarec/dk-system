@@ -4,7 +4,7 @@ namespace Dk\Bundle\SystemBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class PanelController extends Controller
+class BoardController extends Controller
 {
     /**
      */
