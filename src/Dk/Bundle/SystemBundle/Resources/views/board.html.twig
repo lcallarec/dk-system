@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    
+    {% block board %}
+
+        <div class="container-fluid">    
+            <div class="row">
+                <div id="board-menu" class="pull-left">
+                    {% block board_menu %}
+                        {{ render(controller('DkSystemBundle:Panel:menu')) }}
+                    {% endblock %}
+                </div>
+                <div id="board-content">
+                    {% block board_content %}
+                       
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    
+    {% endblock %}
+    
+{% endblock %}
