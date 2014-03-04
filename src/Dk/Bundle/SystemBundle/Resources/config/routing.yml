@@ -1,6 +1,6 @@
-panel:
-    path:   /panel
-    defaults:  { _controller: DkSystemBundle:Panel:index }
+board:
+    path:   /board
+    defaults:  { _controller: DkSystemBundle:Board:index }
     requirements:
         _method:  GET
 
