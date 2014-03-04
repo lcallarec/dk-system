@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: "@DkCharacterBundle/Resources/config/services.yml" }
+    - { resource: "@DkSystemBundle/Resources/config/services.yml" }
     
 framework:
     #esi:             ~

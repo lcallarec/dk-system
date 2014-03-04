@@ -1,6 +1,6 @@
 security:
     encoders:
-        Dk\PlayerBundle\Entity\Player:
+        Dk\Bundle\SystemBundle\Entity\Player:
             algorithm:        sha1
             encode_as_base64: false
             iterations:       1
@@ -12,7 +12,7 @@ security:
 
     providers:
         db:
-            entity: { class: DkPlayerBundle:Player, property: email }
+            entity: { class: DkSystemBundle:Player, property: email }
             
     firewalls:
         main:
