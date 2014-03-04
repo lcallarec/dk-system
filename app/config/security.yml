@@ -22,7 +22,7 @@ security:
             form_login:
                 login_path:  /
                 check_path:  /login_check
-                default_target_path: /private/player/all
+                default_target_path: /private/panel
                 username_parameter: login[email]
                 password_parameter: login[password]
             logout:
