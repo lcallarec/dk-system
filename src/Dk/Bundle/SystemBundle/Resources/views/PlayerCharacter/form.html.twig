@@ -10,19 +10,21 @@
     
 {% block board_content %}
  
-    {{ form_start(form) }}
+    {{ form_start(form, {role: 'form'}) }}
 
-        <div>
+        <div class="form-group">
             {{ form_label(form.firstname) }}
             {{ form_errors(form.firstname) }}
-            {{ form_widget(form.firstname) }}
+            {{ form_widget(form.firstname, {attr: {class: "form-control" }}) }}
         </div>
 
-        <div>
+        <div class="form-group">
             {{ form_label(form.lastname) }}
             {{ form_errors(form.lastname) }}
-            {{ form_widget(form.lastname) }}
+            {{ form_widget(form.lastname, {attr: {class: "form-control" }}) }}
         </div>
+
+        {{ form_widget(form.submit, {attr: {class: 'btn btn-success'}}) }}
         
     {{ form_end(form) }}
 
