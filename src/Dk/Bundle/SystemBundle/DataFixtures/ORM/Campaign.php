@@ -5,9 +5,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Dk\CampaignBundle\Entity\Campaign;
-use Dk\Bundle\SystemBundle\Entity\Player;
-use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
+use Dk\Bundle\SystemBundle\Entity\Campaign;
 
 class LoadCampaignData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
 {
