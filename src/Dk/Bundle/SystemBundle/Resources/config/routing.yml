@@ -1,29 +1,35 @@
+panel:
+    path:   /panel
+    defaults:  { _controller: DkSystemBundle:Panel:index }
+    requirements:
+        _method:  GET
+
 players:
-    path:   /all
+    path:   /players
     defaults:  { _controller: DkSystemBundle:Player:showAll }
     requirements:
         _method:  GET
 
 manage_player:
-    path:   /manage/{id}
+    path:   /player/{id}
     defaults:  { _controller: DkSystemBundle:Player:manage, id: null }
     requirements:
         id: \d+
         
 manage_pc:
-    path:   /manage/{id}
+    path:   /pc/{id}
     defaults:  { _controller: DkSystemBundle:Character:manage, id: null }
     requirements:
         id: \d+
         
 campaigns:
-    path:   /
+    path:   /campaigns
     defaults:  { _controller: DkSystemBundle:Campaign:showAll }
     requirements:
         _method:  GET
 
 manage_campaign:
-    path:   /manage/{id}
+    path:   /campaign/{id}
     defaults:  { _controller: DkSystemBundle:Campaign:manage, id: null }
     requirements:
         id: \d+
