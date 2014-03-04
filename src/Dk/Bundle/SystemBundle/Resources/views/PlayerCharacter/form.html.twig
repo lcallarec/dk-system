@@ -1,14 +1,15 @@
 {% extends 'DkSystemBundle::board.html.twig' %}
 
+{% block title %}
+    {% if  form.vars.value.id %}
+        Modification du personnage {{ form.vars.value.firstname }}
+    {% else %}
+        Création d'un nouveau personnage joueur
+    {% endif %}
+{% endblock %}
+    
 {% block board_content %}
-
-    <h1 class="page-header">
-        {% if  form.vars.value.id %}
-            Modification du personnage {{ form.vars.value.firstname }}
-        {% else %}
-            Création d'un nouveau personnage joueur
-        {% endif %}
-    </h1>
+ 
     {{ form_start(form) }}
 
         <div>
