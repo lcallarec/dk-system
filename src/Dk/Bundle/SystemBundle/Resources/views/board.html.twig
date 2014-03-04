@@ -12,6 +12,15 @@
                     {% endblock %}
                 </div>
                 <div id="board-content">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1>
+                                {% block title %}
+                                {% endblock %}
+                            </h1>
+                        </div>
+                    </div>
+                    
                     {% block board_content %}
                        
                     {% endblock %}
