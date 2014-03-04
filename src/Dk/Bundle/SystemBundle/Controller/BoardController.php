@@ -24,7 +24,7 @@ class BoardController extends Controller
                 ->findPlayerCharacters($this->getUser())
         ;
          
-        return $this->render('DkSystemBundle:Panel:menu.html.twig', ['pcs' => $pcs]);
+        return $this->render('DkSystemBundle:Board:menu.html.twig', ['pcs' => $pcs]);
     }
 
 }
