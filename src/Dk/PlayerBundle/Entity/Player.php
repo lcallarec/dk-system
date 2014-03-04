@@ -4,6 +4,7 @@ namespace Dk\PlayerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Dk\CharacterBundle\Entity\PlayerCharacter;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -13,6 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Dk\PlayerBundle\Repository\PlayerRepository")
+ * @UniqueEntity(fields="email", message="Cet email existe déjà")
  */
 class Player implements UserInterface, \Serializable
 {
@@ -50,7 +52,6 @@ class Player implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Email(message="Cet email est invalide", checkMX=true)
-     * @Assert\Uniqu
      */
     private $email;    
     
