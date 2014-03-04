@@ -17,5 +17,12 @@ body {
         background: #ccc;
     }
 
+    #panel-menu {
+        width: 250px;
+    }
+    
+    #panel-content {
+        padding-left: 270px;
+    }
 
 
