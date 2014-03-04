@@ -10,13 +10,21 @@ class PanelController extends Controller
      */
     public function indexAction()
     {
-          
-        $pcs = $this->get('doctrine')
+        return $this->render('DkSystemBundle::board.html.twig');
+    }
+    
+    /**
+     * Render the menu panel
+     * @return Response
+     */
+    public function menuAction()
+    {
+         $pcs = $this->get('doctrine')
                 ->getRepository('DkSystemBundle:PlayerCharacter')
                 ->findPlayerCharacters($this->getUser())
         ;
-        
-        return $this->render('DkSystemBundle:Panel:panel.html.twig', ['pcs' => $pcs]);
+         
+        return $this->render('DkSystemBundle:Panel:menu.html.twig', ['pcs' => $pcs]);
     }
 
 }
