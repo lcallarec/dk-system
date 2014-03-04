@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<div class="container-fluid">    
+    <div class="row">
+        {% include('DkSystemBundle:Panel:menu.html.twig') %}
+        {% include('DkSystemBundle:Panel:content.html.twig') %}
+    </div>
+</div>
+    
+{% endblock %}
