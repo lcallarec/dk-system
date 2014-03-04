@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="page-header">Tableau de bord du joueur {{ app.user.nickname }}</h1>
+        <ul>
+   
+            <li>
+                <a href="{{ path('manage_player', {id: player.id}) }}" id="player-{{ player.id}}">{{ player.nickname }} <small>({{ player.characters|length }} characters)</small></a>
+                <a href="{{ path('manage_pc') }}" class="btn btn-primary">Créer un nouveau personnage</a>
+                
+                <ul>
+                    {% for pc in player.characters %}
+                        <li>
+                            <a href="{{ path('manage_pc', {id: pc.id}) }}">{{pc.firstname}} {{pc.lastname}}</a>
+                            {% if pc.campaign is not empty %}
+                                <small>campagne: <strong>{{ pc.campaign.name }}</strong></small>
+                            {% endif %}
+                        </li>
+
+                    {% endfor %}
+                </ul>
+             
+            </li>
+       
+        </ul>
+     
+{% endblock %}

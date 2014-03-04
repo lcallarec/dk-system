@@ -1,0 +1,7 @@
+parameters:
+    pc.factory.class: Dk\Bundle\SystemBundle\Factory\PlayerCharacterFactory
+
+services:
+    dk_pc_factory:
+        class:  "%pc.factory.class%"
+        arguments:    ["@=service('security.context').getToken().getUser()"]

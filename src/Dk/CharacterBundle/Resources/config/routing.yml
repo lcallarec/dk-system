@@ -1,5 +1,0 @@
-manage_pc:
-    path:   /manage/{id}
-    defaults:  { _controller: DkCharacterBundle:Character:manage, id: null }
-    requirements:
-        id: \d+
