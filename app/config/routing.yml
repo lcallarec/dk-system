@@ -10,4 +10,4 @@ login_check:
       
 dk_system:
     resource: "@DkSystemBundle/Resources/config/routing.yml"
-    prefix:   /private/player
+    prefix:   /private
