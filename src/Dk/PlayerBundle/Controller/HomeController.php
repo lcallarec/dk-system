@@ -3,8 +3,10 @@ namespace Dk\PlayerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Dk\PlayerBundle\Form\RegisterType;
 use Dk\PlayerBundle\Form\LoginType;
+use Dk\PlayerBundle\Entity\Player;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,40 @@ class HomeController extends Controller
         
         $registerForm = $this->createForm(new RegisterType());
         $loginForm    = $this->createForm(new LoginType());
+          
+        if('GET' == $request->getMethod()) {
+           
+           
+        } elseif('POST' == $request->getMethod()) {
+            
+            $player = new Player();
+            
+            $registerForm->setData($player);
+            
+            $registerForm->handleRequest($request);
+            
+            if($registerForm->isValid()) {
+                
+                $efactory = $this->container->get('security.encoder_factory');
+                $encoder  = $efactory->getEncoder($player);
+                $password = $encoder->encodePassword($player->getPassword(), $player->getSalt());
+                
+                $player->setPassword($password);
+                
+                $em = $this->get('doctrine')->getManager();
+                
+                $em->persist($player);
+                $em->flush();
+                
+                $token = new UsernamePasswordToken($player, null, 'main', $player->getRoles());
+                $this->get('security.context')->setToken($token);
+                
+                return $this->redirect($this->generateUrl('players'));
+            } 
+          
+        }
+        
+       
         
         return $this->render('DkPlayerBundle::home.html.twig', [
             'error'         => $error,
