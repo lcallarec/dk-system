@@ -43,7 +43,7 @@ class CharacterController extends Controller
                 
                 $em->flush();
                 
-                return $this->forward('DkSystemBundle:Player:showAll');
+                return $this->forward('DkSystemBundle:Board:index');
                 
             } else {
                 
