@@ -1,0 +1,42 @@
+<div class="list-group-item active">
+        <h4 class="list-group-item-heading">
+            <span>Tableau de board joueur</span>
+        </h4>
+        <p class="list-group-item-text">Mes personnages</p>
+        <p></p>
+        <p class="list-group-item-text">
+            <a href="{{ path('manage_pc') }}" class="btn btn-primary">Créer un nouveau personnage</a>
+        </p>
+    </div>
+{% set prev_campaign = null %} 
+{% set campaign = null %} 
+
+{% for pc in pcs %}
+
+    {% if pc.campaign is empty %} 
+        {% set campaign = 'Sans campagne' %}
+    {% else %}
+        {% set campaign = pc.campaign.name %}
+    {% endif %}    
+
+    {% if prev_campaign != campaign %}
+
+        {% if loop.index != 1 %}
+            </p>          
+        </div>
+        {% endif %}
+
+        <div class="list-group-item">
+            <h4 class="list-group-item-heading">{{ campaign }}</h4>
+            <p class="list-group-item-text">
+
+    {% endif %} 
+
+        <a href="{{ path('manage_pc', {id: pc.id}) }}">{{ pc }}</a> </br>
+
+    {% set prev_campaign = campaign %}
+
+{% endfor %}
+{% if pcs|length > 0 %}
+    </div>
+{% endif %}
