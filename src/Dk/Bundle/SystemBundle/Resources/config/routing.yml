@@ -21,12 +21,6 @@ manage_pc:
     defaults:  { _controller: DkSystemBundle:Character:manage, id: null }
     requirements:
         id: \d+
-        
-campaigns:
-    path:   /campaigns
-    defaults:  { _controller: DkSystemBundle:Campaign:showAll }
-    requirements:
-        _method:  GET
 
 manage_campaign:
     path:   /campaign/{id}
