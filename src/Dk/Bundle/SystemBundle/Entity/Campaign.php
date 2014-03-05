@@ -31,6 +31,14 @@ class Campaign
     private $name;
 
     /**
+     * The player owning this campaign
+     * @var Player 
+     * @ORM\ManyToOne(targetEntity="Player")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $owner;
+    
+    /**
      * ArrayCollection of PlayerCharacters
      * @var ArrayCollection  
      * 
