@@ -1,20 +1,21 @@
-{% extends '::base.html.twig' %}
+{% extends 'DkSystemBundle::board.html.twig' %}
 
-{% block body %}
+{% block title %}
+    {% if  form.vars.value.id %}
+        Campagne {{ form.vars.value.name }}
+    {% else %}
+        Création d'une nouvelle campagne
+    {% endif %}
+{% endblock %} 
 
-    <h1 class="page-header">
-        {% if  form.vars.value.id %}
-            Modification de la campagne {{ form.vars.value.name }}
-        {% else %}
-            Création d'une nouvelle campagne
-        {% endif %}
-    </h1>
+{% block board_content %}
+
     {{ form_start(form) }}
 
         <div>
             {{ form_label(form.name) }}
-            {{ form_errors(form.name) }}
             {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}            
         </div>
     
     {{ form_end(form) }}
