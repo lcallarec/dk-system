@@ -53,7 +53,7 @@ class HomeController extends Controller
                 $token = new UsernamePasswordToken($player, null, 'main', $player->getRoles());
                 $this->get('security.context')->setToken($token);
                 
-                return $this->redirect($this->generateUrl('players'));
+                return $this->redirect($this->generateUrl('board'));
             } 
           
         }
