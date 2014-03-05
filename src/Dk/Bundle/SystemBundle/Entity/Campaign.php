@@ -32,6 +32,15 @@ class Campaign
     private $name;
 
     /**
+     *
+     * The campaign ruleset
+     * @var Ruleset
+     * @ORM\ManyToOne(targetEntity="Ruleset")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ruleset;
+    
+    /**
      * The player owning this campaign
      * @var Player 
      * @ORM\ManyToOne(targetEntity="Player")
@@ -157,6 +166,27 @@ class Campaign
     public function setOwner(Player $owner)
     {
         $this->owner = $owner;
+        
+        return $this;
+    }
+    
+   /**
+     * Get the campaign ruleset
+     * @return Ruleset 
+     */
+    public function getRuleset()
+    {
+        return $this->ruleset;
+    }
+    
+    /**
+     * Set the campaign ruleset
+     * @param ruleset $ruleset
+     * @return Campaign
+     */
+    public function setRuleset(Ruleset $ruleset)
+    {
+        $this->ruleset = $ruleset;
         
         return $this;
     }

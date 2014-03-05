@@ -1,6 +1,6 @@
 <?php
 
-namespace Dk\SystemBundle\Entity;
+namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Ruleset
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\SystemBundle\Repository\RulesetRepository")
+ * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\RulesetRepository")
  */
 class Ruleset
 {
