@@ -16,28 +16,21 @@ class PlayerController extends Controller
   
         return $this->render('DkSystemBundle:Player:all.html.twig', ['players' => $players]);
     }
-    
+     
    /**
+    * Manage account for current user:
     */
-    public function manageAction($id)
+    public function manageAction()
     {
         $request = $this->getRequest();
         
-        if(null !== $id) {
-            $player = $this->get('doctrine')->getRepository('DkSystemBundle:Player')->findOneById($id);
-        
-            if(!$player) {
-                $this->createNotFoundException("Ce joueur n'existe pas");
-            }
-        } else {
-            $player = new Player();
-        }
+        $player = $this->getUser();
         
         $form = $this->createForm(new PlayerType(), $player);
         
         if($request->getMethod() === 'GET') {
             
-            return $this->render('DkSystemBundle:Player:form.html.twig', ['form' => $form->createView()]);
+            return $this->render('DkSystemBundle:Player:account.html.twig', ['form' => $form->createView()]);
          
         } else {
              
@@ -51,11 +44,11 @@ class PlayerController extends Controller
                 
                 $em->flush();
                 
-                return $this->forward('DkSystemBundle:Player:showAll');
+                return $this->forward('DkSystemBundle:Board:index');
                 
             } else {
                 
-                return $this->render('DkSystemBundle:Player:form.html.twig', ['form' => $form->createView()]);
+                return $this->render('DkSystemBundle:Player:account.html.twig', ['form' => $form->createView()]);
             
             }
             
