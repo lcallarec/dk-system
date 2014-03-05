@@ -24,6 +24,7 @@ class LoadCampaignData extends AbstractFixture implements FixtureInterface, Cont
     {
         $campaign = new Campaign($this->getReference('p1-master'));
         $campaign->setName('My first campaign');
+        $campaign->setRuleset($this->getReference('ruleset-1'));
         $campaign->addPlayerCharacter($this->getReference('pc-1'));
         
         $manager->persist($campaign);
@@ -35,7 +36,7 @@ class LoadCampaignData extends AbstractFixture implements FixtureInterface, Cont
      */
     public function getOrder()
     {
-        return 2;
+        return 3;
     }
     
     /**
