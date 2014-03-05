@@ -1,11 +1,17 @@
-    <div class="list-group">
-        <div class="list-group-item active">
-            <h4 class="list-group-item-heading">
-                <span>Tableau de board</span>
+    <div class="list-group ">
+        <div class="list-group-item active-reverse">
+            <span class="list-group-item-heading">
+                <a href="{{ path('player_account') }}">{{ app.user }}</a>
                 <a href="{{ path('logout') }}" class="pull-right btn btn-primary btn-xs">
                     <span class="glyphicon glyphicon-off"></span>
                 </a>
-
+                <br />
+                <small>{{ app.user.email }}</small>
+            </span>
+        </div>
+        <div class="list-group-item active">
+            <h4 class="list-group-item-heading">
+                <span>Tableau de board</span>
             </h4>
             <p class="list-group-item-text">Mes personnages</p>
             <p></p>
