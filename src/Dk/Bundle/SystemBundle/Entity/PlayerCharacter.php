@@ -32,7 +32,7 @@ class PlayerCharacter
     
     /**
      * @var Campaign
-     * @ORM\ManyToOne(targetEntity="Dk\Bundle\SystemBundle\Entity\Campaign", inversedBy="playerCharacters")
+     * @ORM\ManyToOne(targetEntity="Dk\Bundle\SystemBundle\Entity\Campaign", inversedBy="playerCharacters", cascade={"persist"})
      */
     private $campaign;
     
