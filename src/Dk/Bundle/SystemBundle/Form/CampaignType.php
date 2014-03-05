@@ -18,7 +18,7 @@ class CampaignType extends AbstractType
             ->add('name')
             ->add('playerCharacters', 'entity', 
                 [
-                    'class'     => 'DkCharacterBundle:PlayerCharacter',
+                    'class'     => 'DkSystemBundle:PlayerCharacter',
                     'expanded'  => true,
                     'multiple'  => true,
                     'by_reference' => false,
