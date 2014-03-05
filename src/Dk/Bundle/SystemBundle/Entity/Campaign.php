@@ -4,6 +4,7 @@ namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Dk\Bundle\SystemBundle\Entity\Player;
 use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
 
 /**
@@ -46,8 +47,15 @@ class Campaign
      */
     private $playerCharacters;
     
-    public function __construct()
+    /**
+     * A campaign owner is mandatory
+     * 
+     * @param Player $owner
+     */
+    public function __construct(Player $owner)
     {
+        $this->owner = $owner;
+        
         $this->playerCharacters = new ArrayCollection();
     }
     
@@ -121,5 +129,26 @@ class Campaign
        $this->playerCharacters->removeElement($playerCharacter);
        
        return $this;
+    }
+    
+    /**
+     * Get the campaign owner
+     * @return Player 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+    
+    /**
+     * Set the campaign owner
+     * @param Player $owner
+     * @return Campaign
+     */
+    public function setOwner(Player $owner)
+    {
+        $this->owner = $owner;
+        
+        return $this;
     }
 }
