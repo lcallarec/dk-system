@@ -38,6 +38,8 @@ class LoadPlayerData extends AbstractFixture implements FixtureInterface, Contai
                 ->setRoles(['ROLE_MASTER'])
         ;
         
+        $this->addReference('p1-master', $player);
+        
         $character = new PlayerCharacter($player);
         
         $character
