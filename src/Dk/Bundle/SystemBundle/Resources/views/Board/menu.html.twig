@@ -42,5 +42,7 @@
             {% set prev_campaign = campaign %}
 
         {% endfor %}
-        </div>
+            {% if pcs|length > 0 %}
+                </div>
+            {% endif %}
     </div>
