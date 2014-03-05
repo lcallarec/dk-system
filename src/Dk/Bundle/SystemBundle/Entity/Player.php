@@ -51,6 +51,11 @@ class Player implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Email(message="Cet email est invalide", checkMX=true)
+     * @Assert\NotBlank(message="Votre email doit être renseigné")
+     * @Assert\Length(
+     *      max = "255",
+     *      maxMessage = "Votre email ne doit pas dépasser {{ limit }} caractères"
+     * )
      */
     private $email;    
     
@@ -61,6 +66,12 @@ class Player implements UserInterface, \Serializable
     
     /**
      * @ORM\Column(type="string", length=40)
+     * @Assert\Length(
+     *      min = "6",
+     *      max = "40",
+     *      minMessage = "Votre mot de passe doit être composé d'au moins {{ limit }} caractères",
+     *      maxMessage = "Votre mot de passe ne peut dépasser {{ limit }} caractères"
+     * )* 
      */
     private $password;    
     
