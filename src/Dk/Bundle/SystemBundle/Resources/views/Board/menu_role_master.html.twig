@@ -7,4 +7,16 @@
     <p class="list-group-item-text">
         <a href="{{ path('manage_pc') }}" class="btn btn-primary">Créer une nouvelle campagne</a>
     </p>
+    
+    <div class="list-group-item">
+        <p class="list-group-item-text">
+            
+        {% for campaign in campaigns %}
+            <a href="{{ path('manage_campaign', {id: campaign.id}) }}">{{ campaign.name }}</a> </br>
+        {% endfor %}
+            
+        </p>
+    </div>
 </div>
+    
+    
