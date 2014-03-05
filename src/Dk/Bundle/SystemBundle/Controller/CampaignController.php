@@ -3,21 +3,11 @@
 namespace Dk\Bundle\SystemBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Dk\Bundle\SystemBundle\Entity\Campaign;
 use Dk\Bundle\SystemBundle\Form\CampaignType;
-
 
 class CampaignController extends Controller
 {
-    /**
-     */
-    public function showAllAction()
-    {
-        $campaigns = $this->get('doctrine')->getRepository('DkSystemBundle:Campaign')->findAll();
-  
-        return $this->render('DkSystemBundle:Campaign:all.html.twig', ['campaigns' => $campaigns]);
-    }
-    
+
    /**
     */
     public function manageAction($id)
@@ -31,7 +21,7 @@ class CampaignController extends Controller
                 $this->createNotFoundException("Cette campagne n'existe pas");
             }
         } else {
-            $campaign = new Campaign();
+            $campaign = $this->get('dk_campaign_factory')->create();
         }
         
         $form = $this->createForm(new CampaignType(), $campaign);
@@ -53,7 +43,7 @@ class CampaignController extends Controller
                 
                 $em->flush();
                 
-                return $this->forward('DkSystemBundle:Campaign:showAll');
+                return $this->forward('DkSystemBundle:Board:index');
                 
             } else {
                 
