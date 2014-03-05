@@ -59,6 +59,15 @@ class Campaign
         $this->playerCharacters = new ArrayCollection();
     }
     
+   /**
+     * Get the string representation of this campaign
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }    
+    
     /**
      * Get id
      *
