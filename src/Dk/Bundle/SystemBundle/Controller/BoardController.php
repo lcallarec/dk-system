@@ -29,13 +29,16 @@ class BoardController extends Controller
         }
         
         if($this->get('security.context')->isGranted('ROLE_MASTER')) {
-           
+           $campaigns = $this->get('doctrine')
+                ->getRepository('DkSystemBundle:Campaign')
+                ->findMasterCampaigns($this->getUser())
+            ;  
         } else {
-    
+           $campaigns = null;
         }
          
          
-        return $this->render('DkSystemBundle:Board:menu.html.twig', ['pcs' => $pcs]);
+        return $this->render('DkSystemBundle:Board:menu.html.twig', ['pcs' => $pcs, 'campaigns' => $campaigns]);
     }
 
 }
