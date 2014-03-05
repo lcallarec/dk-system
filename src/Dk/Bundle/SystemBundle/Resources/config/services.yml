@@ -1,7 +1,11 @@
 parameters:
     pc.factory.class: Dk\Bundle\SystemBundle\Factory\PlayerCharacterFactory
+    campaign.factory.class: Dk\Bundle\SystemBundle\Factory\CampaignFactory    
 
 services:
     dk_pc_factory:
         class:  "%pc.factory.class%"
+        arguments:    ["@=service('security.context').getToken().getUser()"]
+    dk_campaign_factory:
+        class:  "%campaign.factory.class%"
         arguments:    ["@=service('security.context').getToken().getUser()"]
