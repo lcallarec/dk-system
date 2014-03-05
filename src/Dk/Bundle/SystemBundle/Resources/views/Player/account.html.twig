@@ -1,20 +1,17 @@
-{% extends '::base.html.twig' %}
+{% extends 'DkSystemBundle::board.html.twig' %}
 
-{% block body %}
+{% block title %}
+    Votre compte
+{% endblock %} 
 
-    <h1 class="page-header">
-        {% if  form.vars.value.id %}
-            Modification du joueur {{ form.vars.value.nickname }}
-        {% else %}
-            Création d'un nouveau joueur
-        {% endif %}
-    </h1>
+{% block board_content %}
+
     {{ form_start(form) }}
 
         <div>
             {{ form_label(form.nickname) }}
-            {{ form_errors(form.nickname) }}
             {{ form_widget(form.nickname) }}
+                        {{ form_errors(form.nickname) }}
         </div>
     
     {{ form_end(form) }}
