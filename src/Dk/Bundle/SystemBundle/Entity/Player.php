@@ -13,7 +13,7 @@ use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\PlayerRepository")
- * @UniqueEntity(fields="email", message="Cet email existe déjà")
+ * @UniqueEntity(fields="email", message="Cet email est déjà associé à un utilisateur")
  */
 class Player implements UserInterface, \Serializable
 {
@@ -66,6 +66,7 @@ class Player implements UserInterface, \Serializable
     
     /**
      * @ORM\Column(type="string", length=40)
+     * @Assert\NotBlank(message="Le mot de passe est obligatoire")
      * @Assert\Length(
      *      min = "6",
      *      max = "40",
