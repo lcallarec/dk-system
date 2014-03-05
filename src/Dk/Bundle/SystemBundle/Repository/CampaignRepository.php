@@ -4,6 +4,8 @@ namespace Dk\Bundle\SystemBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use Dk\Bundle\SystemBundle\Entity\Player;
+
 /**
  * CampaignRepository
  *
@@ -12,4 +14,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class CampaignRepository extends EntityRepository
 {
+     /**
+     * Get campaigns owned by a player
+     * @return mixed
+     */
+    public function findMasterCampaigns(Player $owner)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT c FROM DkSystemBundle:Campaign c
+                WHERE c.owner = :owner'
+            )->setParameter('owner', $owner);
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 }
