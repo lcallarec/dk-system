@@ -27,6 +27,7 @@ class Characteristic
      *
      * @var Ruleset
      * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="characteristics")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $ruleset;
     
