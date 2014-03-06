@@ -189,9 +189,10 @@ class PlayerCharacter
         return $this->characteristics;
     }
     
-    public function addCharacteristics(PlayerCharacterCharacteristic $chars)
+    public function addCharacteristics(PlayerCharacterCharacteristic $char)
     {
-        $this->characteristics->add($chars);
+        $char->setPlayerCharacter($this);
+        $this->characteristics->add($char);
     }
     
     
