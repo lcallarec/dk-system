@@ -28,6 +28,10 @@ class CharacterController extends Controller
             $pc = $this->get('dk_pc_factory')->create();
         }
         
+        
+        echo '<pre>';
+        \Doctrine\Common\Util\Debug::dump($pc->getCharacteristics(), 3);
+        die();
         $em = $this->get('doctrine')->getManager();
         
         $form = $this->createForm(new PlayerCharacterType(), $pc);
@@ -39,7 +43,7 @@ class CharacterController extends Controller
                 
                 //With no characteristics...
                 if($pc->getCharacteristics()->isEmpty()) {
-                   
+
                     $ruleChars = $pc->getCampaign()->getRuleset()->getCharacteristics();
                     
                     foreach($ruleChars as $rc) {
@@ -58,8 +62,7 @@ class CharacterController extends Controller
                     
                 }
             }
-      
-               
+
             return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', ['form' => $form->createView(), 'pc' => $pc]);
          
         } else {
@@ -72,10 +75,10 @@ class CharacterController extends Controller
                 
                 $em->flush();
                 
-                return $this->forward('DkSystemBundle:Board:index');
+                return $this->redirect($this->generateUrl('board'));
                 
             } else {
-                
+
                 return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', ['form' => $form->createView(), 'pc' => $pc]);
             
             }
