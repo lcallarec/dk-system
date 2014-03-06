@@ -20,7 +20,8 @@ class PlayerCharacterType extends AbstractType
             ->add('submit', 'submit')
             ->add('characteristics', 'collection', [
                 'type' => new Type\PlayerCharacterCharacteristicType(),
-                'by_reference' => true
+                'by_reference' => true,
+                'label' => false
             ])
                  
         ;
