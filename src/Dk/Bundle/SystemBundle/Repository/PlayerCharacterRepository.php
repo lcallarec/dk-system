@@ -42,12 +42,13 @@ class PlayerCharacterRepository extends EntityRepository
     {
         $query = $this->getEntityManager()
             ->createQuery('
-                SELECT pc, c, rs FROM DkSystemBundle:PlayerCharacter pc
+                SELECT pc, c, rs, char FROM DkSystemBundle:PlayerCharacter pc
                 LEFT JOIN pc.campaign c
-                LEFT JOIN c.ruleset rs
+                JOIN c.ruleset rs
+                LEFT JOIN rs.characteristics char
                 WHERE pc.player = :player
                 AND pc.id = :id
-                ORDER BY c.name'
+                ORDER BY char.id'
             )
             ->setParameter(':player', $player)
             ->setParameter(':id', $id)
