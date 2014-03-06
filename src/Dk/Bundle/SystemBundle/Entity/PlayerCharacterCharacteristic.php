@@ -77,4 +77,25 @@ class PlayerCharacterCharacteristic
     {
         return $this->value;
     }
+    
+    /**
+     * Get the related Characteristic
+     * @return Characteristic
+     */
+    public function getCharacteristic()
+    {
+        return $this->characteristic;
+    }
+    
+    /**
+     * Set the Charactristic on which this Char rely on
+     * @param Characteristic $char
+     * @return \PlayerCharacterCharacteristic
+     */
+    public function setCharacteristic(Characteristic $char)
+    {
+        $this->characteristic = $char;
+        
+        return $this;
+    }
 }
