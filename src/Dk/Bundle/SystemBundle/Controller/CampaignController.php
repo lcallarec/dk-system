@@ -47,7 +47,6 @@ class CampaignController extends Controller
                 
                 $em = $this->get('doctrine')->getManager();
 
-                $em->flush();
                 $em->persist($campaign);
                 
                 $em->flush();
