@@ -44,9 +44,9 @@ class PlayerCharacterRepository extends EntityRepository
             ->createQuery('
                 SELECT pc, c, rs, char, pcchar FROM DkSystemBundle:PlayerCharacter pc
                 LEFT JOIN pc.campaign c
-                JOIN c.ruleset rs
-                JOIN rs.characteristics char
-                JOIN pc.characteristics pcchar
+                LEFT JOIN c.ruleset rs
+                LEFT JOIN rs.characteristics char
+                LEFT JOIN pc.characteristics pcchar
                 WHERE pc.player = :player
                 AND pc.id = :id
                 ORDER BY pcchar.id'
