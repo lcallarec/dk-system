@@ -82,4 +82,13 @@ class Ruleset
     {
         return $this->name;
     }
+    
+    /**
+     * Get the characteristics for this ruleset
+     * @return ArrayCollection
+     */
+    public function getCharacteristics()
+    {
+        return $this->characteristics;
+    }
 }
