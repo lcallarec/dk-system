@@ -3,6 +3,7 @@
 namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Dk\Bundle\SystemBundle\Entity\Player;
 use Dk\Bundle\SystemBundle\Entity\Campaign;
 
@@ -50,6 +51,13 @@ class PlayerCharacter
      */
     private $lastname;
 
+    /**
+     *
+     * @var ArrayCollection of PlayerCharacterCharacteristics
+     * @ORM\OneToMany(targetEntity="PlayerCharacterCharacteristic", mappedBy="playerCharacter")
+     */
+    private $characteristics;
+    
     public function __construct(Player $player)
     {
         $this->setPlayer($player);
