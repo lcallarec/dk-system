@@ -11,7 +11,18 @@
 {% block board_content %}
  
     {{ form_start(form, {role: 'form'}) }}
-
+        
+        {% if pc.campaign is not null %}
+            <div class="alert alert-info">
+                <p>Ce personnage évolue dans la campagne <strong>{{ pc.campaign }}</strong></p>
+                <p>Système de règle : <strong>{{ pc.campaign.ruleset }}</strong>
+            </div>
+        {% else %}
+            <div class="alert alert-warning">
+                <p>Ce personnage n'ets pas intégré à une campagne existante. Il est impossible de définir plus d'informations le concernant.</p>
+               </div>
+        {% endif %}
+        
         <div class="form-group">
             {{ form_label(form.firstname) }}
             {{ form_errors(form.firstname) }}
