@@ -39,7 +39,7 @@ class RulesetSkill
     /**
      * 
      * @var Characteristic
-     * @ORM\ManyToOne(targetEntity="Characteristic")
+     * @ORM\ManyToOne(targetEntity="RulesetCharacteristic")
      * @ORM\JoinColumn(nullable=false) 
      */
     private $char1;
@@ -47,7 +47,7 @@ class RulesetSkill
     /**
      * 
      * @var Characteristic
-     * @ORM\ManyToOne(targetEntity="Characteristic")
+     * @ORM\ManyToOne(targetEntity="RulesetCharacteristic")
      * @ORM\JoinColumn(nullable=false) 
      */
     private $char2;
@@ -155,9 +155,9 @@ class RulesetSkill
     }
     
     /**
-     * Get the first characteristic for this ruleskill
+     * Get the first RulesetCharacteristic for this ruleskill
      * 
-     * @return Characteristic
+     * @return RulesetCharacteristic
      */
     public function getChar1()
     {
@@ -165,9 +165,9 @@ class RulesetSkill
     }
     
     /**
-     * Get the second characteristic for this ruleskill
+     * Get the second RulesetCharacteristics for this ruleskill
      * 
-     * @return Characteristic
+     * @return RulesetCharacteristic
      */    
     public function getChar2()
     {
@@ -175,12 +175,12 @@ class RulesetSkill
     }
     
     /**
-     * Set the fist characteristic for this ruleskill 
+     * Set the fist RulesetCharacteristics for this ruleskill 
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\Characteristic $char
+     * @param \Dk\Bundle\SystemBundle\Entity\RulesetCharacteristic $char
      * @return \Dk\Bundle\SystemBundle\Entity\RulesetSkill
      */
-    public function setChar1(Characteristic $char)
+    public function setChar1(RulesetCharacteristic $char)
     {
         $this->char1 = $char;
         
@@ -190,10 +190,10 @@ class RulesetSkill
     /**
      * Set the second characteristic for this ruleskill
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\Characteristic $char
+     * @param \Dk\Bundle\SystemBundle\Entity\RulesetCharacteristic $char
      * @return \Dk\Bundle\SystemBundle\Entity\RulesetSkill
      */
-    public function setChar2(Characteristic $char)
+    public function setChar2(RulesetCharacteristic $char)
     {
         $this->char2 = $char;
         

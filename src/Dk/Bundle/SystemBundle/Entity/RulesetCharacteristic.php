@@ -5,12 +5,12 @@ namespace Dk\Bundle\SystemBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Characteristic
+ * RulesetCharacteristic
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\CharacteristicRepository")
+ * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\RulesetCharacteristicRepository")
  */
-class Characteristic
+class RulesetCharacteristic
 {
     /**
      * @var integer
@@ -74,7 +74,7 @@ class Characteristic
      * Set shortname
      *
      * @param string $shortname
-     * @return Characteristic
+     * @return RulesetCharacteristic
      */
     public function setShortname($shortname)
     {
@@ -97,7 +97,7 @@ class Characteristic
      * Set longname
      *
      * @param string $longname
-     * @return Characteristic
+     * @return RulesetCharacteristic
      */
     public function setLongname($longname)
     {
@@ -120,7 +120,7 @@ class Characteristic
      * Set description
      *
      * @param string $description
-     * @return Characteristic
+     * @return RulesetCharacteristic
      */
     public function setDescription($description)
     {
@@ -140,10 +140,10 @@ class Characteristic
     }
     
     /**
-     * Set the Charactristic ruleset
+     * Set the RulesetCharacteristic ruleset
      * 
      * @param Ruleset $ruleset
-     * @return Characteristic
+     * @return RulesetCharacteristic
      */
     public function setRuleset(Ruleset $ruleset)
     {

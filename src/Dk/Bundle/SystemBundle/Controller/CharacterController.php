@@ -46,7 +46,7 @@ class CharacterController extends Controller
                     foreach($ruleChars as $rc) {
                         $char = new PlayerCharacterCharacteristic();
                         $char->setValue(0);
-                        $char->setCharacteristic($rc);
+                        $char->setRulesetCharacteristic($rc);
                                 
                         $pc->addCharacteristic($char);
                     }

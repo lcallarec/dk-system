@@ -32,10 +32,10 @@ class PlayerCharacterCharacteristic
 
     /**
      *
-     * @var Characteristic
-     * @ORM\ManyToOne(targetEntity="Characteristic") 
+     * @var RulesetCharacteristic
+     * @ORM\ManyToOne(targetEntity="RulesetCharacteristic") 
      */
-    private $characteristic;
+    private $rulesetCharacteristic;
     
     /**
      * @var integer
@@ -80,27 +80,31 @@ class PlayerCharacterCharacteristic
     
     /**
      * Get the related Characteristic
-     * @return Characteristic
+     * @return RulesetCharacteristic
      */
-    public function getCharacteristic()
+    public function getRulesetCharacteristic()
     {
-        return $this->characteristic;
+        return $this->rulesetCharacteristic;
     }
     
     /**
-     * Set the Charactristic on which this Char rely on
-     * @param Characteristic $char
-     * @return \PlayerCharacterCharacteristic
+     * Set the RulesetCharacteristic on which this Char rely on
+     * @param RulesetCharacteristic $char
+     * @return PlayerCharacterCharacteristic
      */
-    public function setCharacteristic(Characteristic $char = null)
+    public function setRulesetCharacteristic(RulesetCharacteristic $char = null)
     {
         if(null !== $char) {
-            $this->characteristic = $char;
+            $this->rulesetCharacteristic = $char;
         }
    
         return $this;
     }
     
+    /**
+     * Set the PlayerCharacter who own this Char
+     * @param PlayerCharacter $pc
+     */
     public function setPlayerCharacter(PlayerCharacter $pc)
     {
         $this->playerCharacter = $pc;
