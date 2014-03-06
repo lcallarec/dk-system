@@ -45,7 +45,7 @@ class PlayerCharacterRepository extends EntityRepository
                 SELECT pc, c, rs, char, pcchar, rsskill FROM DkSystemBundle:PlayerCharacter pc
                 LEFT JOIN pc.campaign c
                 LEFT JOIN c.ruleset rs
-                JOIN rs.skills rsskill
+                LEFT JOIN rs.skills rsskill
                 LEFT JOIN rs.characteristics char
                 LEFT JOIN pc.characteristics pcchar
                 WHERE pc.player = :player
