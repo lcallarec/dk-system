@@ -18,7 +18,7 @@ class LoadCharacteristicData extends AbstractFixture implements FixtureInterface
     {
         $ruleset = $this->getReference('ruleset-1');
         
-        $chars = ['FOR', 'CON', 'DEX', 'INT', 'SAG', 'CHA'];
+        $chars = ['FOR', 'DEX', 'CON', 'INT', 'SAG', 'CHA'];
         
         foreach($chars as  $c) {
             
