@@ -3,6 +3,7 @@
 namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Ruleset
@@ -28,6 +29,18 @@ class Ruleset
      */
     private $name;
 
+    /**
+     *
+     * @var ArrayCollection of Characteristics
+     * @ORM\OneToMany(targetEntity="Characteristic", mappedBy="ruleset") 
+     */
+    private $characteristics;
+    
+    public function __construct()
+    {
+        $this->characteristics = new ArrayCollection();
+    }
+    
     /**
      * Get the ruleset string representation
      * @return string
