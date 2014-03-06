@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Dk\Bundle\SystemBundle\Form\PlayerCharacterType;
 use Dk\Bundle\SystemBundle\Entity\PlayerCharacterCharacteristic;
+use Dk\Bundle\SystemBundle\Entity\PlayerCharacterSkill;
 
 class CharacterController extends Controller
 {
@@ -47,16 +48,28 @@ class CharacterController extends Controller
                         $char->setValue(0);
                         $char->setCharacteristic($rc);
                                 
-                        $pc->addCharacteristics($char);
+                        $pc->addCharacteristic($char);
                     }
-                    
-                    $em->persist($pc);
-                    
-                    $em->flush();
-                    
-                    $form->setData($pc);
-                    
+
                 }
+                   
+                if($pc->getSkills()->isEmpty()) {
+                    
+                    $ruleSkills = $pc->getCampaign()->getRuleset()->getSkills();
+                    foreach($ruleSkills as $rs) {
+                        $skill = new PlayerCharacterSkill();
+                        $skill->setValue(0);
+                        $skill->setRulesetSkill($rs);
+                                
+                        $pc->addSkill($skill);
+                    }
+                }
+                
+                $em->persist($pc);
+                    
+                $em->flush();
+
+                $form->setData($pc);
             }
 
             return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', ['form' => $form->createView(), 'pc' => $pc]);
