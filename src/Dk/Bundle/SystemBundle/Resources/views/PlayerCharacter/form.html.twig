@@ -10,10 +10,8 @@
 
 {% form_theme form _self %}
 {% block _pc_characteristics_entry_widget %}
-    <div class="char">
-        {{ form.vars.value.characteristic}}
-        {{ form_widget(form.value, {attr: {size: 2}}) }}
-    </div>
+    <dt>{{ form.vars.value.characteristic}}</dt>
+    <dd>{{ form_widget(form.value, {attr: {size: 2, class: "form-control input-sm"}}) }}</dd>
 {% endblock %}
 
 {% block board_content %}
@@ -31,27 +29,38 @@
                </div>
         {% endif %}
         
-        <div class="form-group">
-            {{ form_label(form.firstname) }}
-            {{ form_errors(form.firstname) }}
-            {{ form_widget(form.firstname, {attr: {class: "form-control" }}) }}
-        </div>
+        <div class="row">
+            
+            <div class="col-sm-3">
+            
+                <div class="form-group">
+                    {{ form_label(form.firstname) }}
+                    {{ form_errors(form.firstname) }}
+                    {{ form_widget(form.firstname, {attr: {class: "form-control" }}) }}
+                </div>
 
-        <div class="form-group">
-            {{ form_label(form.lastname) }}
-            {{ form_errors(form.lastname) }}
-            {{ form_widget(form.lastname, {attr: {class: "form-control" }}) }}
+                <div class="form-group">
+                    {{ form_label(form.lastname) }}
+                    {{ form_errors(form.lastname) }}
+                    {{ form_widget(form.lastname, {attr: {class: "form-control" }}) }}
+                </div>
+            </div>
+            <div class="col-sm-3">
+             
+                <div class="form-group">
+                        <dl class="dl-horizontal chars-vertical">
+                            {% for char in form.characteristics %}
+                                {{ form_widget(char, {attr: {size: 2}}) }}
+                            {% endfor %}
+                        </dl>
+                </div>
+            </div>
         </div>
-
-        <div class="form-group">
-            {% for char in form.characteristics %}
-                {{ form_widget(char, {attr: {size: 2}}) }}
-            {% endfor %}
-        </div>
-        
+                        
         <div class="form-group">
             {{ form_widget(form.submit, {attr: {class: 'btn btn-success'}}) }}
         </div>
+         
     {{ form_end(form) }}
 
 
