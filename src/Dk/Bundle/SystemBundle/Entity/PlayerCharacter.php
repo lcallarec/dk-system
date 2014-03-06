@@ -64,11 +64,18 @@ class PlayerCharacter
      */
     private $characteristics;
     
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="PlayerCharacterSkill", mappedBy="playerCharacter", cascade={"all"})
+     */
+    private $skills;
+    
     public function __construct(Player $player)
     {
         $this->setPlayer($player);
         
         $this->characteristics = new ArrayCollection();
+        $this->skills          = new ArrayCollection();
     }
 
     /**
@@ -190,19 +197,35 @@ class PlayerCharacter
     /**
      * Get characteristics
      * 
-     * @return ArrayColelction
+     * @return ArrayCollection
      */
     public function getCharacteristics()
     {
         return $this->characteristics;
     }
     
-    public function addCharacteristics(PlayerCharacterCharacteristic $char)
+    public function addCharacteristic(PlayerCharacterCharacteristic $char)
     {
         $char->setPlayerCharacter($this);
         $this->characteristics->add($char);
     }
     
+    /**
+     * Get skills
+     * 
+     * @return ArrayCollection
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
     
+    public function addSkill(PlayerCharacterSkill $skill)
+    {
+        $skill->setPlayerCharacter($this);
+        $this->skills->add($skill);
+        
+        return $this;
+    }
 
 }
