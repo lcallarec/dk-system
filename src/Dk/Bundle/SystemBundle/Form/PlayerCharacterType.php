@@ -23,6 +23,11 @@ class PlayerCharacterType extends AbstractType
                 'by_reference' => true,
                 'label' => false
             ])
+            ->add('skills', 'collection', [
+                'type' => new Type\PlayerCharacterSkillType(),
+                'by_reference' => true,
+                'label' => false
+            ])
                  
         ;
     }
