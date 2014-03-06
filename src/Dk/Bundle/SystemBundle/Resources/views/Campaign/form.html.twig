@@ -17,7 +17,19 @@
             {{ form_widget(form.name) }}
             {{ form_errors(form.name) }}            
         </div>
+        
+        <div>
+            {{ form_label(form.playerCharacters) }}
+            {{ form_widget(form.playerCharacters) }}
+            {{ form_errors(form.playerCharacters) }}            
+        </div>
     
+         <div>
+            {{ form_label(form.ruleset) }}
+            {{ form_widget(form.ruleset ) }}
+            {{ form_errors(form.ruleset) }}            
+        </div>
+        
     {{ form_end(form) }}
 
 {% endblock %}
