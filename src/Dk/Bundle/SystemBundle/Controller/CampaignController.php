@@ -14,24 +14,33 @@ class CampaignController extends Controller
     {
         $request = $this->getRequest();
         
+        $options = [];
+        
         if(null !== $id) {
             $campaign = $this->get('doctrine')->getRepository('DkSystemBundle:Campaign')->findOneById($id);
         
             if(!$campaign) {
                 $this->createNotFoundException("Cette campagne n'existe pas");
             }
+            
+            $options['isnew'] = false;
+            
         } else {
             $campaign = $this->get('dk_campaign_factory')->create();
+            $options['isnew'] = true;
         }
         
-        $form = $this->createForm(new CampaignType(), $campaign);
+        $form = $this->createForm(new CampaignType(), $campaign, $options);
         
         if($request->getMethod() === 'GET') {
             
             return $this->render('DkSystemBundle:Campaign:form.html.twig', ['form' => $form->createView()]);
          
         } else {
-             
+            
+            //Can't modify a campaign ruleset after creation
+            $form->remove('ruleset');
+            
             $form->handleRequest($request);
              
             if($form->isValid()) {
