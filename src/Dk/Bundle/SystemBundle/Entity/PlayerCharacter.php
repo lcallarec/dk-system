@@ -4,6 +4,7 @@ namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * PlayerCharacter
@@ -39,6 +40,13 @@ class PlayerCharacter
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255)
+     * @Assert\NotBlank(message="Le prénom du personnage est obligatoire")
+     * @Assert\Length(
+     *      min = "1",
+     *      max = "255",
+     *      minMessage = "Le prénom du personnage doit être composé d'au moins {{ limit }} caractères",
+     *      maxMessage = "Le prénom du personnage ne peut dépasser {{ limit }} caractères"
+     * )* 
      */
     private $firstname;
 
