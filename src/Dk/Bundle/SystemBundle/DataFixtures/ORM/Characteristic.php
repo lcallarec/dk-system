@@ -20,7 +20,7 @@ class LoadCharacteristicData extends AbstractFixture implements FixtureInterface
         
         $chars = ['FOR', 'DEX', 'CON', 'INT', 'SAG', 'CHA'];
         
-        foreach($chars as  $c) {
+        foreach($chars as  $i => $c) {
             
             $char = new Characteristic();
             
@@ -30,6 +30,8 @@ class LoadCharacteristicData extends AbstractFixture implements FixtureInterface
                  ->setDescription($c)
                  ->setRuleset($ruleset)
             ;
+            
+            $this->addReference(sprintf('char-%d', $i), $char);
             
             $manager->persist($char);
         }
