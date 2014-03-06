@@ -9,9 +9,21 @@
 {% endblock %}
 
 {% form_theme form _self %}
+
 {% block _pc_characteristics_entry_widget %}
     <dt>{{ form.vars.value.characteristic}}</dt>
     <dd>{{ form_widget(form.value, {attr: {size: 2, class: "form-control input-sm"}}) }}</dd>
+{% endblock %}
+
+{% block _pc_skills_entry_widget %}
+    <strong>
+        {{ form.vars.value.rulesetskill.name}}
+        {% if form.vars.value.rulesetskill.overloadmalus %}
+            *
+        {% endif %}
+    </strong>
+    <small> ( {{ form.vars.value.rulesetskill.char1}} / {{ form.vars.value.rulesetskill.char2}} ) </small>
+    {{ form_widget(form.value, {attr: {size: 2, style:"width: 30px; display: inline-block;", class: "form-control input-sm"}}) }}
 {% endblock %}
 
 {% block board_content %}
@@ -25,7 +37,7 @@
             </div>
         {% else %}
             <div class="alert alert-warning">
-                <p>Ce personnage n'ets pas intégré à une campagne existante. Il est impossible de définir plus d'informations le concernant.</p>
+                <p>Ce personnage n'est pas intégré à une campagne existante. Il est impossible de définir plus d'informations le concernant.</p>
                </div>
         {% endif %}
         
@@ -55,6 +67,13 @@
                         </dl>
                 </div>
             </div>
+        </div>
+         
+                        
+        <div>
+            {% for skill in form.skills %}
+                <div>{{ form_widget(skill, {attr: {size: 2}}) }}</div>
+            {% endfor %}
         </div>
                         
         <div class="form-group">
