@@ -21,23 +21,19 @@ class CharacterController extends Controller
             $pc = $this->get('doctrine')->getRepository('DkSystemBundle:PlayerCharacter')->findOneWithRelationships($this->getUser(), $id);
 
             if(null === $pc) {
-                $this->createNotFoundException("Ce personnage n'existe pas");
+                throw $this->createNotFoundException("Ce personnage n'existe pas ou n'existe plus");
             }
             
         } else {
             $pc = $this->get('dk_pc_factory')->create();
         }
-        
-        
-        echo '<pre>';
-        \Doctrine\Common\Util\Debug::dump($pc->getCharacteristics(), 3);
-        die();
+
         $em = $this->get('doctrine')->getManager();
         
         $form = $this->createForm(new PlayerCharacterType(), $pc);
         
         if($request->getMethod() === 'GET') {
-            
+ 
             //If PC is related to a campaign... 
             if($pc->getCampaign()) {
                 
