@@ -52,6 +52,15 @@ class Characteristic
 
 
     /**
+     * Get the characteristic string representation
+     * @return string
+     */
+    public function __toString()
+    {
+        return strtoupper($this->shortname);
+    }
+    
+    /**
      * Get id
      *
      * @return integer 
