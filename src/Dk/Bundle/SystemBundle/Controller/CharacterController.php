@@ -16,7 +16,7 @@ class CharacterController extends Controller
         $request = $this->getRequest();
         
         if(null !== $id) {
-            $pc = $this->get('doctrine')->getRepository('DkSystemBundle:PlayerCharacter')->findOneById($id);
+            $pc = $this->get('doctrine')->getRepository('DkSystemBundle:PlayerCharacter')->findOneWithRelationships($this->getUser(), $id);
         
             if(!$pc) {
                 $this->createNotFoundException("Ce personnage n'existe pas");
@@ -29,7 +29,7 @@ class CharacterController extends Controller
         
         if($request->getMethod() === 'GET') {
             
-            return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', ['form' => $form->createView()]);
+            return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', ['form' => $form->createView(), 'pc' => $pc]);
          
         } else {
              
@@ -47,7 +47,7 @@ class CharacterController extends Controller
                 
             } else {
                 
-                return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', ['form' => $form->createView()]);
+                return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', ['form' => $form->createView(), 'pc' => $pc]);
             
             }
             
