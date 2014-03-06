@@ -31,4 +31,32 @@ class PlayerCharacterRepository extends EntityRepository
             return null;
         }
     }
+    
+    /**
+     * 
+     * @param Player $player    The owner
+     * @param int    $id        PlayerCharacter id
+     * @return mixed
+     */
+    public function findOneWithRelationships(Player $player, $id)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT pc, c, rs FROM DkSystemBundle:PlayerCharacter pc
+                LEFT JOIN pc.campaign c
+                LEFT JOIN c.ruleset rs
+                WHERE pc.player = :player
+                AND pc.id = :id
+                ORDER BY c.name'
+            )
+            ->setParameter(':player', $player)
+            ->setParameter(':id', $id)
+        ;
+
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 }
