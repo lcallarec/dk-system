@@ -92,10 +92,17 @@ class PlayerCharacterCharacteristic
      * @param Characteristic $char
      * @return \PlayerCharacterCharacteristic
      */
-    public function setCharacteristic(Characteristic $char)
+    public function setCharacteristic(Characteristic $char = null)
     {
-        $this->characteristic = $char;
-        
+        if(null !== $char) {
+            $this->characteristic = $char;
+        }
+   
         return $this;
+    }
+    
+    public function setPlayerCharacter(PlayerCharacter $pc)
+    {
+        $this->playerCharacter = $pc;
     }
 }
