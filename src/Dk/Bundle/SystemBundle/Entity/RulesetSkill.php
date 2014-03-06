@@ -66,6 +66,14 @@ class RulesetSkill
      */
     private $description;
 
+    /**
+     * Get string representation of RulesetSkill
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id
