@@ -11,7 +11,7 @@
 {% form_theme form _self %}
 
 {% block _pc_characteristics_entry_widget %}
-    <dt>{{ form.vars.value.characteristic}}</dt>
+    <dt>{{ form.vars.value.rulesetcharacteristic}}</dt>
     <dd>{{ form_widget(form.value, {attr: {size: 2, class: "form-control input-sm"}}) }}</dd>
 {% endblock %}
 

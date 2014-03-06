@@ -23,7 +23,7 @@ class PlayerCharacterCharacteristicType extends AbstractType
         
         $builder->add(
             $builder
-                ->create('characteristic', 'plain_text')
+                ->create('characteristic', 'plain_text', ['property_path' => 'rulesetCharacteristic'])
                 ->addModelTransformer(new ChoiceToTextTransformer())
         );
     }

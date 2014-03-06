@@ -6,9 +6,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-use Dk\Bundle\SystemBundle\Entity\Characteristic;
+use Dk\Bundle\SystemBundle\Entity\RulesetCharacteristic;
 
-class LoadCharacteristicData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
+class LoadRulesetCharacteristicData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
 {
     
     /**
@@ -22,7 +22,7 @@ class LoadCharacteristicData extends AbstractFixture implements FixtureInterface
         
         foreach($chars as  $i => $c) {
             
-            $char = new Characteristic();
+            $char = new RulesetCharacteristic();
             
             $char
                  ->setShortname($c)
