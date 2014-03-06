@@ -52,7 +52,7 @@ class PlayerCharacter
     /**
      *
      * @var ArrayCollection of PlayerCharacterCharacteristics
-     * @ORM\OneToMany(targetEntity="PlayerCharacterCharacteristic", mappedBy="playerCharacter")
+     * @ORM\OneToMany(targetEntity="PlayerCharacterCharacteristic", mappedBy="playerCharacter", cascade={"all"})
      */
     private $characteristics;
     
