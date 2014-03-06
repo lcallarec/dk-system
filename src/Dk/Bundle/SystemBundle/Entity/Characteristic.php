@@ -4,8 +4,6 @@ namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-use Dk\Bundle\SystemBundle\Entity\Ruleset;
-
 /**
  * Characteristic
  *
@@ -130,5 +128,18 @@ class Characteristic
     public function getDescription()
     {
         return $this->description;
+    }
+    
+    /**
+     * Set the Charactristic ruleset
+     * 
+     * @param Ruleset $ruleset
+     * @return Characteristic
+     */
+    public function setRuleset(Ruleset $ruleset)
+    {
+        $this->ruleset = $ruleset;
+        
+        return $this;
     }
 }
