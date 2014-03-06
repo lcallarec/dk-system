@@ -7,10 +7,18 @@
         Création d'un nouveau personnage joueur
     {% endif %}
 {% endblock %}
-    
+
+{% form_theme form _self %}
+{% block _pc_characteristics_entry_widget %}
+    <div class="char">
+        {{ form.vars.value.characteristic}}
+        {{ form_widget(form.value, {attr: {size: 2}}) }}
+    </div>
+{% endblock %}
+
 {% block board_content %}
  
-    {{ form_start(form, {role: 'form'}) }}
+    {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate'}}) }}
         
         {% if pc.campaign is not null %}
             <div class="alert alert-info">
@@ -37,7 +45,7 @@
 
         <div class="form-group">
             {% for char in form.characteristics %}
-                {{ form_widget(char) }}
+                {{ form_widget(char, {attr: {size: 2}}) }}
             {% endfor %}
         </div>
         
