@@ -4,8 +4,6 @@ namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Dk\Bundle\SystemBundle\Entity\Player;
-use Dk\Bundle\SystemBundle\Entity\Campaign;
 
 /**
  * PlayerCharacter
@@ -61,6 +59,8 @@ class PlayerCharacter
     public function __construct(Player $player)
     {
         $this->setPlayer($player);
+        
+        $this->characteristics = new ArrayCollection();
     }
 
     /**
@@ -178,5 +178,22 @@ class PlayerCharacter
         
         return $this;
     }
+    
+    /**
+     * Get characteristics
+     * 
+     * @return ArrayColelction
+     */
+    public function getCharacteristics()
+    {
+        return $this->characteristics;
+    }
+    
+    public function addCharacteristics(PlayerCharacterCharacteristic $chars)
+    {
+        $this->characteristics->add($chars);
+    }
+    
+    
 
 }
