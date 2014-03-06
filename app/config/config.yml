@@ -22,6 +22,9 @@ framework:
     session:
         # handler_id set to null will use default session handler from php.ini
         handler_id:  ~
+        name: dk_system
+        cookie_lifetime: 86400
+        save_path: null
     fragments:       ~
     http_method_override: true
     translator: { fallback: fr}
