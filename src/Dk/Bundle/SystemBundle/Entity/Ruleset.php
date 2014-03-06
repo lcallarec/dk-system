@@ -36,6 +36,15 @@ class Ruleset
      */
     private $characteristics;
     
+    /**
+     * Skills related to this ruleset
+     * 
+     * @var ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="RulesetSkill", mappedBy="ruleset")
+     */
+    private $skills;
+    
     public function __construct()
     {
         $this->characteristics = new ArrayCollection();
@@ -90,5 +99,29 @@ class Ruleset
     public function getCharacteristics()
     {
         return $this->characteristics;
+    }
+    
+    /**
+     * Get the skills of this ruleset
+     * 
+     * @return ArrayCollection
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+    
+    /**
+     * Add a skill for this ruleset
+     * 
+     * @param Skill $skill
+     * @return Ruleset
+     */
+    public function addSkill(RulesetSkill $skill)
+    {
+        $skill->setRuleset($this);
+        $this->skills->add($skill);
+        
+        return $this;
     }
 }
