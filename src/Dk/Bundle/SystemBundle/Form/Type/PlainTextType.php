@@ -18,7 +18,8 @@ class PlainTextType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setRequired(['help']);
+        $resolver->setOptional(['help']);
+        $resolver->setDefaults(['help' => null]);
     }
     
     /**
