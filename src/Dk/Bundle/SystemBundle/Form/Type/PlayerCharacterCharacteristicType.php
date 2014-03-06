@@ -19,7 +19,6 @@ class PlayerCharacterCharacteristicType extends AbstractType
     {
         $builder
             ->add('value')
-            ->add()
         ;
         
          $builder->add(
