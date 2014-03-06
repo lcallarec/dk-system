@@ -21,13 +21,11 @@ class PlayerCharacterCharacteristicType extends AbstractType
             ->add('value')
         ;
         
-         $builder->add(
-                $builder
-                    ->create('characteristic', 'plain_text', [
-                           
-                     ])
-                    ->addModelTransformer(new ChoiceToTextTransformer())
-            );
+        $builder->add(
+            $builder
+                ->create('characteristic', 'plain_text')
+                ->addModelTransformer(new ChoiceToTextTransformer())
+        );
     }
 
    /**
