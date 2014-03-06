@@ -9,3 +9,12 @@
         {% endif %}
     {% endspaceless %}
 {% endblock form_errors %}
+
+{% block plain_text_widget %}
+    {% spaceless %}
+        <strong>{{ value }}</strong>
+        {% if help is defined %}
+            <span class="help">{{ help }}</span>
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
