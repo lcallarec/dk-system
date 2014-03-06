@@ -28,9 +28,10 @@ class LoadCharacteristicData extends AbstractFixture implements FixtureInterface
                  ->setShortname($c)
                  ->setLongname($c)
                  ->setDescription($c)
+                 ->setRuleset($ruleset)
             ;
             
-            $manager->persist($ruleset);
+            $manager->persist($char);
         }
         
         $manager->flush();
