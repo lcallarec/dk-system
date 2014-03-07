@@ -35,6 +35,15 @@ class Ruleset
      * @ORM\OneToMany(targetEntity="RulesetCharacteristic", mappedBy="ruleset") 
      */
     private $characteristics;
+
+    /**
+     * PlayableRaces related to this ruleset
+     * 
+     * @var ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="RulesetPlayableRace", mappedBy="ruleset")
+     */
+    private $playableRaces;
     
     /**
      * Skills related to this ruleset
@@ -124,4 +133,28 @@ class Ruleset
         
         return $this;
     }
+    
+    /**
+     * Get the playable races of this ruleset
+     * 
+     * @return ArrayCollection
+     */
+    public function getPlayableRaces()
+    {
+        return $this->playableRaces;
+    }
+    
+    /**
+     * Add a skill for this ruleset
+     * 
+     * @param Skill $skill
+     * @return Ruleset
+     */
+    public function addPlayableRace(RulesetPlayableRace $pr)
+    {
+        $pr->setRuleset($this);
+        $this->playableRaces->add($pr);
+        
+        return $this;
+    }    
 }
