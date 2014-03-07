@@ -26,18 +26,6 @@
     {{ form_widget(form.value, {attr: {size: 2, style:"width: 30px; display: inline-block;", class: "form-control input-sm"}}) }}
 {% endblock %}
 
-{% block _pc_assets_widget %}
-    {% for asset in form %}
-      {{ form_widget(asset) }}
-    {% endfor %}
-{% endblock %}
-
-{% block _pc_a_entry_widget %}
-    {{ form.vars.value.name }}
-    {{ form.vars.value.description }}
-{% endblock %}
-
-
 {% block board_content %}
  
     {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'panel-medieval-style form-horizontal'}}) }}
@@ -101,13 +89,12 @@
                     {% for key, asset in form.assets %}
                         <div>
                         {{ form_widget(asset) }}
-                        {{ form_widget(form.a.offsetGet(key - 1), {attr: {size: 2}}) }}
+                        {{ form.vars.value.campaign.ruleset.assets[loop.index0].name}}
+                        {{ form.vars.value.campaign.ruleset.assets[loop.index0].description}}
                         </div>
                 {% endfor %}
                 </div>
-               
-                
-             
+
             </div>
         </div>
                     
