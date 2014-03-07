@@ -30,5 +30,5 @@ security:
                 target: /
                 
     access_control:
-        - { path: ^/private, roles: ROLE_PLAYER }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/private/player, roles: ROLE_PLAYER }
+        - { path: ^/private/master, roles: ROLE_MASTER }
