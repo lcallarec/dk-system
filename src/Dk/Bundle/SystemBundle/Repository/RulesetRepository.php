@@ -32,6 +32,33 @@ class RulesetRepository extends EntityRepository
             return null;
         }
     }
+
+    /**
+     * 
+     * @param Player $player    The owner
+     * @param int    $id        Ruleset id
+     * @return mixed
+     */
+    public function findOneWithSkills(Player $player, $id)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT rs, skill FROM DkSystemBundle:Ruleset rs
+                LEFT JOIN rs.skills skill
+                WHERE rs.id = :id
+                AND rs.owner = :owner
+                '
+            )
+            ->setParameter('owner', $player)
+            ->setParameter('id', $id)
+        ;
+
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }      
     
     /**
      * 
