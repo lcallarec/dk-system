@@ -5,8 +5,8 @@ namespace Dk\Bundle\SystemBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Form\Extension\Core\DataTransformer\ChoiceToValueTransformer;
 
+use Symfony\Component\Form\Extension\Core\DataTransformer\ChoiceToValueTransformer;
 use Dk\Bundle\SystemBundle\Repository\PlayerCharacterRepository;
 
 class CampaignType extends AbstractType
