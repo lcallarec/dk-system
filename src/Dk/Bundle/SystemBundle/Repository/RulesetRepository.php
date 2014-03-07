@@ -4,6 +4,8 @@ namespace Dk\Bundle\SystemBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use Dk\Bundle\SystemBundle\Entity\Player;
+
 /**
  * RulesetRepository
  *
@@ -12,4 +14,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class RulesetRepository extends EntityRepository
 {
+    /**
+     * Get rulesets owned by a player
+     * @return mixed
+     */
+    public function findMasterRulesets(Player $owner)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT rs FROM DkSystemBundle:Ruleset rs
+                WHERE rs.owner = :owner'
+            )->setParameter('owner', $owner);
+
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 }
