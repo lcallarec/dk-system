@@ -1,0 +1,18 @@
+<div class="list-group-item active">
+    <h4 class="list-group-item-heading">
+        <span>Tableau de bord Règles</span>
+    </h4>
+    <p class="list-group-item-text">Mes systèmes de règles Dk</p>
+    <p></p>
+    <div class="list-group-item">
+        <p class="list-group-item-text">
+            
+        {% for ruleset in rulesets %}
+           <a href="{{ path('manage_campaign', {id: ruleset.id}) }}">{{ ruleset.name }}</a> <br />
+        {% endfor %}
+            
+        </p>
+    </div>
+</div>
+    
+    
