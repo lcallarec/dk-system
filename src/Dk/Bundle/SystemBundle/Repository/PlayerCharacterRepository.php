@@ -42,10 +42,12 @@ class PlayerCharacterRepository extends EntityRepository
     {
         $query = $this->getEntityManager()
             ->createQuery('
-                SELECT pc, c, rs, char, pcchar, rsskill FROM DkSystemBundle:PlayerCharacter pc
+                SELECT pc, c, rs, char, pcchar, rsskill, rsasset, pcasset FROM DkSystemBundle:PlayerCharacter pc
                 LEFT JOIN pc.campaign c
                 LEFT JOIN c.ruleset rs
                 LEFT JOIN rs.skills rsskill
+                LEFT JOIN rs.assets rsasset
+                LEFT JOIN pc.assets pcasset
                 LEFT JOIN rs.characteristics char
                 LEFT JOIN pc.characteristics pcchar
                 WHERE pc.player = :player
