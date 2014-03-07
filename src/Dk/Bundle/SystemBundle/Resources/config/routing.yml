@@ -41,9 +41,15 @@ manage_ruleset_skills:
     defaults:  { _controller: DkSystemBundle:Ruleset:manageSkills }
     requirements:
         id: \d+
-        
+
 manage_ruleset_playable_races:
     path:   /ruleset/playable-races/{id}
     defaults:  { _controller: DkSystemBundle:Ruleset:managePlayableRaces }
+    requirements:
+        id: \d+           
+        
+manage_ruleset_assets:
+    path:   /ruleset/assets/{id}
+    defaults:  { _controller: DkSystemBundle:Ruleset:manageAssets }
     requirements:
         id: \d+          
