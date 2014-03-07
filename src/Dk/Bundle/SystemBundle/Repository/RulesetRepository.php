@@ -59,6 +59,33 @@ class RulesetRepository extends EntityRepository
             return null;
         }
     }      
+
+/**
+     * 
+     * @param Player $player    The owner
+     * @param int    $id        Ruleset id
+     * @return mixed
+     */
+    public function findOneWithPlayableRaces(Player $player, $id)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT rs, race FROM DkSystemBundle:Ruleset rs
+                LEFT JOIN rs.playableRaces race
+                WHERE rs.id = :id
+                AND rs.owner = :owner
+                '
+            )
+            ->setParameter('owner', $player)
+            ->setParameter('id', $id)
+        ;
+
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }       
     
     /**
      * 
