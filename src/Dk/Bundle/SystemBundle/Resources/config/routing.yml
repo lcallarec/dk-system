@@ -14,13 +14,6 @@ player_account:
     path:   /account
     defaults:  { _controller: DkSystemBundle:Player:manage }
 
-#beware
-players:
-    path:   /players
-    defaults:  { _controller: DkSystemBundle:Player:showAll }
-    requirements:
-        _method:  GET
-        
 manage_pc:
     path:   /pc/{id}
     defaults:  { _controller: DkSystemBundle:Character:manage, id: null }
