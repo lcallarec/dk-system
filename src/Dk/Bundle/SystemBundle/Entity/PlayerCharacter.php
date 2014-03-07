@@ -69,6 +69,12 @@ class PlayerCharacter
      * @ORM\OneToMany(targetEntity="PlayerCharacterSkill", mappedBy="playerCharacter", cascade={"all"})
      */
     private $skills;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="RulesetAsset")
+     */
+    private $assets;
     
     /**
      *
@@ -261,5 +267,15 @@ class PlayerCharacter
         
         return $this;
     }
+    
+    /**
+     * Get assets
+     * 
+     * @return ArrayCollection
+     */
+    public function getAssets()
+    {
+        return $this->assets;
+    }    
 
 }
