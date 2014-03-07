@@ -1,0 +1,31 @@
+{% extends 'DkSystemBundle::board.html.twig' %}
+
+{% block title %}
+   vff
+{% endblock %}
+
+{% form_theme form _self %}
+
+{% block _ruleset_skills_entry_widget %}
+   <h2>{{ form.vars.value.name }}</h2>
+   {{ form_widget(form.name) }}
+   {{ form_widget(form.char1) }}
+   {{ form_widget(form.char2) }}
+   {{ form_widget(form.overloadMalus) }}
+   {{ form_widget(form.description, {attr: {style:"width: 100%;"}}) }}
+   
+{% endblock %}
+
+{% block board_content %}
+
+    {{ form_start(form, {attr: {role: 'form', class: 'form-horizontal'}}) }}
+        
+        {% for skill in form.skills %}
+            {{ form_widget(skill) }}
+            <hr />
+        {% endfor %}
+      
+    {{ form_end(form) }}
+
+
+{% endblock %}
