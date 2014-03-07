@@ -4,6 +4,7 @@ namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ruleset
@@ -59,6 +60,7 @@ class Ruleset
      * @var ArrayCollection
      * 
      * @ORM\OneToMany(targetEntity="RulesetSkill", mappedBy="ruleset")
+     * @Assert\Valid()
      */
     private $skills;
 
