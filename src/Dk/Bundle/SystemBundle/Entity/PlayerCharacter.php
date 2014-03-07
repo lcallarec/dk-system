@@ -70,6 +70,13 @@ class PlayerCharacter
      */
     private $skills;
     
+    /**
+     *
+     * @var RulesetPlayableRace
+     * @ORM\ManyToOne(targetEntity="RulesetPlayableRace") 
+     */
+    private $race;
+    
     public function __construct(Player $player)
     {
         $this->setPlayer($player);
@@ -219,11 +226,38 @@ class PlayerCharacter
     {
         return $this->skills;
     }
-    
+
+    /**
+     * 
+     * @param \Dk\Bundle\SystemBundle\Entity\PlayerCharacterSkill $skill
+     * @return \Dk\Bundle\SystemBundle\Entity\PlayerCharacter
+     */
     public function addSkill(PlayerCharacterSkill $skill)
     {
         $skill->setPlayerCharacter($this);
         $this->skills->add($skill);
+        
+        return $this;
+    }
+    
+    /**
+     * Get the character race
+     * 
+     * @return ArrayCollection
+     */
+    public function getRace()
+    {
+        return $this->race;
+    }
+    
+    /**
+     * 
+     * @param \Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace $race
+     * @return \Dk\Bundle\SystemBundle\Entity\PlayerCharacter
+     */
+    public function setRace(RulesetPlayableRace $race)
+    {
+        $this->$race = $race;
         
         return $this;
     }
