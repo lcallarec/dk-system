@@ -9,16 +9,18 @@
 {% block _ruleset_skills_entry_widget %}
    <h2>{{ form.vars.value.name }}</h2>
    {{ form_widget(form.name) }}
+   {{ form_errors(form.name) }}
    {{ form_widget(form.char1) }}
    {{ form_widget(form.char2) }}
    {{ form_widget(form.overloadMalus) }}
    {{ form_widget(form.description, {attr: {style:"width: 100%;"}}) }}
+   {{ form_errors(form.description) }}   
    
 {% endblock %}
 
 {% block board_content %}
 
-    {{ form_start(form, {attr: {role: 'form', class: 'form-horizontal'}}) }}
+    {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'form-horizontal'}}) }}
         
         {% for skill in form.skills %}
             {{ form_widget(skill) }}
