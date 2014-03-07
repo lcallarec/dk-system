@@ -42,11 +42,18 @@ class CampaignController extends Controller
             $form->remove('ruleset');
             
             $form->handleRequest($request);
-             
+    
             if($form->isValid()) {
                 
                 $em = $this->get('doctrine')->getManager();
-
+                
+                //Retrieve already related PCs
+                $pcs = $em->getRepository('DkSystemBundle:PlayerCharacter')->findByCampaign($campaign);
+                
+                foreach($pcs as $pc) {
+                    $campaign->addPlayerCharacter($pc);
+                }
+                
                 $em->persist($campaign);
                 
                 $em->flush();
@@ -54,7 +61,7 @@ class CampaignController extends Controller
                 return $this->forward('DkSystemBundle:Board:index');
                 
             } else {
-                
+
                 return $this->render('DkSystemBundle:Campaign:form.html.twig', ['form' => $form->createView()]);
             
             }
