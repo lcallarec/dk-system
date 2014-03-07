@@ -1,0 +1,27 @@
+{% extends 'DkSystemBundle::board.html.twig' %}
+
+{% block title %}
+    Gestion des races jouables du système <strong>{{ form.vars.value.name }}</strong>
+{% endblock %}
+
+{% form_theme form _self %}
+
+{% block _ruleset_races_entry_widget %}
+   <h3>{{ form.vars.value.name }}</h3>
+   {{ form_widget(form.name) }}
+   {{ form_errors(form.name) }}
+{% endblock %}
+
+{% block board_content %}
+
+    {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'form-horizontal'}}) }}
+        
+        {% for race in form.races %}
+            {{ form_widget(race) }}
+            <hr />
+        {% endfor %}
+      
+    {{ form_end(form) }}
+
+
+{% endblock %}
