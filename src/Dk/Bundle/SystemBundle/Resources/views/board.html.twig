@@ -6,12 +6,12 @@
 
         <div class="container-fluid">    
             <div class="row">
-                <div id="board-menu" class="pull-left">
+                <div id="board-menu" class="col-sm-3">
                     {% block board_menu %}
                         {{ render(controller('DkSystemBundle:Board:menu')) }}
                     {% endblock %}
                 </div>
-                <div id="board-content">
+                <div id="board-content" class="col-sm-9">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h1>
