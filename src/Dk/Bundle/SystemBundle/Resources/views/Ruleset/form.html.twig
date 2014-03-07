@@ -1,0 +1,20 @@
+{% extends 'DkSystemBundle::board.html.twig' %}
+
+{% block title %}
+    Modification du système de règles {{ form.vars.value.name }}
+{% endblock %}
+
+{% block board_content %}
+ 
+    <a href="">Liste des races</a>
+    <a href="{{ path('manage_ruleset_skills', {id: form.vars.value.id }) }}">Liste des compétences</a>
+    <a href="">Liste des atouts</a>
+    
+    
+    {{ form_start(form, {attr: {role: 'form', class: 'form-horizontal'}}) }}
+        
+      
+    {{ form_end(form) }}
+
+
+{% endblock %}
