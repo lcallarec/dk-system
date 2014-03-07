@@ -18,10 +18,14 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
     {
         $ruleset = new Ruleset();
         $ruleset->setName('dk2 standard edition');
-        
         $this->addReference('ruleset-1', $ruleset);
-        
         $manager->persist($ruleset);
+        
+        $ruleset = new Ruleset();
+        $ruleset->setName('dk2 custom');
+        $this->addReference('ruleset-2', $ruleset);
+        $manager->persist($ruleset);
+        
         $manager->flush();
     }
     
