@@ -37,6 +37,16 @@ class RulesetPlayableRace
     private $ruleset;
     
     /**
+     * Get the string representation of this race
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+    
+    
+    /**
      * Get id
      *
      * @return integer 
