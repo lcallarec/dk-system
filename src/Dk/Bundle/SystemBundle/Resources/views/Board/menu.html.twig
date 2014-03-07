@@ -9,6 +9,11 @@
             <small>{{ app.user.email }}</small>
         </span>
     </div>
+
+    {% if is_granted('ROLE_MASTER_RULESET') %}
+        {{ include('DkSystemBundle:Board:menu_role_master_ruleset.html.twig') }}
+    {% endif %}
+    
         
     {% if is_granted('ROLE_MASTER') %}
         {{ include('DkSystemBundle:Board:menu_role_master.html.twig') }}
