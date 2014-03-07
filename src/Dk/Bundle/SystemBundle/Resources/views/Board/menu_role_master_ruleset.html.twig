@@ -8,7 +8,7 @@
         <p class="list-group-item-text">
             
         {% for ruleset in rulesets %}
-           <a href="{{ path('manage_campaign', {id: ruleset.id}) }}">{{ ruleset.name }}</a> <br />
+           <a href="{{ path('manage_ruleset', {id: ruleset.id}) }}">{{ ruleset.name }}</a> <br />
         {% endfor %}
             
         </p>
