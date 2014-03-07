@@ -84,7 +84,21 @@ class LoadPlayerData extends AbstractFixture implements FixtureInterface, Contai
         ;
         
         $manager->persist($player);                
-                
+
+        $player = new Player();
+        $encoder = $efactory->getEncoder($player);
+        $password = $encoder->encodePassword('azer', $player->getSalt());
+        
+        $player->setPassword($password);
+        
+        $player
+                ->setNickname('Master ruleset')
+                ->setEmail('lcallarec@gmail.com')
+                ->setRoles(['ROLE_MASTER_RULESET'])
+        ;
+        $this->addReference('p3-master-ruleset', $player);
+        $manager->persist($player);
+        
         $manager->flush();
     }
 
