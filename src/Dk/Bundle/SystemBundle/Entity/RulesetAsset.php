@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * RulesetAsset
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Ruleset\RulesetAssetRepository")
+ * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\RulesetAssetRepository")
  */
 class RulesetAsset
 {
@@ -64,7 +64,14 @@ class RulesetAsset
      */
     private $preRequisite;
 
-
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+    
     /**
      * Get id
      *
