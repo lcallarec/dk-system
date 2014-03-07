@@ -8,7 +8,7 @@
  
     <a href="{{ path('manage_ruleset_playable_races', {id: form.vars.value.id }) }}">Liste des races</a>
     <a href="{{ path('manage_ruleset_skills', {id: form.vars.value.id }) }}">Liste des compétences</a>
-    <a href="">Liste des atouts</a>
+    <a href="{{ path('manage_ruleset_assets', {id: form.vars.value.id }) }}">Liste des atouts</a>
     
     
     {{ form_start(form, {attr: {role: 'form', class: 'form-horizontal'}}) }}
