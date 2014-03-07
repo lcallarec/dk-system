@@ -31,10 +31,32 @@ class LoadRulesetCharacteristicData extends AbstractFixture implements FixtureIn
                  ->setRuleset($ruleset)
             ;
             
-            $this->addReference(sprintf('char-%d', $i), $char);
+            $this->addReference(sprintf('rs1-char-%d', $i), $char);
             
             $manager->persist($char);
         }
+        
+        $ruleset = $this->getReference('ruleset-2');
+        
+        $chars = ['STR', 'AGI', 'BON', 'COUR', 'KA', 'BLO', 'RUM', 'EQU'];
+        
+        foreach($chars as  $i => $c) {
+            
+            $char = new RulesetCharacteristic();
+            
+            $char
+                 ->setShortname($c)
+                 ->setLongname($c)
+                 ->setDescription($c)
+                 ->setRuleset($ruleset)
+            ;
+            
+            $this->addReference(sprintf('rs2-char-%d', $i), $char);
+            
+            $manager->persist($char);
+        }        
+        
+        
         
         $manager->flush();
     }
