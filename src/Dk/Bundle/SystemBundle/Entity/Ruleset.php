@@ -23,6 +23,14 @@ class Ruleset
     private $id;
 
     /**
+     * The player owning this ruleset
+     * @var Player 
+     * @ORM\ManyToOne(targetEntity="Player")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $owner;    
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -87,6 +95,27 @@ class Ruleset
         return $this->id;
     }
 
+    /**
+     * Get the campaign owner
+     * @return Player 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+    
+    /**
+     * Set the campaign owner
+     * @param Player $owner
+     * @return Campaign
+     */
+    public function setOwner(Player $owner)
+    {
+        $this->owner = $owner;
+        
+        return $this;
+    }    
+    
     /**
      * Set name
      *
