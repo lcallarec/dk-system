@@ -53,6 +53,15 @@ class Ruleset
      * @ORM\OneToMany(targetEntity="RulesetSkill", mappedBy="ruleset")
      */
     private $skills;
+
+    /**
+     * Assets related to this ruleset
+     * 
+     * @var ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="RulesetAsset", mappedBy="ruleset")
+     */
+    private $assets;
     
     public function __construct()
     {
@@ -145,7 +154,7 @@ class Ruleset
     }
     
     /**
-     * Add a skill for this ruleset
+     * Add a playable race for this ruleset
      * 
      * @param Skill $skill
      * @return Ruleset
@@ -156,5 +165,29 @@ class Ruleset
         $this->playableRaces->add($pr);
         
         return $this;
-    }    
+    }
+    
+    /**
+     * Get assets of this ruleset
+     * 
+     * @return ArrayCollection
+     */
+    public function getAssets()
+    {
+        return $this->assets;
+    }
+    
+    /**
+     * Add a skill for this ruleset
+     * 
+     * @param RulesetAsset $asset
+     * @return Ruleset
+     */
+    public function addAsset(RulesetAsset $asset)
+    {
+        $asset->setRuleset($this);
+        $this->assets->add($asset);
+        
+        return $this;
+    }        
 }
