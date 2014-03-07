@@ -5,6 +5,8 @@ namespace Dk\Bundle\SystemBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class PlayerCharacterType extends AbstractType
 {
@@ -28,8 +30,20 @@ class PlayerCharacterType extends AbstractType
                 'by_reference' => true,
                 'label' => false
             ])
-                 
         ;
+        
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
+            
+            $data = $event->getData();
+            $form = $event->getForm();
+            
+            $form->add('race', 'entity', [
+                'choices' => $data->getCampaign()->getRuleset()->getPlayableRaces(),
+                'class'   => 'Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace'
+            ]);
+            
+        });      
+        
     }
     
     /**
