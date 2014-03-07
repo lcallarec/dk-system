@@ -171,6 +171,19 @@ class Ruleset
         
         return $this;
     }
+
+   /**
+     * remove a skill for this ruleset
+     * 
+     * @param Skill $skill
+     * @return Ruleset
+     */
+    public function removeSkill(RulesetSkill $skill)
+    {
+        $this->skills->removeElement($skill);
+        
+        return $this;
+    }    
     
     /**
      * Get the playable races of this ruleset
