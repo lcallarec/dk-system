@@ -199,6 +199,16 @@ class RulesetSkill
         
         return $this;
     }    
+ 
+   /**
+     * Get the ruleset
+     * 
+     * @return \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
+     */
+    public function getRuleset()
+    {
+        return $this->ruleset;
+    }    
     
     /**
      * Set the ruleset
