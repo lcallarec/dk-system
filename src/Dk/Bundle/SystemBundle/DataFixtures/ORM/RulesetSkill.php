@@ -19,8 +19,8 @@ class LoadRulesetSkillData extends AbstractFixture implements FixtureInterface, 
         
         $skills = [
             
-            ['name' => 'Athlétisme', 'char1' => $this->getReference('char-0'), 'char2' => $this->getReference('char-1'), 'overload_malus' => true, 'desc' => 'desc atlé'],
-            ['name' => 'Bluff', 'char1' => $this->getReference('char-3'), 'char2' => $this->getReference('char-4'), 'overload_malus' => false, 'desc' => 'desc bluff']           
+            ['name' => 'Athlétisme', 'char1' => $this->getReference('rs1-char-0'), 'char2' => $this->getReference('rs1-char-1'), 'overload_malus' => true, 'desc' => 'desc atlé'],
+            ['name' => 'Bluff', 'char1' => $this->getReference('rs1-char-3'), 'char2' => $this->getReference('rs1-char-4'), 'overload_malus' => false, 'desc' => 'desc bluff']           
         ];
         
         foreach($skills as $s) {
