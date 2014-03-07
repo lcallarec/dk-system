@@ -6,11 +6,27 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Dk\Bundle\SystemBundle\Entity\Ruleset;
+
 class RulesetSkillType extends AbstractType
 {
-        /**
+    /**
+     * The ruleset for this skill
+     * @var Ruleset
+     */
+    private $ruleset;
+    
+    /**
+     * 
+     * @param Ruleset $ruleset
+     */
+    public function __construct(Ruleset $ruleset)
+    {
+        $this->ruleset = $ruleset;
+    }
+    /**
      * @param FormBuilderInterface $builder
-     * @param array $optionsbu
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,9 +34,14 @@ class RulesetSkillType extends AbstractType
             ->add('name')
             ->add('overloadMalus')
             ->add('description')
-            ->add('ruleset')
-            ->add('char1')
-            ->add('char2')
+            ->add('char1', 'entity', [
+                'choices' => $this->ruleset->getCharacteristics(),
+                'class'   => 'DkSystemBundle:RulesetCharacteristic'
+            ])
+            ->add('char2', 'entity', [
+                'choices' => $this->ruleset->getCharacteristics(),
+                'class'   => 'DkSystemBundle:RulesetCharacteristic'
+            ])
         ;
     }
     
