@@ -55,7 +55,7 @@ class RulesetSkill
     /**
      * @var boolean
      *
-     * @ORM\Column(name="overload_malus", type="boolean")
+     * @ORM\Column(name="overload_malus", type="boolean", nullable=true)
      */
     private $overloadMalus;
 
