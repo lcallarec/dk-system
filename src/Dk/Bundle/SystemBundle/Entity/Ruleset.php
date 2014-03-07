@@ -235,7 +235,7 @@ class Ruleset
     }
     
     /**
-     * Add a skill for this ruleset
+     * Add a skill from this ruleset
      * 
      * @param RulesetAsset $asset
      * @return Ruleset
@@ -246,5 +246,19 @@ class Ruleset
         $this->assets->add($asset);
         
         return $this;
-    }        
+    }
+
+   /**
+     * remove an Asset from this ruleset
+     * 
+     * @param RulesetAsset $pr
+     * @return Ruleset
+     */
+    public function removeAsset(RulesetAsset $asset)
+    {
+        $this->assets->removeElement($asset);
+        
+        return $this;
+    }      
+    
 }
