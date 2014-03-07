@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * RulesetAsset
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Entity\RulesetAssetRepository")
+ * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Ruleset\RulesetAssetRepository")
  */
 class RulesetAsset
 {
@@ -39,14 +39,14 @@ class RulesetAsset
     /**
      * @var string
      *
-     * @ORM\Column(name="use_limitation", type="string", length=16)
+     * @ORM\Column(name="use_limitation", type="string", length=16, nullable=true)
      */
     private $useLimitation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="use_cost", type="string", length=16)
+     * @ORM\Column(name="use_cost", type="string", length=16, nullable=true)
      */
     private $useCost;
 
@@ -60,7 +60,7 @@ class RulesetAsset
     /**
      * @var string
      *
-     * @ORM\Column(name="pre_requisite", type="string", length=255)
+     * @ORM\Column(name="pre_requisite", type="string", length=255, nullable=true)
      */
     private $preRequisite;
 
