@@ -1,3 +1,8 @@
+@font-face {
+    font-family: acaslon;
+    src: url("font/ACaslonPro-Regular");
+} 
+
 body {
     padding: 10px;
     font-size: 12px;
@@ -52,3 +57,35 @@ body {
     .form-error li {
         padding: 4px;
     }
+    
+    .chars-vertical dt {
+        height: 24px;
+        line-height: 2em;
+        width: 50px;
+    }
+    
+    .chars-vertical dd {
+        margin-left: 60px;
+        width: 30px;
+    }
+    
+.panel-medieval-style {
+    font-family: acaslon;
+    font-size: 12px;
+}
+
+.panel-medieval-style .form-control {
+    border: none;
+    border-bottom: 1px solid #CCCCCC;
+    border-radius: 0;
+    box-shadow: none;
+    color: #333333;
+    font-size: 12px;
+    height: 24px;
+    line-height: 1.42857;
+    padding: 3px 6px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+}
+    
+    
