@@ -1,3 +1,4 @@
+#FOR ALL USERS
 board:
     path:   /board
     defaults:  { _controller: DkSystemBundle:Board:index }
@@ -14,14 +15,29 @@ player_account:
     path:   /account
     defaults:  { _controller: DkSystemBundle:Player:manage }
 
+#ROLE_PLAYER
 manage_pc:
     path:   /player/pc/{id}
     defaults:  { _controller: DkSystemBundle:Character:manage, id: null }
     requirements:
         id: \d+
 
+#ROLE_MASTER
 manage_campaign:
     path:   /master/campaign/{id}
     defaults:  { _controller: DkSystemBundle:Campaign:manage, id: null }
     requirements:
         id: \d+
+        
+#ROLE_MASTER_RULESET
+manage_ruleset:
+    path:   /ruleset/{id}
+    defaults:  { _controller: DkSystemBundle:Ruleset:manage }
+    requirements:
+        id: \d+        
+        
+manage_ruleset_skills:
+    path:   /ruleset/skills/{id}
+    defaults:  { _controller: DkSystemBundle:Ruleset:manageSkills }
+    requirements:
+        id: \d+          
