@@ -15,13 +15,13 @@ player_account:
     defaults:  { _controller: DkSystemBundle:Player:manage }
 
 manage_pc:
-    path:   /pc/{id}
+    path:   /player/pc/{id}
     defaults:  { _controller: DkSystemBundle:Character:manage, id: null }
     requirements:
         id: \d+
 
 manage_campaign:
-    path:   /campaign/{id}
+    path:   /master/campaign/{id}
     defaults:  { _controller: DkSystemBundle:Campaign:manage, id: null }
     requirements:
         id: \d+
