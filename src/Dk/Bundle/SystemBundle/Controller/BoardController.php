@@ -36,9 +36,21 @@ class BoardController extends Controller
         } else {
            $campaigns = null;
         }
+        
+        if($this->get('security.context')->isGranted('ROLE_MASTER_RULESET')) {
+           $rulesets = $this->get('doctrine')
+                ->getRepository('DkSystemBundle:Ruleset')
+                ->findMasterRulesets($this->getUser())
+            ;  
+        } else {
+           $rulesets = null;
+        }
          
-         
-        return $this->render('DkSystemBundle:Board:menu.html.twig', ['pcs' => $pcs, 'campaigns' => $campaigns]);
+        return $this->render('DkSystemBundle:Board:menu.html.twig', [
+            'pcs'       => $pcs,
+            'campaigns' => $campaigns,
+            'rulesets'  => $rulesets
+        ]);
     }
 
 }
