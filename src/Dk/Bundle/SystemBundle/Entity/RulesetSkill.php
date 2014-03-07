@@ -3,6 +3,7 @@
 namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * RulesetSkill
@@ -32,7 +33,8 @@ class RulesetSkill
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=96)
+     * @ORM\Column(name="name", type="string", length=96, nullable=false)
+     * @Assert\NotBlank(message="Le nom de la compétence ne doit pas être vide")
      */
     private $name;
         
@@ -55,7 +57,7 @@ class RulesetSkill
     /**
      * @var boolean
      *
-     * @ORM\Column(name="overload_malus", type="boolean", nullable=true)
+     * @ORM\Column(name="overload_malus", type="boolean", nullable=false)
      */
     private $overloadMalus;
 
@@ -63,6 +65,7 @@ class RulesetSkill
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank(message="La description ne doit pas être vide")
      */
     private $description;
 
