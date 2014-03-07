@@ -4,6 +4,11 @@ board:
     requirements:
         _method:  GET
         
+_board:
+    path:   /
+    defaults:  { _controller: DkSystemBundle:Board:index }
+    requirements:
+        _method:  GET
         
 player_account:
     path:   /account
