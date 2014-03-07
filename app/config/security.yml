@@ -32,3 +32,4 @@ security:
     access_control:
         - { path: ^/private/player, roles: ROLE_PLAYER }
         - { path: ^/private/master, roles: ROLE_MASTER }
+        - { path: ^/private/ruleset, roles: ROLE_MASTER_RULESET }
