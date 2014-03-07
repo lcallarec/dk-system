@@ -35,12 +35,7 @@ class PlayerCharacterType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
             ])
-            ->add('a', 'collection', [
-                'type' => new Type\PlayerCharacterAssetType(),
-                'by_reference' => true,
-                'label' => false,
-                'property_path' => 'campaign.ruleset.assets'
-            ])
+
         ;
         
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
