@@ -186,6 +186,19 @@ class Ruleset
         
         return $this;
     }    
+
+   /**
+     * remove a PlayableRace for this ruleset
+     * 
+     * @param RulesetPlayableRace $pr
+     * @return Ruleset
+     */
+    public function removePlayableRace(RulesetPlayableRace $pr)
+    {
+        $this->playableRaces->removeElement($pr);
+        
+        return $this;
+    }      
     
     /**
      * Get the playable races of this ruleset
