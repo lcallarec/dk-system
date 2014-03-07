@@ -1,0 +1,34 @@
+{% extends 'DkSystemBundle::board.html.twig' %}
+
+{% block title %}
+    Gestion des atouts du système <strong>{{ form.vars.value.name }}</strong>
+{% endblock %}
+
+{% form_theme form _self %}
+
+{% block _ruleset_assets_entry_widget %}
+   <h2>{{ form.vars.value.name }}</h2>
+   {{ form_widget(form.name) }}
+   {{ form_errors(form.name) }}
+   {{ form_label(form.useLimitation) }}
+   {{ form_widget(form.useLimitation) }}
+   {{ form_label(form.preRequisite) }}
+   {{ form_widget(form.preRequisite) }}   
+   {{ form_widget(form.description, {attr: {style:"width: 100%;"}}) }}
+   {{ form_errors(form.description) }}   
+   
+{% endblock %}
+
+{% block board_content %}
+
+    {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'form-horizontal'}}) }}
+        
+        {% for asset in form.assets %}
+            {{ form_widget(asset) }}
+            <hr />
+        {% endfor %}
+      
+    {{ form_end(form) }}
+
+
+{% endblock %}
