@@ -6,6 +6,7 @@
 body {
     padding: 10px;
     font-size: 12px;
+    margin: 0 auto;
 }
 
 #login-form {
@@ -28,7 +29,7 @@ body {
     }
     
     #board-content {
-        padding-left: 270px;
+        padding-left: 20px;
     }
     
     div.list-group-item.active,
@@ -87,5 +88,5 @@ body {
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
     width: 100%;
 }
-    
-    
+  
+
