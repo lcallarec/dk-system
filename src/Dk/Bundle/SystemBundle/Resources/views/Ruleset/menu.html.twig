@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs">
+    <li class="{{ current_page == 'ruleset' ? 'active' }}"><a href="{{ path('manage_ruleset', {id: form.vars.value.id }) }}">général</a></li>
+    <li class="{{ current_page == 'races'  ? 'active' }}"><a href="{{ path('manage_ruleset_playable_races', {id: form.vars.value.id }) }}">race jouables</a></li>
+    <li class="{{ current_page == 'skills' ? 'active' }}"><a href="{{ path('manage_ruleset_skills', {id: form.vars.value.id }) }}">compétences</a></li>
+    <li class="{{ current_page == 'assets' ? 'active' }}"><a href="{{ path('manage_ruleset_assets', {id: form.vars.value.id }) }}">atouts</a></li>
+</ul>
+<p></p>
+

@@ -1,5 +1,7 @@
 {% extends 'DkSystemBundle::board.html.twig' %}
 
+{% set current_page = 'races' %}
+
 {% block title %}
     Gestion des races jouables du système <strong>{{ form.vars.value.name }}</strong>
 {% endblock %}
@@ -14,6 +16,8 @@
 
 {% block board_content %}
 
+    {{ include('DkSystemBundle:Ruleset:menu.html.twig') }}
+    
     {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'form-horizontal'}}) }}
         
         {% for race in form.races %}

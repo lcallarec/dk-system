@@ -1,5 +1,7 @@
 {% extends 'DkSystemBundle::board.html.twig' %}
 
+{% set current_page = 'assets' %}
+
 {% block title %}
     Gestion des atouts du système <strong>{{ form.vars.value.name }}</strong>
 {% endblock %}
@@ -21,6 +23,8 @@
 
 {% block board_content %}
 
+    {{ include('DkSystemBundle:Ruleset:menu.html.twig') }}    
+    
     {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'form-horizontal'}}) }}
         
         {% for asset in form.assets %}
