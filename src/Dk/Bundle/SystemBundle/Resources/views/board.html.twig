@@ -4,25 +4,23 @@
     
     {% block board %}
 
-        <div class="container-fluid">    
+        <div class="container">    
             <div class="row">
-                <div id="board-menu" class="col-sm-3">
-                    {% block board_menu %}
-                        {{ render(controller('DkSystemBundle:Board:menu')) }}
-                    {% endblock %}
-                </div>
-                <div id="board-content" class="col-sm-9">
+                <div id="board-content" class="col-xs-9">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h1>
+                            <h3>
                                 {% block title %}
                                 {% endblock %}
-                            </h1>
+                            </h3>
                         </div>
                     </div>
-                    
                     {% block board_content %}
-                       
+                    {% endblock %}
+                </div>
+                <div id="board-menu" class="col-xs-3">
+                    {% block board_menu %}
+                        {{ render(controller('DkSystemBundle:Board:menu')) }}
                     {% endblock %}
                 </div>
             </div>
