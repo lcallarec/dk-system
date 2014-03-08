@@ -1,5 +1,7 @@
 {% extends 'DkSystemBundle::board.html.twig' %}
 
+{% set current_page = 'skills' %}
+
 {% block title %}
     Gestion des compétences du système <strong>{{ form.vars.value.name }}</strong>
 {% endblock %}
@@ -19,7 +21,9 @@
 {% endblock %}
 
 {% block board_content %}
-
+    
+    {{ include('DkSystemBundle:Ruleset:menu.html.twig') }}
+    
     {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'form-horizontal'}}) }}
         
         {% for skill in form.skills %}
