@@ -11,7 +11,7 @@ use Dk\Bundle\SystemBundle\Repository\PlayerCharacterRepository;
 
 class CampaignType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -58,10 +58,10 @@ class CampaignType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'Dk\Bundle\SystemBundle\Entity\Campaign',
             'isnew'      => false
-        ));
+        ]);
     }
 
     /**
