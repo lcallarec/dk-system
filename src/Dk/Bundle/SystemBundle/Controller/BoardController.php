@@ -3,6 +3,7 @@
 namespace Dk\Bundle\SystemBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class BoardController extends Controller
 {
@@ -32,7 +33,7 @@ class BoardController extends Controller
            $campaigns = $this->get('doctrine')
                 ->getRepository('DkSystemBundle:Campaign')
                 ->findMasterCampaigns($this->getUser())
-            ;  
+           ;
         } else {
            $campaigns = null;
         }
@@ -41,7 +42,7 @@ class BoardController extends Controller
            $rulesets = $this->get('doctrine')
                 ->getRepository('DkSystemBundle:Ruleset')
                 ->findMasterRulesets($this->getUser())
-            ;  
+           ;
         } else {
            $rulesets = null;
         }
