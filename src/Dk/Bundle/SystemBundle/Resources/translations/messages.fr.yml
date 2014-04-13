@@ -1,0 +1,10 @@
+gui:
+  button:
+    submit: valider
+user:
+  nickname: pseudo
+  email: email
+  password: mot de passe
+  role: type de compte
+  account:
+    title: votre compte
