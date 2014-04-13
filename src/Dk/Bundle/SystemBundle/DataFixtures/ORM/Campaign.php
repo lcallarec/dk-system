@@ -46,5 +46,4 @@ class LoadCampaignData extends AbstractFixture implements FixtureInterface, Cont
     {
         $this->container = $container;
     }
-    
-}
+ }
