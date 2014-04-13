@@ -15,8 +15,12 @@ class PlayerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nickname')
-            ->add('password', 'password')                
+            ->add('nickname', 'text', [
+                'label' => 'user.nickname'
+             ])
+            ->add('password', 'password', [
+                'label' => 'user.password'
+            ])
             ->add('submit', 'submit')
         ;
     }
