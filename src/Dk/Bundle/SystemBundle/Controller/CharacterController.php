@@ -26,7 +26,7 @@ class CharacterController extends Controller
             }
             
         } else {
-            $pc = $this->get('dk_pc_factory')->create();
+            $pc = $this->get('dk.factory.pc')->create();
         }
 
         $em = $this->get('doctrine')->getManager();
