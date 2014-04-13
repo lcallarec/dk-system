@@ -37,7 +37,7 @@ class CampaignController extends Controller
             
         } else {
             /** @var Campaign $campaign */
-            $campaign = $this->get('dk_campaign_factory')->create();
+            $campaign = $this->get('dk.factory.campaign')->create();
             $options['isnew'] = true;
         }
 

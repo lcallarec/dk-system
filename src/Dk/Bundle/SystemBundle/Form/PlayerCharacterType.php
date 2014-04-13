@@ -42,7 +42,7 @@ class PlayerCharacterType extends AbstractType
             
             $data = $event->getData();
             $form = $event->getForm();
-            
+
             $form->add('race', 'entity', [
                 'choices' => $data->getCampaign()->getRuleset()->getPlayableRaces(),
                 'class'   => 'Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace'
