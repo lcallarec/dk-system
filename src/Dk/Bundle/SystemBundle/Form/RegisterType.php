@@ -15,10 +15,15 @@ class RegisterType extends PlayerType
         
         $builder
             ->add('roles', 'choice', [
-                'choices' => ['ROLE_PLAYER' => 'joueur', 'ROLE_MASTER' => 'maître']
+                'choices' => ['ROLE_PLAYER' => 'joueur', 'ROLE_MASTER' => 'maître'],
+                'label'   => 'user.role'
             ])
-            ->add('email')
-            ->add('submit', 'submit', ['label' => 'créer son compte'])
+            ->add('email', 'email', [
+                'label' => 'user.email'
+            ])
+            ->add('submit', 'submit', [
+                    'label' => 'créer son compte'
+            ])
         ;
     }
   

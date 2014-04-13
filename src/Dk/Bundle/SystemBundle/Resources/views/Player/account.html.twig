@@ -1,19 +1,25 @@
 {% extends 'DkSystemBundle::board.html.twig' %}
 
-{% block title %}
-    Votre compte
-{% endblock %} 
+{% block title %}{{ 'user.account.title'|trans }}{% endblock %}
 
 {% block board_content %}
 
-    {{ form_start(form) }}
+    {{ form_start(form, {attr: { role: 'form', class: 'col-lg-6' }}) }}
 
-        <div>
+        <div class="form-group">
             {{ form_label(form.nickname) }}
-            {{ form_widget(form.nickname) }}
-                        {{ form_errors(form.nickname) }}
+            {{ form_widget(form.nickname, {attr: {class: "form-control" }}) }}
+            {{ form_errors(form.nickname) }}
+
+            {{ form_label(form.password) }}
+            {{ form_widget(form.password, {attr: {class: "form-control" }}) }}
+            {{ form_errors(form.password) }}
         </div>
-    
+
+        <div class="form-group">
+            {{form_widget(form.submit, {attr: {class: 'btn btn-primary'}}) }}
+        </div>
+
     {{ form_end(form) }}
 
 {% endblock %}
