@@ -24,7 +24,7 @@ class RulesetSkillCollectionType extends AbstractType
             $form = $event->getForm();
             
             $form->add('skills', 'collection', [
-                'type'  => new Type\RulesetSkillType($event->getData()),
+                'type'  => new RulesetSkillType($event->getData()),
                 'label' => false,
                 'by_reference' => false,
             ]);
@@ -38,9 +38,9 @@ class RulesetSkillCollectionType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'Dk\Bundle\SystemBundle\Entity\Ruleset'
-        ));
+        ]);
     }
 
     /**
