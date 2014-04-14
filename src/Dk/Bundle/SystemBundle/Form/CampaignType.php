@@ -5,8 +5,6 @@ namespace Dk\Bundle\SystemBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-use Symfony\Component\Form\Extension\Core\DataTransformer\ChoiceToValueTransformer;
 use Dk\Bundle\SystemBundle\Repository\PlayerCharacterRepository;
 
 class CampaignType extends AbstractType
@@ -18,7 +16,9 @@ class CampaignType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', 'text', [
+                'label' => 'campaign.name'
+            ])
             ->add('playerCharacters', 'entity', 
                 [
                     'class'     => 'DkSystemBundle:PlayerCharacter',
@@ -29,7 +29,7 @@ class CampaignType extends AbstractType
                             return $pr->createQueryBuilder('pc')
                                 ->where('pc.campaign IS NULL')
                                 ->orderBy('pc.firstname', 'ASC');
-                    },                    
+                    },
                 ])
             ->add('submit', 'submit')
         ;

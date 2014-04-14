@@ -1,6 +1,7 @@
 gui:
   button:
     submit: valider
+
 user:
   nickname: pseudo
   email: email
@@ -8,3 +9,7 @@ user:
   role: type de compte
   account:
     title: votre compte
+
+campaign:
+  help:
+    name: reret er t re tre
