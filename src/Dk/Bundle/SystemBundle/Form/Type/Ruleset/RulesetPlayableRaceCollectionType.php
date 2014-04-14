@@ -24,7 +24,7 @@ class RulesetPlayableRaceCollectionType extends AbstractType
             $form = $event->getForm();
             
             $form->add('races', 'collection', [
-                'type'  => new Type\RulesetPlayableRaceType($event->getData()),
+                'type'  => new RulesetPlayableRaceType($event->getData()),
                 'label' => false,
                 'by_reference' => false,
                 'property_path' => 'playableRaces'
@@ -39,10 +39,9 @@ class RulesetPlayableRaceCollectionType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'Dk\Bundle\SystemBundle\Entity\Ruleset'
-        ));
-    }
+        ]);    }
 
     /**
      * @return string

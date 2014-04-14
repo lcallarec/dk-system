@@ -24,7 +24,7 @@ class RulesetAssetCollectionType extends AbstractType
             $form = $event->getForm();
             
             $form->add('assets', 'collection', [
-                'type'  => new Type\RulesetAssetType($event->getData()),
+                'type'  => new RulesetAssetType($event->getData()),
                 'label' => false,
                 'by_reference' => false,
             ]);
@@ -38,9 +38,9 @@ class RulesetAssetCollectionType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'Dk\Bundle\SystemBundle\Entity\Ruleset'
-        ));
+        ]);
     }
 
     /**
