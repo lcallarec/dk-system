@@ -43,11 +43,13 @@ class PlayerCharacterType extends AbstractType
             $data = $event->getData();
             $form = $event->getForm();
 
-            $form->add('race', 'entity', [
-                'choices' => $data->getCampaign()->getRuleset()->getPlayableRaces(),
-                'class'   => 'Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace'
-            ]);
-            
+            if (null !== $data->getId()) {
+                $form->add('race', 'entity', [
+                    'choices' => $data->getCampaign()->getRuleset()->getPlayableRaces(),
+                    'class'   => 'Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace'
+                ]);
+            }
+
         });      
         
     }
@@ -57,9 +59,9 @@ class PlayerCharacterType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'Dk\Bundle\SystemBundle\Entity\PlayerCharacter'
-        ));
+        ]);
     }
 
     /**

@@ -60,15 +60,17 @@
                         {{ form_widget(form.lastname, {attr: {class: "form-control" }}) }}
                     </div>
                 </div>
-                
-                <div class="form-group">
-                    {{ form_label(form.race, null, {label_attr: {class: "control-label col-sm-3"}}) }}
-                    {{ form_errors(form.race) }}
-                    <div class="col-sm-7">
-                        {{ form_widget(form.race, {attr: {class: "form-control" }}) }}
+
+                {% if form.race is defined %}
+                    <div class="form-group">
+                        {{ form_label(form.race, null, {label_attr: {class: "control-label col-sm-3"}}) }}
+                        {{ form_errors(form.race) }}
+                        <div class="col-sm-7">
+                            {{ form_widget(form.race, {attr: {class: "form-control" }}) }}
+                        </div>
                     </div>
-                </div>                
-                
+                {% endif %}
+
             </div>
             <div class="col-sm-5">
              
@@ -82,6 +84,7 @@
             </div>
         </div>
 
+        {% if form.vars.value.campaign is not empty %}
         <div class="row">
             <div class="form-group">
                 <div class="col-sm-offset-1 col-sm-12">
@@ -94,10 +97,10 @@
                         </div>
                 {% endfor %}
                 </div>
-
             </div>
         </div>
-                    
+        {%  endif %}
+
         <div class="row">
             <div class="form-group">
                 <div class="col-sm-offset-1 col-sm-12">
