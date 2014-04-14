@@ -1,6 +1,6 @@
 <?php
 
-namespace Dk\Bundle\SystemBundle\Form;
+namespace Dk\Bundle\SystemBundle\Form\Type\PlayerCharacter;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,12 +21,12 @@ class PlayerCharacterType extends AbstractType
             ->add('lastname')
             ->add('submit', 'submit')
             ->add('characteristics', 'collection', [
-                'type' => new Type\PlayerCharacterCharacteristicType(),
+                'type' => new PlayerCharacterCharacteristicType(),
                 'by_reference' => true,
                 'label' => false
             ])
             ->add('skills', 'collection', [
-                'type' => new Type\PlayerCharacterSkillType(),
+                'type' => new PlayerCharacterSkillType(),
                 'by_reference' => true,
                 'label' => false
             ])

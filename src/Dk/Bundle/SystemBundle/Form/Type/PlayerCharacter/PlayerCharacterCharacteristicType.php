@@ -1,6 +1,6 @@
 <?php
 
-namespace Dk\Bundle\SystemBundle\Form\Type;
+namespace Dk\Bundle\SystemBundle\Form\Type\PlayerCharacter;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;

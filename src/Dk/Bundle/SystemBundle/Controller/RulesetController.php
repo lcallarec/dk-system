@@ -4,10 +4,10 @@ namespace Dk\Bundle\SystemBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Dk\Bundle\SystemBundle\Form\RulesetType;
-use Dk\Bundle\SystemBundle\Form\RulesetSkillCollectionType;
-use Dk\Bundle\SystemBundle\Form\RulesetPlayableRaceCollectionType;
-use Dk\Bundle\SystemBundle\Form\RulesetAssetCollectionType;
+use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetType;
+use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetSkillCollectionType;
+use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetPlayableRaceCollectionType;
+use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetAssetCollectionType;
 
 class RulesetController extends Controller
 {

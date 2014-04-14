@@ -1,6 +1,6 @@
 <?php
 
-namespace Dk\Bundle\SystemBundle\Form\Type;
+namespace Dk\Bundle\SystemBundle\Form\Type\Ruleset;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Dk\Bundle\SystemBundle\Entity\Ruleset;
 
-class RulesetAssetType extends AbstractType
+class RulesetSkillType extends AbstractType
 {
     /**
      * The ruleset for this skill
@@ -32,10 +32,16 @@ class RulesetAssetType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('useLimitation')
-            ->add('useCost')
+            ->add('overloadMalus')
             ->add('description')
-            ->add('preRequisite')
+            ->add('char1', 'entity', [
+                'choices' => $this->ruleset->getCharacteristics(),
+                'class'   => 'DkSystemBundle:RulesetCharacteristic'
+            ])
+            ->add('char2', 'entity', [
+                'choices' => $this->ruleset->getCharacteristics(),
+                'class'   => 'DkSystemBundle:RulesetCharacteristic'
+            ])
         ;
     }
     
@@ -45,7 +51,7 @@ class RulesetAssetType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Dk\Bundle\SystemBundle\Entity\RulesetAsset'
+            'data_class' => 'Dk\Bundle\SystemBundle\Entity\RulesetSkill'
         ));
     }
 
@@ -54,6 +60,6 @@ class RulesetAssetType extends AbstractType
      */
     public function getName()
     {
-        return 'asset';
+        return 'skill';
     }
 }
