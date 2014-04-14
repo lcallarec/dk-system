@@ -1,6 +1,6 @@
 <?php
 
-namespace Dk\Bundle\SystemBundle\Form\Type;
+namespace Dk\Bundle\SystemBundle\Form\Type\Ruleset;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -8,10 +8,10 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Dk\Bundle\SystemBundle\Entity\Ruleset;
 
-class RulesetSkillType extends AbstractType
+class RulesetPlayableRaceType extends AbstractType
 {
     /**
-     * The ruleset for this skill
+     * The ruleset for this playable race
      * @var Ruleset
      */
     private $ruleset;
@@ -32,16 +32,6 @@ class RulesetSkillType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('overloadMalus')
-            ->add('description')
-            ->add('char1', 'entity', [
-                'choices' => $this->ruleset->getCharacteristics(),
-                'class'   => 'DkSystemBundle:RulesetCharacteristic'
-            ])
-            ->add('char2', 'entity', [
-                'choices' => $this->ruleset->getCharacteristics(),
-                'class'   => 'DkSystemBundle:RulesetCharacteristic'
-            ])
         ;
     }
     
@@ -51,7 +41,7 @@ class RulesetSkillType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Dk\Bundle\SystemBundle\Entity\RulesetSkill'
+            'data_class' => 'Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace'
         ));
     }
 
@@ -60,6 +50,6 @@ class RulesetSkillType extends AbstractType
      */
     public function getName()
     {
-        return 'skill';
+        return 'race';
     }
 }

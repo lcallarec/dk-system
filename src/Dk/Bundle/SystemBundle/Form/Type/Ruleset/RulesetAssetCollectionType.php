@@ -1,6 +1,6 @@
 <?php
 
-namespace Dk\Bundle\SystemBundle\Form;
+namespace Dk\Bundle\SystemBundle\Form\Type\Ruleset;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
 
-class RulesetSkillCollectionType extends AbstractType
+class RulesetAssetCollectionType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -23,8 +23,8 @@ class RulesetSkillCollectionType extends AbstractType
             
             $form = $event->getForm();
             
-            $form->add('skills', 'collection', [
-                'type'  => new Type\RulesetSkillType($event->getData()),
+            $form->add('assets', 'collection', [
+                'type'  => new Type\RulesetAssetType($event->getData()),
                 'label' => false,
                 'by_reference' => false,
             ]);

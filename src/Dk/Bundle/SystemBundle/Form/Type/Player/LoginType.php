@@ -1,8 +1,7 @@
 <?php
 
-namespace Dk\Bundle\SystemBundle\Form;
+namespace Dk\Bundle\SystemBundle\Form\Type\Player;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class LoginType extends PlayerType

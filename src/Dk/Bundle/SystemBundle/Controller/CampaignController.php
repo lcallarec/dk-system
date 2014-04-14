@@ -7,7 +7,7 @@ use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Dk\Bundle\SystemBundle\Form\CampaignType;
+use Dk\Bundle\SystemBundle\Form\Type\Campaign\CampaignType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**

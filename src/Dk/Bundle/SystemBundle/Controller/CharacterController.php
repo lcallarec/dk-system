@@ -4,7 +4,7 @@ namespace Dk\Bundle\SystemBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Dk\Bundle\SystemBundle\Form\PlayerCharacterType;
+use Dk\Bundle\SystemBundle\Form\Type\PlayerCharacter\PlayerCharacterType;
 use Dk\Bundle\SystemBundle\Entity\PlayerCharacterCharacteristic;
 use Dk\Bundle\SystemBundle\Entity\PlayerCharacterSkill;
 

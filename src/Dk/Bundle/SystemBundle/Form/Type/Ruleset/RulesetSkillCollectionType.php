@@ -1,12 +1,15 @@
 <?php
 
-namespace Dk\Bundle\SystemBundle\Form;
+namespace Dk\Bundle\SystemBundle\Form\Type\Ruleset;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
-class RulesetType extends AbstractType
+
+class RulesetSkillCollectionType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -14,11 +17,20 @@ class RulesetType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('name')
-            ->add('owner')
+        $builder->add('submit', 'submit');
+        
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
             
-        ;
+            $form = $event->getForm();
+            
+            $form->add('skills', 'collection', [
+                'type'  => new Type\RulesetSkillType($event->getData()),
+                'label' => false,
+                'by_reference' => false,
+            ]);
+            
+        });
+   
     }
     
     /**

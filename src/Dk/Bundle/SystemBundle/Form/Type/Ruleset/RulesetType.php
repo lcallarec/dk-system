@@ -1,30 +1,14 @@
 <?php
 
-namespace Dk\Bundle\SystemBundle\Form\Type;
+namespace Dk\Bundle\SystemBundle\Form\Type\Ruleset;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Dk\Bundle\SystemBundle\Entity\Ruleset;
-
-class RulesetPlayableRaceType extends AbstractType
+class RulesetType extends AbstractType
 {
-    /**
-     * The ruleset for this playable race
-     * @var Ruleset
-     */
-    private $ruleset;
-    
-    /**
-     * 
-     * @param Ruleset $ruleset
-     */
-    public function __construct(Ruleset $ruleset)
-    {
-        $this->ruleset = $ruleset;
-    }
-    /**
+        /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -32,6 +16,8 @@ class RulesetPlayableRaceType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('owner')
+            
         ;
     }
     
@@ -41,7 +27,7 @@ class RulesetPlayableRaceType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace'
+            'data_class' => 'Dk\Bundle\SystemBundle\Entity\Ruleset'
         ));
     }
 
@@ -50,6 +36,6 @@ class RulesetPlayableRaceType extends AbstractType
      */
     public function getName()
     {
-        return 'race';
+        return 'ruleset';
     }
 }
