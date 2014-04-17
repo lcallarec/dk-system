@@ -65,6 +65,14 @@ class RulesetAsset
     private $preRequisite;
 
     /**
+     * @var RulesetAssetGroup
+     *
+     * @ORM\ManyToOne(targetEntity="RulesetAssetGroup", inversedBy="assets")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $group;
+
+    /**
      * @return string
      */
     public function __toString()
@@ -208,5 +216,29 @@ class RulesetAsset
         $this->ruleset = $ruleset;
         
         return $this;
-    }    
+    }
+
+    /**
+     * Get related asset group
+     *
+     * @return RulesetAssetGroup
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * Set the related asset group
+     *
+     * @param RulesetAssetGroup $group
+     *
+     * @return $this
+     */
+    public function setGroup(RulesetAssetGroup $group)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
 }

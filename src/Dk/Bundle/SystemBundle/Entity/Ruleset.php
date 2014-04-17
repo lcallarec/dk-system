@@ -72,7 +72,16 @@ class Ruleset
      * @ORM\OneToMany(targetEntity="RulesetAsset", mappedBy="ruleset")
      */
     private $assets;
-    
+
+    /**
+     * Assets groups related to this ruleset
+     *
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="RulesetAssetGroup", mappedBy="ruleset")
+     */
+    private $assetGroups;
+
     public function __construct()
     {
         $this->characteristics = new ArrayCollection();
@@ -163,7 +172,8 @@ class Ruleset
     /**
      * Add a skill for this ruleset
      * 
-     * @param Skill $skill
+     * @param RulesetSkill $skill
+     *
      * @return Ruleset
      */
     public function addSkill(RulesetSkill $skill)
@@ -177,7 +187,8 @@ class Ruleset
    /**
      * remove a skill for this ruleset
      * 
-     * @param Skill $skill
+     * @param RulesetSkill $skill
+    *
      * @return Ruleset
      */
     public function removeSkill(RulesetSkill $skill)
@@ -213,7 +224,8 @@ class Ruleset
     /**
      * Add a playable race for this ruleset
      * 
-     * @param Skill $skill
+     * @param RulesetPlayableRace $pr
+     *
      * @return Ruleset
      */
     public function addPlayableRace(RulesetPlayableRace $pr)
@@ -251,7 +263,8 @@ class Ruleset
    /**
      * remove an Asset from this ruleset
      * 
-     * @param RulesetAsset $pr
+     * @param RulesetAsset $asset
+    *
      * @return Ruleset
      */
     public function removeAsset(RulesetAsset $asset)
