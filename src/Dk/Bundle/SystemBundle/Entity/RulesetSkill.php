@@ -40,7 +40,7 @@ class RulesetSkill
         
     /**
      * 
-     * @var Characteristic
+     * @var RulesetCharacteristic
      * @ORM\ManyToOne(targetEntity="RulesetCharacteristic")
      * @ORM\JoinColumn(nullable=false) 
      */
@@ -48,7 +48,7 @@ class RulesetSkill
 
     /**
      * 
-     * @var Characteristic
+     * @var RulesetCharacteristic
      * @ORM\ManyToOne(targetEntity="RulesetCharacteristic")
      * @ORM\JoinColumn(nullable=false) 
      */
@@ -68,6 +68,13 @@ class RulesetSkill
      * @Assert\NotBlank(message="La description ne doit pas être vide")
      */
     private $description;
+
+    /**
+     * @var RulesetSkillGroup
+     *
+     * @ORM\ManyToOne(targetEntity="RulesetSkillGroup", inversedBy="skills")
+     */
+    private $group;
 
     /**
      * Get string representation of RulesetSkill
@@ -204,10 +211,10 @@ class RulesetSkill
     }    
  
    /**
-     * Get the ruleset
-     * 
-     * @return \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
-     */
+    * Get the ruleset
+    *
+    * @return \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
+    */
     public function getRuleset()
     {
         return $this->ruleset;
@@ -223,6 +230,29 @@ class RulesetSkill
     {
         $this->ruleset = $ruleset;
         
+        return $this;
+    }
+
+    /**
+     * Get the skill group
+     *
+     * @return RulesetSkillGroup $ruleset
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * Set the skill group
+     *
+     * @param RulesetSkillGroup $group
+     * @return RulesetSkill
+     */
+    public function setGroup(RulesetSkillGroup $group)
+    {
+        $this->group = $group;
+
         return $this;
     }
 }
