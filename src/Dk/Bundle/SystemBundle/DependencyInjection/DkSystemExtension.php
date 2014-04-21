@@ -25,5 +25,6 @@ class DkSystemExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
         $loader->load('factories.xml');
         $loader->load('forms.xml');
+        $loader->load('doctrine.xml');
     }
 }
