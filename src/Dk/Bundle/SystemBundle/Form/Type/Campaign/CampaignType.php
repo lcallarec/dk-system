@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Dk\Bundle\SystemBundle\Repository\PlayerCharacterRepository;
+use Dk\Bundle\SystemBundle\Form\DataTransformer\ChoiceToTextTransformer;
 
 class CampaignType extends AbstractType
 {
@@ -47,7 +48,7 @@ class CampaignType extends AbstractType
                              'label' => 'Système de règles',
                              'help'  => 'Il est impossible de modifier le système de règle d\'une campagne après sa création'
                         ])
-                    ->addModelTransformer(new DataTransformer\ChoiceToTextTransformer())
+                    ->addModelTransformer(new ChoiceToTextTransformer())
             );
         }
                     
