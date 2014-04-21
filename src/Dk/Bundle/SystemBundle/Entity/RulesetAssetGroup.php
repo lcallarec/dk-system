@@ -4,12 +4,14 @@ namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * RulesetAssetGroup
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\RulesetAssetGroupRepository")
+ * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\MaterializedPathRepository")
+ * @Gedmo\Tree(type="materializedPath")
  */
 class RulesetAssetGroup
 {
@@ -19,15 +21,35 @@ class RulesetAssetGroup
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Gedmo\TreePathSource
      */
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="parent_id", type="integer")
+     * @Gedmo\TreePath(separator=".", startsWithSeparator=false, endsWithSeparator=false)
+     * @ORM\Column(name="path", type="string", length=255, nullable=true)
+     */
+    private $path;
+
+    /**
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="RulesetAssetGroup", inversedBy="children")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     * })
      */
     private $parent;
+
+    /**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(name="lvl", type="integer", nullable=true)
+     */
+    private $level;
+
+    /**
+     * @ORM\OneToMany(targetEntity="RulesetAssetGroup", mappedBy="parent")
+     */
+    private $children;
 
     /**
      *
@@ -88,13 +110,13 @@ class RulesetAssetGroup
     /**
      * Set the parent group
      *
-     * @param $parent
+     * @param RulesetAssetGroup $parent
      *
      * @return $this
      */
-    public function setParent($parent)
+    public function setParent(RulesetAssetGroup $parent)
     {
-        $this->parent = (int) $parent;
+        $this->parent = $parent;
 
         return $this;
     }
@@ -160,6 +182,39 @@ class RulesetAssetGroup
         if ($this->assets->contains($asset)) {
             $this->assets->removeElement($asset);
         }
+
+        return $this;
+    }
+
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    public function setPath($path)
+    {
+        $this->path = $path;
+    }
+
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * Set the RulesetCharacteristic ruleset
+     *
+     * @param Ruleset $ruleset
+     * @return RulesetCharacteristic
+     */
+    public function setRuleset(Ruleset $ruleset)
+    {
+        $this->ruleset = $ruleset;
 
         return $this;
     }
