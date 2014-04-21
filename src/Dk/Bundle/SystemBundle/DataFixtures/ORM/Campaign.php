@@ -22,9 +22,9 @@ class LoadCampaignData extends AbstractFixture implements FixtureInterface, Cont
      */
     public function load(ObjectManager $manager)
     {
-        $campaign = new Campaign($this->getReference('p1-master'));
+        $campaign = new Campaign($this->getReference('l.callarec@gmail.com'));
         $campaign->setName('My first campaign');
-        $campaign->setRuleset($this->getReference('ruleset-1'));
+        $campaign->setRuleset($this->getReference('dk-std'));
         $campaign->addPlayerCharacter($this->getReference('pc-1'));
         
         $manager->persist($campaign);

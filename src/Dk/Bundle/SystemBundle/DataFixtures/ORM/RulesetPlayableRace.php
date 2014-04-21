@@ -16,7 +16,7 @@ class LoadRulesetPlayableRaceData extends AbstractFixture implements FixtureInte
      */
     public function load(ObjectManager $manager)
     {
-        
+        return true;
         $races = [
           ['name' => 'Humain'], ['name' => 'Gros nain qui pue']  
         ];

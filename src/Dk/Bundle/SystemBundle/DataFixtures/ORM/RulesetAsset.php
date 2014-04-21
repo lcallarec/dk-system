@@ -16,10 +16,10 @@ class LoadRulesetAssetData extends AbstractFixture implements FixtureInterface, 
      */
     public function load(ObjectManager $manager)
     {
-        
+        return true;
         $assets = [
-            ['name' => 'Doigts serpents', 'description' => 'DS', 'ruleset' => $this->getReference('ruleset-1')],
-            ['name' => 'Focalisation', 'description' => 'F', 'ruleset' => $this->getReference('ruleset-1')]
+            ['name' => 'Doigts serpents', 'description' => 'DS', 'ruleset' => $this->getReference('dk-std')],
+            ['name' => 'Focalisation', 'description' => 'F', 'ruleset' => $this->getReference('dk-std')]
         ];
         
         foreach($assets as $a) {
