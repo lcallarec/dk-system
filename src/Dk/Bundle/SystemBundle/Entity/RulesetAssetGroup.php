@@ -27,7 +27,7 @@ class RulesetAssetGroup
      *
      * @ORM\Column(name="parent_id", type="integer")
      */
-    private $parentId;
+    private $parent;
 
     /**
      *
@@ -76,25 +76,25 @@ class RulesetAssetGroup
     }
 
     /**
-     * Get the parent group id
+     * Get the parent group
      *
      * @return integer
      */
-    public function getParentId()
+    public function getParent()
     {
-        return (int) $this->parentId;
+        return (int) $this->parent;
     }
 
     /**
-     * Set the parent group id
+     * Set the parent group
      *
-     * @param $parentId
+     * @param $parent
      *
      * @return $this
      */
-    public function setParentId($parentId)
+    public function setParent($parent)
     {
-        $this->parentId = (int) $parentId;
+        $this->parent = (int) $parent;
 
         return $this;
     }
