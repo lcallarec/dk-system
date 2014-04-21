@@ -39,6 +39,13 @@ class Ruleset
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="reference", type="string", length=16)
+     */
+    private $reference;
+
+    /**
      *
      * @var ArrayCollection of RulesetCharacteristics
      * @ORM\OneToMany(targetEntity="RulesetCharacteristic", mappedBy="ruleset") 
@@ -104,6 +111,30 @@ class Ruleset
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param $reference
+     *
+     * @return $this
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
     }
 
     /**
