@@ -17,13 +17,19 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('dk_system');
+        $builder = new TreeBuilder();
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $builder->root('dk_system')
+                ->children()
+                    ->scalarNode('dk_factory_pc_class')
+                        ->defaultValue('Dk\Bundle\SystemBundle\Factory\PlayerCharacterFactory')
+                    ->scalarNode('dk_factory_campaign_class')
+                        ->defaultValue('Dk\Bundle\SystemBundle\Factory\CampaignFactory')
+                    ->end()
+                ->end()
+        ->end()
+        ;
 
-        return $treeBuilder;
+        return $builder;
     }
 }

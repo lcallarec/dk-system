@@ -26,5 +26,8 @@ class DkSystemExtension extends Extension
         $loader->load('factories.xml');
         $loader->load('forms.xml');
         $loader->load('doctrine.xml');
+
+        $container->setParameter('dk_factory.pc_class', $config['dk_factory_pc_class']);
+        $container->setParameter('dk_factory.campaign_class', $config['dk_factory_campaign_class']);
     }
 }
