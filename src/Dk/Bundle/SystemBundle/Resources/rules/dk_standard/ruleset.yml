@@ -1,0 +1,67 @@
+ruleset:
+    name: dk2 édition standard
+    reference: dk-std
+    owner: l.callarec@gmail.com
+
+characteristics:
+    for:
+        longname: force
+        desc: force
+    dex:
+        longname: dextérité
+        desc: dextérité
+    con:
+        longname: constitution
+        desc: constitution
+    int:
+        longname: intelligence
+        desc: intelligence
+    sag:
+        longname: sagesse
+        desc: sagesse
+    cha:
+        longname: charisme
+        desc: charisme
+
+skills:
+    list:
+        Acrobatie:
+            chars:
+                - FOR
+                - DEX
+            malus: true
+            desc: >
+                  Utilisez cette compétence pour courir, sauter, faire des bonds et des cabrioles.
+                  C’est aussi la compétence des sports et de presque toutes les activités
+                  physiques athlétiques.
+        Bluff:
+           chars:
+                - INT
+                - CHA
+           desc: >
+                  Vous permet de mentir ou de baratiner. On peut résister à l’utilisation de cette compétence
+                  grâce à un jet de Psychologie en opposition.
+
+assets:
+    "atouts de combat":
+        "maîtrise":
+            "list":
+                "armes":
+                    use:
+                        - limité
+                        - fatiguant
+                    condition: gfgf
+                    desc: >
+                         fdfds
+        "amélioration":
+            "list":
+                "A":
+                 use:
+                    - limité
+                    - fatiguant
+                 condition: gfgf
+                 desc: >
+                       fdfds
+    "breloque fat":
+        "maîtrise":
+            "list":
