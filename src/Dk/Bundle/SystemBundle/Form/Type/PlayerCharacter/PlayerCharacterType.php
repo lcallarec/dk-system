@@ -25,17 +25,6 @@ class PlayerCharacterType extends AbstractType
                 'by_reference' => true,
                 'label' => false
             ])
-            ->add('skills', 'collection', [
-                'type' => new PlayerCharacterSkillType(),
-                'by_reference' => true,
-                'label' => false
-            ])
-            ->add('assets', 'entity', [
-                'class'   => 'Dk\Bundle\SystemBundle\Entity\RulesetAsset',
-                'expanded' => true,
-                'multiple' => true,
-            ])
-
         ;
         
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
@@ -43,11 +32,29 @@ class PlayerCharacterType extends AbstractType
             $data = $event->getData();
             $form = $event->getForm();
 
-            if (null !== $data->getId()) {
-                $form->add('race', 'entity', [
-                    'choices' => $data->getCampaign()->getRuleset()->getPlayableRaces(),
-                    'class'   => 'Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace'
-                ]);
+            if (null !== $data->getCampaign()) {
+                $form
+                    ->add(
+                        'assets', 'entity', [
+                            'class'    => 'Dk\Bundle\SystemBundle\Entity\RulesetAsset',
+                            'expanded' => true,
+                            'multiple' => true,
+                        ]
+                    )
+                    ->add(
+                        'race', 'entity', [
+                            'choices' => $data->getCampaign()->getRuleset()->getPlayableRaces(),
+                            'class'   => 'Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace'
+                        ]
+                    )
+                    ->add(
+                        'skills', 'collection', [
+                            'type'         => new PlayerCharacterSkillType(),
+                            'by_reference' => true,
+                            'label'        => false
+                        ]
+                    )
+                ;
             }
 
         });      

@@ -38,7 +38,7 @@
         {% else %}
             <div class="alert alert-warning">
                 <p>Ce personnage n'est pas intégré à une campagne existante. Il est impossible de définir plus d'informations le concernant.</p>
-               </div>
+            </div>
         {% endif %}
         
         <div class="row">
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        {% if form.vars.value.campaign is not empty %}
+        {% if pc.campaign is not null %}
         <div class="row">
             <div class="form-group">
                 <div class="col-sm-offset-1 col-sm-12">
@@ -92,14 +92,13 @@
                     {% for key, asset in form.assets %}
                         <div>
                         {{ form_widget(asset) }}
-                        {{ form.vars.value.campaign.ruleset.assets[loop.index0].name}}
-                        {{ form.vars.value.campaign.ruleset.assets[loop.index0].description}}
+                        {{ pc.campaign.ruleset.assets[loop.index0].name}}
+                        {{ pc.campaign.ruleset.assets[loop.index0].description}}
                         </div>
                 {% endfor %}
                 </div>
             </div>
         </div>
-        {%  endif %}
 
         <div class="row">
             <div class="form-group">
@@ -110,7 +109,9 @@
                 </div>
             </div>
         </div>
-        
+
+        {%  endif %}
+
         <div class="row">
             <div class="form-group">
                 <div class="col-sm-offset-1 col-sm-12">
