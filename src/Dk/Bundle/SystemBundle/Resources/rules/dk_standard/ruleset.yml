@@ -24,23 +24,26 @@ characteristics:
         desc: charisme
 
 skills:
-    list:
-        Acrobatie:
-            chars:
-                - FOR
-                - DEX
-            malus: true
-            desc: >
-                  Utilisez cette compétence pour courir, sauter, faire des bonds et des cabrioles.
-                  C’est aussi la compétence des sports et de presque toutes les activités
-                  physiques athlétiques.
-        Bluff:
-           chars:
-                - INT
-                - CHA
-           desc: >
-                  Vous permet de mentir ou de baratiner. On peut résister à l’utilisation de cette compétence
-                  grâce à un jet de Psychologie en opposition.
+    Physique:
+        list:
+            Acrobatie:
+                chars:
+                    - FOR
+                    - DEX
+                malus: true
+                desc: >
+                      Utilisez cette compétence pour courir, sauter, faire des bonds et des cabrioles.
+                      C’est aussi la compétence des sports et de presque toutes les activités
+                      physiques athlétiques.
+    Psycho:
+        list:
+            Bluff:
+                chars:
+                    - INT
+                    - CHA
+                desc: >
+                      Vous permet de mentir ou de baratiner. On peut résister à l’utilisation de cette compétence
+                      grâce à un jet de Psychologie en opposition.
 
 assets:
     "atouts de combat":

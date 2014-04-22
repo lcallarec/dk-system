@@ -97,7 +97,7 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
             $group = new RulesetSkillGroup();
             $group
                 ->setName($name)
-                ->setRuleset($ruleset)
+                //->setRuleset($ruleset)
             ;
 
             if (1 !== $level) {
