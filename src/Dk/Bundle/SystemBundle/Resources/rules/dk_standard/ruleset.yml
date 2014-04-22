@@ -65,3 +65,10 @@ assets:
     "breloque fat":
         "maîtrise":
             "list":
+                "A":
+                  use:
+                    - limité
+                    - fatiguant
+                  condition: gfgf
+                  desc: >
+                        fdfds

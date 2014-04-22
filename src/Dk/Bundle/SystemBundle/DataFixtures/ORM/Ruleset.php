@@ -37,7 +37,6 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
 
         $yaml = new Parser();
 
-
         /** @var SplFileInfo $directory */
         foreach ($finder as $directory) {
             $rulesetFinder = (new Finder())->files()->in($directory->getPath())->name('ruleset.yml');
@@ -148,7 +147,7 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
                 ->setRuleset($ruleset)
             ;
 
-            if (1 !== $level) {
+            if (null !== $parent) {
                 $group->setParent($groups->get($parent));
             }
 
@@ -188,7 +187,6 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
                 break;
             } elseif(is_array($v)) {
 
-                //echo (str_repeat('  ', $level)) . $k . PHP_EOL;
                 $level++;
                 $addGroup($k, $p, $level);
                 $this->recursiveItemManager($v, $k, $addGroup, $addItem);

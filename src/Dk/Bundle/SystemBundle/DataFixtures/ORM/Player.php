@@ -35,7 +35,7 @@ class LoadPlayerData extends AbstractFixture implements FixtureInterface, Contai
         $player
                 ->setNickname('Laurent')
                 ->setEmail('l.callarec@gmail.com')
-                ->setRoles(['ROLE_MASTER'])
+                ->setRoles(['ROLE_MASTER_RULESET'])
         ;
         
         $this->addReference($player->getEmail(), $player);
