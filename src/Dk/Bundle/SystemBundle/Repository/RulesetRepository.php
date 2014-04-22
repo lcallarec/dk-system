@@ -43,8 +43,9 @@ class RulesetRepository extends EntityRepository
     {
         $query = $this->getEntityManager()
             ->createQuery('
-                SELECT rs, skill FROM DkSystemBundle:Ruleset rs
+                SELECT rs, skill, sgroup FROM DkSystemBundle:Ruleset rs
                 LEFT JOIN rs.skills skill
+                LEFT JOIN skill.group sgroup
                 WHERE rs.id = :id
                 AND rs.owner = :owner
                 '

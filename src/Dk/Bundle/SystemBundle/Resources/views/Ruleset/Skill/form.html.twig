@@ -9,7 +9,7 @@
 {% form_theme form _self %}
 
 {% block _ruleset_skills_entry_widget %}
-   <h2>{{ form.vars.value.name }}</h2>
+   <h3>{{ form.vars.value.name }}</h3>
    {{ form_widget(form.name) }}
    {{ form_errors(form.name) }}
    {{ form_widget(form.char1) }}
@@ -25,10 +25,16 @@
     {{ include('DkSystemBundle:Ruleset:menu.html.twig') }}
     
     {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'form-horizontal'}}) }}
-        
+
+        {% set group = null %}
         {% for skill in form.skills %}
+            {% if skill.vars.value.group.name != group %}
+               <h2>{{ skill.vars.value.group.name }}</h2>
+            {% endif %}
+
             {{ form_widget(skill) }}
             <hr />
+            {% set group = skill.vars.value.group.name %}
         {% endfor %}
       
     {{ form_end(form) }}
