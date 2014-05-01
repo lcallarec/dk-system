@@ -23,8 +23,6 @@ class CampaignController extends Controller
     public function manageAction(Request $request, $id)
     {
 
-        $options = [];
-        
         if(null !== $id) {
             /** @var Campaign $campaign */
             $campaign = $this->get('doctrine')->getRepository('DkSystemBundle:Campaign')->findOneById($id);
@@ -32,16 +30,13 @@ class CampaignController extends Controller
             if(!$campaign) {
                 $this->createNotFoundException("Cette campagne n'existe pas");
             }
-            
-            $options['isnew'] = false;
-            
+
         } else {
             /** @var Campaign $campaign */
             $campaign = $this->get('dk.factory.campaign')->create();
-            $options['isnew'] = true;
         }
 
-        $form = $this->createForm(new CampaignType(), $campaign, $options);
+        $form = $this->createForm(new CampaignType(), $campaign);
         
         if($request->getMethod() === 'GET') {
             

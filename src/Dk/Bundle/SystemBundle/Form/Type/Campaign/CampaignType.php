@@ -6,7 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Dk\Bundle\SystemBundle\Repository\PlayerCharacterRepository;
-use Dk\Bundle\SystemBundle\Form\DataTransformer\ChoiceToTextTransformer;
+use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetPlainTextType;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 
 class CampaignType extends AbstractType
 {
@@ -34,24 +36,23 @@ class CampaignType extends AbstractType
                 ])
             ->add('submit', 'submit')
         ;
-                    
-        if(!isset($options['isnew'])) {
-            $builder->add('ruleset', 'entity', [
-                'class'     => 'DkSystemBundle:Ruleset',
-                'label' => 'Système de règles'
-            ]);
-        } else {
-           
-            $builder->add(
-                $builder
-                    ->create('ruleset', 'plain_text', [
-                             'label' => 'Système de règles',
-                             'help'  => 'Il est impossible de modifier le système de règle d\'une campagne après sa création'
-                        ])
-                    ->addModelTransformer(new ChoiceToTextTransformer())
-            );
-        }
-                    
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
+
+            $data = $event->getData();
+            $form = $event->getForm();
+
+            if (null === $data->getId()) {
+                $form->add('ruleset', 'entity', [
+                    'class'     => 'DkSystemBundle:Ruleset',
+                    'label' => 'Système de règles'
+                ]);
+            } else {
+                $form->add('ruleset', new RulesetPlainTextType());
+            }
+
+        });
+
     }
     
     /**
@@ -61,7 +62,6 @@ class CampaignType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => 'Dk\Bundle\SystemBundle\Entity\Campaign',
-            'isnew'      => false
         ]);
     }
 
