@@ -9,6 +9,10 @@ body {
     margin: 0 auto;
 }
 
+.container {
+    width: 100%;
+}
+
 #login-form {
     width: 700px;
     background-color: #F5F5F5;
