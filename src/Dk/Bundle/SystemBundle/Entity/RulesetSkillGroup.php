@@ -80,6 +80,8 @@ class RulesetSkillGroup
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     public function getName()
@@ -90,6 +92,8 @@ class RulesetSkillGroup
     public function setParent(RulesetSkillGroup $parent = null)
     {
         $this->parent = $parent;
+
+        return $this;
     }
 
     public function getParent()
@@ -106,6 +110,8 @@ class RulesetSkillGroup
     public function setPath($path)
     {
         $this->path = $path;
+
+        return $this;
     }
 
     public function getPath()
