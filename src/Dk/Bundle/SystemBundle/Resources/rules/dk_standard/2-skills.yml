@@ -116,7 +116,6 @@ skills:
                       tirer sur un adversaire, avec une arme de jet, une arme de trait
                       ou une arme à feu de tout calibre.
 
-
     Compétences de sauvegarde:
         list:
             concentration:
@@ -176,13 +175,12 @@ skills:
             perception:
                 chars: [INT, SAG]
                 desc: >
-                      Cette compétence vous
-                      permet de rester conscient de votre environnement en toutes circonstances, même endormi ou aveuglé. Les cinq sens sont couverts.
+                      Cette compétence vous permet de rester conscient de votre environnement en toutes circonstances,
+                      même endormi ou aveuglé. Les cinq sens sont couverts.
             préparation:
                 chars: [INT, CHA]
                 desc: >
-                      Êtes-vous un véri-
-                      table aventurier ? Avez-vous toujours ce qu’il faut au fond des
+                      Êtes-vous un véritable aventurier ? Avez-vous toujours ce qu’il faut au fond des
                       poches ou du sac pour vous en sortir dans toutes les situations ?
                       C’est à cela que sert cette compétence. Exit les listes de matériel.
                       Faites un jet de Préparation pour voir si vous avez bien l’objet
@@ -191,20 +189,18 @@ skills:
             réflexes:
                 chars: [DEX, CON]
                 desc: >
-                      Vous pouvez utiliser
-                      cette compétence pour tester la vitesse de vos réactions face à
+                      Vous pouvez utiliser cette compétence pour tester la vitesse de vos réactions face à
                       un danger, pour rattraper un objet qui va tomber ou attraper la
                       saucisse dans la main du sifu.
 
             volonté:
                 chars: [SAG, CHA]
                 desc: >
-                      Soyez plus fort mentale-
-                      ment, plus solide nerveusement, plus résistant psychiquement.
+                      Soyez plus fort mentalement, plus solide nerveusement, plus résistant psychiquement.
                       Orientez votre énergie mentale pour mieux vous défendre
                       contre les attaques.
 
     Connaissances:
-
+        loadBy: campaign
     Compétences techniques et métiers:
-
+        loadBy: campaign
