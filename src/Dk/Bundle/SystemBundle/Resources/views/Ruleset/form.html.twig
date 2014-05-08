@@ -11,9 +11,28 @@
 
     {{ include('DkSystemBundle:Ruleset:menu.html.twig') }}
     
-    {{ form_start(form, {attr: {role: 'form', class: 'form-horizontal'}}) }}
- 
-    {{ form_end(form) }}
+    {{ form_start(form, {attr: {role: 'form', class: 'form-horizontal', novalidate: 'novalidate'}}) }}
 
+        <div class="form-group row">
+            <div class="col-sm-5">
+                {{ form_label(form.name, null, {label_attr: {class: "col-sm-3 control-label" }}) }}
+                <div class="col-sm-9">
+                    {{ form_widget(form.name, {attr: {class: "form-control input-sm" }}) }}
+                    {{ form_errors(form.name) }}
+                </div>
+            </div>
+            <div class="col-sm-5">
+                {{ form_label(form.owner, null, {label_attr: {class: "col-sm-3 control-label" }}) }}
+                <div class="col-sm-9">
+                    {{ form_widget(form.owner, {attr: {class: "form-control input-sm" }}) }}
+                    {{ form_errors(form.owner) }}
+                </div>
+            </div>
+            <div class="col-sm-2">
+                {{form_widget(form.submit, {attr: {class: 'btn btn-sm btn-primary'}, 'label': 'valider'}) }}
+            </div>
+        </div>
+
+    {{ form_end(form) }}
 
 {% endblock %}
