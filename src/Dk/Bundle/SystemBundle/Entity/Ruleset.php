@@ -35,6 +35,13 @@ class Ruleset
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="Le nom du système de règles ne peut être vide")
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "100",
+     *      minMessage = "Le nom du système de règles ne doit pas faire moins de {{ limit }} caractères",
+     *      maxMessage = "Le nom du système de règles ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $name;
 
