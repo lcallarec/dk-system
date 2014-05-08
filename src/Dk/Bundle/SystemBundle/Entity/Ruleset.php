@@ -79,6 +79,16 @@ class Ruleset
     private $skills;
 
     /**
+     * SkillGroups related to this ruleset
+     *
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="RulesetSkillGroup", mappedBy="ruleset")
+     * @Assert\Valid()
+     */
+    private $skillGroups;
+
+    /**
      * Assets related to this ruleset
      * 
      * @var ArrayCollection

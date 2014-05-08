@@ -56,6 +56,14 @@ class RulesetSkillGroup
     private $children;
 
     /**
+     *
+     * @var Ruleset
+     * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="skillGroups")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ruleset;
+
+    /**
      * @ORM\OneToMany(targetEntity="RulesetSkill", mappedBy="group")
      */
     private $skills;
@@ -122,5 +130,28 @@ class RulesetSkillGroup
     public function getLevel()
     {
         return $this->level;
+    }
+
+    /**
+     * Get the ruleset
+     *
+     * @return \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
+     */
+    public function getRuleset()
+    {
+        return $this->ruleset;
+    }
+
+    /**
+     * Set the ruleset
+     *
+     * @param \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
+     * @return \Dk\Bundle\SystemBundle\Entity\RulesetSkillGroup
+     */
+    public function setRuleset(Ruleset $ruleset)
+    {
+        $this->ruleset = $ruleset;
+
+        return $this;
     }
 }
