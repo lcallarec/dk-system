@@ -1,0 +1,7 @@
+ruleset:
+    name: dk2 édition standard
+    reference: dk-std
+    owner: l.callarec@gmail.com
+
+config:
+    "rules:has:advantages": false

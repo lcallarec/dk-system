@@ -1,0 +1,19 @@
+characteristics:
+    for:
+        longname: force
+        desc: force
+    dex:
+        longname: dextérité
+        desc: dextérité
+    con:
+        longname: constitution
+        desc: constitution
+    int:
+        longname: intelligence
+        desc: intelligence
+    sag:
+        longname: sagesse
+        desc: sagesse
+    cha:
+        longname: charisme
+        desc: charisme

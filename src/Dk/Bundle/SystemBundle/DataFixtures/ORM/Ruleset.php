@@ -39,14 +39,28 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
 
         /** @var SplFileInfo $directory */
         foreach ($finder as $directory) {
-            $rulesetFinder = (new Finder())->files()->in($directory->getPath())->name('ruleset.yml');
+            $rulesetFinder = (new Finder())->files()->in($directory->getPath())->name('*.yml')->sortByName();
+            /** @var SplFileInfo $file */
             foreach ($rulesetFinder as $file) {
+
                 $data = $yaml->parse($file->getContents());
-                $ruleset = $this->setRuleset($data['ruleset'], $manager);
-                $this->setCharacteristics($ruleset, $data['characteristics'], $manager);
-                $this->setSkills($ruleset, $data['skills'], $manager);
-                $this->setAssets($ruleset, $data['assets'], $manager);
-            }
+
+                preg_match('/[0-9]*-([a-zA-Z_]*).yml/', $file->getBasename(), $type);
+                switch ($type[1]) {
+                    case 'ruleset':
+                        $ruleset = $this->setRuleset($data['ruleset'], $manager);
+                        break;
+                    case 'characteristics':
+                        $this->setCharacteristics($ruleset, $data['characteristics'], $manager);
+                        break;
+                    case 'skills':
+                        $this->setSkills($ruleset, $data['skills'], $manager);
+                        break;
+                    case 'assets':
+                        $this->setAssets($ruleset, $data['assets'], $manager);
+                        break;
+                }
+             }
         }
 
         $manager->flush();

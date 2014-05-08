@@ -1,0 +1,30 @@
+assets:
+    "atouts de combat":
+        "maîtrise":
+            "list":
+                "armes":
+                    use:
+                        - limité
+                        - fatiguant
+                    condition: gfgf
+                    desc: >
+                         fdfds
+        "amélioration":
+            "list":
+                "A":
+                 use:
+                    - limité
+                    - fatiguant
+                 condition: gfgf
+                 desc: >
+                       fdfds
+    "breloque fat":
+        "maîtrise":
+            "list":
+                "A":
+                  use:
+                    - limité
+                    - fatiguant
+                  condition: gfgf
+                  desc: >
+                        fdfds
