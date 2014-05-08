@@ -2,6 +2,7 @@
 
 namespace Dk\Bundle\SystemBundle\Controller;
 
+use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetType;
@@ -73,13 +74,18 @@ class RulesetController extends Controller
             throw $this->createNotFoundException("Ce système de règles n'existe pas ou n'existe plus. Aucune coméptence à gérer.");
         }
 
+        $skillGroups = $this->get('doctrine')->getRepository('DkSystemBundle:RulesetSkillGroup')->findByRuleset($skills);
+
         $em = $this->get('doctrine')->getManager();
         
         $form = $this->createForm(new RulesetSkillCollectionType(), $skills);
-        
+
         if($request->getMethod() === 'GET') {
  
-            return $this->render('DkSystemBundle:Ruleset:Skill/form.html.twig', ['form' => $form->createView()]);
+            return $this->render('DkSystemBundle:Ruleset:Skill/form.html.twig', [
+                'form'        => $form->createView(),
+                'skillGroups' => $skillGroups
+            ]);
          
         } else {
     
@@ -95,7 +101,10 @@ class RulesetController extends Controller
                 
             } else {
 
-                return $this->render('DkSystemBundle:Ruleset:Skill/form.html.twig', ['form' => $form->createView()]);
+                return $this->render('DkSystemBundle:Ruleset:Skill/form.html.twig', [
+                    'form'        => $form->createView(),
+                    'skillGroups' => $skillGroups
+                ]);
             
             }
             
