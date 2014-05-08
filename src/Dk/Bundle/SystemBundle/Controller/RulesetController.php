@@ -50,7 +50,7 @@ class RulesetController extends Controller
                 
             } else {
 
-                //return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', ['form' => $form->createView(), 'pc' => $pc]);
+                return $this->render('DkSystemBundle:Ruleset:form.html.twig', ['form' => $form->createView()]);
             
             }
             
