@@ -8,6 +8,7 @@ use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetType;
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetSkillCollectionType;
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetPlayableRaceCollectionType;
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetAssetCollectionType;
+use Symfony\Component\HttpFoundation\Request;
 
 class RulesetController extends Controller
 {
@@ -15,10 +16,8 @@ class RulesetController extends Controller
    /**
     * Manage Rulesets
     */
-    public function manageAction($id)
+    public function manageAction(Request $request, $id)
     {
-        $request = $this->getRequest();
-        
         //A ruleset can't be created this way yet
         if(null !== $id) {
             $ruleset = $this->get('doctrine')->getRepository('DkSystemBundle:Ruleset')->findOneWithRelationships($this->getUser(), $id);
@@ -31,7 +30,8 @@ class RulesetController extends Controller
         $em = $this->get('doctrine')->getManager();
         
         $form = $this->createForm(new RulesetType(), $ruleset);
-        
+        $form->add('submit', 'submit');
+
         if($request->getMethod() === 'GET') {
  
             return $this->render('DkSystemBundle:Ruleset:form.html.twig', ['form' => $form->createView()]);
