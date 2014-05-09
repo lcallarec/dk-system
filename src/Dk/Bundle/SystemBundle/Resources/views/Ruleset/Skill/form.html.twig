@@ -10,34 +10,53 @@
 
 {% block _ruleset_skills_entry_widget %}
    <h3>{{ form.vars.value.name }}</h3>
-   {{ form_widget(form.name) }}
-   {{ form_errors(form.name) }}
-   {{ form_widget(form.char1) }}
-   {{ form_widget(form.char2) }}
-   {{ form_widget(form.overloadMalus) }}
-   {{ form_widget(form.description, {attr: {style:"width: 100%;"}}) }}
-   {{ form_errors(form.description) }}   
-   
+   <div class="form-group col-xs-12">
+       {{ form_widget(form.name, {attr: {class: 'form-control input-sm'}}) }}
+       {{ form_errors(form.name) }}
+       {{ form_widget(form.char1, {attr: {class: 'form-control input-sm'}}) }}
+       {{ form_widget(form.char2, {attr: {class: 'form-control input-sm'}}) }}
+       {{ form_widget(form.overloadMalus, {attr: {class: 'form-control input-sm'}}) }}
+       <p>
+          {{ form_widget(form.description, {attr: {class: 'form-control input-sm', style: 'width: 100%'}}) }}
+          {{ form_errors(form.description) }}
+       </p>
+   </div>
 {% endblock %}
 
 {% block board_content %}
     
     {{ include('DkSystemBundle:Ruleset:menu.html.twig') }}
-    
-    {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'form-horizontal'}}) }}
 
-        {% set group = null %}
-        {% for skill in form.skills %}
-            {% if skill.vars.value.group.name != group %}
-               <h2>{{ skill.vars.value.group.name }}</h2>
-            {% endif %}
-
-            {{ form_widget(skill) }}
-            <hr />
-            {% set group = skill.vars.value.group.name %}
+    <ul class="nav nav-pills">
+        {% for skillGroup in skillGroups if skillGroup.skills is not empty %}
+            <li {% if loop.first %}class="active"{% endif %}><a data-toggle="tab" href="#skill-group-{{ skillGroup.id }}">{{ skillGroup.name }}</a></li>
         {% endfor %}
-      
-    {{ form_end(form) }}
+    </ul>
 
+    {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'form-inline'}}) }}
+
+        <div class="tab-content">
+
+            {% set group = null %}
+            {% for skill in form.skills %}
+
+                {% if skill.vars.value.group.name != group %}
+                   {% if loop.index0 != 0 %}
+                       </div>
+                   {% endif %}
+                   <div class="tab-pane{% if loop.first %} in active{% endif %}" id="skill-group-{{ skill.vars.value.group.id }}">
+                   <h2>{{ skill.vars.value.group.name }}</h2>
+                {% endif %}
+
+                {{ form_widget(skill) }}
+
+                {% set group = skill.vars.value.group.name %}
+                {% if loop.last %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    {{ form_end(form) }}
 
 {% endblock %}
