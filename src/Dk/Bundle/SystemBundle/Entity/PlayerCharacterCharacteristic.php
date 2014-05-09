@@ -3,8 +3,7 @@
 namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
-use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * PlayerCharacterCharacteristic
@@ -41,6 +40,10 @@ class PlayerCharacterCharacteristic
      * @var integer
      *
      * @ORM\Column(name="value", type="smallint")
+     * @Assert\Range(
+     *      min = -5,
+     *      max = 5
+     * )
      */
     private $value;
 
