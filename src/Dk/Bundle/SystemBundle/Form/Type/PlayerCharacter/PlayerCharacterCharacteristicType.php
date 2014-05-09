@@ -18,7 +18,7 @@ class PlayerCharacterCharacteristicType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('value')
+            ->add('value', 'integer')
         ;
         
         $builder->add(
