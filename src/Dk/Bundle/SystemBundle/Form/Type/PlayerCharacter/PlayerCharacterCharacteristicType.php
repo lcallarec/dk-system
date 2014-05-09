@@ -29,14 +29,14 @@ class PlayerCharacterCharacteristicType extends AbstractType
     }
 
    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(array(
+    * @param OptionsResolverInterface $resolver
+    */
+   public function setDefaultOptions(OptionsResolverInterface $resolver)
+   {
+        $resolver->setDefaults([
             'data_class' => 'Dk\Bundle\SystemBundle\Entity\PlayerCharacterCharacteristic'
-        ));
-    }    
+        ]);
+   }
     
     /**
      * @return string
