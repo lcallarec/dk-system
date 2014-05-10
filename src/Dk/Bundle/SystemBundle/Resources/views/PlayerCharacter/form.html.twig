@@ -18,12 +18,12 @@
 {% block _pc_skills_entry_widget %}
     <tr>
         <td width="120px">
-            <strong>
+            <a class="skill-desc" href="javascript:void(0)" data-container="body" data-toggle="popover" title=" {{ form.vars.value.rulesetskill.name}}" data-placement="bottom" data-content="{{ form.vars.value.rulesetskill.description}}">
                 {{ form.vars.value.rulesetskill.name}}
                 {% if form.vars.value.rulesetskill.overloadmalus %}
                     *
                 {% endif %}
-            </strong>
+            </a>
         <td width="1200px">
            <small> ( {{ form.vars.value.rulesetskill.char1}} / {{ form.vars.value.rulesetskill.char2}} ) </small>
         </td>
@@ -144,5 +144,9 @@
             
     {{ form_end(form) }}
 
-
+    <script type="text/javascript">
+        $(document).on('ready', function() {
+            $('.skill-desc').popover()
+        });
+    </script>
 {% endblock %}
