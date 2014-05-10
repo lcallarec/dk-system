@@ -12,18 +12,25 @@
 
 {% block _pc_characteristics_entry_widget %}
     <dt>{{ form.vars.value.rulesetcharacteristic}}</dt>
-    <dd>{{ form_widget(form.value, {attr: {size: 2, class: "form-control input-sm"}}) }}</dd>
+    <dd>{{ form_widget(form.value, {attr: {size: 2, style:"width: 40px; display: inline-block;", class: "form-control input-sm"}}) }}</dd>
 {% endblock %}
 
 {% block _pc_skills_entry_widget %}
-    <strong>
-        {{ form.vars.value.rulesetskill.name}}
-        {% if form.vars.value.rulesetskill.overloadmalus %}
-            *
-        {% endif %}
-    </strong>
-    <small> ( {{ form.vars.value.rulesetskill.char1}} / {{ form.vars.value.rulesetskill.char2}} ) </small>
-    {{ form_widget(form.value, {attr: {size: 2, style:"width: 30px; display: inline-block;", class: "form-control input-sm"}}) }}
+    <tr>
+        <td width="120px">
+            <strong>
+                {{ form.vars.value.rulesetskill.name}}
+                {% if form.vars.value.rulesetskill.overloadmalus %}
+                    *
+                {% endif %}
+            </strong>
+        <td width="1200px">
+           <small> ( {{ form.vars.value.rulesetskill.char1}} / {{ form.vars.value.rulesetskill.char2}} ) </small>
+        </td>
+        <td width="40px">
+            {{ form_widget(form.value, {attr: {size: 2, style:"width: 40px; display: inline-block;", class: "form-control input-sm"}}) }}
+        </td>
+    </tr>
 {% endblock %}
 
 {% block board_content %}
@@ -91,11 +98,11 @@
                  
                     {% for key, asset in form.assets %}
                         <div>
-                        {{ form_widget(asset) }}
-                        {{ pc.campaign.ruleset.assets[loop.index0].name}}
-                        {{ pc.campaign.ruleset.assets[loop.index0].description}}
+                            {{ form_widget(asset) }}
+                            {{ pc.campaign.ruleset.assets[loop.index0].name}}
+                            {{ pc.campaign.ruleset.assets[loop.index0].description}}
                         </div>
-                {% endfor %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -103,9 +110,24 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-sm-offset-1 col-sm-12">
-                {% for skill in form.skills %}
-                    {{ form_widget(skill, {attr: {size: 2}}) }}
-                {% endfor %}
+                    {% set group = null %}
+                    {% for skill in form.skills %}
+                        {% if skill.vars.value.rulesetskill.group.name != group %}
+                            {% if loop.index0 != 0 %}
+                                    </table>
+                                </div>
+                            {% endif %}
+                            <div class="well pull-left skill-colmun">
+                                <h4>{{ skill.vars.value.rulesetskill.group.name }}</h4>
+                                <table>
+                        {% endif %}
+                        {{ form_widget(skill, {attr: {size: 2}}) }}
+                        {% set group = skill.vars.value.rulesetskill.group.name %}
+                        {% if loop.last %}
+                                </table>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
