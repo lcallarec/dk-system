@@ -1,30 +1,150 @@
 assets:
+    "atouts de naissance":
+        list:
+            "petit":
+                desc: >
+                      Vous ne pouvez pas manier d'armes de brutasse, ni porter de sacs de la même catégorie – quel que soit votre portage.
+                      Mais vous avez un bonus de +2 à tous vos jets de défense et un autre de +4 à vos jets de Discrétion.
+            "grand":
+                desc: >
+                      Vous êtes vraiment grand et imposant. Vous avez un malus de -2 à tous vos jets de défense,
+                      mais vous ajoutez 1d6 aux dégâts que vous causez au corps à corps.
+                      Vous pouvez choisir d'avoir un bonus de +4 en Diplomatie ou en Intimidation,
+                      au choix selon le style que vous vous donnez.
+            "âme double":
+                desc: >
+                      Votre corps abrite deux âmes. C'est parfois un peu compliqué à gérer, mais ça n'a pas que des désavantages.
+                      Au début de chaque séance, vous pouvez échanger les scores de deux caractéristiques, comme vous le souhaitez.
+                      Vous devez bien sûr recalculer tous les bonus, mais cela vous offre une plus grande liberté pour faire face aux dangers que vous devez affronter.
+            "apparence hors-norme":
+                desc: >
+                      Votre apparence diffère sensiblement des standards de votre race. Que vous soyez, par exemple, laid comme le péché ou l'air innocent,
+                      lorsque votre apparence peut tous servir, vous gagnez entre 1 et 3dK de circonstance en fonction de la sensibilité de votre interlocuteur
+                      A l'inverse, si celui-ci n'apprécie pas, les dK de circonstance peuvent se retourner contre vous.
+                      Forme : Bossu, Balafré, oeil de Clinris, Formes généreuses, Gueule du prince, C'est pas moi je te le jure.
+        "atouts familiaux":
+            "fortuné":
+            "gamin":
+            "gars du coin":
+            "protégé":
+            "éducation spéciale":
+        "dons":
+            "bénédiction":
+            "empathie animale":
+            "don naturel":
+    "atouts de développement":
+        list:
+            "action rapide":
+            "action supplémentaire":
+            "adaptation":
+            "apprentissage":
+            "avantages":
+            "caractéristique":
+            "compteurs":
+            "compteurs exceptionnels":
+            "vicelard":
+            "essaye encore":
+            "portage":
+            "sens de la situation":
+            "synergie":
+            "talentueux":
     "atouts de combat":
         "maîtrise":
             "list":
-                "armes":
-                    use:
-                        - limité
-                        - fatiguant
+                "armes et armures de professionnel":
+                    use [limité, fatiguant]
                     condition: gfgf
                     desc: >
                          fdfds
+                "armes et armures de brutasse":
+                "comnat sans arme":
+                "expert":
+                "maîtrise des armures":
+                "maîtrise des boucliers":
+                "maîtrise de la lutte":
         "amélioration":
             "list":
-                "A":
-                 use:
-                    - limité
-                    - fatiguant
-                 condition: gfgf
-                 desc: >
-                       fdfds
-    "breloque fat":
-        "maîtrise":
-            "list":
-                "A":
-                  use:
-                    - limité
-                    - fatiguant
-                  condition: gfgf
-                  desc: >
-                        fdfds
+                "actions combinées":
+                    use [limité, fatiguant]
+                    condition: gfgf
+                    desc: >
+                          fdfds
+                "armes de prédilection":
+                "assassin":
+                "combattant maso":
+                "connaître son ennemi":
+                "dégâts explosifs":
+                "doigts serpents":
+                "focalisation":
+                "fortune de bataille":
+                "gardien":
+                "mêche courte":
+                "technique de combat":
+    "atouts aventureux":
+        "atouts techniques":
+            list:
+                "disparition":
+                "monte-en-l'air":
+                "pilote":
+                "adrénaline":
+                "conversion":
+        "atouts logistiques":
+            list:
+                "amélioration de l'équipement":
+                "dissimulation":
+                "mains du soigneur":
+                "marche forcée":
+                "polyglotte":
+                "réparation instantanée":
+        "atouts d'éveil":
+            list:
+                "mémoire éidétique":
+                "scan rapide":
+                "sixième sens":
+        "atouts d'entourage":
+            list:
+                "ami":
+                "compagnon":
+                "familier":
+                "mentor":
+                "possessions uniques":
+                "refuge":
+                "scooby gang":
+        "atouts de majesté":
+            list:
+                "âme de chef":
+                "chef charismatique":
+                "atout de groupe":
+                "tactique":
+                "accointance et réseaux":
+                "chevalier blanc":
+                "croquemitaine":
+                "première impression":
+                "sexy":
+                "négociateur":
+                "langue de velours":
+                "aura de majesté"!
+        "atouts exotiques":
+            list:
+                "aura de haine / d'amour":
+                "identité secrête":
+                "increvable":
+                "insomniaque":
+                "le seigneur est mon berger":
+                "ma foi est mon bouclier":
+                "miracle":
+                "porte-poisse":
+                "que d'un oeil":
+                "touche à tout":
+                "visions":
+        "atouts de chance":
+            list:
+                "chanceux":
+                "coup de pouce":
+                "forcer le destin":
+                "pas passé loin":
+                "repousser les limites":
+                "rituel de chance":
+
+
+
