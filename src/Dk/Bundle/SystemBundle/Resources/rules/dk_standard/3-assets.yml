@@ -1,150 +1,177 @@
 assets:
     "atouts de naissance":
-        list:
-            "petit":
-                desc: >
-                      Vous ne pouvez pas manier d'armes de brutasse, ni porter de sacs de la même catégorie – quel que soit votre portage.
-                      Mais vous avez un bonus de +2 à tous vos jets de défense et un autre de +4 à vos jets de Discrétion.
-            "grand":
-                desc: >
-                      Vous êtes vraiment grand et imposant. Vous avez un malus de -2 à tous vos jets de défense,
-                      mais vous ajoutez 1d6 aux dégâts que vous causez au corps à corps.
-                      Vous pouvez choisir d'avoir un bonus de +4 en Diplomatie ou en Intimidation,
-                      au choix selon le style que vous vous donnez.
-            "âme double":
-                desc: >
-                      Votre corps abrite deux âmes. C'est parfois un peu compliqué à gérer, mais ça n'a pas que des désavantages.
-                      Au début de chaque séance, vous pouvez échanger les scores de deux caractéristiques, comme vous le souhaitez.
-                      Vous devez bien sûr recalculer tous les bonus, mais cela vous offre une plus grande liberté pour faire face aux dangers que vous devez affronter.
-            "apparence hors-norme":
-                desc: >
-                      Votre apparence diffère sensiblement des standards de votre race. Que vous soyez, par exemple, laid comme le péché ou l'air innocent,
-                      lorsque votre apparence peut tous servir, vous gagnez entre 1 et 3dK de circonstance en fonction de la sensibilité de votre interlocuteur
-                      A l'inverse, si celui-ci n'apprécie pas, les dK de circonstance peuvent se retourner contre vous.
-                      Forme : Bossu, Balafré, oeil de Clinris, Formes généreuses, Gueule du prince, C'est pas moi je te le jure.
+        "atouts de naissance de base":
+            list:
+                "petit": >
+                         Vous ne pouvez pas manier d'armes de brutasse, ni porter de sacs de la même catégorie – quel que soit votre portage.
+                         Mais vous avez un bonus de +2 à tous vos jets de défense et un autre de +4 à vos jets de Discrétion.
+                "grand": >
+                         Vous êtes vraiment grand et imposant. Vous avez un malus de -2 à tous vos jets de défense,
+                         mais vous ajoutez 1d6 aux dégâts que vous causez au corps à corps.
+                         Vous pouvez choisir d'avoir un bonus de +4 en Diplomatie ou en Intimidation,
+                         au choix selon le style que vous vous donnez.
+                "âme double": >
+                              Votre corps abrite deux âmes. C'est parfois un peu compliqué à gérer, mais ça n'a pas que des désavantages.
+                              Au début de chaque séance, vous pouvez échanger les scores de deux caractéristiques, comme vous le souhaitez.
+                              Vous devez bien sûr recalculer tous les bonus, mais cela vous offre une plus grande liberté pour faire face aux dangers que vous devez affronter.
+                "apparence hors-norme": >
+                                        Votre apparence diffère sensiblement des standards de votre race. Que vous soyez, par exemple, laid comme le péché ou l'air innocent,
+                                        lorsque votre apparence peut tous servir, vous gagnez entre 1 et 3dK de circonstance en fonction de la sensibilité de votre interlocuteur
+                                        A l'inverse, si celui-ci n'apprécie pas, les dK de circonstance peuvent se retourner contre vous.
+                                        Forme : Bossu, Balafré, oeil de Clinris, Formes généreuses, Gueule du prince, C'est pas moi je te le jure.
         "atouts familiaux":
-            "fortuné":
-            "gamin":
-            "gars du coin":
-            "protégé":
-            "éducation spéciale":
+            list:
+                "fortuné": >
+                           Votre famille est assez fortunée pour que vous puissiez profiter de ses libéralités.
+                           En général, vous recevez ld6 DO par degré de votre compétence Richesse au début de chaque aventure, mais vous pouvez prendre cet atout plusieurs fois pour augmenter vos ressources,
+                           multipliant par dix la somme initiale (Id6xl0 DO puis Id6xl00 DO par degré par exemple).
+                "gamin": >
+                         L'aventure commence un peu plus tôt que prévu pour vous ; vous êtes encore un môme. Qu'à cela ne tienne. Vous avez un bonus de +1 en Charisme ou en Dextérité.
+                         À moins que votre peuple ne soit grand, vous êtes considéré comme ayant l'atout Petit, Même si vous bénéficiez d'un bonus de +4 en Bluff vis-à-vis des adultes,
+                         plein de choses vous sont interdites et il y a peu de chance qu'on vous écoute dans les discussions « sérieuses ».
+                "gars du coin": >
+                                Vous devez choisir une région ou une ville dont vous êtes originaire ou que vous connaissez bien.
+                                Vous bénéficiez de 2 degrés supplémentaires gratuits dans les compétences de Renseignements, de Diplomatie, d'Influence et de Survie concernant ce territoire et ses habitants
+                                - ce qui signifie que vous pouvez, bien entendu, ajouter vos caractéristiques si vous n'aviez pas ouvert la compétence.
+                                S'il s'agit d'une mégapole, cet atout ne fonctionne que pour un quartier défini.
+                "protégé": >
+                           Vous êtes protégé par votre famille, votre communauté, une organisation, etc...
+                           Ce qui vous donne une certaine maîtrise sur votre univers. Vous avez deux koudputts par séance de jeu !
+                "éducation spéciale": >
+                                      Vous avez reçu une éducation particulière dans un domaine précis - le combat, la magie, les arts de voleur, les bonnes manières, l'érudition, etc...
+                                      Dans ce domaine, définissez l'équivalent d'un sortilège de FD2 que vous pourrez lancer à volonté (sans jet) au coût de ld6 points d'énergie.
+                                      Le pouvoir peut être magique ou non dans ses origines, l'important est qu'il ait de la gueule, qu'il vous aide dans le domaine considéré
+                                      et qu'il fasse de vous un de ces happy-few ayant reçu un enseignement légendaire.
         "dons":
-            "bénédiction":
-            "empathie animale":
-            "don naturel":
+            list:
+              "bénédiction": >
+                             À la naissance, vous avez été béni par les dieux, les fées, les étoiles, une marraine. Vous pouvez choisir un avantage majeur
+                             (ne jamais se noyer, toujours trouver un toit et de la nourriture, deviner le futur, etc.).
+                             Les conditions et l'origine de la bénédiction sont à discuter avec le conteur. Vous pouvez aussi choisir une malédiction qui vous rapporte un atout supplémentaire.
+              "empathie animale": >
+                                  Vous avez le feeling avec toutes les bestioles à plume et à poil (voire à écailles, mais elles sont quand même souvent très limitées dans leur conversation).
+                                  Vous pouvez utiliser vos compétences sociales avec les bêtes.
+                                  Par ailleurs, choisissez un type d'animaux(canidés, félins, équidés, serpents, rapaces, passereaux, corvidés, mammifères marins, etc...).
+                                  Vous pouvez dialoguer de manière cohérente avec les membres de ces espèces - même si cela tient plus de la communication silencieuse que d'une conversation à bâton rompu.
+                                  Vous pouvez prendre cet atout plusieurs fois en choisissant un animal différent.
+              "don naturel": >
+                             Depuis tout petit, vous êtes naturellement talentueux sur certaines activités.
+                             Vous disposez de 4 degrés supplémentaires que vous pouvez répartir comme vous le souhaitez entre avantages et compétences.
+                             Les degrés investis dans les avantages le sont au coût de 2 pour 1. Vous pouvez ainsi dépasser la limite du nombre de degrés fonction de l'apprentissage.
     "atouts de développement":
-        list:
-            "action rapide":
-            "action supplémentaire":
-            "adaptation":
-            "apprentissage":
-            "avantages":
-            "caractéristique":
-            "compteurs":
-            "compteurs exceptionnels":
-            "vicelard":
-            "essaye encore":
-            "portage":
-            "sens de la situation":
-            "synergie":
-            "talentueux":
+        "atouts de développement de base":
+            list:
+                "action rapide": ttg
+                "action supplémentaire": fds
+                "adaptation": fds
+                "apprentissage": fds
+                "avantages": fds
+                "caractéristique": gfvd
+                "compteurs": gfd
+                "compteurs exceptionnels": gfd
+                "vicelard": gfd
+                "essaye encore": g fd
+                "portage": gfd
+                "sens de la situation": gfd
+                "synergie": g fd
+                "talentueux": g fd
     "atouts de combat":
         "maîtrise":
             "list":
                 "armes et armures de professionnel":
-                    use [limité, fatiguant]
+                    use: [limité, fatiguant]
                     condition: gfgf
                     desc: >
                          fdfds
-                "armes et armures de brutasse":
-                "comnat sans arme":
-                "expert":
-                "maîtrise des armures":
-                "maîtrise des boucliers":
-                "maîtrise de la lutte":
+                "armes et armures de brutasse": fr
+                "comnat sans arme": fr
+                "expert": feee
+                "maîtrise des armures": ez
+                "maîtrise des boucliers": z
+                "maîtrise de la lutte": ze
         "amélioration":
             "list":
                 "actions combinées":
-                    use [limité, fatiguant]
-                    condition: gfgf
+                    use: [limité, fatiguant]
+                    condition: fr
                     desc: >
                           fdfds
-                "armes de prédilection":
-                "assassin":
-                "combattant maso":
-                "connaître son ennemi":
-                "dégâts explosifs":
-                "doigts serpents":
-                "focalisation":
-                "fortune de bataille":
-                "gardien":
-                "mêche courte":
-                "technique de combat":
+                "armes de prédilection": fdfd
+                "assassin": fdffd
+                "combattant maso": hgdf
+                "connaître son ennemi": hgf
+                "dégâts explosifs": hgf
+                "doigts serpents": hgf
+                "focalisation": h gf
+                "fortune de bataille": hgf
+                "gardien": hgf
+                "mêche courte": hgf
+                "technique de combat": hgf
     "atouts aventureux":
         "atouts techniques":
             list:
-                "disparition":
-                "monte-en-l'air":
-                "pilote":
-                "adrénaline":
-                "conversion":
+                "disparition": ff
+                "monte-en-l'air": fde fd
+                "pilote": ff
+                "adrénaline": ff
+                "conversion": ff
         "atouts logistiques":
             list:
-                "amélioration de l'équipement":
-                "dissimulation":
-                "mains du soigneur":
-                "marche forcée":
-                "polyglotte":
-                "réparation instantanée":
+                "amélioration de l'équipement": jj
+                "dissimulation": gfd
+                "mains du soigneur": gfd
+                "marche forcée": gfd
+                "polyglotte": ghfd
+                "réparation instantanée": hfd
         "atouts d'éveil":
             list:
-                "mémoire éidétique":
-                "scan rapide":
-                "sixième sens":
+                "mémoire éidétique": hfd
+                "scan rapide": hfd
+                "sixième sens": kkk
         "atouts d'entourage":
             list:
-                "ami":
-                "compagnon":
-                "familier":
-                "mentor":
-                "possessions uniques":
-                "refuge":
-                "scooby gang":
+                "ami":  hfd
+                "compagnon": v
+                "familier": v
+                "mentor": vf
+                "possessions uniques": vf
+                "refuge": fv
+                "scooby gang": dfeez
         "atouts de majesté":
             list:
-                "âme de chef":
-                "chef charismatique":
-                "atout de groupe":
-                "tactique":
-                "accointance et réseaux":
-                "chevalier blanc":
-                "croquemitaine":
-                "première impression":
-                "sexy":
-                "négociateur":
-                "langue de velours":
-                "aura de majesté"!
+                "âme de chef": d ez
+                "chef charismatique": dez
+                "atout de groupe": z
+                "tactique": z
+                "accointance et réseaux": aaaa
+                "chevalier blanc": a a
+                "croquemitaine": aaa
+                "première impression": aaa
+                "sexy": aa
+                "négociateur": aaa
+                "langue de velours": fvd
+                "aura de majesté": gfd
         "atouts exotiques":
             list:
-                "aura de haine / d'amour":
-                "identité secrête":
-                "increvable":
-                "insomniaque":
-                "le seigneur est mon berger":
-                "ma foi est mon bouclier":
-                "miracle":
-                "porte-poisse":
-                "que d'un oeil":
-                "touche à tout":
-                "visions":
+                "aura de haine / d'amour": gfd
+                "identité secrête": gfd
+                "increvable": gfd
+                "insomniaque": gfd
+                "le seigneur est mon berger": gfd
+                "ma foi est mon bouclier": gfd
+                "miracle": gfd
+                "porte-poisse": gfd
+                "que d'un oeil": gfd
+                "touche à tout": gfd
+                "visions": gfd
         "atouts de chance":
             list:
-                "chanceux":
-                "coup de pouce":
-                "forcer le destin":
-                "pas passé loin":
-                "repousser les limites":
-                "rituel de chance":
+                "chanceux": gfd
+                "coup de pouce": gfd
+                "forcer le destin": gfd
+                "pas passé loin": gfd
+                "repousser les limites": gfd
+                "rituel de chance": gfd
 
 
 
