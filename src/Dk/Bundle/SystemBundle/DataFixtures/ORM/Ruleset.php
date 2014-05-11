@@ -48,7 +48,7 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
                 preg_match('/[0-9]*-([a-zA-Z_]*).yml/', $file->getBasename(), $type);
                 switch ($type[1]) {
                     case 'ruleset':
-                        $ruleset = $this->setRuleset($data['ruleset'], $manager);
+                        $ruleset = $this->setRulesetFromConfigFile($data['ruleset'], $manager);
                         break;
                     case 'characteristics':
                         $this->setCharacteristics($ruleset, $data['characteristics'], $manager);
@@ -66,7 +66,14 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
         $manager->flush();
     }
 
-    private function setRuleset(array $data, ObjectManager $manager)
+    /**
+     * Set a ruleset from config file
+     *
+     * @param array         $data
+     * @param ObjectManager $manager
+     * @return Ruleset
+     */
+    private function setRulesetFromConfigFile(array $data, ObjectManager $manager)
     {
 
         $ruleset = new Ruleset();
