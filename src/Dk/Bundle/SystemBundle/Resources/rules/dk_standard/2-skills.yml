@@ -42,32 +42,26 @@ skills:
             escalade:
                 chars: [FOR, DEX]
                 desc: >
-                      Ayez recours à cette
-                      compétence pour grimper sur des surfaces plus ou moins verticales. Il faut faire un jet à chaque fois que la paroi change de
-                      nature. Un jet raté indique que le personnage a raté une prise
-                      et n’a pas pu avancer. Un deuxième jet raté à la suite entraîne
-                      une chute.
+                      Ayez recours à cette compétence pour grimper sur des surfaces plus ou moins verticales.
+                      Il faut faire un jet à chaque fois que la paroi change de nature. Un jet raté indique que le personnage a raté une prise
+                      et n’a pas pu avancer. Un deuxième jet raté à la suite entraîne une chute.
             escamotage:
                 chars: [DEX, INT]
                 desc: >
-                      Cette compétence
-                      est utile pour faire des tours de prestidigitation, du vol à l’étalage ou à la tire. On peut repérer un pickpocket en faisant un jet
-                      de Perception en opposition.
+                      Cette compétence est utile pour faire des tours de prestidigitation, du vol à l’étalage ou à la tire.
+                      On peut repérer un pickpocket en faisant un jet de Perception en opposition.
             évasion:
                 chars: [FOR, DEX]
                 desc: >
-                      Utilisez cette compé-
-                      tence pour vous faufiler dans les passages étroits, vous contorsionner ou échapper à des liens.
+                      Utilisez cette compétence pour vous faufiler dans les passages étroits, vous contorsionner ou échapper à des liens.
             fouille:
                 chars: [INT, SAG]
                 desc: >
-                      Très pratique pour fouiller
-                      une pièce ou une personne, pour repérer pièges et dangers dis simulés.
+                      Très pratique pour fouiller une pièce ou une personne, pour repérer pièges et dangers dis simulés.
             intimidation:
                 chars: [FOR, CHA]
                 desc: >
-                      Utilisez cette com-
-                      pétence pour impressionner un adversaire. On peut résister à
+                      Utilisez cette compétence pour impressionner un adversaire. On peut résister à
                       cette compétence grâce à un jet de sauvegarde. Un héros (ou un
                       second rôle) peut toujours tenter un jet d’Intimidation en début de combat, contre un jet de sauvegarde/Courage de la part
                       de tous les adversaires présents. Le personnage gagne alors 1dK
@@ -92,13 +86,11 @@ skills:
             psychologie:
                 chars: [INT, SAG]
                 desc: >
-                      Utilisez cette compé-
-                      tence pour savoir si une personne vous ment ou cache des choses, pour ressentir un malaise, la peur, un détail qui cloche.
+                      Utilisez cette compétence pour savoir si une personne vous ment ou cache des choses, pour ressentir un malaise, la peur, un détail qui cloche.
             renseignements:
                 chars: [SAG, CHA]
                 desc: >
-                      Cette com-
-                      pétence vous servira à trouver des renseignements en traînant
+                      Cette compétence vous servira à trouver des renseignements en traînant
                       dans des endroits publics et en posant des questions. Il faut
                       l’équivalent d’une demi-journée pour obtenir des informations.
 
