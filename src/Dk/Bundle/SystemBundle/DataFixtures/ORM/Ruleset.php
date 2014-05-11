@@ -174,10 +174,17 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
 
         $assetsCollection = new ArrayCollection();
         $addAsset = function($name, $data, $group) use ($manager, $assetsCollection, $groups, $ruleset) {
+
+            if(false === isset($data['desc'])) {
+                $description = $data;
+            } else {
+                $description = $data['desc'];
+            }
+
             $asset = new RulesetAsset();
             $asset
                 ->setName($name)
-                ->setDescription($data['desc'])
+                ->setDescription($description)
                 ->setGroup($groups->get($group))
                 ->setRuleset($ruleset)
             ;
