@@ -51,13 +51,13 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
                         $ruleset = $this->setRulesetFromConfigFile($data['ruleset'], $manager);
                         break;
                     case 'characteristics':
-                        $this->setCharacteristics($ruleset, $data['characteristics'], $manager);
+                        $this->setCharacteristicsFromConfigFile($ruleset, $data['characteristics'], $manager);
                         break;
                     case 'skills':
-                        $this->setSkills($ruleset, $data['skills'], $manager);
+                        $this->setSkillsFromConfigFile($ruleset, $data['skills'], $manager);
                         break;
                     case 'assets':
-                        $this->setAssets($ruleset, $data['assets'], $manager);
+                        $this->setAssetsFromConfigFile($ruleset, $data['assets'], $manager);
                         break;
                 }
              }
@@ -90,7 +90,13 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
         return $ruleset;
     }
 
-    private function setCharacteristics(Ruleset $ruleset, array $characteristics, ObjectManager $manager)
+    /**
+     *
+     * @param Ruleset $ruleset
+     * @param array $characteristics
+     * @param ObjectManager $manager
+     */
+    private function setCharacteristicsFromConfigFile(Ruleset $ruleset, array $characteristics, ObjectManager $manager)
     {
         foreach ($characteristics as $shortName => $def) {
 
@@ -107,10 +113,14 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
 
             $this->setReference(strtoupper($shortName), $char);
         }
-
     }
 
-    private function setSkills(Ruleset $ruleset, array $skills, ObjectManager $manager)
+    /**
+     * @param Ruleset $ruleset
+     * @param array $skills
+     * @param ObjectManager $manager
+     */
+    private function setSkillsFromConfigFile(Ruleset $ruleset, array $skills, ObjectManager $manager)
     {
         $groups = new ArrayCollection();
         $addGroup = function($name, $parent, $level) use ($manager, $groups, $ruleset) {
@@ -157,7 +167,12 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
 
     }
 
-    private function setAssets(Ruleset $ruleset, array $assets, ObjectManager $manager)
+    /**
+     * @param Ruleset $ruleset
+     * @param array $assets
+     * @param ObjectManager $manager
+     */
+    private function setAssetsFromConfigFile(Ruleset $ruleset, array $assets, ObjectManager $manager)
     {
         $groups = new ArrayCollection();
         $addGroup = function($name, $parent, $level) use ($manager, $groups, $ruleset) {
@@ -203,6 +218,12 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
         $this->recursiveItemManager($assets, null, $addGroup, $addAsset);
     }
 
+    /**
+     * @param array $value
+     * @param $p
+     * @param callable $addGroup
+     * @param callable $addItem
+     */
     private function recursiveItemManager(array &$value, $p, \Closure $addGroup, \Closure $addItem ) {
 
         static $level = 0;
