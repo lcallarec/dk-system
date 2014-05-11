@@ -61,20 +61,93 @@ assets:
     "atouts de développement":
         "atouts de développement de base":
             list:
-                "action rapide": ttg
-                "action supplémentaire": fds
-                "adaptation": fds
-                "apprentissage": fds
-                "avantages": fds
-                "caractéristique": gfvd
-                "compteurs": gfd
-                "compteurs exceptionnels": gfd
-                "vicelard": gfd
-                "essaye encore": g fd
-                "portage": gfd
-                "sens de la situation": gfd
-                "synergie": g fd
-                "talentueux": g fd
+                "action rapide":
+                    use: [limité, fatiguant]
+                    desc: >
+                          Vous êtes capable de vous dépasser et d'effectuer vos actions bien plus rapidement que les autres. Choisissez une compétence lorsque vous prenez cet atout.
+                          Dorénavant, si vous devez tenter un jet de cette compétence prenant plus d'une action
+                          (comme bander des blessures, lancer un sort, crocheter une serrure, tenter de vous déguiser...), vous pouvez dépenser 1d6 points d'énergie pour faire le jet en une seule action.
+                          Vous pouvez reprendre cet atout pour l'utiliser une fois de plus par scène ou pour choisir une nouvelle compétence.
+
+                "action supplémentaire": >
+                                         Vous obtenez une action principale supplémentaire dans le tour, mais dont le jet se fera à -5
+                                         (pour une attaque, lancer un sort, crocheter une serrure, soigner, etc.).
+                                         Quand le bonus de compétence ou davantage augmente, l'action supplémentaire voit son bonus augmenter.
+                                         Il est possible de prendre cet atout plusieurs fois, mais le malus s'additionne (troisième action à -10, quatrième action à -15, etc.).
+                "adaptation": >
+                              Dans la vie, de nombreuses circonstances peuvent gêner un personnage - aussi bien au combat que dans des situations plus quotidiennes.
+                              Généralement, le conteur impose alors des malus à vos actions, le plus souvent sous la forme de dK de circonstance qui viennent compliquer votre tâche, déjà difficile.
+                              On peut citer, entre autres, des malus de distance, de visibilité, de mouvement, de couverture, de luminosité, etc.
+                              Pour les attaques à distance ou, pour les attaques (et défenses) au corps à corps des malus liés aux terrains instables ou mouvants, à l'exiguïté d'un lieu, à la luminosité,
+                              à des différences de position (en contre-bas par exemple), etc.
+                              Au moment où vous prenez cet atout, choisissez l'une des nombreuses situations susceptibles de vous handicaper dans vos actions.
+                              Ces situations peuvent aussi bien être des contingences (comme la luminosité, l'alcool, le stress, la monte pour les cavaliers, la distance pour les tireurs, etc.)
+                              que des terrains spécifiques (comme la forêt, le désert, les souterrains, la montagne, etc.). Dorénavant, les éventuels dK de cir­constances liés à ces situations ne vous pénalisent plus.
+                              Vous pouvez prendre cet atout plusieurs fois pour autant de situations différentes. Vous pouvez aussi le reprendre une deuxième fois pour le même type de situation.
+                              Dans ce cas, non seulement les krâsses issues des éventuels dK de circonstances n'augmentent plus la difficulté de vos actions, mais elles sont autant de bonus à vos jets
+                              (comme pour des dK classiques) ! Adaptation efl un outil large et très intéressant
+                              pour remplir une foultitude de besoins. Mais finalement, quelles sont les situations possibles ? Quelles limites peut-on lui donner ? Voici
+                              donc  quelques  exemples  de situations  vous permettant de cadrer un peu plus facilement ce qu'il est possible de faire avec cet atout :
+                              <dt>Adaptation (Alcool/drogue)</dt><dd>Drunken master.</dd>
+                              <dt>Adaptation (Combat en équilibre)</dt><dd>Sur l'aile d'un avion, sur le toit d'un train.</dd>
+                              <dt>Adaptation (Combat monté)</dt><dd>A cheval ou à moto.</dd>
+                              <dt>Adaptation (Combat nocturne)</dt><dd>En condition de luminosité faible</dd>
+                              <dt>Adaptation (Espace réduit)</dt><dd>Permet de se battre efficacement dans des couloirs à plusieurs de front.</dd>
+                              <dt>Adaptation (Tir au contact)</dt><dd>Utilisation d'une arme à distance en mêlée... qui a dit Legolas ?</dd>
+                              <dt>Adaptation (Tir de loin)</dt><dd>Pour jouer les snipers.</dd>
+                              <dt>Adaptation (Tir en mêlée)</dt><dd>Pour ne pas toucher ses potes dans la bagarre.</dd>
+                "apprentissage": >
+                                 Vous pouvez répartir 6 + Intelligence degrés dans vos compétences.
+                                 Une même compétence ne peut jamais avoir un nombre de degrés d'apprentissage supérieur au nombre de fois ou vous avez pris cet atout,
+                                 mais vous pouvez tout à fait choisir de distribuer en une seule fois plusieurs degrés d'apprentissage dans une même compétence si vous ne dépassez pas cette limite
+                                  Le bonus total dans la compétence est égal à la somme des caractéristiques plus le nombre de degrés (plus d'éventuels bonus apportés par d'autres atouts).
+                                  Une compétence qui ne possède aucun degré ne reçoit pas les bonus de caractéristique.
+                "avantages": >
+                             Vous pouvez répartir deux degrés entre les trois avantages (Attaque, Défense et Sauvegarde). Le bonus total est égal à la somme des caractéristiques plus le nombre de degrés.
+                             Si un avantage ne possède pas de degré, il bénéficie tout de même des bonus de caractéristique.
+                             Aucun avantage ne peut avoir plus de degrés que le nombre de fois où vous avez pris cet atout,
+                             mais il est possible de mettre plusieurs degrés dans le même score pour atteindre cette limite.
+                "caractéristique": >
+                                   Vous pouvez ajouter +1 à une de vos caractéristiques. Vous pouvez prendre cet atout plusieurs fois pour la même caractéristique
+                                    mais sans jamais dépasser un score total égal au score initial +5. Vous ne pouvez pas prendre cet atout plus d'une fois tous les trois niveaux.
+                "compteurs": >
+                             Vous pouvez répartir 6 points entre vos points de vie et d'énergie, avec un minimum de 1 dans l'un des deux compteurs.
+                             Vous ajoutez votre Constitution aux points de vie et votre Sagesse aux points d'énergie.
+                "compteurs exceptionnels": >
+                                           Ajoutez 10 points à votre total de points d'énergie ou à votre total de points de vie. Vous n'ajoutez pas de caractéristique.
+                "vicelard":
+                    use: [limité]
+                    desc: >
+                          Au moment de prendre cet atout, choisissez une compétence avec laquelle vous allez pouvoir pourrir la vie de vos adversaires quand la situation s'y prête
+                          (par exemple. Psychologie pour trouver l'insulte perfide qui va rendre votre ennemi fou furieux et vous donner l'avantage en combat).
+                          Vous pouvez désormais choisir d'utiliser gratuitement cette compétence, une fois par scène, pour habiller le jet d'un adversaire et diminuer encore plus ses chances de réussites
+                          (1dK de circonstance de malus pour deux degrés dans votre compétence au lieu du malus d'habillage habituel).
+                "essaye encore":
+                    use: [fatum]
+                    desc: >
+                          Lorsque vous prenez cet atout, choisissez une compétence ou un avantage. Si vous n'êtes pas satisfait de votre premier jet de dé sous la compétence choisie,
+                           vous pouvez dépenser 1d6 points d'énergie ou un dK pour relancer le d20 une seconde fois.
+                           Choisissez ensuite celui des deux résultats que vous préférez.
+                           Vous pouvez prendre l'atout plusieurs fois sur plusieurs compétences différentes.
+                "portage": >
+                           On peut dire que vous avez routé votre bosse et avez appris à la dure qu'un bon ouvrier n'est rien sans de bons outils.
+                           Dorénavant, vous sortez couvert : vous disposez de quatre cases d'encombrement supplémentaires pour les différents sacs d'aventurier et pour les trousses à outils.
+                "sens de la situation":
+                    use: [limité]
+                    desc: >
+                          Choisissez une situation précise (en plein combat, en entrant dans une pièce, en interrogeant quelqu'un, en soirée jet-set, sur un champ de bataille, etc.).
+                          Une fois par scène, lorsque vous vous trouvez dans cette situation, vous pouvez passer un tour à observer pour gagner 3dK à utili­ser pour des jets en rapport avec la situation.
+                          Vous pouvez reprendre cet atout pour le faire une fois de plus par scène ou pour choisir une nouvelle situation. Forme : Sens du combat, Intuition, Aisance sociale.
+                "synergie":
+                    use: [limité]
+                    desc: >
+                          Choisissez une compétence au moment de prendre cet atout. Une fois par scène, si vous habillez un jet de compétence ou d'avantage avec la compétence choisie,
+                          vous pouvez le faire sans dépenser les points d'énergie habituels. De plus, vos bonus issus des degrés se transforment en dK (un dK pour deux degrés dans la compétence).
+                          Vous pouvez prendre cet atout plusieurs fois avec des compétences différentes et ainsi bénéficier de larges options. Vous pouvez aussi le reprendre une nouvelle fois sur
+                          la même compétence pour pouvoir en bénéficier une fois supplémentaire par scène. Forme : Entraînement particulier, Aisance, Compétence privilégiée.
+                "talentueux": >
+                              Vous êtes exceptionnellement doué dans une compétence. Vous avez un bonus de +4 à tous vos jets dans la compétence choisie. Vous pouvez prendre l'atout plusieurs fois
+                              sur plusieurs compétences différentes.
     "atouts de combat":
         "maîtrise":
             "list":
