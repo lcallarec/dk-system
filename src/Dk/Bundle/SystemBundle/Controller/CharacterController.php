@@ -32,7 +32,9 @@ class CharacterController extends Controller
         $em = $this->get('doctrine')->getManager();
         
         $form = $this->createForm(new PlayerCharacterType(), $pc);
-        
+
+        $assets = $form->get('assets')->getConfig()->getOptions()['choice_list']->getChoices();
+
         if($request->getMethod() === 'GET') {
  
             //If PC is related to a campaign... 
@@ -72,7 +74,11 @@ class CharacterController extends Controller
                 $form->setData($pc);
             }
 
-            return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', ['form' => $form->createView(), 'pc' => $pc]);
+            return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', [
+                'form'   => $form->createView(),
+                'pc'     => $pc,
+                'assets' => $assets
+            ]);
          
         } else {
     
@@ -88,7 +94,11 @@ class CharacterController extends Controller
                 
             } else {
 
-                return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', ['form' => $form->createView(), 'pc' => $pc]);
+                return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', [
+                    'form'   => $form->createView(),
+                    'pc'     => $pc,
+                    'assets' => $assets
+                ]);
             
             }
             
