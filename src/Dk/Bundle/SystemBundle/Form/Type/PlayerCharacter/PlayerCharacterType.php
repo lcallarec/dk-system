@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Doctrine\ORM\EntityRepository;
 
 class PlayerCharacterType extends AbstractType
 {
@@ -39,6 +40,15 @@ class PlayerCharacterType extends AbstractType
                             'class'    => 'Dk\Bundle\SystemBundle\Entity\RulesetAsset',
                             'expanded' => true,
                             'multiple' => true,
+                            'query_builder' => function(EntityRepository $er) {
+                                    return $er->createQueryBuilder('a')
+                                        ->select('a, g, pg')
+                                        ->innerJoin('a.group', 'g')
+                                        ->innerJoin('g.parent', 'pg')
+                                        ->addOrderBy('pg.id', 'ASC')
+                                        ->addOrderBy('g.id', 'ASC')
+                                        ->addOrderBy('a.name', 'ASC');
+                            },
                         ]
                     )
                     ->add(
