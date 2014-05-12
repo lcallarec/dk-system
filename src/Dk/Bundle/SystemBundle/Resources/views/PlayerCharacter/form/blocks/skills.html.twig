@@ -1,0 +1,24 @@
+<div class="form-group">
+    <div class="col-sm-offset-1 col-sm-12">
+        {% set group = null %}
+        {% for skill in form.skills %}
+            {% if skill.vars.value.rulesetskill.group.name != group %}
+                {% if loop.index0 != 0 %}
+                        </table>
+                    </div>
+                {% endif %}
+                <div class="well pull-left skill-colmun">
+                    <h4>{{ skill.vars.value.rulesetskill.group.name }}</h4>
+                    <table>
+            {% endif %}
+
+            {{ form_widget(skill, {attr: {size: 2}}) }}
+
+            {% set group = skill.vars.value.rulesetskill.group.name %}
+
+            {% if loop.last %}
+                    </table>
+                </div>
+            {% endif %}
+        {% endfor %}
+</div>

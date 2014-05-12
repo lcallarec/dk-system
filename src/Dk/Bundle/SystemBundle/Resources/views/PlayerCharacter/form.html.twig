@@ -8,36 +8,7 @@
     {% endif %}
 {% endblock %}
 
-{% form_theme form _self %}
-
-{% block _pc_characteristics_entry_widget %}
-    <dt>{{ form.vars.value.rulesetcharacteristic}}</dt>
-    <dd>{{ form_widget(form.value, {attr: {size: 2, style:"width: 40px; display: inline-block;", class: "form-control input-sm"}}) }}</dd>
-{% endblock %}
-
-{% block asset_checkbox_widget %}
-    {% spaceless %}
-
-    {% endspaceless %}
-{% endblock asset_checkbox_widget %}
-
-{% block _pc_skills_entry_widget %}
-    <tr>
-        <td width="120px">
-            <a class="skill-desc" href="javascript:void(0)" data-container="body" data-toggle="popover" title=" {{ form.vars.value.rulesetskill.name}}" data-placement="bottom" data-content="{{ form.vars.value.rulesetskill.description}}">
-                {{ form.vars.value.rulesetskill.name}}
-                {% if form.vars.value.rulesetskill.overloadmalus %}
-                    *
-                {% endif %}
-            </a>
-        <td width="1200px">
-           <small> ( {{ form.vars.value.rulesetskill.char1}} / {{ form.vars.value.rulesetskill.char2}} ) </small>
-        </td>
-        <td width="40px">
-            {{ form_widget(form.value, {attr: {size: 2, style:"width: 40px; display: inline-block;", class: "form-control input-sm"}}) }}
-        </td>
-    </tr>
-{% endblock %}
+{% form_theme form 'DkSystemBundle:PlayerCharacter:form/theme/pc.form.fields.html.twig' %}
 
 {% block board_content %}
 
@@ -57,106 +28,24 @@
         <div class="row">
             
             <div class="col-sm-5">
-            
-                <div class="form-group">
-                    {{ form_label(form.firstname, null, {label_attr: {class: "control-label col-sm-3"}}) }}
-                    {{ form_errors(form.firstname) }}
-                    <div class="col-sm-7">
-                        {{ form_widget(form.firstname, {attr: {class: "form-control" }}) }}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {{ form_label(form.lastname, null, {label_attr: {class: "control-label col-sm-3"}}) }}
-                    {{ form_errors(form.lastname) }}
-                    <div class="col-sm-7">
-                        {{ form_widget(form.lastname, {attr: {class: "form-control" }}) }}
-                    </div>
-                </div>
-
-                {% if form.race is defined %}
-                    <div class="form-group">
-                        {{ form_label(form.race, null, {label_attr: {class: "control-label col-sm-3"}}) }}
-                        {{ form_errors(form.race) }}
-                        <div class="col-sm-7">
-                            {{ form_widget(form.race, {attr: {class: "form-control" }}) }}
-                        </div>
-                    </div>
-                {% endif %}
-
+               {{ include('DkSystemBundle:PlayerCharacter:form/blocks/information.html.twig') }}
             </div>
+
             <div class="col-sm-5">
-             
-                <div class="form-group">
-                    <dl class="dl-horizontal chars-vertical">
-                        {% for char in form.characteristics %}
-                            {{ form_widget(char, {attr: {size: 2}}) }}
-                        {% endfor %}
-                    </dl>
-                </div>
+                {{ include('DkSystemBundle:PlayerCharacter:form/blocks/chars.html.twig') }}
             </div>
         </div>
 
         {% if pc.campaign is not null %}
-        <div class="row">
-
-                {% set group = null %}
-                {% for child in form.assets %}
-                    {% set index = child.vars.value %}
-                    {% if assets[index].group.name != group %}
-                        {% if loop.index0 != 0 %}
-                                </tbody>
-                            </table>
-                        {% endif %}
-                         <h4>{{ assets[index].group.parent.name }} / {{ assets[index].group.name }}</h4>
-                            <table class="table table-striped table-condensed center-block" style="width: 750px;">
-                            <thead>
-                                <tr>
-                                    <th>Atouts</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                    {% endif %}
-                    <tr>
-                        <td width="200px;">{{ form_widget(child) }}</td>
-                        <td>{{ assets[index].description }}</td>
-                    </tr>
-                    {% set group = assets[index].group.name %}
-                    {% if loop.last %}
-                                </tbody>
-                            </table>
-                    {% endif %}
-                {% endfor %}
-
-        </div>
-
-        <div class="row">
-            <div class="form-group">
-                <div class="col-sm-offset-1 col-sm-12">
-                    {% set group = null %}
-                    {% for skill in form.skills %}
-                        {% if skill.vars.value.rulesetskill.group.name != group %}
-                            {% if loop.index0 != 0 %}
-                                    </table>
-                                </div>
-                            {% endif %}
-                            <div class="well pull-left skill-colmun">
-                                <h4>{{ skill.vars.value.rulesetskill.group.name }}</h4>
-                                <table>
-                        {% endif %}
-                        {{ form_widget(skill, {attr: {size: 2}}) }}
-                        {% set group = skill.vars.value.rulesetskill.group.name %}
-                        {% if loop.last %}
-                                </table>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
+            <div class="row">
+                {{ include('DkSystemBundle:PlayerCharacter:form/blocks/assets.html.twig') }}
             </div>
-        </div>
 
-        {%  endif %}
+            <div class="row">
+                {{ include('DkSystemBundle:PlayerCharacter:form/blocks/skills.html.twig') }}
+            </div>
+
+        {% endif %}
 
         <div class="row">
             <div class="form-group">
@@ -173,4 +62,5 @@
             $('.skill-desc, .popover-trigger').popover()
         });
     </script>
+
 {% endblock %}

@@ -1,0 +1,28 @@
+{% set group = null %}
+{% for child in form.assets %}
+    {% set index = child.vars.value %}
+    {% if assets[index].group.name != group %}
+        {% if loop.index0 != 0 %}
+            </tbody>
+            </table>
+        {% endif %}
+        <h4>{{ assets[index].group.parent.name }} / {{ assets[index].group.name }}</h4>
+        <table class="table table-striped table-condensed center-block" style="width: 750px;">
+        <thead>
+        <tr>
+            <th>Atouts</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% endif %}
+    <tr>
+        <td width="200px;">{{ form_widget(child) }}</td>
+        <td>{{ assets[index].description }}</td>
+    </tr>
+    {% set group = assets[index].group.name %}
+    {% if loop.last %}
+        </tbody>
+        </table>
+    {% endif %}
+{% endfor %}

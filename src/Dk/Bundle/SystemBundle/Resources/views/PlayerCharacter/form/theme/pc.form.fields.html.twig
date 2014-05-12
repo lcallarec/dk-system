@@ -1,0 +1,22 @@
+{% block _pc_characteristics_entry_widget %}
+<dt>{{ form.vars.value.rulesetcharacteristic}}</dt>
+<dd>{{ form_widget(form.value, {attr: {size: 2, style:"width: 40px; display: inline-block;", class: "form-control input-sm"}}) }}</dd>
+{% endblock %}
+
+{% block _pc_skills_entry_widget %}
+<tr>
+    <td width="120px">
+        <a class="skill-desc" href="javascript:void(0)" data-container="body" data-toggle="popover" title=" {{ form.vars.value.rulesetskill.name}}" data-placement="bottom" data-content="{{ form.vars.value.rulesetskill.description}}">
+            {{ form.vars.value.rulesetskill.name}}
+            {% if form.vars.value.rulesetskill.overloadmalus %}
+            *
+            {% endif %}
+        </a>
+    <td width="1200px">
+        <small> ( {{ form.vars.value.rulesetskill.char1}} / {{ form.vars.value.rulesetskill.char2}} ) </small>
+    </td>
+    <td width="40px">
+        {{ form_widget(form.value, {attr: {size: 2, style:"width: 40px; display: inline-block;", class: "form-control input-sm"}}) }}
+    </td>
+</tr>
+{% endblock %}
