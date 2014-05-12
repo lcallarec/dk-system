@@ -28,11 +28,11 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertContains($pc, $player->getCharacters(), "Le personnage est présent dans la collection du joueur");
 
-        foreach ($this->player->getCharacters() as $character) {
+        foreach ($player->getCharacters() as $character) {
             $this->assertInstanceOf(
-                'Dk\CharacterBundle\Entity\PlayerCharacter',
+                'Dk\Bundle\SystemBundle\Entity\PlayerCharacter',
                 $character,
-                'Player object is instance of Dk\CharacterBundle\Entity\PlayerCharacter'
+                'Player object is instance of Dk\Bundle\SystemBundle\Entity\PlayerCharacter'
             );
         }
     }
