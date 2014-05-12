@@ -24,7 +24,7 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
 
         $pc = $this->getPlayerCharacter($player);
 
-        $player->addCharacter();
+        $player->addCharacter($pc);
 
         $this->assertContains($pc, $player->getCharacters(), "Le personnage est présent dans la collection du joueur");
 
