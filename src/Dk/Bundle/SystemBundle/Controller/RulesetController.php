@@ -2,9 +2,7 @@
 
 namespace Dk\Bundle\SystemBundle\Controller;
 
-use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetType;
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetSkillCollectionType;
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetPlayableRaceCollectionType;
@@ -180,7 +178,7 @@ class RulesetController extends Controller
         $em = $this->get('doctrine')->getManager();
         
         $form = $this->createForm(new RulesetAssetCollectionType(), $ruleset);
-        
+
         if($request->getMethod() === 'GET') {
  
             return $this->render('DkSystemBundle:Ruleset:Asset/form.html.twig', ['form' => $form->createView()]);
@@ -200,12 +198,10 @@ class RulesetController extends Controller
             } else {
 
                 return $this->render('DkSystemBundle:Ruleset:Asset/form.html.twig', ['form' => $form->createView()]);
-            
+
             }
             
         }
        
     }
-        
-    
 }
