@@ -40,6 +40,7 @@ class PlayerCharacterType extends AbstractType
                             'class'    => 'Dk\Bundle\SystemBundle\Entity\RulesetAsset',
                             'expanded' => true,
                             'multiple' => true,
+                            'label'    => false,
                             'query_builder' => function(EntityRepository $er) {
                                     return $er->createQueryBuilder('a')
                                         ->select('a, g, pg')
@@ -61,7 +62,7 @@ class PlayerCharacterType extends AbstractType
                         'skills', 'collection', [
                             'type'         => new PlayerCharacterSkillType(),
                             'by_reference' => true,
-                            'label'        => false
+                            'label'        => false,
                         ]
                     )
                 ;
