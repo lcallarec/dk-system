@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface
                 ->children()
                     ->scalarNode('dk_factory_pc_class')
                         ->defaultValue('Dk\Bundle\SystemBundle\Factory\PlayerCharacterFactory')
+                    ->end()
                     ->scalarNode('dk_factory_campaign_class')
                         ->defaultValue('Dk\Bundle\SystemBundle\Factory\CampaignFactory')
                     ->end()
