@@ -107,6 +107,7 @@
                             <th>Description</th>
                         </tr>
                     </thead>
+                    <tbody>
                     {% for child in form.assets %}
                         <tr>
                             {% set index = child.vars.value %}
@@ -114,6 +115,7 @@
                             <td>{{ assets[index].description }}</td>
                         </tr>
                     {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>
