@@ -100,11 +100,11 @@ class RulesetAssetGroup
     /**
      * Get the parent group
      *
-     * @return integer
+     * @return RulesetAssetGroup
      */
     public function getParent()
     {
-        return (int) $this->parent;
+        return $this->parent;
     }
 
     /**
