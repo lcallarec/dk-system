@@ -25,7 +25,7 @@
 
 {% block checkbox_widget %}
     {% spaceless %}
-        <label  for="{{ id }}" class="checkbox-inline">
+        <label for="{{ id }}" class="checkbox-inline">
             <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
             {{ label|trans }}
         </label>
@@ -39,8 +39,4 @@
             <span class="help">{{ help }}</span>
         {% endif %}
     {% endspaceless %}
-{% endblock %}
-
-{% block boostrap_checkbox %}
-
 {% endblock %}
