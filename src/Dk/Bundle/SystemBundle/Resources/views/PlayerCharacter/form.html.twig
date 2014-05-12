@@ -15,6 +15,12 @@
     <dd>{{ form_widget(form.value, {attr: {size: 2, style:"width: 40px; display: inline-block;", class: "form-control input-sm"}}) }}</dd>
 {% endblock %}
 
+{% block asset_checkbox_widget %}
+    {% spaceless %}
+
+    {% endspaceless %}
+{% endblock asset_checkbox_widget %}
+
 {% block _pc_skills_entry_widget %}
     <tr>
         <td width="120px">
@@ -34,7 +40,7 @@
 {% endblock %}
 
 {% block board_content %}
- 
+
     {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'panel-medieval-style form-horizontal'}}) }}
         
         {% if pc.campaign is not null %}
@@ -94,16 +100,21 @@
         {% if pc.campaign is not null %}
         <div class="row">
             <div class="form-group">
-                <div class="col-sm-offset-1 col-sm-12">
-                 
-                    {% for key, asset in form.assets %}
-                        <div>
-                            {{ form_widget(asset) }}
-                            {{ pc.campaign.ruleset.assets[loop.index0].name}}
-                            {{ pc.campaign.ruleset.assets[loop.index0].description}}
-                        </div>
+                <table class="table table-striped table-condensed center-block" style="width: 750px;">
+                    <thead>
+                        <tr>
+                            <th>Atouts</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    {% for child in form.assets %}
+                        <tr>
+                            {% set index = child.vars.value %}
+                            <td width="200px;">{{ form_widget(child) }}</td>
+                            <td>{{ assets[index].description }}</td>
+                        </tr>
                     {% endfor %}
-                </div>
+                </table>
             </div>
         </div>
 
@@ -146,7 +157,7 @@
 
     <script type="text/javascript">
         $(document).on('ready', function() {
-            $('.skill-desc').popover()
+            $('.skill-desc, .popover-trigger').popover()
         });
     </script>
 {% endblock %}
