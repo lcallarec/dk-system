@@ -6,12 +6,12 @@
 
         <div class="container">    
             <div class="row">
-                <div id="board-menu" class="col-xs-3">
+                <div id="board-menu">
                     {% block board_menu %}
                         {{ render(controller('DkSystemBundle:Board:menu')) }}
                     {% endblock %}
                 </div>
-                <div id="board-content" class="col-xs-9">
+                <div id="board-content" class="center-block">
                     <h2>
                         {% block title %}
                         {% endblock %}
