@@ -33,7 +33,12 @@ class CharacterController extends Controller
         
         $form = $this->createForm(new PlayerCharacterType(), $pc);
 
-        $assets = $form->get('assets')->getConfig()->getOptions()['choice_list']->getChoices();
+        if ($form->has('assets')) {
+            $assets = $form->get('assets')->getConfig()->getOptions()['choice_list']->getChoices();
+        } else {
+            $assets = [];
+        }
+
 
         if($request->getMethod() === 'GET') {
  
