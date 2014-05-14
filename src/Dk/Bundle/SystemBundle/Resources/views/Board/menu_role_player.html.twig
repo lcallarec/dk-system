@@ -1,45 +1,51 @@
-<div class="list-group-item active">
-        <h4 class="list-group-item-heading">
-            <span>Tableau de bord joueur</span>
-        </h4>
-        <p class="list-group-item-text">Mes personnages</p>
-        <p></p>
-        <p class="list-group-item-text">
-            <a href="{{ path('manage_pc') }}" class="btn btn-primary btn-block">
-                <span class="glyphicon glyphicon-plus-sign"></span>
-                nouveau personnage
-            </a>
-        </p>
-    </div>
-{% set prev_campaign = null %} 
-{% set campaign = null %} 
+<ul class="nav navbar-nav">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mes personnages <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="{{ path('manage_pc') }}">
+                    <span class="glyphicon glyphicon-plus-sign"></span> nouveau personnage
+                </a>
+            </li>
+            <li class="divider"></li>
+            {% set prev_campaign = null %}
+            {% set campaign = null %}
 
-{% for pc in pcs %}
+            {% for pc in pcs %}
 
-    {% if pc.campaign is empty %} 
-        {% set campaign = 'Sans campagne' %}
-    {% else %}
-        {% set campaign = pc.campaign.name %}
-    {% endif %}    
+                {% if pc.campaign is empty %}
+                    {% set campaign = 'Sans campagne' %}
+                {% else %}
+                    {% set campaign = pc.campaign.name %}
+                {% endif %}
 
-    {% if prev_campaign != campaign %}
+                {% if prev_campaign != campaign %}
+                    <li role="presentation" class="dropdown-header">{{ campaign }}</li>
+                {% endif %}
 
-        {% if loop.index != 1 %}
-            </p>          
-        </div>
-        {% endif %}
+                <li><a href="{{ path('manage_pc', {id: pc.id}) }}">{{ pc }}</a></li>
 
-        <div class="list-group-item">
-            <h4 class="list-group-item-heading">{{ campaign }}</h4>
-            <p class="list-group-item-text">
+                {% set prev_campaign = campaign %}
 
-    {% endif %} 
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
 
-        <a href="{{ path('manage_pc', {id: pc.id}) }}">{{ pc }}</a> <br />
 
-    {% set prev_campaign = campaign %}
 
-{% endfor %}
-{% if pcs|length > 0 %}
-    </div>
-{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
