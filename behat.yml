@@ -1,0 +1,11 @@
+default:
+    extensions:
+        Behat\Symfony2Extension: ~
+    suites:
+        rules:
+            type: symfony_bundle
+            bundle: 'DkSystemBundle'
+            contexts:
+                - Dk\Bundle\SystemBundle\Features\Context\FeatureContext
+            filters:
+                tags: '@rules'
