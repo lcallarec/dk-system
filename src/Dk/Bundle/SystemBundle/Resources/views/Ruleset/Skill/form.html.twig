@@ -9,8 +9,8 @@
 {% form_theme form _self %}
 
 {% block _ruleset_skills_entry_widget %}
-   <h3>{{ form.vars.value.name }}</h3>
    <div class="form-group col-xs-12">
+       <h3>{{ form.vars.value.name }}</h3>
        {{ form_widget(form.name, {attr: {class: 'form-control input-sm'}}) }}
        {{ form_errors(form.name) }}
        {{ form_widget(form.char1, {attr: {class: 'form-control input-sm'}}) }}
