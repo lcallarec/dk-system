@@ -5,6 +5,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Dk\Bundle\SystemBundle\Entity\Player;
 use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
 use Dk\Bundle\SystemBundle\PlayerCharacterEvents;
+use Dk\Bundle\SystemBundle\Events\PlayerCharacterEvent;
 
 /**
  * Create player character (via service container)
