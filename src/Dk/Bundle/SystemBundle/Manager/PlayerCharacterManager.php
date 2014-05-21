@@ -8,11 +8,12 @@
 
 namespace Dk\Bundle\SystemBundle\Manager;
 
+use Dk\Bundle\SystemBundle\PlayerCharacterEvents;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
+use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
+use Dk\Bundle\SystemBundle\Events\PlayerCharacterEvent;
 
 /**
  * Class PlayerCharacterManager
@@ -31,13 +32,14 @@ class PlayerCharacterManager
     private $eventDispatcher;
 
     /**
-     * @param EntityManager $em
-     * @param EventDispatcher $eventDispatcher
+     * @param EntityManager            $em
+     * @param EventDispatcherInterface $eventDispatcher
      */
     public function __construct(EntityManager $em, EventDispatcherInterface $eventDispatcher)
     {
-        $this->em         = $em;
-        $this->repository = $em->getRepository('DkSystemBundle:PlayerCharacter');
+        $this->em              = $em;
+        $this->repository      = $em->getRepository('DkSystemBundle:PlayerCharacter');
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -53,6 +55,8 @@ class PlayerCharacterManager
      */
     public function save(PlayerCharacter $pc)
     {
+        $this->eventDispatcher->dispatch(PlayerCharacterEvents::PRE_PERSIST, new PlayerCharacterEvent($pc));
+
         $this->em->persist($pc);
         $this->em->flush();
     }

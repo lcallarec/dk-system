@@ -2,22 +2,23 @@
 
 namespace Dk\Bundle\SystemBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Dk\Bundle\SystemBundle\Form\Type\PlayerCharacter\PlayerCharacterType;
 use Dk\Bundle\SystemBundle\Entity\PlayerCharacterCharacteristic;
 use Dk\Bundle\SystemBundle\Entity\PlayerCharacterSkill;
 
 class CharacterController extends Controller
 {
-   
-   /**
-    * Manage Characters
-    */
-    public function manageAction($id)
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function manageAction(Request $request,  $id)
     {
-        $request = $this->getRequest();
-        
         if(null !== $id) {
             $pc = $this->get('doctrine')->getRepository('DkSystemBundle:PlayerCharacter')->findOneWithRelationships($this->getUser(), $id);
 
@@ -29,8 +30,8 @@ class CharacterController extends Controller
             $pc = $this->get('dk.factory.pc')->create();
         }
 
-        $em = $this->get('doctrine')->getManager();
-        
+        $pcManager = $this->get('dk.pc.manager');
+
         $form = $this->createForm(new PlayerCharacterType(), $pc);
 
         if ($form->has('assets')) {
@@ -45,37 +46,7 @@ class CharacterController extends Controller
             //If PC is related to a campaign... 
             if($pc->getCampaign()) {
                 
-                //With no characteristics...
-                if($pc->getCharacteristics()->isEmpty()) {
-
-                    $ruleChars = $pc->getCampaign()->getRuleset()->getCharacteristics();
-                    
-                    foreach($ruleChars as $rc) {
-                        $char = new PlayerCharacterCharacteristic();
-                        $char->setValue(0);
-                        $char->setRulesetCharacteristic($rc);
-                                
-                        $pc->addCharacteristic($char);
-                    }
-
-                }
-                   
-                if($pc->getSkills()->isEmpty()) {
-                    
-                    $ruleSkills = $pc->getCampaign()->getRuleset()->getSkills();
-                    foreach($ruleSkills as $rs) {
-                        $skill = new PlayerCharacterSkill();
-                        $skill->setValue(0);
-                        $skill->setRulesetSkill($rs);
-                                
-                        $pc->addSkill($skill);
-                    }
-                }
-                
-                $em->persist($pc);
-                    
-                $em->flush();
-
+                $pcManager->save($pc);
                 $form->setData($pc);
             }
 
@@ -90,11 +61,9 @@ class CharacterController extends Controller
             $form->handleRequest($request);
             
             if($form->isValid()) {
-    
-                $em->persist($pc);
-                
-                $em->flush();
-                
+
+                $pcManager->save($pc);
+
                 return $this->redirect($this->generateUrl('board'));
                 
             } else {
@@ -110,4 +79,5 @@ class CharacterController extends Controller
         }
        
     }
+
 }
