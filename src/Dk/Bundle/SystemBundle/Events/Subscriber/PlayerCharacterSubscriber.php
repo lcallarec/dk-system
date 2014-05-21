@@ -19,7 +19,7 @@ class PlayerCharacterSubscriber implements EventSubscriberInterface
     static public function getSubscribedEvents()
     {
         return [
-            PlayerCharacterEvents::POST_FACTORY_CREATION => [
+            PlayerCharacterEvents::PRE_PERSIST => [
                 ['setAssociationsOnPostFactoryCreation', 0]
             ]
         ];
@@ -32,23 +32,27 @@ class PlayerCharacterSubscriber implements EventSubscriberInterface
     {
         $pc = $event->getPlayerCharacter();
 
-        $ruleChars = $pc->getCampaign()->getRuleset()->getCharacteristics();
+        if ($pc->getCampaign()) {
 
-        foreach ($ruleChars as $rc) {
-            $char = new PlayerCharacterCharacteristic();
-            $char->setValue(0);
-            $char->setRulesetCharacteristic($rc);
+            if (!$ruleChars = $pc->getCampaign()->getRuleset()->getCharacteristics()) {
+                foreach ($ruleChars as $rc) {
+                    $char = new PlayerCharacterCharacteristic();
+                    $char->setValue(0);
+                    $char->setRulesetCharacteristic($rc);
 
-            $pc->addCharacteristic($char);
-        }
+                    $pc->addCharacteristic($char);
+                }
 
-        $ruleSkills = $pc->getCampaign()->getRuleset()->getSkills();
-        foreach ($ruleSkills as $rs) {
-            $skill = new PlayerCharacterSkill();
-            $skill->setValue(0);
-            $skill->setRulesetSkill($rs);
+                $ruleSkills = $pc->getCampaign()->getRuleset()->getSkills();
+                foreach ($ruleSkills as $rs) {
+                    $skill = new PlayerCharacterSkill();
+                    $skill->setValue(0);
+                    $skill->setRulesetSkill($rs);
 
-            $pc->addSkill($skill);
+                    $pc->addSkill($skill);
+                }
+            }
+
         }
     }
 } 
