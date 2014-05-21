@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dk\Bundle\SystemBundle\Form\Type\Campaign\CampaignType;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -18,8 +19,12 @@ use Symfony\Component\HttpFoundation\Request;
 class CampaignController extends Controller
 {
 
-   /**
-    */
+    /**
+     *
+     * @param Request $request
+     * @param int     $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function manageAction(Request $request, $id)
     {
 
@@ -32,53 +37,45 @@ class CampaignController extends Controller
             }
 
         } else {
-            /** @var Campaign $campaign */
             $campaign = $this->get('dk.factory.campaign')->create();
         }
 
         $form = $this->createForm(new CampaignType(), $campaign);
-        
-        if($request->getMethod() === 'GET') {
-            
-            return $this->render('DkSystemBundle:Campaign:form.html.twig', ['form' => $form->createView()]);
-         
-        } else {
-            
-            //Can't modify a campaign ruleset after creation
-            $form->remove('ruleset');
 
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if($form->isValid()) {
-
-                /** @var EntityManager $em */
-                $em = $this->get('doctrine')->getManager();
-
-                //Retrieve already related PCs
-                /** @var ArrayCollection $pcs */
-                $pcs = $em->getRepository('DkSystemBundle:PlayerCharacter')->findByCampaign($campaign);
-
-                /** @var PlayerCharacter $pc */
-                foreach($pcs as $pc) {
-                    $campaign->addPlayerCharacter($pc);
-                }
-                
-                $em->persist($campaign);
-                
-                $em->flush();
-                
-                return $this->forward('DkSystemBundle:Board:index');
-                
-            } else {
-
-                return $this->render('DkSystemBundle:Campaign:form.html.twig', ['form' => $form->createView()]);
-            
-            }
-            
-        }
-
+        return $this->processForm($form, $campaign);
     }
 
+    /**
+     * @param Form $form
+     * @param Campaign $campaign
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    private function processForm(Form $form, Campaign $campaign)
+    {
+        if($form->isValid()) {
 
+            /** @var EntityManager $em */
+            $em = $this->get('doctrine')->getManager();
+
+            //Retrieve already related PCs
+            /** @var ArrayCollection $pcs */
+            $pcs = $em->getRepository('DkSystemBundle:PlayerCharacter')->findByCampaign($campaign);
+
+            /** @var PlayerCharacter $pc */
+            foreach($pcs as $pc) {
+                $campaign->addPlayerCharacter($pc);
+            }
+
+            $em->persist($campaign);
+
+            $em->flush();
+
+            return $this->forward('DkSystemBundle:Board:index');
+
+        } else {
+            return $this->render('DkSystemBundle:Campaign:form.html.twig', ['form' => $form->createView()]);
+        }
+    }
 }
-
