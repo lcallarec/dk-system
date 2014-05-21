@@ -28,11 +28,11 @@ class CampaignController extends Controller
     public function manageAction(Request $request, $id)
     {
 
-        if(null !== $id) {
+        if (null !== $id) {
             /** @var Campaign $campaign */
             $campaign = $this->get('doctrine')->getRepository('DkSystemBundle:Campaign')->findOneById($id);
         
-            if(!$campaign) {
+            if (!$campaign) {
                 $this->createNotFoundException("Cette campagne n'existe pas");
             }
 
@@ -54,7 +54,7 @@ class CampaignController extends Controller
      */
     private function processForm(Form $form, Campaign $campaign)
     {
-        if($form->isValid()) {
+        if ($form->isValid()) {
 
             /** @var EntityManager $em */
             $em = $this->get('doctrine')->getManager();
@@ -64,7 +64,7 @@ class CampaignController extends Controller
             $pcs = $em->getRepository('DkSystemBundle:PlayerCharacter')->findByCampaign($campaign);
 
             /** @var PlayerCharacter $pc */
-            foreach($pcs as $pc) {
+            foreach ($pcs as $pc) {
                 $campaign->addPlayerCharacter($pc);
             }
 
