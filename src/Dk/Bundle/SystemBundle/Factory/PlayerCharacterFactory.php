@@ -1,9 +1,10 @@
 <?php
 namespace Dk\Bundle\SystemBundle\Factory;
 
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Dk\Bundle\SystemBundle\Entity\Player;
 use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Dk\Bundle\SystemBundle\PlayerCharacterEvents;
 
 /**
  * Create player character (via service container)
