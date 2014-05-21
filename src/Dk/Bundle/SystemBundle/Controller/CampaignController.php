@@ -75,7 +75,10 @@ class CampaignController extends Controller
             return $this->forward('DkSystemBundle:Board:index');
 
         } else {
-            return $this->render('DkSystemBundle:Campaign:form.html.twig', ['form' => $form->createView()]);
+            return $this->render('DkSystemBundle:Campaign:form.html.twig', [
+                'form'     => $form->createView(),
+                'campaign' => $campaign
+            ]);
         }
     }
 }

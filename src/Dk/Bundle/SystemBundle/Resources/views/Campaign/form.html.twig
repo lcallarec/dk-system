@@ -2,7 +2,7 @@
 
 {% block title %}
     {% if  form.vars.value.id %}
-        Campagne {{ form.vars.value.name }}
+        Campagne {{ form.vars.value.name }} <small>{{ campaign.ruleset }}</small>
     {% else %}
         Création d'une nouvelle campagne
     {% endif %}
@@ -11,6 +11,14 @@
 {% block board_content %}
 
     {{ form_start(form) }}
+
+    {% if form.ruleset is defined %}
+        <div>
+            {{ form_label(form.ruleset) }}
+            {{ form_widget(form.ruleset ) }}
+            {{ form_errors(form.ruleset) }}
+        </div>
+    {% endif %}
 
         <div>
             {{ form_label(form.name) }}
@@ -23,13 +31,7 @@
             {{ form_widget(form.playerCharacters) }}
             {{ form_errors(form.playerCharacters) }}            
         </div>
-    
-         <div>
-            {{ form_label(form.ruleset) }}
-            {{ form_widget(form.ruleset ) }}
-            {{ form_errors(form.ruleset) }}            
-        </div>
-        
+
     {{ form_end(form) }}
 
 {% endblock %}
