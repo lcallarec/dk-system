@@ -47,8 +47,6 @@ class CampaignType extends AbstractType
                     'class'     => 'DkSystemBundle:Ruleset',
                     'label' => 'Système de règles'
                 ]);
-            } else {
-                $form->add('ruleset', new RulesetPlainTextType());
             }
 
         });
