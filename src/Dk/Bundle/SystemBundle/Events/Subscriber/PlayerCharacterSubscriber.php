@@ -19,8 +19,8 @@ class PlayerCharacterSubscriber implements EventSubscriberInterface
     static public function getSubscribedEvents()
     {
         return [
-            PlayerCharacterEvents::PRE_PERSIST => [
-                ['setAssociationsOnCreation', 0]
+            PlayerCharacterEvents::POST_FACTORY_CREATION => [
+                ['setAssociationsOnPostFactoryCreation', 0]
             ]
         ];
     }
@@ -28,34 +28,27 @@ class PlayerCharacterSubscriber implements EventSubscriberInterface
     /**
      * @param PlayerCharacterEvent $event
      */
-    public function setAssociationsOnCreation(PlayerCharacterEvent $event)
+    public function setAssociationsOnPostFactoryCreation(PlayerCharacterEvent $event)
     {
         $pc = $event->getPlayerCharacter();
 
-        //With no characteristics...
-        if ($pc->getCharacteristics()->isEmpty()) {
+        $ruleChars = $pc->getCampaign()->getRuleset()->getCharacteristics();
 
-            $ruleChars = $pc->getCampaign()->getRuleset()->getCharacteristics();
+        foreach ($ruleChars as $rc) {
+            $char = new PlayerCharacterCharacteristic();
+            $char->setValue(0);
+            $char->setRulesetCharacteristic($rc);
 
-            foreach ($ruleChars as $rc) {
-                $char = new PlayerCharacterCharacteristic();
-                $char->setValue(0);
-                $char->setRulesetCharacteristic($rc);
-
-                $pc->addCharacteristic($char);
-            }
+            $pc->addCharacteristic($char);
         }
 
-        if ($pc->getSkills()->isEmpty()) {
+        $ruleSkills = $pc->getCampaign()->getRuleset()->getSkills();
+        foreach ($ruleSkills as $rs) {
+            $skill = new PlayerCharacterSkill();
+            $skill->setValue(0);
+            $skill->setRulesetSkill($rs);
 
-            $ruleSkills = $pc->getCampaign()->getRuleset()->getSkills();
-            foreach ($ruleSkills as $rs) {
-                $skill = new PlayerCharacterSkill();
-                $skill->setValue(0);
-                $skill->setRulesetSkill($rs);
-
-                $pc->addSkill($skill);
-            }
+            $pc->addSkill($skill);
         }
     }
 } 
