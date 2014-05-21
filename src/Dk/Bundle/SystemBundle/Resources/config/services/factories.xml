@@ -7,6 +7,7 @@
 
         <service id="dk.factory.pc" class="%dk_factory_pc_class%">
             <argument type="expression">service('security.context').getToken().getUser()</argument>
+            <argument type="service" id="event_dispatcher"/>
         </service>
 
         <service id="dk.factory.campaign" class="%dk_factory_campaign_class%">
