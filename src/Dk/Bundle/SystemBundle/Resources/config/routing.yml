@@ -32,24 +32,24 @@ manage_campaign:
 #ROLE_MASTER_RULESET
 manage_ruleset:
     path:   /ruleset/{id}
-    defaults:  { _controller: DkSystemBundle:Ruleset:manage }
+    defaults:  { _controller: DkSystemBundle:Ruleset\Ruleset:manage }
     requirements:
         id: \d+        
         
 manage_ruleset_skills:
     path:   /ruleset/skills/{id}
-    defaults:  { _controller: DkSystemBundle:Ruleset:manageSkills }
+    defaults:  { _controller: DkSystemBundle:Ruleset\Ruleset:manageSkills }
     requirements:
         id: \d+
 
 manage_ruleset_playable_races:
     path:   /ruleset/playable-races/{id}
-    defaults:  { _controller: DkSystemBundle:Ruleset:managePlayableRaces }
+    defaults:  { _controller: DkSystemBundle:Ruleset\Ruleset:managePlayableRaces }
     requirements:
         id: \d+           
         
 manage_ruleset_assets:
     path:   /ruleset/assets/{id}
-    defaults:  { _controller: DkSystemBundle:Ruleset:manageAssets }
+    defaults:  { _controller: DkSystemBundle:Ruleset\Ruleset:manageAssets }
     requirements:
         id: \d+          

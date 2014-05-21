@@ -1,6 +1,6 @@
 <?php
 
-namespace Dk\Bundle\SystemBundle\Controller;
+namespace Dk\Bundle\SystemBundle\Controller\Ruleset;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetType;
