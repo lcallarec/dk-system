@@ -5,20 +5,19 @@
     {% block board %}
 
         <div class="container">    
-            <div class="row">
-                <div id="board-menu">
-                    {% block board_menu %}
-                        {{ render(controller('DkSystemBundle:Board:menu')) }}
+            <div id="board-menu">
+                {% block board_menu %}
+                    {{ render(controller('DkSystemBundle:Board:menu')) }}
+                {% endblock %}
+            </div>
+            <div id="board-content" class="center-block">
+                <h2>
+                    {% block title %}
                     {% endblock %}
-                </div>
-                <div id="board-content" class="center-block">
-                    <h2>
-                        {% block title %}
-                        {% endblock %}
-                    </h2>
-                    {% block board_content %}
-                    {% endblock %}
-                </div>
+                </h2>
+                {% block board_content %}
+                    <div class="text-center"><img src="{{ asset('images/dk-logo.svg') }}" id="dk-logo"/></div>
+                {% endblock %}
             </div>
         </div>
     
