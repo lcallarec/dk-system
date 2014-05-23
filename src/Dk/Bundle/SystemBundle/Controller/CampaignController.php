@@ -31,9 +31,9 @@ class CampaignController extends Controller
         if (null !== $id) {
             /** @var Campaign $campaign */
             $campaign = $this->get('doctrine')->getRepository('DkSystemBundle:Campaign')->findOneById($id);
-        
-            if (!$campaign) {
-                $this->createNotFoundException("Cette campagne n'existe pas");
+
+            if (null === $campaign) {
+                throw $this->createNotFoundException("Cette campagne n'existe pas");
             }
 
         } else {
