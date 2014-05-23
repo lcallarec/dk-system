@@ -2,11 +2,10 @@
 
 namespace Dk\Bundle\SystemBundle\Controller;
 
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dk\Bundle\SystemBundle\Form\Type\PlayerCharacter\PlayerCharacterType;
-use Dk\Bundle\SystemBundle\Entity\PlayerCharacterCharacteristic;
-use Dk\Bundle\SystemBundle\Entity\PlayerCharacterSkill;
 
 class CharacterController extends Controller
 {
@@ -30,8 +29,6 @@ class CharacterController extends Controller
             $pc = $this->get('dk.factory.pc')->create();
         }
 
-        $pcManager = $this->get('dk.pc.manager');
-
         $form = $this->createForm(new PlayerCharacterType(), $pc);
 
         if ($form->has('assets')) {
@@ -40,44 +37,32 @@ class CharacterController extends Controller
             $assets = [];
         }
 
+        $form->handleRequest($request);
 
-        if($request->getMethod() === 'GET') {
- 
-            //If PC is related to a campaign... 
-            if($pc->getCampaign()) {
-                
-                $pcManager->save($pc);
-                $form->setData($pc);
-            }
-
-            return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', [
-                'form'   => $form->createView(),
-                'pc'     => $pc,
-                'assets' => $assets
-            ]);
-         
-        } else {
-    
-            $form->handleRequest($request);
-            
-            if($form->isValid()) {
-
-                $pcManager->save($pc);
-
-                return $this->redirect($this->generateUrl('board'));
-                
-            } else {
-
-                return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', [
-                    'form'   => $form->createView(),
-                    'pc'     => $pc,
-                    'assets' => $assets
-                ]);
-            
-            }
-            
-        }
+        return $this->processForm($form, $pc, $assets);
        
     }
 
+    /**
+     * @param Form $form
+     * @param $pc
+     * @param $assets
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function processForm(Form $form, $pc, $assets)
+    {
+        if($form->isValid()) {
+
+            $this->get('dk.pc.manager')->save($pc);
+
+            return $this->redirect($this->generateUrl('board'));
+        }
+
+        return $this->render('DkSystemBundle:PlayerCharacter:form.html.twig', [
+            'form'   => $form->createView(),
+            'pc'     => $pc,
+            'assets' => $assets
+        ]);
+
+    }
 }
