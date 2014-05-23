@@ -10,9 +10,10 @@
 
     <services>
 
-        <service id="dk.pc.manager" class="%dk.pc.manager.class%">
-            <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="service" id="event_dispatcher" />
+        <service id="gedmo.listener.tree" class="Gedmo\Tree\TreeListener">
+            <call method="setAnnotationReader">
+                <argument type="service" id="annotation_reader" /></call>
+            <tag name="doctrine.event_subscriber" connection="default"></tag>
         </service>
 
         <service id="dk.pc.pc_subscriber" class="%dk.pc.pc_subscriber.class%">
@@ -20,5 +21,4 @@
         </service>
 
     </services>
-
 </container>
