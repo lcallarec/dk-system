@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: laurent
- * Date: 21/05/14
- * Time: 21:13
- */
 
 namespace Dk\Bundle\SystemBundle\Manager;
 
@@ -20,7 +14,7 @@ use Dk\Bundle\SystemBundle\Events\PlayerCharacterEvent;
  *
  * @package Dk\Bundle\SystemBundle\Manager
  */
-class PlayerCharacterManager
+class PlayerCharacterManager implements ManagerInterface
 {
     /** @var EntityManager */
     private $em;
