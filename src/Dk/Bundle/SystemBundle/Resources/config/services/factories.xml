@@ -3,16 +3,21 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <parameters>
+        <parameter key="dk.security.user_container.class">Dk\Bundle\SystemBundle\User\SecurityUserContainer</parameter>
+    </parameters>
+
     <services>
 
-        <service id="dk.factory.pc" class="%dk_factory_pc_class%">
+        <service id="dk.security.user_container" class="%dk.security.user_container.class%" abstract="true">
             <argument type="expression">service('security.context').getToken().getUser()</argument>
+        </service>
+
+        <service id="dk.factory.pc" class="%dk_factory_pc_class%" parent="dk.security.user_container">
             <argument type="service" id="event_dispatcher"/>
         </service>
 
-        <service id="dk.factory.campaign" class="%dk_factory_campaign_class%">
-            <argument type="expression">service('security.context').getToken().getUser()</argument>
-        </service>
+        <service id="dk.factory.campaign" class="%dk_factory_campaign_class%" parent="dk.security.user_container" />
 
     </services>
 
