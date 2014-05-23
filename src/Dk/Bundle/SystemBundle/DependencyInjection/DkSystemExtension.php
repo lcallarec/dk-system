@@ -22,11 +22,9 @@ class DkSystemExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
-        $loader->load('factories.xml');
-        $loader->load('forms.xml');
-        $loader->load('doctrine.xml');
-        $loader->load('playercharacter.xml');
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.xml');
+
 
         $container->setParameter('dk_factory.pc_class', $config['dk_factory_pc_class']);
         $container->setParameter('dk_factory.campaign_class', $config['dk_factory_campaign_class']);

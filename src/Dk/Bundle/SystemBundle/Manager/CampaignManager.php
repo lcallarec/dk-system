@@ -2,19 +2,17 @@
 
 namespace Dk\Bundle\SystemBundle\Manager;
 
-use Dk\Bundle\SystemBundle\PlayerCharacterEvents;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
-use Dk\Bundle\SystemBundle\Events\PlayerCharacterEvent;
+use Dk\Bundle\SystemBundle\Entity\Campaign;
 
 /**
- * Class PlayerCharacterManager
+ * Class CampaignManager
  *
  * @package Dk\Bundle\SystemBundle\Manager
  */
-class PlayerCharacterManager implements ManagerInterface
+class CampaignManager implements ManagerInterface
 {
     /** @var EntityManager */
     private $em;
@@ -32,7 +30,7 @@ class PlayerCharacterManager implements ManagerInterface
     public function __construct(EntityManager $em, EventDispatcherInterface $eventDispatcher)
     {
         $this->em              = $em;
-        $this->repository      = $em->getRepository('DkSystemBundle:PlayerCharacter');
+        $this->repository      = $em->getRepository('DkSystemBundle:Campaign');
         $this->eventDispatcher = $eventDispatcher;
     }
 
@@ -45,13 +43,11 @@ class PlayerCharacterManager implements ManagerInterface
     }
 
     /**
-     * @param PlayerCharacter $pc
+     * @param Campaign $campaign
      */
-    public function save(PlayerCharacter $pc)
+    public function save(Campaign $campaign)
     {
-        $this->eventDispatcher->dispatch(PlayerCharacterEvents::PRE_PERSIST, new PlayerCharacterEvent($pc));
-
-        $this->em->persist($pc);
+        $this->em->persist($campaign);
         $this->em->flush();
     }
 } 

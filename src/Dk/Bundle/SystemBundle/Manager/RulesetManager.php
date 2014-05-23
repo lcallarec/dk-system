@@ -2,19 +2,17 @@
 
 namespace Dk\Bundle\SystemBundle\Manager;
 
-use Dk\Bundle\SystemBundle\PlayerCharacterEvents;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
-use Dk\Bundle\SystemBundle\Events\PlayerCharacterEvent;
+use Dk\Bundle\SystemBundle\Entity\Rulesetr;
 
 /**
- * Class PlayerCharacterManager
+ * Class RulesetManager
  *
  * @package Dk\Bundle\SystemBundle\Manager
  */
-class PlayerCharacterManager implements ManagerInterface
+class RulesetManager implements ManagerInterface
 {
     /** @var EntityManager */
     private $em;
@@ -32,7 +30,7 @@ class PlayerCharacterManager implements ManagerInterface
     public function __construct(EntityManager $em, EventDispatcherInterface $eventDispatcher)
     {
         $this->em              = $em;
-        $this->repository      = $em->getRepository('DkSystemBundle:PlayerCharacter');
+        $this->repository      = $em->getRepository('DkSystemBundle:Ruleset');
         $this->eventDispatcher = $eventDispatcher;
     }
 
@@ -45,13 +43,11 @@ class PlayerCharacterManager implements ManagerInterface
     }
 
     /**
-     * @param PlayerCharacter $pc
+     * @param RulesetManager $ruleset
      */
-    public function save(PlayerCharacter $pc)
+    public function save(RulesetManager $ruleset)
     {
-        $this->eventDispatcher->dispatch(PlayerCharacterEvents::PRE_PERSIST, new PlayerCharacterEvent($pc));
-
-        $this->em->persist($pc);
+        $this->em->persist($ruleset);
         $this->em->flush();
     }
 } 

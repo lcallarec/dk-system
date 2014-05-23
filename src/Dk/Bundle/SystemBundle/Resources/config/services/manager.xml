@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="dk.player.manager.class">Dk\Bundle\SystemBundle\Manager\PlayerManager</parameter>
+        <parameter key="dk.pc.manager.class">Dk\Bundle\SystemBundle\Manager\PlayerCharacterManager</parameter>
+        <parameter key="dk.campaign.manager.class">Dk\Bundle\SystemBundle\Manager\CampaignManager</parameter>
+        <parameter key="dk.ruleset.manager.class">Dk\Bundle\SystemBundle\Manager\RulesetManager</parameter>
+    </parameters>
+
+    <services>
+
+        <service id="dk.pc.manager" class="%dk.pc.manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
+        <service id="dk.campaign.manager" class="%dk.campaign.manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
+        <service id="dk.player.manager" class="%dk.player.manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
+        <service id="dk.ruleset.manager" class="%dk.ruleset.manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
+
+    </services>
+</container>
