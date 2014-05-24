@@ -26,3 +26,16 @@
     font-size: 12px;
 }
 
+/** Button submit **/
+.btn-submit {
+    background-color: #428BCA;
+    border-color: #357EBD;
+    color: #FFFFFF;
+}
+
+.btn-submit:hover, .btn-submit:focus, .btn-submit:active, .btn-submit.active, .open .dropdown-toggle.btn-submit {
+    background-color: #3276B1;
+    border-color: #285E8E;
+    color: #FFFFFF;
+}
+
