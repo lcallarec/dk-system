@@ -8,29 +8,29 @@
         
             <div class="form-group">
                 {{ form_label(register_form.nickname) }}
-                {{ form_widget(register_form.nickname, {attr: {class: "form-control" }}) }}
+                {{ form_widget(register_form.nickname) }}
                 {{ form_errors(register_form.nickname) }}
             </div>
             
             <div class="form-group">
                 {{ form_label(register_form.email) }}
-                {{ form_widget(register_form.email, {attr: {class: "form-control" }}) }}
+                {{ form_widget(register_form.email) }}
                 {{ form_errors(register_form.email) }}       
             </div>
 
             <div class="form-group">
                 {{ form_label(register_form.password) }}
-                {{ form_widget(register_form.password, {attr: {class: "form-control" }}) }}
+                {{ form_widget(register_form.password) }}
                 {{ form_errors(register_form.password) }}   
             </div>
             
             <div class="form-group">
                 {{ form_label(register_form.roles) }}
-                {{ form_widget(register_form.roles, {attr: {class: "form-control" }}) }}
+                {{ form_widget(register_form.roles) }}
                 {{ form_errors(register_form.roles) }}                   
             </div>
              
-            {{form_widget(register_form.submit, {attr: {class: 'btn btn-primary'}}) }}
+            {{form_widget(register_form.submit) }}
             
         {{ form_end(register_form) }}
         
