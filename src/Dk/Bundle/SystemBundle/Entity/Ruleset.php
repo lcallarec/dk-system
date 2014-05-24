@@ -109,6 +109,7 @@ class Ruleset
     public function __construct()
     {
         $this->characteristics = new ArrayCollection();
+        $this->assetGroups     = new ArrayCollection();
     }
     
     /**
@@ -293,7 +294,17 @@ class Ruleset
     {
         return $this->assets;
     }
-    
+
+   /**
+    * Get asset groups of this ruleset
+    *
+    * @return ArrayCollection
+    */
+   public function getAssetGroups()
+   {
+        return $this->assetGroups;
+    }
+
     /**
      * Add a skill from this ruleset
      * 
