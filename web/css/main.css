@@ -80,6 +80,13 @@ body {
     width: 100%;
 }
 
+.sheet-block {
+    border: 1px #ccc solid;
+    border-radius: 3px;
+    box-shadow: 0px 0px 4px 0px rgba(190, 190, 190, 0.90);
+    padding-left: 15px;
+}
+
 .skill-colmun {
     width: 280px;
 }
