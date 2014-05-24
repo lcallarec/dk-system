@@ -5,6 +5,8 @@ namespace Dk\Bundle\SystemBundle\Events\Subscriber;
 use Dk\Bundle\SystemBundle\Events\PlayerCharacterEvent;
 use Dk\Bundle\SystemBundle\PlayerCharacterEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Dk\Bundle\SystemBundle\Entity\PlayerCharacterCharacteristic;
+use Dk\Bundle\SystemBundle\Entity\PlayerCharacterSkill;
 
 /**
  * Class PlayerCharacterSubscriber
@@ -19,8 +21,8 @@ class PlayerCharacterSubscriber implements EventSubscriberInterface
     static public function getSubscribedEvents()
     {
         return [
-            PlayerCharacterEvents::PRE_PERSIST => [
-                ['setAssociationsOnPostFactoryCreation', 0]
+            PlayerCharacterEvents::RETRIEVED => [
+                ['setMissingData', -1024]
             ]
         ];
     }
@@ -28,13 +30,13 @@ class PlayerCharacterSubscriber implements EventSubscriberInterface
     /**
      * @param PlayerCharacterEvent $event
      */
-    public function setAssociationsOnPostFactoryCreation(PlayerCharacterEvent $event)
+    public function setMissingData(PlayerCharacterEvent $event)
     {
         $pc = $event->getPlayerCharacter();
 
-        if ($pc->getCampaign()) {
+        if ($pc->getCampaign() && $pc->getCharacteristics()->isEmpty()) {
 
-            if (!$ruleChars = $pc->getCampaign()->getRuleset()->getCharacteristics()) {
+            if ($ruleChars = $pc->getCampaign()->getRuleset()->getCharacteristics()) {
                 foreach ($ruleChars as $rc) {
                     $char = new PlayerCharacterCharacteristic();
                     $char->setValue(0);
@@ -52,7 +54,6 @@ class PlayerCharacterSubscriber implements EventSubscriberInterface
                     $pc->addSkill($skill);
                 }
             }
-
         }
     }
 } 
