@@ -26,3 +26,26 @@
     font-size: 12px;
 }
 
+/** Button submit **/
+.btn-submit {
+    background-color: #428BCA;
+    border-color: #357EBD;
+    color: #FFFFFF;
+}
+
+.btn-submit:hover, .btn-submit:focus, .btn-submit:active, .btn-submit.active, .open .dropdown-toggle.btn-submit {
+    background-color: #3276B1;
+    color: #FFFFFF;
+}
+
+/** Checkbox list **/
+.checkbox-list {
+    list-style-type: none;
+    padding-left: 3px;
+}
+
+    .checkox-list .checkbox-inline {
+        padding-left: 5px;
+        padding-top: 2px;
+    }
+

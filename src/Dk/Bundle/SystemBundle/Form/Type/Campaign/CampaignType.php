@@ -34,8 +34,7 @@ class CampaignType extends AbstractType
                                 ->orderBy('pc.firstname', 'ASC');
                     },
                 ])
-            ->add('submit', 'submit')
-        ;
+           ;
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
 

@@ -7,7 +7,15 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Dk\Bundle\SystemBundle\Form\Type\Player\RegisterType;
 use Dk\Bundle\SystemBundle\Form\Type\Player\LoginType;
 use Dk\Bundle\SystemBundle\Entity\Player;
+use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class HomeController
+ *
+ * @package Dk\Bundle\SystemBundle\Controller
+ *
+ * @author Laurent Callarec <l.callarec@gmail.com>
+ */
 class HomeController extends Controller
 {
     /**

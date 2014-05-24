@@ -40,8 +40,6 @@ final class PlayerCharacterFactory
     {
         $pc = new PlayerCharacter($this->player);
 
-        $this->eventDispatcher->dispatch(PlayerCharacterEvents::PRE_PERSIST, new PlayerCharacterEvent($pc));
-
         return $pc;
     }
 }

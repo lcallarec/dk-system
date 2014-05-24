@@ -80,6 +80,30 @@ body {
     width: 100%;
 }
 
+.sheet-block {
+    border: 1px #ccc solid;
+    border-radius: 3px;
+    box-shadow: 0px 0px 4px 0px rgba(190, 190, 190, 0.90);
+}
+    .sheet-block-header {
+        font: 2em;
+        font-weight: bold;
+        height: 2em;
+        padding: 5px 0;
+        border-bottom: 1px #ccc solid;
+        text-indent: 15px;
+        background: #f5f5f5;
+    }
+
+    .sheet-block-body {
+        padding-left: 15px;
+        padding-top: 15px;
+    }
+
+    .sheet-block dl {
+        margin-bottom: 0;
+    }
+
 .skill-colmun {
     width: 280px;
 }

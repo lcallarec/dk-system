@@ -41,6 +41,7 @@ class CampaignController extends Controller
         }
 
         $form = $this->createForm(new CampaignType(), $campaign);
+        $form->add('submit', 'submit');
 
         $form->handleRequest($request);
 

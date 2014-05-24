@@ -6,7 +6,15 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dk\Bundle\SystemBundle\Form\Type\PlayerCharacter\PlayerCharacterType;
-
+use Dk\Bundle\SystemBundle\PlayerCharacterEvents;
+use Dk\Bundle\SystemBundle\Events\PlayerCharacterEvent;
+/**
+ * Class CharacterController
+ *
+ * @package Dk\Bundle\SystemBundle\Controller
+ *
+ * @author Laurent Callarec <l.callarec@gmail.com>
+ */
 class CharacterController extends Controller
 {
 
@@ -19,7 +27,7 @@ class CharacterController extends Controller
     public function manageAction(Request $request,  $id)
     {
         if(null !== $id) {
-            $pc = $this->get('doctrine')->getRepository('DkSystemBundle:PlayerCharacter')->findOneWithRelationships($this->getUser(), $id);
+            $pc = $this->get('dk.pc.manager')->getWithRelationships($id);
 
             if(null === $pc) {
                 throw $this->createNotFoundException("Ce personnage n'existe pas ou n'existe plus");

@@ -1,25 +1,31 @@
-<div class="form-group">
-    {{ form_label(form.firstname, null, {label_attr: {class: "control-label col-sm-3"}}) }}
-    {{ form_errors(form.firstname) }}
-    <div class="col-sm-7">
-        {{ form_widget(form.firstname, {attr: {class: "form-control" }}) }}
-    </div>
+<div class="sheet-block-header">
+    Informations
 </div>
 
-<div class="form-group">
-    {{ form_label(form.lastname, null, {label_attr: {class: "control-label col-sm-3"}}) }}
-    {{ form_errors(form.lastname) }}
-    <div class="col-sm-7">
-        {{ form_widget(form.lastname, {attr: {class: "form-control" }}) }}
-    </div>
-</div>
-
-{% if form.race is defined %}
+<div class="sheet-block-body">
     <div class="form-group">
-        {{ form_label(form.race, null, {label_attr: {class: "control-label col-sm-3"}}) }}
-        {{ form_errors(form.race) }}
+        {{ form_label(form.firstname, null, {label_attr: {class: "control-label col-sm-3"}}) }}
+        {{ form_errors(form.firstname) }}
         <div class="col-sm-7">
-            {{ form_widget(form.race, {attr: {class: "form-control" }}) }}
+            {{ form_widget(form.firstname, {attr: {class: "form-control" }}) }}
         </div>
     </div>
-{% endif %}
+
+    <div class="form-group">
+        {{ form_label(form.lastname, null, {label_attr: {class: "control-label col-sm-3"}}) }}
+        {{ form_errors(form.lastname) }}
+        <div class="col-sm-7">
+            {{ form_widget(form.lastname, {attr: {class: "form-control" }}) }}
+        </div>
+    </div>
+
+    {% if form.race is defined %}
+        <div class="form-group">
+            {{ form_label(form.race, null, {label_attr: {class: "control-label col-sm-3"}}) }}
+            {{ form_errors(form.race) }}
+            <div class="col-sm-7">
+                {{ form_widget(form.race, {attr: {class: "form-control" }}) }}
+            </div>
+        </div>
+    {% endif %}
+</div>
