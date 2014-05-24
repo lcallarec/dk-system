@@ -12,7 +12,7 @@
 
     <services>
 
-        <service id="dk.pc.manager" class="%dk.pc.manager.class%">
+        <service id="dk.pc.manager" class="%dk.pc.manager.class%" parent="dk.security.user_container">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="event_dispatcher" />
         </service>
