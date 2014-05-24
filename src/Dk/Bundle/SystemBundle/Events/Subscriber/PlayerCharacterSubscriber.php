@@ -21,7 +21,7 @@ class PlayerCharacterSubscriber implements EventSubscriberInterface
     static public function getSubscribedEvents()
     {
         return [
-            PlayerCharacterEvents::RETRIEVED => [
+            PlayerCharacterEvents::POST_RETRIEVED => [
                 ['setMissingData', -1024]
             ]
         ];

@@ -17,9 +17,9 @@ final class PlayerCharacterEvents
     const PRE_PERSIST = 'dk.pc.pre_persist.event';
 
     /**
-     * This event is triggered everytime a PlayerCharacter entity is unitary retrieved from database
+     * This event is triggered after a PlayerCharacter entity is unitary retrieved from database (from manager)
      *
      * @const string
      */
-    const RETRIEVED = 'dk.pc.retrievedt';
+    const POST_RETRIEVED = 'dk.pc.post_retrieved';
 } 
