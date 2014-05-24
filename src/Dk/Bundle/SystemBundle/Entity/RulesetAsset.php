@@ -204,12 +204,23 @@ class RulesetAsset
     {
         return $this->preRequisite;
     }
-    
+
     /**
-     * Set the RulesetCharacteristic ruleset
+     * Get the Ruleset
+     *
+     * @return Ruleset $ruleset
+     */
+    public function getRuleset()
+    {
+        return $this->ruleset;
+    }
+
+    /**
+     * Set the RulesetAsset ruleset
      * 
      * @param Ruleset $ruleset
-     * @return RulesetCharacteristic
+     *
+     * @return RulesetAsset
      */
     public function setRuleset(Ruleset $ruleset)
     {
