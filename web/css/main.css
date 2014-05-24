@@ -85,7 +85,11 @@ body {
     border-radius: 3px;
     box-shadow: 0px 0px 4px 0px rgba(190, 190, 190, 0.90);
     padding-left: 15px;
+    padding-top: 15px;
 }
+    .sheet-block dl {
+        margin-bottom: 0;
+    }
 
 .skill-colmun {
     width: 280px;
