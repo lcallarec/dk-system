@@ -48,7 +48,11 @@ class PlayerCharacterManager implements ManagerInterface
      */
     public function get($id)
     {
-        return $this->getRepository()->findOneById($id);
+        $pc = $this->getRepository()->findOneById($id);
+
+        $this->eventDispatcher->dispatch(PlayerCharacterEvents::POST_RETRIEVED, new PlayerCharacterEvent($pc));
+
+        return $pc;
     }
 
     /**
@@ -57,7 +61,11 @@ class PlayerCharacterManager implements ManagerInterface
      */
     public function getWithRelationships($id)
     {
-        return $this->getRepository()->findOneWithRelationships($this->player, $id);
+        $pc = $this->getRepository()->findOneWithRelationships($this->player, $id);
+
+        $this->eventDispatcher->dispatch(PlayerCharacterEvents::POST_RETRIEVED, new PlayerCharacterEvent($pc));
+
+        return $pc;
     }
 
 
