@@ -10,26 +10,40 @@
 
 {% block board_content %}
 
-    {{ form_start(form) }}
+    {{ form_start(form, {attr: {role: 'form', class: 'form-horizontal'}}) }}
 
-    {% if form.ruleset is defined %}
-        <div>
-            {{ form_label(form.ruleset) }}
-            {{ form_widget(form.ruleset ) }}
-            {{ form_errors(form.ruleset) }}
-        </div>
-    {% endif %}
+        <div class="form-group row">
 
-        <div>
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name, {help: "rr"}) }}
-            {{ form_errors(form.name) }}            
+        {% if form.ruleset is defined %}
+            <div class="col-md-4">
+                {{ form_label(form.ruleset, null, {label_attr: {class: "col-sm-5 control-label" }}) }}
+                <div class="col-sm-7">
+                    {{ form_widget(form.ruleset ) }}
+                    {{ form_errors(form.ruleset) }}
+                </div>
+            </div>
+        {% endif %}
+
+            <div class="col-md-4">
+                {{ form_label(form.name, null, {label_attr: {class: "col-sm-5 control-label" }}) }}
+                <div class="col-sm-7">
+                    {{ form_widget(form.name) }}
+                    {{ form_errors(form.name) }}
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                {{ form_widget(form.submit) }}
+            </div>
+
         </div>
-        
-        <div>
-            {{ form_label(form.playerCharacters) }}
-            {{ form_widget(form.playerCharacters) }}
-            {{ form_errors(form.playerCharacters) }}            
+
+        <div class="form-group col-md-4">
+            {{ form_label(form.playerCharacters, null, {label_attr: {class: "col-sm-5 control-label" }}) }}
+            <div class="col-sm-7">
+                {{ form_widget(form.playerCharacters) }}
+                {{ form_errors(form.playerCharacters) }}
+            </div>
         </div>
 
     {{ form_end(form) }}
