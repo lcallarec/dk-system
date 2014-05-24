@@ -1,28 +1,55 @@
-{% set group = null %}
-{% for child in form.assets %}
-    {% set index = child.vars.value %}
-    {% if assets[index].group.name != group %}
-        {% if loop.index0 != 0 %}
+<div class="sheet-block-header">
+    Atouts
+</div>
+
+<ul class="nav nav-tabs">
+    {% for group in pc.campaign.ruleset.assetGroups if group.parent is null %}
+        <li class="{% if loop.first %}active{% endif %}">
+            <a href="#asset-group-{{ group.id }}" data-toggle="tab">{{ group.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<div class="sheet-block-body tab-content">
+    {% set group = null %}
+    {% set parent_group = null %}
+    {% for child in form.assets %}
+        {% set index = child.vars.value %}
+
+
+        {% if assets[index].group.name != group %}
+            {% if loop.index0 != 0 %}
+                </tbody>
+                </table>
+            {% endif %}
+
+            {% if assets[index].group.parent.id != parent_group %}
+            {% if not loop.first%}
+        </div>
+        {% endif %}
+        <div class="tab-pane {% if loop.first %}active{% endif %}" id="asset-group-{{ assets[index].group.parent.id}}">
+            {% endif %}
+
+            <h4>{{ assets[index].group.parent.name }} / {{ assets[index].group.name }}</h4>
+            <table class="table table-striped table-condensed center-block">
+            <thead>
+            <tr>
+                <th>Atouts</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+        {% endif %}
+        <tr>
+            <td width="200px;">{{ form_widget(child) }}</td>
+            <td>{{ assets[index].description }}</td>
+        </tr>
+        {% set group = assets[index].group.name %}
+        {% set parent_group = assets[index].group.parent.id %}
+        {% if loop.last %}
             </tbody>
             </table>
+            </div>
         {% endif %}
-        <h4>{{ assets[index].group.parent.name }} / {{ assets[index].group.name }}</h4>
-        <table class="table table-striped table-condensed center-block" style="width: 750px;">
-        <thead>
-        <tr>
-            <th>Atouts</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-    {% endif %}
-    <tr>
-        <td width="200px;">{{ form_widget(child) }}</td>
-        <td>{{ assets[index].description }}</td>
-    </tr>
-    {% set group = assets[index].group.name %}
-    {% if loop.last %}
-        </tbody>
-        </table>
-    {% endif %}
-{% endfor %}
+    {% endfor %}
+</div>

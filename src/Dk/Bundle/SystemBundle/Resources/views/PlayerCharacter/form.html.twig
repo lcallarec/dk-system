@@ -24,37 +24,47 @@
                 <p>Ce personnage n'est pas intégré à une campagne existante. Il est impossible de définir plus d'informations le concernant.</p>
             </div>
         {% endif %}
-        
-        <div class="row">
-            
-            <div class="col-sm-5">
-               {{ include('DkSystemBundle:PlayerCharacter:form/blocks/information.html.twig') }}
+
+
+        <div class="form-group">
+            <div class="col-sm-4">
+               <div class="sheet-block">
+                    {{ include('DkSystemBundle:PlayerCharacter:form/blocks/information.html.twig') }}
+               </div>
             </div>
 
-            <div class="col-sm-5">
-                {{ include('DkSystemBundle:PlayerCharacter:form/blocks/chars.html.twig') }}
+            <div class="col-sm-4">
+                <div class="sheet-block">
+                    {{ include('DkSystemBundle:PlayerCharacter:form/blocks/chars.html.twig') }}
+                </div>
             </div>
         </div>
 
         {% if pc.campaign is not null %}
-            <div class="row">
-                {{ include('DkSystemBundle:PlayerCharacter:form/blocks/assets.html.twig') }}
-            </div>
-
-            <div class="row">
-                {{ include('DkSystemBundle:PlayerCharacter:form/blocks/skills.html.twig') }}
-            </div>
-
-        {% endif %}
-
-        <div class="row">
             <div class="form-group">
-                <div class="col-sm-offset-1 col-sm-12">
-                    {{ form_widget(form.submit, {attr: {class: 'btn btn-success'}}) }}
+                <div class="col-md-8">
+                    <div class="sheet-block">
+                        {{ include('DkSystemBundle:PlayerCharacter:form/blocks/assets.html.twig') }}
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="sheet-block">
+                        {{ include('DkSystemBundle:PlayerCharacter:form/blocks/skills.html.twig') }}
+                    </div>
                 </div>
             </div>
+        {% endif %}
+
+        <div class="form-group">
+               <div class="col-lg-12">
+                   <div class="sheet-block">
+                        {{ form_widget(form.submit, {attr: {class: 'btn btn-success'}}) }}
+                    </div>
+               </div>
+
         </div>
-            
+
     {{ form_end(form) }}
 
     <script type="text/javascript">

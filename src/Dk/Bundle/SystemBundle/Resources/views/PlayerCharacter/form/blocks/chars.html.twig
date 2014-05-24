@@ -1,7 +1,13 @@
-<div class="form-group">
-    <dl class="dl-horizontal chars-vertical">
-        {% for char in form.characteristics %}
-            {{ form_widget(char, {attr: {size: 2}}) }}
-        {% endfor %}
-    </dl>
+<div class="sheet-block-header">
+    Caractéristiques
+</div>
+
+<div class="sheet-block-body">
+    <div class="form-group">
+        <dl class="dl-horizontal chars-vertical">
+            {% for char in form.characteristics %}
+                {{ form_widget(char, {attr: {size: 2}}) }}
+            {% endfor %}
+        </dl>
+    </div>
 </div>

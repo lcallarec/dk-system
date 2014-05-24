@@ -1,5 +1,9 @@
-<div class="form-group">
-    <div class="col-sm-offset-1 col-sm-12">
+<div class="sheet-block-header">
+    Compétences
+</div>
+
+<div class="sheet-block-body">
+
         {% set group = null %}
         {% for skill in form.skills %}
             {% if skill.vars.value.rulesetskill.group.name != group %}
@@ -7,7 +11,7 @@
                         </table>
                     </div>
                 {% endif %}
-                <div class="well pull-left skill-colmun">
+                <div class="well  skill-colmun">
                     <h4>{{ skill.vars.value.rulesetskill.group.name }}</h4>
                     <table>
             {% endif %}
@@ -21,4 +25,5 @@
                 </div>
             {% endif %}
         {% endfor %}
+
 </div>
