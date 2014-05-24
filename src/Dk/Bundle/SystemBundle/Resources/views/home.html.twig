@@ -3,7 +3,24 @@
 {% block body %}
 
     <h1 class="page-header text-center">Bienvenue au Dk²</h1>
-    
+
+    {% embed 'DkSystemBundle:Components:modal.html.twig'  with {id: 'login-modal'} %}
+        {% block title %}
+        {% endblock %}
+
+        {% block body %}gfgf
+        {% endblock %}
+
+        {% block fotter %}
+        {% endblock %}
+    {% endembed %}
+
+    <!--
+    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#login-modal">
+        Launch demo modal
+    </button>
+    -->
+
     <div id="login-form" class="row center-block">
         <div class="col-sm-6">{% include 'DkSystemBundle:Security:register.html.twig' with {error: error, last_username: last_username }%}</div>
         <div id="login-divider-vertical" class="col-sm-2"></div>
