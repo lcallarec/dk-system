@@ -1,0 +1,37 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Dk\Bundle\SystemBundle\Entity\RulesetAssetGroup" table="RulesetAssetGroup" repository-class="Gedmo\Tree\Entity\Repository\MaterializedPathRepository">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="name" column="name" type="string" length="128" />
+        <field name="path" column="path" type="string" length="64" nullable="true" />
+        <field name="level" column="level" type="smallint" nullable="true" />
+
+
+        <many-to-one target-entity="RulesetAssetGroup" field="parent" inversed-by="children">
+            <cascade><cascade-all/></cascade>
+            <join-column on-delete="SET NULL"></join-column>
+        </many-to-one>
+
+        <one-to-many target-entity="RulesetAssetGroup" field="children" mapped-by="parent">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+
+        <many-to-one target-entity="Ruleset" field="ruleset" inversed-by="assetGroups">
+            <join-column nullable="false" on-delete="CASCADE"></join-column>
+        </many-to-one>
+
+        <one-to-many target-entity="RulesetAsset" field="assets" mapped-by="group">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+
+
+    </entity>
+
+</doctrine-mapping>

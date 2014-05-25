@@ -9,31 +9,23 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * RulesetAssetGroup
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\MaterializedPathRepository")
  * @Gedmo\Tree(type="materializedPath")
  */
 class RulesetAssetGroup
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      * @Gedmo\TreePathSource
      */
     private $id;
 
     /**
      * @Gedmo\TreePath(separator=".", startsWithSeparator=false, endsWithSeparator=false)
-     * @ORM\Column(name="path", type="string", length=255, nullable=true)
      */
     private $path;
 
     /**
      * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="RulesetAssetGroup", inversedBy="children")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      * })
@@ -42,12 +34,10 @@ class RulesetAssetGroup
 
     /**
      * @Gedmo\TreeLevel
-     * @ORM\Column(name="lvl", type="integer", nullable=true)
      */
     private $level;
 
     /**
-     * @ORM\OneToMany(targetEntity="RulesetAssetGroup", mappedBy="parent")
      */
     private $children;
 
@@ -55,22 +45,17 @@ class RulesetAssetGroup
      *
      * @var Ruleset
      *
-     * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="assetGroups")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $ruleset;
 
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="RulesetAsset", mappedBy="group")
      */
     private $assets;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=128)
      */
     private $name;
 
