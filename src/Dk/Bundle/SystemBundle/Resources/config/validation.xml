@@ -1,0 +1,49 @@
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Dk\Bundle\SystemBundle\Entity\Player">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">email</option>
+            <option name="message">Cet email est déjà associé à un utilisateur</option>
+        </constraint>
+        <property name="nickname">
+            <constraint name="NotBlank">
+                <option name="message">Le nickname ne doit pas être vide</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">50</option>
+                <option name="minMessage">Le nickname doit faire au moins {{ limit }} caractères</option>
+                <option name="maxMessage">Le nickname ne peut pas être plus long que {{ limit }} caractères</option>
+            </constraint>
+        </property>
+        <property name="roles">
+            <constraint name="NotBlank">
+                <option name="message">Le type de compte doit être spécifié</option>
+            </constraint>
+        </property>
+        <property name="email">
+            <constraint name="NotBlank">
+                <option name="message">L'email doit être renseigné</option>
+            </constraint>
+            <constraint name="Email">
+                <option name="message">L'email est invalide</option>
+                <option name="checkMX">true</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="max">255</option>
+                <option name="maxMessage">L'email ne doit pas dépasser {{ limit }} caractères</option>
+            </constraint>
+        </property>
+        <property name="password">
+            <constraint name="NotBlank">
+                <option name="message">Le mot de passe est obligatoire</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">4</option>
+                <option name="minMessage">Le mot de passe doit être composé d'au moins {{ limit }} caractères</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>
