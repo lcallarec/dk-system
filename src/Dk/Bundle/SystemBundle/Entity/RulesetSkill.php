@@ -25,49 +25,39 @@ class RulesetSkill
     /**
      *
      * @var Ruleset
-     * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="skills")
-     * @ORM\JoinColumn(nullable=false) 
      */
     private $ruleset;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=96, nullable=false)
      * @Assert\NotBlank(message="Le nom de la compétence ne doit pas être vide")
      */
     private $name;
         
     /**
+     * @var string
+     *
+     * @Assert\NotBlank(message="La description ne doit pas être vide")
+     */
+    private $description;
+
+    /**
      * 
      * @var RulesetCharacteristic
-     * @ORM\ManyToOne(targetEntity="RulesetCharacteristic")
-     * @ORM\JoinColumn(nullable=false) 
      */
     private $char1;
 
     /**
      * 
      * @var RulesetCharacteristic
-     * @ORM\ManyToOne(targetEntity="RulesetCharacteristic")
-     * @ORM\JoinColumn(nullable=false) 
      */
     private $char2;
     
     /**
      * @var boolean
-     *
-     * @ORM\Column(name="overload_malus", type="boolean", nullable=false)
      */
     private $overloadMalus;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text")
-     * @Assert\NotBlank(message="La description ne doit pas être vide")
-     */
-    private $description;
 
     /**
      * @var RulesetSkillGroup
