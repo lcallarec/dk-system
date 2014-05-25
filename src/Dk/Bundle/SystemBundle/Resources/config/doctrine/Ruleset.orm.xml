@@ -1,0 +1,45 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Dk\Bundle\SystemBundle\Entity\Ruleset" table="Ruleset" repository-class="Dk\Bundle\SystemBundle\Repository\RulesetRepository">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="name" column="name" type="string" length="255" />
+        <field name="reference" column="reference" type="string" length="32" />
+
+        <many-to-one target-entity="Dk\Bundle\SystemBundle\Entity\Player" field="owner">
+            <join-column nullable="false" on-delete="CASCADE"/>
+        </many-to-one>
+
+        <one-to-many target-entity="RulesetCharacteristic" mapped-by="ruleset" field="characteristics">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+
+        <one-to-many target-entity="RulesetPlayableRace" mapped-by="ruleset" field="playableRaces">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+
+        <one-to-many target-entity="RulesetSkill" mapped-by="ruleset" field="skills">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+
+        <one-to-many target-entity="RulesetSkillGroup" mapped-by="ruleset" field="skillGroups">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+
+        <one-to-many target-entity="RulesetAsset" mapped-by="ruleset" field="assets">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+
+        <one-to-many target-entity="RulesetAssetGroup" mapped-by="ruleset" field="assetGroups">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+
+    </entity>
+
+</doctrine-mapping>

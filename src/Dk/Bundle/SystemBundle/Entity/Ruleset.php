@@ -16,25 +16,18 @@ class Ruleset
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * The player owning this ruleset
      * @var Player 
-     * @ORM\ManyToOne(targetEntity="Player")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $owner;    
     
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank(message="Le nom du système de règles ne peut être vide")
      * @Assert\Length(
      *      min = "2",
@@ -48,7 +41,6 @@ class Ruleset
     /**
      * @var string
      *
-     * @ORM\Column(name="reference", type="string", length=16)
      */
     private $reference;
 
@@ -64,7 +56,6 @@ class Ruleset
      * 
      * @var ArrayCollection
      * 
-     * @ORM\OneToMany(targetEntity="RulesetPlayableRace", mappedBy="ruleset")
      */
     private $playableRaces;
     
@@ -83,7 +74,6 @@ class Ruleset
      *
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="RulesetSkillGroup", mappedBy="ruleset")
      * @Assert\Valid()
      */
     private $skillGroups;
@@ -101,8 +91,6 @@ class Ruleset
      * Assets groups related to this ruleset
      *
      * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="RulesetAssetGroup", mappedBy="ruleset")
      */
     private $assetGroups;
 
