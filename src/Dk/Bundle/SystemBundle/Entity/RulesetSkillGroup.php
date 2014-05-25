@@ -8,8 +8,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * RulesetAssetGroup
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\MaterializedPathRepository")
  * @Gedmo\Tree(type="materializedPath")
  */
 class RulesetSkillGroup
@@ -17,27 +15,21 @@ class RulesetSkillGroup
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      * @Gedmo\TreePathSource
      */
     private $id;
 
     /**
      * @Gedmo\TreePath(separator=".", startsWithSeparator=false, endsWithSeparator=false)
-     * @ORM\Column(name="path", type="string", length=255, nullable=true)
      */
     private $path;
 
     /**
-     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="RulesetSkillGroup", inversedBy="children")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      * })
@@ -46,20 +38,16 @@ class RulesetSkillGroup
 
     /**
      * @Gedmo\TreeLevel
-     * @ORM\Column(name="level", type="integer", nullable=true)
      */
     private $level;
 
     /**
-     * @ORM\OneToMany(targetEntity="RulesetSkillGroup", mappedBy="parent")
      */
     private $children;
 
     /**
      *
      * @var Ruleset
-     * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="skillGroups")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $ruleset;
 
