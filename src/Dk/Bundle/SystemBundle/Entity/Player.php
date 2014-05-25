@@ -1,85 +1,47 @@
 <?php
+
 namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
 
 /**
- * Player
+ * Class Player
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\PlayerRepository")
- * @UniqueEntity(fields="email", message="Cet email est déjà associé à un utilisateur")
+ * @package Dk\Bundle\SystemBundle\Entity
+ *
+ * @author Laurent Callarec <l.callarec@gmail.com>
  */
 class Player implements UserInterface, \Serializable
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var integer */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nickname", type="string", length=50)
-     * @Assert\NotBlank(message="Le nickname ne doit pas être vide")
-     * @Assert\Length(
-     *      min = "2",
-     *      max = "50",
-     *      minMessage = "Votre nickname doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "Votre nickname ne peut pas être plus long que {{ limit }} caractères"
-     * )
-     */
+    /** @var string */
     private $nickname;
 
     /**
      *
      * @var array
-     * @ORM\Column(name="role", type="array")
-     * @Assert\NotBlank(message="Le type de compte doit être spéicifé")
      */
     private $roles;
     
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Email(message="Cet email est invalide", checkMX=true)
-     * @Assert\NotBlank(message="Votre email doit être renseigné")
-     * @Assert\Length(
-     *      max = "255",
-     *      maxMessage = "Votre email ne doit pas dépasser {{ limit }} caractères"
-     * )
-     */
-    private $email;    
-    
-    /**
-     * @ORM\Column(type="string", length=32)
-     */
+    /** @var string */
+    private $email;
+
+    /** @var string */
     private $salt;
     
     /**
-     * @ORM\Column(type="string", length=40)
-     * @Assert\NotBlank(message="Le mot de passe est obligatoire")
-     * @Assert\Length(
-     *      min = "6",
-     *      max = "40",
-     *      minMessage = "Votre mot de passe doit être composé d'au moins {{ limit }} caractères",
-     *      maxMessage = "Votre mot de passe ne peut dépasser {{ limit }} caractères"
-     * )* 
+     * @var string
      */
     private $password;    
     
     /**
      *
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Dk\Bundle\SystemBundle\Entity\PlayerCharacter", mappedBy="player", cascade={"all"})
      */
     private $characters;
     
