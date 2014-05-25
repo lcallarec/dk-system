@@ -7,39 +7,29 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * PlayerCharacterCharacteristic
- *
- * @ORM\Table()
- * @ORM\Entity()
  */
 class PlayerCharacterCharacteristic
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      *
      * @var PlayerCharacter
-     * @ORM\ManyToOne(targetEntity="PlayerCharacter", inversedBy="characteristics") 
      */
     private $playerCharacter;
 
     /**
      *
      * @var RulesetCharacteristic
-     * @ORM\ManyToOne(targetEntity="RulesetCharacteristic") 
      */
     private $rulesetCharacteristic;
     
     /**
      * @var integer
-     *
-     * @ORM\Column(name="value", type="smallint")
      * @Assert\Range(
      *      min = -5,
      *      max = 5
