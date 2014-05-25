@@ -7,46 +7,35 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * RulesetCharacteristic
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\RulesetCharacteristicRepository")
  */
 class RulesetCharacteristic
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+
      */
     private $id;
 
     /**
-     *
-     * @var Ruleset
-     * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="characteristics")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $ruleset;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="shortname", type="string", length=5)
      */
     private $shortname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="longname", type="string", length=18)
      */
     private $longname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
 
