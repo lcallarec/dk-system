@@ -7,39 +7,32 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * PlayerCharacter
+ * Class PlayerCharacter
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\PlayerCharacterRepository")
+ * @package Dk\Bundle\SystemBundle\Entity
+ *
+ * @author Laurent Callarec <l.callarec@gmail.com>
  */
 class PlayerCharacter
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var Player
-     *
-     * @ORM\ManyToOne(targetEntity="Dk\Bundle\SystemBundle\Entity\Player", inversedBy="characters")
      */
     private $player;
     
     /**
      * @var Campaign
-     * @ORM\ManyToOne(targetEntity="Dk\Bundle\SystemBundle\Entity\Campaign", inversedBy="playerCharacters", cascade={"persist"})
      */
     private $campaign;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
      * @Assert\NotBlank(message="Le prénom du personnage est obligatoire")
      * @Assert\Length(
      *      min = "1",
@@ -53,33 +46,28 @@ class PlayerCharacter
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255)
      */
     private $lastname;
 
     /**
      *
      * @var ArrayCollection of PlayerCharacterCharacteristics
-     * @ORM\OneToMany(targetEntity="PlayerCharacterCharacteristic", mappedBy="playerCharacter", cascade={"all"})
      */
     private $characteristics;
     
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="PlayerCharacterSkill", mappedBy="playerCharacter", cascade={"all"})
      */
     private $skills;
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="RulesetAsset")
      */
     private $assets;
     
     /**
      *
      * @var RulesetPlayableRace
-     * @ORM\ManyToOne(targetEntity="RulesetPlayableRace") 
      */
     private $race;
     
