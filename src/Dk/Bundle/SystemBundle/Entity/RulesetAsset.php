@@ -7,60 +7,45 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * RulesetAsset
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\RulesetAssetRepository")
  */
 class RulesetAsset
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      *
      * @var Ruleset
-     * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="assets")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $ruleset;    
     
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=128)
      */
     private $name;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="use_limitation", type="string", length=16, nullable=true)
      */
     private $useLimitation;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="use_cost", type="string", length=16, nullable=true)
      */
     private $useCost;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pre_requisite", type="string", length=255, nullable=true)
      */
     private $preRequisite;
 
