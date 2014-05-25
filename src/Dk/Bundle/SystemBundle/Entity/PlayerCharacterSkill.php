@@ -7,38 +7,30 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * PlayerCharacterSkill
  *
- * @ORM\Table()
- * @ORM\Entity
  */
 class PlayerCharacterSkill
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+
      */
     private $id;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="value", type="smallint")
      */
     private $value;
 
     /**
      *
      * @var PlayerCharacter
-     * @ORM\ManyToOne(targetEntity="PlayerCharacter", inversedBy="skills") 
      */
     private $playerCharacter;
     
     /**
      *
      * @var RulesetSkill
-     * @ORM\ManyToOne(targetEntity="RulesetSkill") 
      */
     private $rulesetSkill;
 
