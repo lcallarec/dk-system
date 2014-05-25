@@ -1,0 +1,28 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Dk\Bundle\SystemBundle\Entity\Campaign" table="Campaign" repository-class="Dk\Bundle\SystemBundle\Repository\CampaignRepository">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="name" column="name" type="string" length="255" />
+
+        <many-to-one target-entity="Dk\Bundle\SystemBundle\Entity\Ruleset" field="ruleset">
+            <join-column nullable="false" on-delete="CASCADE" />
+        </many-to-one>
+
+        <many-to-one target-entity="Dk\Bundle\SystemBundle\Entity\Player" field="owner">
+            <join-column nullable="false" on-delete="CASCADE" />
+        </many-to-one>
+
+        <one-to-many target-entity="Dk\Bundle\SystemBundle\Entity\PlayerCharacter" mapped-by="campaign" field="playerCharacters">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+
+    </entity>
+
+</doctrine-mapping>

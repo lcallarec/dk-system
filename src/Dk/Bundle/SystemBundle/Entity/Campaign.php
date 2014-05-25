@@ -8,19 +8,16 @@ use Dk\Bundle\SystemBundle\Entity\Player;
 use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
 
 /**
- * Campaign
+ * Class Campaign
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\CampaignRepository")
+ * @package Dk\Bundle\SystemBundle\Entity
+ *
+ * @author Laurent Callarec <l.callarec@gmail.com>
  */
 class Campaign
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -34,25 +31,20 @@ class Campaign
     /**
      *
      * The campaign ruleset
+     *
      * @var Ruleset
-     * @ORM\ManyToOne(targetEntity="Ruleset")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $ruleset;
     
     /**
      * The player owning this campaign
      * @var Player 
-     * @ORM\ManyToOne(targetEntity="Player")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $owner;
     
     /**
      * ArrayCollection of PlayerCharacters
      * @var ArrayCollection  
-     * 
-     * @ORM\OneToMany(targetEntity="Dk\Bundle\SystemBundle\Entity\PlayerCharacter", mappedBy="campaign", cascade={"all"})
      */
     private $playerCharacters;
     
