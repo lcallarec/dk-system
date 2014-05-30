@@ -4,7 +4,7 @@ namespace Dk\Bundle\ImportBundle\Import;
 
 use Closure;
 use Dk\Bundle\SystemBundle\Entity\Ruleset;
-use Dk\Bundle\SystemBundle\Entity\RulesetSkill;
+use Dk\Bundle\SystemBundle\Entity\RulesetAsset;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
