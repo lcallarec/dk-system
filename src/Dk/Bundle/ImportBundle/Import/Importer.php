@@ -63,19 +63,24 @@ abstract class Importer implements ImporterInterface
     protected function recursiveItemManager(array &$value, $parent, Closure $addGroup, Closure $addItem )
     {
         static $level = 0;
-        foreach ($value as $k => &$v) {
-            if('list' === $k) {
+        foreach ($value as $key => &$v) {
+
+            if ('list' === $key) {
+
                 foreach ($v as $name => $item) {
                     $addItem($name, $item, $parent);
                 }
-                unset($value[$k]);
+
+                unset($value[$key]);
                 break;
-            } elseif(is_array($v)) {
+
+            } elseif (is_array($v)) {
 
                 $level++;
-                $addGroup($k, $parent, $level);
-                $this->recursiveItemManager($v, $k, $addGroup, $addItem);
+                $addGroup($key, $parent, $level);
+                $this->recursiveItemManager($v, $key, $addGroup, $addItem);
             }
+
         }
 
         $level--;
