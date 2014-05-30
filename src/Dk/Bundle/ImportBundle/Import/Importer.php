@@ -3,8 +3,10 @@
 namespace Dk\Bundle\ImportBundle\Import;
 
 use Closure;
+use Dk\Bundle\ImportBundle\Import\Extractor\DataExtractorInterface;
 use Dk\Bundle\SystemBundle\Entity\Ruleset;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 /**
  * Abstract class LoaderInterface
@@ -16,13 +18,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 abstract class Importer implements ImporterInterface
 {
     /** @var PropertyAccessor */
-    private $accessor;
+    protected $accessor;
 
     /** @var DataExtractorInterface */
-    private $extractor;
+    protected $extractor;
 
     /** @var array */
-    private $data;
+    protected $data;
 
     /**
      * {@inheritDoc}
