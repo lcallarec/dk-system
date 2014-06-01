@@ -14,6 +14,9 @@ use Dk\Bundle\SystemBundle\Entity\RulesetCharacteristic;
  */
 class CharacteristicImporter extends Importer
 {
+    /** @var string */
+    protected static $namespace = 'characteristics';
+
     /**
      * Import characteristics for the given ruleset
      *
@@ -29,8 +32,8 @@ class CharacteristicImporter extends Importer
 
             $char
                 ->setShortname($shortName)
-                ->setLongname($this->getValue(sprintf('[%d].[%s]', $i, $definition['longname'])))
-                ->setDescription($this->getValue(sprintf('[%d].[%s]', $i, $definition['desc'])))
+                ->setLongname($this->getValue(sprintf('[%d][longname]', $i)))
+                ->setDescription($this->getValue(sprintf('[%d][desc]', $i)))
                 ->setRuleset($ruleset)
             ;
         }
