@@ -46,7 +46,7 @@ class RulesetSkillGroup
 
     /**
      * @Gedmo\TreeLevel
-     * @ORM\Column(name="lvl", type="integer", nullable=true)
+     * @ORM\Column(name="level", type="integer", nullable=true)
      */
     private $level;
 

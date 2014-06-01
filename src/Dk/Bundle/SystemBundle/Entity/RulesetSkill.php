@@ -72,7 +72,7 @@ class RulesetSkill
     /**
      * @var RulesetSkillGroup
      *
-     * @ORM\ManyToOne(targetEntity="RulesetSkillGroup", inversedBy="skills")
+     * @ORM\ManyToOne(targetEntity="RulesetSkillGroup", inversedBy="skills", cascade="ALL")
      */
     private $group;
 

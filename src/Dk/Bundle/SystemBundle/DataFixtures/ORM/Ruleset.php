@@ -1,10 +1,11 @@
 <?php
-namespace Dk\Bundle\SystemBundle\DataFixtures\ORM;
+namespace Dk\Bundle\SystemBundle\DataFixtures\Test;
 
-use Dk\Bundle\SystemBundle\Entity\RulesetAsset;
-use Dk\Bundle\SystemBundle\Entity\RulesetSkillGroup;
-use Dk\Bundle\SystemBundle\Entity\RulesetAssetGroup;
-use Doctrine\Common\Collections\ArrayCollection;
+use Dk\Bundle\ImportBundle\Import\AssetImporter;
+use Dk\Bundle\ImportBundle\Import\CharacteristicImporter;
+use Dk\Bundle\ImportBundle\Import\Extractor\YmlExtractor;
+use Dk\Bundle\ImportBundle\Import\RulesetImporter;
+use Dk\Bundle\ImportBundle\Import\SkillImporter;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -12,13 +13,19 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Yaml\Parser;
 use Symfony\Component\Finder\SplFileInfo;
 use Dk\Bundle\SystemBundle\Entity\Ruleset;
-use Dk\Bundle\SystemBundle\Entity\RulesetCharacteristic;
-use Dk\Bundle\SystemBundle\Entity\RulesetSkill;
 
-class LoadRulesetData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
+/**
+ * Class RulesetData
+
+ * @package Dk\Bundle\SystemBundle\DataFixtures\Test
+ *
+ * @author Laurent Callarec <l.callarec@gmail.com>
+ */
+class TestData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -37,6 +44,14 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
 
         $yaml = new Parser();
 
+        $accessor = PropertyAccess::createPropertyAccessor();
+
+        $extractor = new YmlExtractor($yaml);
+
+        $ruleset = new Ruleset();
+
+        $ruleset->setOwner($this->getReference('l.callarec@gmail.com'));
+
         /** @var SplFileInfo $directory */
         foreach ($finder as $directory) {
             $rulesetFinder = (new Finder())->files()->in($directory->getPath())->name('*.yml')->sortByName();
@@ -48,204 +63,37 @@ class LoadRulesetData extends AbstractFixture implements FixtureInterface, Order
                 preg_match('/[0-9]*-([a-zA-Z_]*).yml/', $file->getBasename(), $type);
                 switch ($type[1]) {
                     case 'ruleset':
-                        $ruleset = $this->setRulesetFromConfigFile($data['ruleset'], $manager);
+                        $ri = new RulesetImporter($accessor, $extractor, $file->getContents());
+                        $ri->import($ruleset);
+
+                        //$ruleset = $this->setRulesetFromConfigFile($data['ruleset'], $manager);
                         break;
                     case 'characteristics':
-                        $this->setCharacteristicsFromConfigFile($ruleset, $data['characteristics'], $manager);
+
+                        $ci = new CharacteristicImporter($accessor, $extractor, $file->getContents());
+                        $ci->import($ruleset);
+
+                        //$this->setCharacteristicsFromConfigFile($ruleset, $data['characteristics'], $manager);
                         break;
                     case 'skills':
-                        $this->setSkillsFromConfigFile($ruleset, $data['skills'], $manager);
+                        $si = new SkillImporter($accessor, $extractor, $file->getContents());
+                        $si->import($ruleset);
+                        // $this->setSkillsFromConfigFile($ruleset, $data['skills'], $manager);
                         break;
                     case 'assets':
-                        $this->setAssetsFromConfigFile($ruleset, $data['assets'], $manager);
+                        $ai = new AssetImporter($accessor, $extractor, $file->getContents());
+                        $ai->import($ruleset);
+                        //$this->setAssetsFromConfigFile($ruleset, $data['assets'], $manager);
                         break;
                 }
-             }
+            }
         }
+
+        $manager->persist($ruleset);
 
         $manager->flush();
     }
 
-    /**
-     * Set a ruleset from config file
-     *
-     * @param array         $data
-     * @param ObjectManager $manager
-     * @return Ruleset
-     */
-    private function setRulesetFromConfigFile(array $data, ObjectManager $manager)
-    {
-
-        $ruleset = new Ruleset();
-        $ruleset
-            ->setName($data['name'])
-            ->setOwner($this->getReference($data['owner']))
-            ->setReference($data['reference'])
-        ;
-
-        $this->addReference($data['reference'], $ruleset);
-
-        $manager->persist($ruleset);
-
-        return $ruleset;
-    }
-
-    /**
-     *
-     * @param Ruleset $ruleset
-     * @param array $characteristics
-     * @param ObjectManager $manager
-     */
-    private function setCharacteristicsFromConfigFile(Ruleset $ruleset, array $characteristics, ObjectManager $manager)
-    {
-        foreach ($characteristics as $shortName => $def) {
-
-            $char = new RulesetCharacteristic();
-
-            $char
-                ->setShortname($shortName)
-                ->setLongname($def['longname'])
-                ->setDescription($def['desc'])
-                ->setRuleset($ruleset)
-            ;
-
-            $manager->persist($char);
-
-            $this->setReference(strtoupper($shortName), $char);
-        }
-    }
-
-    /**
-     * @param Ruleset $ruleset
-     * @param array $skills
-     * @param ObjectManager $manager
-     */
-    private function setSkillsFromConfigFile(Ruleset $ruleset, array $skills, ObjectManager $manager)
-    {
-        $groups = new ArrayCollection();
-        $addGroup = function($name, $parent, $level) use ($manager, $groups, $ruleset) {
-
-            $group = new RulesetSkillGroup();
-            $group
-                ->setName($name)
-                ->setRuleset($ruleset)
-            ;
-
-            if (1 !== $level) {
-                $group->setParent($groups->get($parent));
-            }
-
-            $groups->offsetSet($name, $group);
-
-            $manager->persist($group);
-            $manager->flush();
-
-        };
-
-        $skillCollection = new ArrayCollection();
-        $addSkill = function($name, $data, $group) use ($manager, $skillCollection, $groups, $ruleset) {
-
-            $skill = new RulesetSkill();
-            $skill
-                ->setRuleset($ruleset)
-                ->setName($name)
-                ->setOverloadMalus(isset($data['malus'])? true : false)
-                ->setChar1($this->getReference($data['chars'][0]))
-                ->setChar2($this->getReference($data['chars'][1]))
-                ->setDescription($data['desc'])
-            ;
-
-            if (!$groups->isEmpty()) {
-                $skill->setGroup($groups->get($group));
-            }
-
-            $manager->persist($skill);
-            $manager->flush();
-        };
-
-        $this->recursiveItemManager($skills, null, $addGroup, $addSkill);
-
-    }
-
-    /**
-     * @param Ruleset $ruleset
-     * @param array $assets
-     * @param ObjectManager $manager
-     */
-    private function setAssetsFromConfigFile(Ruleset $ruleset, array $assets, ObjectManager $manager)
-    {
-        $groups = new ArrayCollection();
-        $addGroup = function($name, $parent, $level) use ($manager, $groups, $ruleset) {
-
-            $group = new RulesetAssetGroup();
-            $group
-                ->setName($name)
-                ->setRuleset($ruleset)
-            ;
-
-            if (null !== $parent) {
-                $group->setParent($groups->get($parent));
-            }
-
-            $groups->offsetSet($name, $group);
-
-            $manager->persist($group);
-            $manager->flush();
-
-        };
-
-        $assetsCollection = new ArrayCollection();
-        $addAsset = function($name, $data, $group) use ($manager, $assetsCollection, $groups, $ruleset) {
-
-            if(false === isset($data['desc'])) {
-                $description = $data;
-            } else {
-                $description = $data['desc'];
-            }
-
-            $asset = new RulesetAsset();
-            $asset
-                ->setName($name)
-                ->setDescription($description)
-                ->setGroup($groups->get($group))
-                ->setRuleset($ruleset)
-            ;
-
-            $manager->persist($asset);
-            $manager->flush();
-        };
-
-        $this->recursiveItemManager($assets, null, $addGroup, $addAsset);
-    }
-
-    /**
-     * @param array $value
-     * @param $p
-     * @param callable $addGroup
-     * @param callable $addItem
-     */
-    private function recursiveItemManager(array &$value, $p, \Closure $addGroup, \Closure $addItem ) {
-
-        static $level = 0;
-        foreach ($value as $k => &$v) {
-            if('list' === $k) {
-                foreach ($v as $name => $item) {
-                    $addItem($name, $item, $p);
-                }
-                unset($value[$k]);
-                break;
-            } elseif(is_array($v)) {
-
-                $level++;
-                $addGroup($k, $p, $level);
-                $this->recursiveItemManager($v, $k, $addGroup, $addItem);
-
-
-            }
-        }
-
-        $level--;
-    }
 
     /**
      * {@inheritDoc}
