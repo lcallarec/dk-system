@@ -50,7 +50,6 @@ class SkillImporter extends Importer
 
             $skill = new RulesetSkill();
             $skill
-                ->setRuleset($ruleset)
                 ->setName($name)
                 ->setOverloadMalus(isset($data['malus'])? true : false)
                 ->setChar1($ruleset->getCharacteristics()->get(strtolower($data['chars'][0])))
@@ -61,6 +60,8 @@ class SkillImporter extends Importer
             if (!$groups->isEmpty()) {
                 $skill->setGroup($groups->get($group));
             }
+
+            $ruleset->addSkill($skill);
         };
     }
 
