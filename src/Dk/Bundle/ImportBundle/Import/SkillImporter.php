@@ -53,8 +53,8 @@ class SkillImporter extends Importer
                 ->setRuleset($ruleset)
                 ->setName($name)
                 ->setOverloadMalus(isset($data['malus'])? true : false)
-                ->setChar1($this->getReference($data['chars'][0]))
-                ->setChar2($this->getReference($data['chars'][1]))
+                ->setChar1($ruleset->getCharacteristics()->get(strtolower($data['chars'][0])))
+                ->setChar2($ruleset->getCharacteristics()->get(strtolower($data['chars'][1])))
                 ->setDescription($data['desc'])
             ;
 
