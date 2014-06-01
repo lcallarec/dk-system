@@ -207,7 +207,22 @@ class Ruleset
     {
         return $this->characteristics;
     }
-    
+
+    /**
+     * Add a characteristic for this ruleset
+     *
+     * @param RulesetCharacteristic $characteristic
+     *
+     * @return Ruleset
+     */
+    public function addCharacteristic(RulesetCharacteristic $characteristic)
+    {
+        $characteristic->setRuleset($this);
+        $this->characteristics->offsetSet($characteristic->getShortname(), $characteristic);
+
+        return $this;
+    }
+
     /**
      * Get the skills of this ruleset
      * 
@@ -217,10 +232,10 @@ class Ruleset
     {
         return $this->skills;
     }
-    
+
     /**
      * Add a skill for this ruleset
-     * 
+     *
      * @param RulesetSkill $skill
      *
      * @return Ruleset
@@ -229,7 +244,7 @@ class Ruleset
     {
         $skill->setRuleset($this);
         $this->skills->add($skill);
-        
+
         return $this;
     }
 
