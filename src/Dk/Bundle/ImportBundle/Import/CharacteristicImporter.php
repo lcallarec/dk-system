@@ -6,13 +6,13 @@ use Dk\Bundle\SystemBundle\Entity\Ruleset;
 use Dk\Bundle\SystemBundle\Entity\RulesetCharacteristic;
 
 /**
- * Class CharacteristictImporter
+ * Class CharacteristicImporter
  *
  * @package Dk\Bundle\ImportBundle\Import
  *
  * @author Laurent Callarec <l.callarec@gmail.com>
  */
-class CharacteristictImporter extends Importer
+class CharacteristicImporter extends Importer
 {
     /**
      * Import characteristics for the given ruleset
