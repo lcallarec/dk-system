@@ -55,7 +55,7 @@ class Ruleset
     /**
      *
      * @var ArrayCollection of RulesetCharacteristics
-     * @ORM\OneToMany(targetEntity="RulesetCharacteristic", mappedBy="ruleset", indexBy="shortname")
+     * @ORM\OneToMany(targetEntity="RulesetCharacteristic", mappedBy="ruleset", indexBy="shortname", cascade="ALL")
      */
     private $characteristics;
 
