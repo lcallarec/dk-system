@@ -42,7 +42,7 @@ abstract class Importer implements ImporterInterface
 
         $this->extractor = $extractor;
 
-        $this->data      = $this->extractor->extract($content);
+        $this->data      = $this->extractor->extract($content)[static::$namespace];
     }
 
     /**
