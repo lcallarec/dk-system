@@ -13,6 +13,8 @@ use Dk\Bundle\SystemBundle\Entity\Ruleset;
  */
 class RulesetImporter extends Importer
 {
+    /** @var string */
+    protected static $namespace = 'ruleset';
 
     /**
      * Hydrate a Ruleset empty object
@@ -27,6 +29,6 @@ class RulesetImporter extends Importer
             ->setReference($this->getValue('[reference]'))
          ;
 
-        return $ruleset;
+         return $ruleset;
     }
 }
