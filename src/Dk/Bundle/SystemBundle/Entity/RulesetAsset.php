@@ -67,7 +67,7 @@ class RulesetAsset
     /**
      * @var RulesetAssetGroup
      *
-     * @ORM\ManyToOne(targetEntity="RulesetAssetGroup", inversedBy="assets")
+     * @ORM\ManyToOne(targetEntity="RulesetAssetGroup", inversedBy="assets", cascade="ALL")
      * @ORM\JoinColumn(nullable=true)
      */
     private $group;
