@@ -5,6 +5,7 @@ namespace Dk\Bundle\ImportBundle\Import;
 use Closure;
 use Dk\Bundle\SystemBundle\Entity\Ruleset;
 use Dk\Bundle\SystemBundle\Entity\RulesetAsset;
+use Dk\Bundle\SystemBundle\Entity\RulesetAssetGroup;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -14,8 +15,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @author Laurent Callarec <l.callarec@gmail.com>
  */
-class AssetImporter implements ImporterInterface
+class AssetImporter extends Importer
 {
+    /** @var string */
+    protected static $namespace = 'assets';
+
     /**
      * Import characteristics for the given ruleset
      *
@@ -29,7 +33,7 @@ class AssetImporter implements ImporterInterface
         $this->recursiveItemManager(
             $this->data,
             null,
-            $this->getGroupClosure($ruleset, $groups),
+            $this->getGroupClosure($ruleset, $groups, new RulesetAssetGroup()),
             $this->getAssetClosure($ruleset, $groups)
         );
     }
