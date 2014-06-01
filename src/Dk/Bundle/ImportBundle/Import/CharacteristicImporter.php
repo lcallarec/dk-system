@@ -32,10 +32,11 @@ class CharacteristicImporter extends Importer
 
             $char
                 ->setShortname($shortName)
-                ->setLongname($this->getValue(sprintf('[%d][longname]', $i)))
-                ->setDescription($this->getValue(sprintf('[%d][desc]', $i)))
-                ->setRuleset($ruleset)
+                ->setLongname($this->getValue(sprintf('[%s][longname]', $shortName, $i)))
+                ->setDescription($this->getValue(sprintf('[%s][desc]', $shortName, $i)))
             ;
+
+            $ruleset->addCharacteristic($char);
         }
 
         return $ruleset;
