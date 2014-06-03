@@ -4,8 +4,6 @@ namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Dk\Bundle\SystemBundle\Entity\Player;
-use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
 
 /**
  * Class Campaign
@@ -16,43 +14,24 @@ use Dk\Bundle\SystemBundle\Entity\PlayerCharacter;
  */
 class Campaign
 {
-    /**
-     * @var integer
-     */
+    /** @var integer */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
+    /** @var string */
     private $name;
 
-    /**
-     *
-     * The campaign ruleset
-     *
-     * @var Ruleset
-     */
+    /** @var Ruleset */
     private $ruleset;
     
-    /**
-     * The player owning this campaign
-     * @var Player 
-     */
+    /** @var Player */
     private $owner;
     
-    /**
-     * ArrayCollection of PlayerCharacters
-     * @var ArrayCollection  
-     */
+    /** @var ArrayCollection[PlayerCharacters] */
     private $playerCharacters;
     
-    /**
-     * A campaign owner is mandatory
-     * 
-     * @param Player $owner
-     */
+   /**
+    * @param Player $owner
+    */
     public function __construct(Player $owner)
     {
         $this->owner = $owner;
@@ -60,7 +39,7 @@ class Campaign
         $this->playerCharacters = new ArrayCollection();
     }
     
-   /**
+    /**
      * Get the string representation of this campaign
      * @return string
      */
@@ -83,6 +62,7 @@ class Campaign
      * Set name
      *
      * @param string $name
+     *
      * @return Campaign
      */
     public function setName($name)
@@ -104,6 +84,7 @@ class Campaign
     
     /**
      * Get a collection of player characters playing in this campaign
+     *
      * @return ArrayCollection
      */
     public function getPlayerCharacters()
@@ -114,8 +95,9 @@ class Campaign
     /**
      * Add a player character to this campaign
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\PlayerCharacter $playerCaracter
-     * @return \Dk\Bundle\SystemBundle\Entity\Campaign
+     * @param PlayerCharacter $playerCharacter
+     *
+     * @return Campaign
      */
     public function addPlayerCharacter(PlayerCharacter $playerCharacter)
     {
@@ -129,8 +111,9 @@ class Campaign
     /**
      * Remove a player character from this campaign
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\PlayerCharacter $playerCharacter
-     * @return \Dk\Bundle\SystemBundle\Entity\Campaign
+     * @param PlayerCharacter $playerCharacter
+     *
+     * @return Campaign
      */
     public function removePlayerCharacter(PlayerCharacter $playerCharacter)
     {
@@ -143,6 +126,7 @@ class Campaign
     
     /**
      * Get the campaign owner
+     *
      * @return Player 
      */
     public function getOwner()
@@ -152,7 +136,9 @@ class Campaign
     
     /**
      * Set the campaign owner
+     *
      * @param Player $owner
+     *
      * @return Campaign
      */
     public function setOwner(Player $owner)
@@ -163,9 +149,10 @@ class Campaign
     }
     
    /**
-     * Get the campaign ruleset
-     * @return Ruleset 
-     */
+    * Get the campaign ruleset
+    *
+    * @return Ruleset
+    */
     public function getRuleset()
     {
         return $this->ruleset;
@@ -173,7 +160,9 @@ class Campaign
     
     /**
      * Set the campaign ruleset
+     *
      * @param ruleset $ruleset
+     *
      * @return Campaign
      */
     public function setRuleset(Ruleset $ruleset)
