@@ -22,10 +22,7 @@ class Player implements UserInterface, \Serializable
     /** @var string */
     private $nickname;
 
-    /**
-     *
-     * @var array
-     */
+    /** @var array */
     private $roles;
     
     /** @var string */
@@ -34,15 +31,10 @@ class Player implements UserInterface, \Serializable
     /** @var string */
     private $salt;
     
-    /**
-     * @var string
-     */
+    /** @var string */
     private $password;    
     
-    /**
-     *
-     * @var ArrayCollection
-     */
+    /** @var ArrayCollection[PlayerCharacter] */
     private $characters;
     
     public function __construct()
@@ -85,6 +77,7 @@ class Player implements UserInterface, \Serializable
      * Set nickname
      *
      * @param string $nickname
+     *
      * @return Player
      */
     public function setNickname($nickname)
@@ -108,6 +101,7 @@ class Player implements UserInterface, \Serializable
      * Set email
      *
      * @param string $email
+     *
      * @return Player
      */
     public function setEmail($email)
@@ -209,9 +203,9 @@ class Player implements UserInterface, \Serializable
      */
     public function serialize()
     {
-        return serialize(array(
-            $this->id,
-        ));
+        return serialize([
+            $this->id
+        ]);
     }
     
     /**
