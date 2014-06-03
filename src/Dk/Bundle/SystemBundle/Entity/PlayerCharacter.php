@@ -15,19 +15,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class PlayerCharacter
 {
-    /**
-     * @var integer
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @var Player
-     */
+    /** @var Player */
     private $player;
     
-    /**
-     * @var Campaign
-     */
+    /** @var Campaign */
     private $campaign;
     
     /**
@@ -43,34 +37,24 @@ class PlayerCharacter
      */
     private $firstname;
 
-    /**
-     * @var string
-     *
-     */
+    /** @var string */
     private $lastname;
 
-    /**
-     *
-     * @var ArrayCollection of PlayerCharacterCharacteristics
-     */
+    /** @var ArrayCollection[PlayerCharacterCharacteristics] */
     private $characteristics;
     
-    /**
-     * @var ArrayCollection
-     */
+    /** @var ArrayCollection[PlayerCharacterSkill] */
     private $skills;
 
-    /**
-     * @var ArrayCollection
-     */
+    /** @var ArrayCollection[PlayerCharacterAsset] */
     private $assets;
     
-    /**
-     *
-     * @var RulesetPlayableRace
-     */
+    /** @var RulesetPlayableRace */
     private $race;
-    
+
+    /**
+     * @param Player $player
+     */
     public function __construct(Player $player)
     {
         $this->setPlayer($player);
@@ -81,6 +65,7 @@ class PlayerCharacter
 
     /**
      * Get the string representation of a PlayerCharacter object
+     *
      * @return string
      */
     public function __toString()
@@ -115,9 +100,11 @@ class PlayerCharacter
     }
     
     /**
-     * Set the campaign where this caracter is playing 
-     * @param \Dk\Bundle\SystemBundle\Entity\Campaign $campaign
-     * @return self
+     * Set the campaign where this caracter is playing
+     *
+     * @param Campaign $campaign
+     *
+     * @return $this
      */
     public function setCampaign(Campaign $campaign = null)
     {
@@ -130,6 +117,7 @@ class PlayerCharacter
      * Set firstname
      *
      * @param string $firstname
+     *
      * @return PlayerCharacter
      */
     public function setFirstname($firstname)
@@ -153,6 +141,7 @@ class PlayerCharacter
      * Set lastname
      *
      * @param string $lastname
+     *
      * @return PlayerCharacter
      */
     public function setLastname($lastname)
@@ -185,8 +174,9 @@ class PlayerCharacter
     /**
      * Associate a player to this character
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\Player $player
-     * @return \Dk\Bundle\SystemBundle\Entity\PlayerCharacter
+     * @param Player $player
+     *
+     * @return PlayerCharacter
      */
     public function setPlayer(Player $player)
     {
@@ -204,7 +194,10 @@ class PlayerCharacter
     {
         return $this->characteristics;
     }
-    
+
+    /**
+     * @param PlayerCharacterCharacteristic $char
+     */
     public function addCharacteristic(PlayerCharacterCharacteristic $char)
     {
         $char->setPlayerCharacter($this);
@@ -214,7 +207,7 @@ class PlayerCharacter
     /**
      * Get skills
      * 
-     * @return ArrayCollection
+     * @return ArrayCollection[PlayerCharacterSkill]
      */
     public function getSkills()
     {
@@ -223,8 +216,9 @@ class PlayerCharacter
 
     /**
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\PlayerCharacterSkill $skill
-     * @return \Dk\Bundle\SystemBundle\Entity\PlayerCharacter
+     * @param PlayerCharacterSkill $skill
+     *
+     * @return PlayerCharacter
      */
     public function addSkill(PlayerCharacterSkill $skill)
     {
@@ -237,7 +231,7 @@ class PlayerCharacter
     /**
      * Get the character race
      * 
-     * @return ArrayCollection
+     * @return RulesetPlayableRace
      */
     public function getRace()
     {
@@ -246,8 +240,9 @@ class PlayerCharacter
     
     /**
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace $race
-     * @return \Dk\Bundle\SystemBundle\Entity\PlayerCharacter
+     * @param RulesetPlayableRace $race
+     *
+     * @return PlayerCharacter
      */
     public function setRace(RulesetPlayableRace $race)
     {
@@ -259,7 +254,7 @@ class PlayerCharacter
     /**
      * Get assets
      * 
-     * @return ArrayCollection
+     * @return ArrayCollection[PlayerCharacterAsset]
      */
     public function getAssets()
     {
