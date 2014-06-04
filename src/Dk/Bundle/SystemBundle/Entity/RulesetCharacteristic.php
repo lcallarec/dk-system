@@ -10,38 +10,24 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class RulesetCharacteristic
 {
-    /**
-     * @var integer
-     *
-
-     */
+    /** @var int */
     private $id;
 
-    /**
-     */
+    /** @var Ruleset */
     private $ruleset;
     
-    /**
-     * @var string
-     *
-     */
+    /** @var string */
     private $shortname;
 
-    /**
-     * @var string
-     *
-     */
+    /** @var string */
     private $longname;
 
-    /**
-     * @var string
-     *
-     */
+    /** @var string */
     private $description;
-
 
     /**
      * Get the characteristic string representation
+     *
      * @return string
      */
     public function __toString()
@@ -63,7 +49,8 @@ class RulesetCharacteristic
      * Set shortname
      *
      * @param string $shortname
-     * @return RulesetCharacteristic
+     *
+     * @return $this
      */
     public function setShortname($shortname)
     {
@@ -86,7 +73,8 @@ class RulesetCharacteristic
      * Set longname
      *
      * @param string $longname
-     * @return RulesetCharacteristic
+     *
+     * @return $this
      */
     public function setLongname($longname)
     {
@@ -109,7 +97,8 @@ class RulesetCharacteristic
      * Set description
      *
      * @param string $description
-     * @return RulesetCharacteristic
+     *
+     * @return $this
      */
     public function setDescription($description)
     {
@@ -132,7 +121,8 @@ class RulesetCharacteristic
      * Set the RulesetCharacteristic ruleset
      * 
      * @param Ruleset $ruleset
-     * @return RulesetCharacteristic
+     *
+     * @return $this
      */
     public function setRuleset(Ruleset $ruleset)
     {
