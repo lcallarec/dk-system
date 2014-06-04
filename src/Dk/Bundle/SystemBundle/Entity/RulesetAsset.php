@@ -6,56 +6,33 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * RulesetAsset
- *
  */
 class RulesetAsset
 {
-    /**
-     * @var integer
-     */
+    /** @var int */
     private $id;
 
-    /**
-     *
-     * @var Ruleset
-     */
+    /** @var Ruleset */
     private $ruleset;    
     
-    /**
-     * @var string
-     *
-     */
+    /** @var string */
     private $name;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $useLimitation;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $useCost;
 
-    /**
-     * @var string
-     *
-     */
+    /** @var string */
     private $description;
 
-    /**
-     * @var string
-     *
-     */
+    /** @var string */
     private $preRequisite;
 
-    /**
-     * @var RulesetAssetGroup
-     *
-     * @ORM\ManyToOne(targetEntity="RulesetAssetGroup", inversedBy="assets", cascade="ALL")
-     * @ORM\JoinColumn(nullable=true)
-     */
+    /** @var RulesetAssetGroup */
     private $group;
+
 
     /**
      * @return string
@@ -68,7 +45,7 @@ class RulesetAsset
     /**
      * Get id
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -79,7 +56,8 @@ class RulesetAsset
      * Set name
      *
      * @param string $name
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setName($name)
     {
@@ -102,7 +80,8 @@ class RulesetAsset
      * Set useLimitation
      *
      * @param string $useLimitation
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setUseLimitation($useLimitation)
     {
@@ -125,7 +104,8 @@ class RulesetAsset
      * Set useCost
      *
      * @param string $useCost
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setUseCost($useCost)
     {
@@ -148,7 +128,8 @@ class RulesetAsset
      * Set description
      *
      * @param string $description
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setDescription($description)
     {
@@ -171,7 +152,8 @@ class RulesetAsset
      * Set preRequisite
      *
      * @param string $preRequisite
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setPreRequisite($preRequisite)
     {
@@ -193,7 +175,7 @@ class RulesetAsset
     /**
      * Get the Ruleset
      *
-     * @return Ruleset $ruleset
+     * @return $this
      */
     public function getRuleset()
     {
