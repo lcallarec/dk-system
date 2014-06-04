@@ -48,13 +48,34 @@
     </class>
 
     <class name="Dk\Bundle\SystemBundle\Entity\PlayerCharacterCharacteristic">
-
         <property name="value">
             <constraint name="Range">
                 <option name="min">-5</option>
                 <option name="max">5</option>
             </constraint>
         </property>
-
     </class>
+
+    <class name="Dk\Bundle\SystemBundle\Entity\Ruleset">
+        <property name="value">
+            <constraint name="NotBlank">
+                <option name="message">Le nom du système de règles ne peut être vide</option>
+            </constraint>
+        </property>
+        <property name="name">
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="min">100</option>
+                <option name="minMessage">Le nom du système de règles ne doit pas faire moins de {{ limit }} caractères</option>
+                <option name="maxMessage">Le nom du système de règles ne peut pas être plus long que {{ limit }} caractères</option>
+            </constraint>
+        </property>
+        <property name="skills">
+            <constraint name="Valid"></constraint>
+        </property>
+        <property name="skillGroups">
+            <constraint name="Valid"></constraint>
+        </property>
+    </class>
+
 </constraint-mapping>
