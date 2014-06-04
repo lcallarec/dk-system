@@ -46,4 +46,15 @@
             </constraint>
         </property>
     </class>
+
+    <class name="Dk\Bundle\SystemBundle\Entity\PlayerCharacterCharacteristic">
+
+        <property name="value">
+            <constraint name="Range">
+                <option name="min">-5</option>
+                <option name="max">5</option>
+            </constraint>
+        </property>
+
+    </class>
 </constraint-mapping>

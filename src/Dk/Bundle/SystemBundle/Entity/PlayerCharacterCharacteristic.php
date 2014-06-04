@@ -10,31 +10,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class PlayerCharacterCharacteristic
 {
-    /**
-     * @var integer
-     *
-     */
+    /** @var int */
     private $id;
 
-    /**
-     *
-     * @var PlayerCharacter
-     */
+    /** @var PlayerCharacter */
     private $playerCharacter;
 
-    /**
-     *
-     * @var RulesetCharacteristic
-     */
+    /** @var RulesetCharacteristic */
     private $rulesetCharacteristic;
     
-    /**
-     * @var integer
-     * @Assert\Range(
-     *      min = -5,
-     *      max = 5
-     * )
-     */
+    /** @var int */
     private $value;
 
 
@@ -52,6 +37,7 @@ class PlayerCharacterCharacteristic
      * Set value
      *
      * @param integer $value
+     *
      * @return PlayerCharacterCharacteristic
      */
     public function setValue($value)
@@ -73,6 +59,7 @@ class PlayerCharacterCharacteristic
     
     /**
      * Get the related Characteristic
+     *
      * @return RulesetCharacteristic
      */
     public function getRulesetCharacteristic()
@@ -82,7 +69,9 @@ class PlayerCharacterCharacteristic
     
     /**
      * Set the RulesetCharacteristic on which this Char rely on
+     *
      * @param RulesetCharacteristic $char
+     *
      * @return PlayerCharacterCharacteristic
      */
     public function setRulesetCharacteristic(RulesetCharacteristic $char = null)
@@ -96,6 +85,7 @@ class PlayerCharacterCharacteristic
     
     /**
      * Set the PlayerCharacter who own this Char
+     *
      * @param PlayerCharacter $pc
      */
     public function setPlayerCharacter(PlayerCharacter $pc)
