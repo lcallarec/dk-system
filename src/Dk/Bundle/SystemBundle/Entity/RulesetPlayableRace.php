@@ -6,30 +6,21 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * RulesetPlayableRace
- *
- * @ORM\Table()
- * @ORM\Entity
  */
 class RulesetPlayableRace
 {
-    /**
-     * @var integer
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $name;
 
-    /**
-     *
-     * @var Ruleset
-     */
+    /** @var Ruleset */
     private $ruleset;
     
     /**
      * Get the string representation of this race
+     *
      * @return string
      */
     public function __toString()
@@ -52,7 +43,8 @@ class RulesetPlayableRace
      * Set name
      *
      * @param string $name
-     * @return RulesetPlayableRace
+     *
+     * @return $this
      */
     public function setName($name)
     {
@@ -75,7 +67,8 @@ class RulesetPlayableRace
      * Set the RulesetPlayableRace ruleset
      * 
      * @param Ruleset $ruleset
-     * @return RulesetCharacteristic
+    *
+     * @return $this
      */
     public function setRuleset(Ruleset $ruleset)
     {
