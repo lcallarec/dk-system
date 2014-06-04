@@ -7,53 +7,31 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * RulesetAssetGroup
- *
- * @Gedmo\Tree(type="materializedPath")
  */
 class RulesetSkillGroup
 {
-    /**
-     * @var integer
-     *
-     * @Gedmo\TreePathSource
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @Gedmo\TreePath(separator=".", startsWithSeparator=false, endsWithSeparator=false)
-     */
+    /** @var string */
     private $path;
 
-    /**
-     */
+    /** @var string */
     private $name;
 
-    /**
-     * @Gedmo\TreeParent
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
-     * })
-     */
+    /** @var RulesetSkillGroup */
     private $parent;
 
-    /**
-     * @Gedmo\TreeLevel
-     */
+    /** @var int */
     private $level;
 
-    /**
-     */
+    /** @var RulesetSkillGroup */
     private $children;
 
-    /**
-     *
-     * @var Ruleset
-     */
+    /** @var Ruleset */
     private $ruleset;
 
-    /**
-     * @ORM\OneToMany(targetEntity="RulesetSkill", mappedBy="group")
-     */
+    /** @var ArrayCollection[RulesetSkill] */
     private $skills;
 
     public function getId()
@@ -123,7 +101,7 @@ class RulesetSkillGroup
     /**
      * Get the ruleset
      *
-     * @return \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
+     * @return Ruleset $ruleset
      */
     public function getRuleset()
     {
@@ -133,8 +111,9 @@ class RulesetSkillGroup
     /**
      * Set the ruleset
      *
-     * @param \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
-     * @return \Dk\Bundle\SystemBundle\Entity\RulesetSkillGroup
+     * @param Ruleset $ruleset
+     *
+     * @return RulesetSkillGroup
      */
     public function setRuleset(Ruleset $ruleset)
     {
