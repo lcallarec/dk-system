@@ -78,4 +78,17 @@
         </property>
     </class>
 
+    <class name="Dk\Bundle\SystemBundle\Entity\RulesetSkill">
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="message">Le nom de la compétence ne peut être vide</option>
+            </constraint>
+        </property>
+        <property name="description">
+            <constraint name="NotBlank">
+                <option name="message">La description ne peut être vide</option>
+            </constraint>
+        </property>
+    </class>
+
 </constraint-mapping>

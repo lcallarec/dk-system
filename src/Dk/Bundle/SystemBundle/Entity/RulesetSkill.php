@@ -3,71 +3,39 @@
 namespace Dk\Bundle\SystemBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * RulesetSkill
- *
- * @ORM\Table()
- * @ORM\Entity
  */
 class RulesetSkill
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var integer */
     private $id;
 
-    /**
-     *
-     * @var Ruleset
-     */
+    /** @var Ruleset */
     private $ruleset;
     
-    /**
-     * @var string
-     *
-     * @Assert\NotBlank(message="Le nom de la compétence ne doit pas être vide")
-     */
+    /** @var string */
     private $name;
-        
-    /**
-     * @var string
-     *
-     * @Assert\NotBlank(message="La description ne doit pas être vide")
-     */
+
+    /** @var string */
     private $description;
 
-    /**
-     * 
-     * @var RulesetCharacteristic
-     */
+    /** @var RulesetCharacteristic */
     private $char1;
 
-    /**
-     * 
-     * @var RulesetCharacteristic
-     */
+    /** @var RulesetCharacteristic */
     private $char2;
     
-    /**
-     * @var boolean
-     */
+    /** @var boolean */
     private $overloadMalus;
 
-    /**
-     * @var RulesetSkillGroup
-     *
-     * @ORM\ManyToOne(targetEntity="RulesetSkillGroup", inversedBy="skills", cascade="ALL")
-     */
+    /** @var RulesetSkillGroup */
     private $group;
 
     /**
      * Get string representation of RulesetSkill
+     *
      * @return string
      */
     public function __toString()
@@ -89,7 +57,8 @@ class RulesetSkill
      * Set name
      *
      * @param string $name
-     * @return RulesetSkill
+     *
+     * @return $this
      */
     public function setName($name)
     {
@@ -112,7 +81,8 @@ class RulesetSkill
      * Set overloadMalus
      *
      * @param boolean $overloadMalus
-     * @return RulesetSkill
+     *
+     * @return $this
      */
     public function setOverloadMalus($overloadMalus)
     {
@@ -135,7 +105,8 @@ class RulesetSkill
      * Set description
      *
      * @param string $description
-     * @return RulesetSkill
+     *
+     * @return $this
      */
     public function setDescription($description)
     {
@@ -177,8 +148,9 @@ class RulesetSkill
     /**
      * Set the fist RulesetCharacteristics for this ruleskill 
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\RulesetCharacteristic $char
-     * @return \Dk\Bundle\SystemBundle\Entity\RulesetSkill
+     * @param RulesetCharacteristic $char
+     *
+     * @return $this
      */
     public function setChar1(RulesetCharacteristic $char)
     {
@@ -190,8 +162,9 @@ class RulesetSkill
     /**
      * Set the second characteristic for this ruleskill
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\RulesetCharacteristic $char
-     * @return \Dk\Bundle\SystemBundle\Entity\RulesetSkill
+     * @param RulesetCharacteristic $char
+     *
+     * @return $this
      */
     public function setChar2(RulesetCharacteristic $char)
     {
@@ -203,7 +176,7 @@ class RulesetSkill
    /**
     * Get the ruleset
     *
-    * @return \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
+    * @return Ruleset $ruleset
     */
     public function getRuleset()
     {
@@ -213,8 +186,9 @@ class RulesetSkill
     /**
      * Set the ruleset
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
-     * @return \Dk\Bundle\SystemBundle\Entity\RulesetSkill
+     * @param Ruleset $ruleset
+     *
+     * @return $this
      */
     public function setRuleset(Ruleset $ruleset)
     {
@@ -226,7 +200,7 @@ class RulesetSkill
     /**
      * Get the skill group
      *
-     * @return RulesetSkillGroup $ruleset
+     * @return RulesetSkillGroup
      */
     public function getGroup()
     {
@@ -237,7 +211,8 @@ class RulesetSkill
      * Set the skill group
      *
      * @param RulesetSkillGroup $group
-     * @return RulesetSkill
+     *
+     * @return $this
      */
     public function setGroup(RulesetSkillGroup $group)
     {
