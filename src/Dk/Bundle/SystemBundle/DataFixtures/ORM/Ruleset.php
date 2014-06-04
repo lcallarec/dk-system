@@ -89,6 +89,8 @@ class TestData extends AbstractFixture implements FixtureInterface, OrderedFixtu
             }
         }
 
+        $this->setReference('dk-std', $ruleset);
+
         $manager->persist($ruleset);
 
         $manager->flush();
