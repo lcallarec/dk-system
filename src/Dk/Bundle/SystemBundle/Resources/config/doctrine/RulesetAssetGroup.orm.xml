@@ -7,12 +7,18 @@
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
+            <gedmo:tree-path-source />
         </id>
 
-        <field name="name" column="name" type="string" length="128" />
-        <field name="path" column="path" type="string" length="64" nullable="true" />
-        <field name="level" column="level" type="smallint" nullable="true" />
+        <gedmo:tree type="materializedPath" />
 
+        <field name="name" column="name" type="string" length="128" />
+        <field name="path" column="path" type="string" length="64" nullable="true">
+            <gedmo:tree-path separator="," startsWithSeparator="false" endsWithSeparator="false" />
+        </field>
+        <field name="level" column="level" type="smallint" nullable="true">
+            <gedmo:tree-level/>
+        </field>
 
         <many-to-one target-entity="RulesetAssetGroup" field="parent" inversed-by="children">
             <cascade><cascade-all/></cascade>
@@ -21,6 +27,7 @@
 
         <one-to-many target-entity="RulesetAssetGroup" field="children" mapped-by="parent">
             <cascade><cascade-all/></cascade>
+            <gedmo:tree-parent/>
         </one-to-many>
 
         <many-to-one target-entity="Ruleset" field="ruleset" inversed-by="assetGroups">

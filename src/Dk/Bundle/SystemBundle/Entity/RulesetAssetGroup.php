@@ -8,55 +8,31 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * RulesetAssetGroup
- *
- * @Gedmo\Tree(type="materializedPath")
  */
 class RulesetAssetGroup
 {
-    /**
-     * @var integer
-     * @Gedmo\TreePathSource
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @Gedmo\TreePath(separator=".", startsWithSeparator=false, endsWithSeparator=false)
-     */
+    /** @var string */
     private $path;
 
-    /**
-     * @Gedmo\TreeParent
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
-     * })
-     */
+    /** @var RulesetAssetGroup */
     private $parent;
 
-    /**
-     * @Gedmo\TreeLevel
-     */
+    /** @var int */
     private $level;
 
-    /**
-     */
+    /** @var RulesetAssetGroup */
     private $children;
 
-    /**
-     *
-     * @var Ruleset
-     *
-     */
+    /** @var Ruleset */
     private $ruleset;
 
-    /**
-     * @var ArrayCollection
-     *
-     */
+    /** @var ArrayCollection[RulesetAsset] */
     private $assets;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $name;
 
     public function __construct()
@@ -75,7 +51,8 @@ class RulesetAssetGroup
     /**
      * Get id
      *
-     * @return integer 
+     * @return int
+     *
      */
     public function getId()
     {
@@ -120,7 +97,8 @@ class RulesetAssetGroup
      * Set name
      *
      * @param string $name
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setName($name)
     {
@@ -130,7 +108,7 @@ class RulesetAssetGroup
     }
 
     /**
-     * @return ArrayCollection
+     * @return ArrayCollection[RulesetAsset]
      */
     public function getAssets()
     {
@@ -171,31 +149,48 @@ class RulesetAssetGroup
         return $this;
     }
 
+    /**
+     * @return RulesetAssetGroup
+     */
     public function getChildren()
     {
         return $this->children;
     }
 
+    /**
+     * @param string
+     *
+     * @return $this
+     */
     public function setPath($path)
     {
         $this->path = $path;
+
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getPath()
     {
         return $this->path;
     }
 
+    /**
+     * @return int
+     */
     public function getLevel()
     {
         return $this->level;
     }
 
     /**
-     * Set the RulesetCharacteristic ruleset
+     * Set the ruleset
      *
      * @param Ruleset $ruleset
-     * @return RulesetCharacteristic
+     *
+     * @return $this
      */
     public function setRuleset(Ruleset $ruleset)
     {
