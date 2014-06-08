@@ -1,4 +1,5 @@
 <?php
+
 namespace Dk\Bundle\SystemBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -7,9 +8,15 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
 use Dk\Bundle\SystemBundle\Entity\Campaign;
 
+/**
+ * Class LoadCampaignData
+ *
+ * @package Dk\Bundle\SystemBundle\DataFixtures\ORM
+ *
+ * @author Laurent Callarec <l.callarec@gmail.com>
+ */
 class LoadCampaignData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
     /**

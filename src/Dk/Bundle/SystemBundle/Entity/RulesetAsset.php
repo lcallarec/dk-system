@@ -6,71 +6,33 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * RulesetAsset
- *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\RulesetAssetRepository")
  */
 class RulesetAsset
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var int */
     private $id;
 
-    /**
-     *
-     * @var Ruleset
-     * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="assets")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    /** @var Ruleset */
     private $ruleset;    
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=128)
-     */
+    /** @var string */
     private $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="use_limitation", type="string", length=16, nullable=true)
-     */
+    /** @var string */
     private $useLimitation;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="use_cost", type="string", length=16, nullable=true)
-     */
+    /** @var string */
     private $useCost;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text")
-     */
+    /** @var string */
     private $description;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pre_requisite", type="string", length=255, nullable=true)
-     */
+    /** @var string */
     private $preRequisite;
 
-    /**
-     * @var RulesetAssetGroup
-     *
-     * @ORM\ManyToOne(targetEntity="RulesetAssetGroup", inversedBy="assets", cascade="ALL")
-     * @ORM\JoinColumn(nullable=true)
-     */
+    /** @var RulesetAssetGroup */
     private $group;
+
 
     /**
      * @return string
@@ -83,7 +45,7 @@ class RulesetAsset
     /**
      * Get id
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -94,7 +56,8 @@ class RulesetAsset
      * Set name
      *
      * @param string $name
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setName($name)
     {
@@ -117,7 +80,8 @@ class RulesetAsset
      * Set useLimitation
      *
      * @param string $useLimitation
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setUseLimitation($useLimitation)
     {
@@ -140,7 +104,8 @@ class RulesetAsset
      * Set useCost
      *
      * @param string $useCost
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setUseCost($useCost)
     {
@@ -163,7 +128,8 @@ class RulesetAsset
      * Set description
      *
      * @param string $description
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setDescription($description)
     {
@@ -186,7 +152,8 @@ class RulesetAsset
      * Set preRequisite
      *
      * @param string $preRequisite
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setPreRequisite($preRequisite)
     {
@@ -208,7 +175,7 @@ class RulesetAsset
     /**
      * Get the Ruleset
      *
-     * @return Ruleset $ruleset
+     * @return $this
      */
     public function getRuleset()
     {

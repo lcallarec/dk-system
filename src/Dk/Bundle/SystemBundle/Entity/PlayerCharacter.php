@@ -7,39 +7,26 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * PlayerCharacter
+ * Class PlayerCharacter
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\PlayerCharacterRepository")
+ * @package Dk\Bundle\SystemBundle\Entity
+ *
+ * @author Laurent Callarec <l.callarec@gmail.com>
  */
 class PlayerCharacter
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @var Player
-     *
-     * @ORM\ManyToOne(targetEntity="Dk\Bundle\SystemBundle\Entity\Player", inversedBy="characters")
-     */
+    /** @var Player */
     private $player;
     
-    /**
-     * @var Campaign
-     * @ORM\ManyToOne(targetEntity="Dk\Bundle\SystemBundle\Entity\Campaign", inversedBy="playerCharacters", cascade={"persist"})
-     */
+    /** @var Campaign */
     private $campaign;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
      * @Assert\NotBlank(message="Le prénom du personnage est obligatoire")
      * @Assert\Length(
      *      min = "1",
@@ -50,39 +37,24 @@ class PlayerCharacter
      */
     private $firstname;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="lastname", type="string", length=255)
-     */
+    /** @var string */
     private $lastname;
 
-    /**
-     *
-     * @var ArrayCollection of PlayerCharacterCharacteristics
-     * @ORM\OneToMany(targetEntity="PlayerCharacterCharacteristic", mappedBy="playerCharacter", cascade={"all"})
-     */
+    /** @var ArrayCollection[PlayerCharacterCharacteristics] */
     private $characteristics;
     
-    /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="PlayerCharacterSkill", mappedBy="playerCharacter", cascade={"all"})
-     */
+    /** @var ArrayCollection[PlayerCharacterSkill] */
     private $skills;
 
-    /**
-     * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="RulesetAsset")
-     */
+    /** @var ArrayCollection[PlayerCharacterAsset] */
     private $assets;
     
-    /**
-     *
-     * @var RulesetPlayableRace
-     * @ORM\ManyToOne(targetEntity="RulesetPlayableRace") 
-     */
+    /** @var RulesetPlayableRace */
     private $race;
-    
+
+    /**
+     * @param Player $player
+     */
     public function __construct(Player $player)
     {
         $this->setPlayer($player);
@@ -93,6 +65,7 @@ class PlayerCharacter
 
     /**
      * Get the string representation of a PlayerCharacter object
+     *
      * @return string
      */
     public function __toString()
@@ -127,9 +100,11 @@ class PlayerCharacter
     }
     
     /**
-     * Set the campaign where this caracter is playing 
-     * @param \Dk\Bundle\SystemBundle\Entity\Campaign $campaign
-     * @return self
+     * Set the campaign where this caracter is playing
+     *
+     * @param Campaign $campaign
+     *
+     * @return $this
      */
     public function setCampaign(Campaign $campaign = null)
     {
@@ -142,6 +117,7 @@ class PlayerCharacter
      * Set firstname
      *
      * @param string $firstname
+     *
      * @return PlayerCharacter
      */
     public function setFirstname($firstname)
@@ -165,6 +141,7 @@ class PlayerCharacter
      * Set lastname
      *
      * @param string $lastname
+     *
      * @return PlayerCharacter
      */
     public function setLastname($lastname)
@@ -197,8 +174,9 @@ class PlayerCharacter
     /**
      * Associate a player to this character
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\Player $player
-     * @return \Dk\Bundle\SystemBundle\Entity\PlayerCharacter
+     * @param Player $player
+     *
+     * @return PlayerCharacter
      */
     public function setPlayer(Player $player)
     {
@@ -216,7 +194,10 @@ class PlayerCharacter
     {
         return $this->characteristics;
     }
-    
+
+    /**
+     * @param PlayerCharacterCharacteristic $char
+     */
     public function addCharacteristic(PlayerCharacterCharacteristic $char)
     {
         $char->setPlayerCharacter($this);
@@ -226,7 +207,7 @@ class PlayerCharacter
     /**
      * Get skills
      * 
-     * @return ArrayCollection
+     * @return ArrayCollection[PlayerCharacterSkill]
      */
     public function getSkills()
     {
@@ -235,8 +216,9 @@ class PlayerCharacter
 
     /**
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\PlayerCharacterSkill $skill
-     * @return \Dk\Bundle\SystemBundle\Entity\PlayerCharacter
+     * @param PlayerCharacterSkill $skill
+     *
+     * @return PlayerCharacter
      */
     public function addSkill(PlayerCharacterSkill $skill)
     {
@@ -249,7 +231,7 @@ class PlayerCharacter
     /**
      * Get the character race
      * 
-     * @return ArrayCollection
+     * @return RulesetPlayableRace
      */
     public function getRace()
     {
@@ -258,8 +240,9 @@ class PlayerCharacter
     
     /**
      * 
-     * @param \Dk\Bundle\SystemBundle\Entity\RulesetPlayableRace $race
-     * @return \Dk\Bundle\SystemBundle\Entity\PlayerCharacter
+     * @param RulesetPlayableRace $race
+     *
+     * @return PlayerCharacter
      */
     public function setRace(RulesetPlayableRace $race)
     {
@@ -271,7 +254,7 @@ class PlayerCharacter
     /**
      * Get assets
      * 
-     * @return ArrayCollection
+     * @return ArrayCollection[PlayerCharacterAsset]
      */
     public function getAssets()
     {

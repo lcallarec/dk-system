@@ -7,65 +7,31 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * RulesetAssetGroup
- *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\MaterializedPathRepository")
- * @Gedmo\Tree(type="materializedPath")
  */
 class RulesetSkillGroup
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @Gedmo\TreePathSource
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @Gedmo\TreePath(separator=".", startsWithSeparator=false, endsWithSeparator=false)
-     * @ORM\Column(name="path", type="string", length=255, nullable=true)
-     */
+    /** @var string */
     private $path;
 
-    /**
-     * @ORM\Column(name="name", type="string", length=255)
-     */
+    /** @var string */
     private $name;
 
-    /**
-     * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="RulesetSkillGroup", inversedBy="children")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
-     * })
-     */
+    /** @var RulesetSkillGroup */
     private $parent;
 
-    /**
-     * @Gedmo\TreeLevel
-     * @ORM\Column(name="level", type="integer", nullable=true)
-     */
+    /** @var int */
     private $level;
 
-    /**
-     * @ORM\OneToMany(targetEntity="RulesetSkillGroup", mappedBy="parent")
-     */
+    /** @var RulesetSkillGroup */
     private $children;
 
-    /**
-     *
-     * @var Ruleset
-     * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="skillGroups")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    /** @var Ruleset */
     private $ruleset;
 
-    /**
-     * @ORM\OneToMany(targetEntity="RulesetSkill", mappedBy="group")
-     */
+    /** @var ArrayCollection[RulesetSkill] */
     private $skills;
 
     public function getId()
@@ -135,7 +101,7 @@ class RulesetSkillGroup
     /**
      * Get the ruleset
      *
-     * @return \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
+     * @return Ruleset $ruleset
      */
     public function getRuleset()
     {
@@ -145,8 +111,9 @@ class RulesetSkillGroup
     /**
      * Set the ruleset
      *
-     * @param \Dk\Bundle\SystemBundle\Entity\Ruleset $ruleset
-     * @return \Dk\Bundle\SystemBundle\Entity\RulesetSkillGroup
+     * @param Ruleset $ruleset
+     *
+     * @return RulesetSkillGroup
      */
     public function setRuleset(Ruleset $ruleset)
     {

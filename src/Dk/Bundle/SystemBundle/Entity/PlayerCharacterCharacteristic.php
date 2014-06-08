@@ -7,44 +7,19 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * PlayerCharacterCharacteristic
- *
- * @ORM\Table()
- * @ORM\Entity()
  */
 class PlayerCharacterCharacteristic
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var int */
     private $id;
 
-    /**
-     *
-     * @var PlayerCharacter
-     * @ORM\ManyToOne(targetEntity="PlayerCharacter", inversedBy="characteristics") 
-     */
+    /** @var PlayerCharacter */
     private $playerCharacter;
 
-    /**
-     *
-     * @var RulesetCharacteristic
-     * @ORM\ManyToOne(targetEntity="RulesetCharacteristic") 
-     */
+    /** @var RulesetCharacteristic */
     private $rulesetCharacteristic;
     
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="value", type="smallint")
-     * @Assert\Range(
-     *      min = -5,
-     *      max = 5
-     * )
-     */
+    /** @var int */
     private $value;
 
 
@@ -62,6 +37,7 @@ class PlayerCharacterCharacteristic
      * Set value
      *
      * @param integer $value
+     *
      * @return PlayerCharacterCharacteristic
      */
     public function setValue($value)
@@ -83,6 +59,7 @@ class PlayerCharacterCharacteristic
     
     /**
      * Get the related Characteristic
+     *
      * @return RulesetCharacteristic
      */
     public function getRulesetCharacteristic()
@@ -92,7 +69,9 @@ class PlayerCharacterCharacteristic
     
     /**
      * Set the RulesetCharacteristic on which this Char rely on
+     *
      * @param RulesetCharacteristic $char
+     *
      * @return PlayerCharacterCharacteristic
      */
     public function setRulesetCharacteristic(RulesetCharacteristic $char = null)
@@ -106,6 +85,7 @@ class PlayerCharacterCharacteristic
     
     /**
      * Set the PlayerCharacter who own this Char
+     *
      * @param PlayerCharacter $pc
      */
     public function setPlayerCharacter(PlayerCharacter $pc)

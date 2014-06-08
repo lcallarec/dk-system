@@ -7,52 +7,27 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * RulesetCharacteristic
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\RulesetCharacteristicRepository")
  */
 class RulesetCharacteristic
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var int */
     private $id;
 
-    /**
-     *
-     * @var Ruleset
-     * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="characteristics")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    /** @var Ruleset */
     private $ruleset;
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="shortname", type="string", length=5)
-     */
+    /** @var string */
     private $shortname;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="longname", type="string", length=18)
-     */
+    /** @var string */
     private $longname;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
-     */
+    /** @var string */
     private $description;
-
 
     /**
      * Get the characteristic string representation
+     *
      * @return string
      */
     public function __toString()
@@ -74,7 +49,8 @@ class RulesetCharacteristic
      * Set shortname
      *
      * @param string $shortname
-     * @return RulesetCharacteristic
+     *
+     * @return $this
      */
     public function setShortname($shortname)
     {
@@ -97,7 +73,8 @@ class RulesetCharacteristic
      * Set longname
      *
      * @param string $longname
-     * @return RulesetCharacteristic
+     *
+     * @return $this
      */
     public function setLongname($longname)
     {
@@ -120,7 +97,8 @@ class RulesetCharacteristic
      * Set description
      *
      * @param string $description
-     * @return RulesetCharacteristic
+     *
+     * @return $this
      */
     public function setDescription($description)
     {
@@ -143,7 +121,8 @@ class RulesetCharacteristic
      * Set the RulesetCharacteristic ruleset
      * 
      * @param Ruleset $ruleset
-     * @return RulesetCharacteristic
+     *
+     * @return $this
      */
     public function setRuleset(Ruleset $ruleset)
     {

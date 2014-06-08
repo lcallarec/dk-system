@@ -8,102 +8,37 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ruleset
- *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Dk\Bundle\SystemBundle\Repository\RulesetRepository")
  */
 class Ruleset
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    /** @var integer */
     private $id;
 
-    /**
-     * The player owning this ruleset
-     * @var Player 
-     * @ORM\ManyToOne(targetEntity="Player")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    /** @var Player */
     private $owner;    
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank(message="Le nom du système de règles ne peut être vide")
-     * @Assert\Length(
-     *      min = "2",
-     *      max = "100",
-     *      minMessage = "Le nom du système de règles ne doit pas faire moins de {{ limit }} caractères",
-     *      maxMessage = "Le nom du système de règles ne peut pas être plus long que {{ limit }} caractères"
-     * )
-     */
+    /** @var string */
     private $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="reference", type="string", length=16)
-     */
+    /** @var string */
     private $reference;
 
-    /**
-     *
-     * @var ArrayCollection of RulesetCharacteristics
-     * @ORM\OneToMany(targetEntity="RulesetCharacteristic", mappedBy="ruleset", indexBy="shortname", cascade="ALL")
-     */
+    /** @var ArrayCollection[RulesetCharacteristics] */
     private $characteristics;
 
-    /**
-     * PlayableRaces related to this ruleset
-     * 
-     * @var ArrayCollection
-     * 
-     * @ORM\OneToMany(targetEntity="RulesetPlayableRace", mappedBy="ruleset")
-     */
+    /** @var ArrayCollection[RulesetPlayableRace] */
     private $playableRaces;
     
-    /**
-     * Skills related to this ruleset
-     * 
-     * @var ArrayCollection
-     * 
-     * @ORM\OneToMany(targetEntity="RulesetSkill", mappedBy="ruleset", cascade="ALL"))
-     * @Assert\Valid()
-     */
+    /** @var ArrayCollection[RulesetSkill] */
     private $skills;
 
-    /**
-     * SkillGroups related to this ruleset
-     *
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="RulesetSkillGroup", mappedBy="ruleset")
-     * @Assert\Valid()
-     */
+    /** @var ArrayCollection[RulesetSkillGroup] */
     private $skillGroups;
 
-    /**
-     * Assets related to this ruleset
-     * 
-     * @var ArrayCollection
-     * 
-     * @ORM\OneToMany(targetEntity="RulesetAsset", mappedBy="ruleset", cascade="ALL"))
-     */
+    /** @var ArrayCollection[RulesetAsset] */
     private $assets;
 
-    /**
-     * Assets groups related to this ruleset
-     *
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="RulesetAssetGroup", mappedBy="ruleset")
-     */
+    /** @var ArrayCollection[RulesetAssetGroup] */
     private $assetGroups;
 
     public function __construct()
@@ -116,6 +51,7 @@ class Ruleset
     
     /**
      * Get the ruleset string representation
+     *
      * @return string
      */
     public function __toString()
@@ -159,6 +95,7 @@ class Ruleset
 
     /**
      * Get the campaign owner
+     *
      * @return Player 
      */
     public function getOwner()
@@ -168,8 +105,10 @@ class Ruleset
     
     /**
      * Set the campaign owner
+     *
      * @param Player $owner
-     * @return Campaign
+     *
+     * @return $this
      */
     public function setOwner(Player $owner)
     {
@@ -182,7 +121,8 @@ class Ruleset
      * Set name
      *
      * @param string $name
-     * @return Ruleset
+     *
+     * @return $this
      */
     public function setName($name)
     {
@@ -203,7 +143,8 @@ class Ruleset
     
     /**
      * Get the characteristics for this ruleset
-     * @return ArrayCollection
+     *
+     * @return ArrayCollection[RulesetCharacteristics]
      */
     public function getCharacteristics()
     {
@@ -215,7 +156,7 @@ class Ruleset
      *
      * @param RulesetCharacteristic $characteristic
      *
-     * @return Ruleset
+     * @return $this
      */
     public function addCharacteristic(RulesetCharacteristic $characteristic)
     {
@@ -228,7 +169,7 @@ class Ruleset
     /**
      * Get the skills of this ruleset
      * 
-     * @return ArrayCollection
+     * @return ArrayCollection[RulesetSkill]
      */
     public function getSkills()
     {
@@ -240,7 +181,7 @@ class Ruleset
      *
      * @param RulesetSkill $skill
      *
-     * @return Ruleset
+     * @return $this
      */
     public function addSkill(RulesetSkill $skill)
     {
@@ -251,12 +192,12 @@ class Ruleset
     }
 
    /**
-     * remove a skill for this ruleset
-     * 
-     * @param RulesetSkill $skill
+    * remove a skill for this ruleset
     *
-     * @return Ruleset
-     */
+    * @param RulesetSkill $skill
+    *
+    * @return $this
+    */
     public function removeSkill(RulesetSkill $skill)
     {
         $this->skills->removeElement($skill);
@@ -265,11 +206,12 @@ class Ruleset
     }    
 
    /**
-     * remove a PlayableRace for this ruleset
-     * 
-     * @param RulesetPlayableRace $pr
-     * @return Ruleset
-     */
+    * remove a PlayableRace for this ruleset
+    *
+    * @param RulesetPlayableRace $pr
+    *
+    * @return $this
+    */
     public function removePlayableRace(RulesetPlayableRace $pr)
     {
         $this->playableRaces->removeElement($pr);
@@ -280,7 +222,7 @@ class Ruleset
     /**
      * Get the playable races of this ruleset
      * 
-     * @return ArrayCollection
+     * @return ArrayCollection[RulesetPlayableRace]
      */
     public function getPlayableRaces()
     {
@@ -292,7 +234,7 @@ class Ruleset
      * 
      * @param RulesetPlayableRace $pr
      *
-     * @return Ruleset
+     * @return $this
      */
     public function addPlayableRace(RulesetPlayableRace $pr)
     {
@@ -315,18 +257,19 @@ class Ruleset
    /**
     * Get asset groups of this ruleset
     *
-    * @return ArrayCollection
+    * @return ArrayCollection[RulesetAssetGroup]
     */
    public function getAssetGroups()
    {
         return $this->assetGroups;
-    }
+   }
 
     /**
      * Add a skill from this ruleset
      * 
      * @param RulesetAsset $asset
-     * @return Ruleset
+     *
+     * @return $this
      */
     public function addAsset(RulesetAsset $asset)
     {
@@ -337,17 +280,16 @@ class Ruleset
     }
 
    /**
-     * remove an Asset from this ruleset
-     * 
-     * @param RulesetAsset $asset
+    * remove an Asset from this ruleset
     *
-     * @return Ruleset
-     */
+    * @param RulesetAsset $asset
+    *
+    * @return $this
+    */
     public function removeAsset(RulesetAsset $asset)
     {
         $this->assets->removeElement($asset);
         
         return $this;
     }      
-    
 }

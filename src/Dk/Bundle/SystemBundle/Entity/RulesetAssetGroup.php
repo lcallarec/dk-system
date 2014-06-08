@@ -8,70 +8,31 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * RulesetAssetGroup
- *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\MaterializedPathRepository")
- * @Gedmo\Tree(type="materializedPath")
  */
 class RulesetAssetGroup
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @Gedmo\TreePathSource
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @Gedmo\TreePath(separator=".", startsWithSeparator=false, endsWithSeparator=false)
-     * @ORM\Column(name="path", type="string", length=255, nullable=true)
-     */
+    /** @var string */
     private $path;
 
-    /**
-     * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="RulesetAssetGroup", inversedBy="children")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
-     * })
-     */
+    /** @var RulesetAssetGroup */
     private $parent;
 
-    /**
-     * @Gedmo\TreeLevel
-     * @ORM\Column(name="lvl", type="integer", nullable=true)
-     */
+    /** @var int */
     private $level;
 
-    /**
-     * @ORM\OneToMany(targetEntity="RulesetAssetGroup", mappedBy="parent")
-     */
+    /** @var RulesetAssetGroup */
     private $children;
 
-    /**
-     *
-     * @var Ruleset
-     *
-     * @ORM\ManyToOne(targetEntity="Ruleset", inversedBy="assetGroups")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    /** @var Ruleset */
     private $ruleset;
 
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="RulesetAsset", mappedBy="group")
-     */
+    /** @var ArrayCollection[RulesetAsset] */
     private $assets;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=128)
-     */
+    /** @var string */
     private $name;
 
     public function __construct()
@@ -90,7 +51,8 @@ class RulesetAssetGroup
     /**
      * Get id
      *
-     * @return integer 
+     * @return int
+     *
      */
     public function getId()
     {
@@ -135,7 +97,8 @@ class RulesetAssetGroup
      * Set name
      *
      * @param string $name
-     * @return RulesetAsset
+     *
+     * @return $this
      */
     public function setName($name)
     {
@@ -145,7 +108,7 @@ class RulesetAssetGroup
     }
 
     /**
-     * @return ArrayCollection
+     * @return ArrayCollection[RulesetAsset]
      */
     public function getAssets()
     {
@@ -186,31 +149,48 @@ class RulesetAssetGroup
         return $this;
     }
 
+    /**
+     * @return RulesetAssetGroup
+     */
     public function getChildren()
     {
         return $this->children;
     }
 
+    /**
+     * @param string
+     *
+     * @return $this
+     */
     public function setPath($path)
     {
         $this->path = $path;
+
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getPath()
     {
         return $this->path;
     }
 
+    /**
+     * @return int
+     */
     public function getLevel()
     {
         return $this->level;
     }
 
     /**
-     * Set the RulesetCharacteristic ruleset
+     * Set the ruleset
      *
      * @param Ruleset $ruleset
-     * @return RulesetCharacteristic
+     *
+     * @return $this
      */
     public function setRuleset(Ruleset $ruleset)
     {

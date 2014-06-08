@@ -1,0 +1,24 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Dk\Bundle\SystemBundle\Entity\PlayerCharacterCharacteristic" table="PlayerCharacterCharacteristic" repository-class="Dk\Bundle\SystemBundle\Repository\PlayerCharacterCharacteristicRepository">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="value" column="value" type="smallint" nullable="false"/>
+
+        <many-to-one target-entity="RulesetCharacteristic" field="rulesetCharacteristic">
+            <cascade><cascade-all/></cascade>
+        </many-to-one>
+
+        <many-to-one target-entity="PlayerCharacter" field="playerCharacter" inversed-by="characteristics">
+            <cascade><cascade-all/></cascade>
+        </many-to-one>
+
+    </entity>
+
+</doctrine-mapping>
