@@ -36,6 +36,7 @@ class AssetImporter extends Importer
             $this->getGroupClosure($ruleset, $groups, new RulesetAssetGroup()),
             $this->getAssetClosure($ruleset, $groups)
         );
+
     }
 
     /**
@@ -58,9 +59,15 @@ class AssetImporter extends Importer
             $asset
                 ->setName($name)
                 ->setDescription($description)
-                ->setGroup($groups->get($group))
                 ->setRuleset($ruleset)
             ;
+
+            if (!$groups->isEmpty()) {
+                $asset->setGroup($groups->get($group));
+            }
+
+            $ruleset->addAsset($asset);
+
         };
     }
 
