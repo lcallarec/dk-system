@@ -215,6 +215,8 @@ class RulesetAsset
      */
     public function setGroup(RulesetAssetGroup $group)
     {
+        $group->addAsset($this);
+
         $this->group = $group;
 
         return $this;

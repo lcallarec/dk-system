@@ -5,7 +5,6 @@ namespace Dk\Bundle\ImportBundle\Import;
 use Closure;
 use Dk\Bundle\SystemBundle\Entity\Ruleset;
 use Dk\Bundle\SystemBundle\Entity\RulesetSkill;
-use Dk\Bundle\SystemBundle\Entity\RulesetSkillGroup;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -33,7 +32,7 @@ class SkillImporter extends Importer
         $this->recursiveItemManager(
             $this->data,
             null,
-            $this->getGroupClosure($ruleset, $groups, new RulesetSkillGroup()),
+            $this->getGroupClosure($ruleset, $groups, 'Dk\Bundle\SystemBundle\Entity\RulesetSkillGroup'),
             $this->getSkillClosure($ruleset, $groups)
         );
     }

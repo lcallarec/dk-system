@@ -1,5 +1,5 @@
 <?php
-namespace Dk\Bundle\SystemBundle\DataFixtures\Test;
+namespace Dk\Bundle\SystemBundle\DataFixtures\ORM;
 
 use Dk\Bundle\ImportBundle\Import\AssetImporter;
 use Dk\Bundle\ImportBundle\Import\CharacteristicImporter;
@@ -25,7 +25,7 @@ use Dk\Bundle\SystemBundle\Entity\Ruleset;
  *
  * @author Laurent Callarec <l.callarec@gmail.com>
  */
-class TestData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
+class RulesetData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -80,11 +80,10 @@ class TestData extends AbstractFixture implements FixtureInterface, OrderedFixtu
             }
         }
 
-        $this->setReference('dk-std', $ruleset);
-
         $manager->persist($ruleset);
-
         $manager->flush();
+
+        $this->setReference('dk-std', $ruleset);
     }
 
 

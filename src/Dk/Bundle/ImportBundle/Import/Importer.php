@@ -91,13 +91,14 @@ abstract class Importer implements ImporterInterface
     /**
      * @param Ruleset         $ruleset
      * @param ArrayCollection $groups
-     * @param mixed           $group    A RulesetGroup object
+     * @param string          $groupClass   A RulesetGroup class name
+     *
      * @return Closure
      */
-    protected function getGroupClosure(Ruleset $ruleset, ArrayCollection $groups, $group)
+    protected function getGroupClosure(Ruleset $ruleset, ArrayCollection $groups, $groupClass)
     {
-        return function($name, $parent, $level) use ($groups, $group, $ruleset) {
-
+        return function($name, $parent, $level) use ($groups, $groupClass, $ruleset) {
+            $group = new $groupClass();
             $group
                 ->setName($name)
                 ->setRuleset($ruleset)
