@@ -47,6 +47,7 @@ class Ruleset
         $this->skills          = new ArrayCollection();
         $this->assets          = new ArrayCollection();
         $this->assetGroups     = new ArrayCollection();
+        $this->skillGroups     = new ArrayCollection();
     }
     
     /**
@@ -265,7 +266,7 @@ class Ruleset
    }
 
     /**
-     * Add a skill from this ruleset
+     * Add an asset to this ruleset
      * 
      * @param RulesetAsset $asset
      *
@@ -275,7 +276,7 @@ class Ruleset
     {
         $asset->setRuleset($this);
         $this->assets->add($asset);
-        
+
         return $this;
     }
 
