@@ -15,8 +15,13 @@ class RulesetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('owner')
+            ->add('name', 'text', [
+                'label' => 'ruleset.name'
+            ])
+            ->add('owner', 'entity', [
+                'class' => 'Dk\Bundle\SystemBundle\Entity\Player',
+                'label' => 'ruleset.owner'
+            ])
             
         ;
     }
@@ -26,9 +31,10 @@ class RulesetType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'Dk\Bundle\SystemBundle\Entity\Ruleset'
-        ));
+        $resolver->setDefaults([
+            'data_class' => 'Dk\Bundle\SystemBundle\Entity\Ruleset',
+            'translation_domain' => 'ruleset'
+        ]);
     }
 
     /**
