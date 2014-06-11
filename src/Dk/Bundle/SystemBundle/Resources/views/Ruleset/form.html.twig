@@ -1,8 +1,8 @@
-
 {% extends 'DkSystemBundle::board.html.twig' %}
+{% trans_default_domain 'ruleset' %}
 
 {% block title %}
-    Modification du système de règles {{ form.vars.value.name }}
+    {{ 'ruleset.update.header' | trans({'%name%': form.vars.value.name }) }}
 {% endblock %}
 
 {% set current_page = 'ruleset' %}
@@ -15,8 +15,8 @@
 
         <div class="form-group row">
             <div class="col-sm-5">
-                {{ form_label(form.name, null, {label_attr: {class: "col-sm-3 control-label" }}) }}
-                <div class="col-sm-9">
+                {{ form_label(form.name, null, {label_attr: {class: "col-sm-4 control-label" }}) }}
+                <div class="col-sm-8">
                     {{ form_widget(form.name, {attr: {class: "form-control input-sm" }}) }}
                     {{ form_errors(form.name) }}
                 </div>
