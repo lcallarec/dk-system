@@ -1,0 +1,3 @@
+ruleset.must.not.be.empty: Le nom du système de règles ne doit pas être vide
+ruleset.must.be.min.length: Le nom du système de règles ne doit pas faire moins de {{ limit }} caractères
+ruleset.must.be.max.length: Le nom du système de règles ne peut pas être plus long que {{ limit }} caractères

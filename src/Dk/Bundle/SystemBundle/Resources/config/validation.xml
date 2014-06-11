@@ -59,13 +59,13 @@
     <class name="Dk\Bundle\SystemBundle\Entity\Ruleset">
         <property name="name">
             <constraint name="NotBlank">
-                <option name="message">Le nom du système de règles ne peut être vide</option>
+                <option name="message">ruleset.must.not.be.empty</option>
             </constraint>
             <constraint name="Length">
-                <option name="min">2</option>
-                <option name="min">100</option>
-                <option name="minMessage">Le nom du système de règles ne doit pas faire moins de {{ limit }} caractères</option>
-                <option name="maxMessage">Le nom du système de règles ne peut pas être plus long que {{ limit }} caractères</option>
+                <option name="min">5</option>
+                <option name="max">100</option>
+                <option name="minMessage">ruleset.must.be.min.length</option>
+                <option name="maxMessage">ruleset.must.be.max.length</option>
             </constraint>
         </property>
         <property name="skills">
