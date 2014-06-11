@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                     http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Dk\Bundle\SystemBundle\Entity\RulesetAssetGroup" table="RulesetAssetGroup" repository-class="Gedmo\Tree\Entity\Repository\MaterializedPathRepository">
+    <entity name="Dk\Bundle\SystemBundle\Entity\Gallery" table="Gallery" repository-class="Dk\Bundle\SystemBundle\Repository\GalleryRepository">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
@@ -12,32 +12,34 @@
         </id>
 
         <field name="name" column="name" type="string" length="128" />
+
+        <many-to-one target-entity="Dk\Bundle\SystemBundle\Entity\Player" field="owner">
+            <join-column nullable="false" on-delete="CASCADE"/>
+        </many-to-one>
+
         <field name="path" column="path" type="string" length="64" nullable="true">
-            <gedmo:tree-path separator="." starts_with_separator="false" ends_with_separator="false" />
+            <gedmo:tree-path separator="." startsWithSeparator="false" endsWithSeparator="false" />
         </field>
+
         <field name="level" column="level" type="smallint" nullable="true">
             <gedmo:tree-level/>
         </field>
 
-        <many-to-one target-entity="RulesetAssetGroup" field="parent" inversed-by="children">
+        <many-to-one target-entity="Gallery" field="parent" inversed-by="children">
             <cascade><cascade-all/></cascade>
             <join-column on-delete="SET NULL"></join-column>
-            <gedmo:tree-parent />
+            <gedmo:tree-parent/>
         </many-to-one>
 
-        <one-to-many target-entity="RulesetAssetGroup" field="children" mapped-by="parent">
+        <one-to-many target-entity="Gallery" field="children" mapped-by="parent">
             <cascade><cascade-all/></cascade>
         </one-to-many>
 
-        <many-to-one target-entity="Ruleset" field="ruleset" inversed-by="assetGroups">
-            <join-column nullable="false" on-delete="CASCADE"></join-column>
-        </many-to-one>
-
-        <one-to-many target-entity="RulesetAsset" field="assets" mapped-by="group">
-            <cascade><cascade-all/></cascade>
+        <one-to-many target-entity="Dk\Bundle\SystemBundle\Entity\Gallery\Image" mapped-by="gallery" field="images">
+            <join-column on-delete="SET NULL"></join-column>
         </one-to-many>
 
-        <gedmo:tree type="materializedPath"/>
+        <gedmo:tree type="materializedPath" />
 
     </entity>
 

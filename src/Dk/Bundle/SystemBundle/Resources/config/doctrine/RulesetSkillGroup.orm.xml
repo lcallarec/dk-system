@@ -13,7 +13,7 @@
 
         <field name="name" column="name" type="string" length="128" />
         <field name="path" column="path" type="string" length="64" nullable="true">
-            <gedmo:tree-path separator="," startsWithSeparator="false" endsWithSeparator="false" />
+            <gedmo:tree-path separator="." startsWithSeparator="false" endsWithSeparator="false" />
         </field>
         <field name="level" column="level" type="smallint" nullable="true">
             <gedmo:tree-level/>

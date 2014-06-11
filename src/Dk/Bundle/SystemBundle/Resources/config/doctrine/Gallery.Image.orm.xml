@@ -1,0 +1,20 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Dk\Bundle\SystemBundle\Entity\Gallery\Image" table="Image" repository-class="Dk\Bundle\SystemBundle\Repository\ImageRepository">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="name" column="name" type="string" length="255" />
+
+        <many-to-one target-entity="Dk\Bundle\SystemBundle\Entity\Gallery" field="gallery" inversed-by="images">
+            <join-column on-delete="SET NULL" />
+        </many-to-one>
+
+    </entity>
+
+</doctrine-mapping>

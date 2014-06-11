@@ -1,5 +1,5 @@
 <?php
-namespace Dk\Bundle\SystemBundle\DataFixtures\Test;
+namespace Dk\Bundle\SystemBundle\DataFixtures\ORM;
 
 use Dk\Bundle\ImportBundle\Import\AssetImporter;
 use Dk\Bundle\ImportBundle\Import\CharacteristicImporter;
@@ -25,7 +25,7 @@ use Dk\Bundle\SystemBundle\Entity\Ruleset;
  *
  * @author Laurent Callarec <l.callarec@gmail.com>
  */
-class TestData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
+class RulesetData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -58,42 +58,32 @@ class TestData extends AbstractFixture implements FixtureInterface, OrderedFixtu
             /** @var SplFileInfo $file */
             foreach ($rulesetFinder as $file) {
 
-                $data = $yaml->parse($file->getContents());
-
                 preg_match('/[0-9]*-([a-zA-Z_]*).yml/', $file->getBasename(), $type);
                 switch ($type[1]) {
                     case 'ruleset':
                         $ri = new RulesetImporter($accessor, $extractor, $file->getContents());
                         $ri->import($ruleset);
-
-                        //$ruleset = $this->setRulesetFromConfigFile($data['ruleset'], $manager);
                         break;
                     case 'characteristics':
-
                         $ci = new CharacteristicImporter($accessor, $extractor, $file->getContents());
                         $ci->import($ruleset);
-
-                        //$this->setCharacteristicsFromConfigFile($ruleset, $data['characteristics'], $manager);
                         break;
                     case 'skills':
                         $si = new SkillImporter($accessor, $extractor, $file->getContents());
                         $si->import($ruleset);
-                        // $this->setSkillsFromConfigFile($ruleset, $data['skills'], $manager);
                         break;
                     case 'assets':
                         $ai = new AssetImporter($accessor, $extractor, $file->getContents());
                         $ai->import($ruleset);
-                        //$this->setAssetsFromConfigFile($ruleset, $data['assets'], $manager);
                         break;
                 }
             }
         }
 
-        $this->setReference('dk-std', $ruleset);
-
         $manager->persist($ruleset);
-
         $manager->flush();
+
+        $this->setReference('dk-std', $ruleset);
     }
 
 

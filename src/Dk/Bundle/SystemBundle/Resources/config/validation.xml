@@ -57,12 +57,10 @@
     </class>
 
     <class name="Dk\Bundle\SystemBundle\Entity\Ruleset">
-        <property name="value">
+        <property name="name">
             <constraint name="NotBlank">
                 <option name="message">Le nom du système de règles ne peut être vide</option>
             </constraint>
-        </property>
-        <property name="name">
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="min">100</option>
