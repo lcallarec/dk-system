@@ -33,6 +33,7 @@
         {% set type = type|default('submit') %}
         {% set size = size|default('btn-sm') %}
         {% set theme_class = ' btn btn-submit ' ~ size ~ ' ' %}
+        {% set label = label|default('ui.default.button.submit'|trans) %}
 
         {% if attr.class is defined %}
             {% set theme_class = attr.class ~ theme_class %}

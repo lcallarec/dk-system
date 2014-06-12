@@ -1,6 +1,4 @@
-gui:
-  button:
-    submit: valider
+ui.default.button.submit: valider
 
 user:
   nickname: pseudo
