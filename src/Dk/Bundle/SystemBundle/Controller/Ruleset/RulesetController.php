@@ -4,7 +4,9 @@ namespace Dk\Bundle\SystemBundle\Controller\Ruleset;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class RulesetController
@@ -13,11 +15,16 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class RulesetController extends Controller
 {
-   
    /**
     * Manage Rulesets
+    *
+    * @param Request $request
+    * @param int     $id
+    * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+    *
+    * @return Response|RedirectResponse
     */
-    public function manageAction(Request $request, $id)
+    public function manageSkillAction(Request $request, $id)
     {
         //A ruleset can't be created this way yet
         if(null !== $id) {

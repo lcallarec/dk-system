@@ -12,15 +12,17 @@ use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetAssetCollectionType;
  */
 class AssetController extends Controller
 {
-   
-
     /**
     * Manage Ruleset assets
-    */
-    public function manageAssetAction($id)
+     *
+     * @param Request $request
+     * @param int $id
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
+     * @return Response|RedirectResponse
+     */
+    public function manageSkillAction(Request $request, $id)
     {
-        $request = $this->getRequest();
-        
         if(null !== $id) {
             $ruleset = $this->get('doctrine')
                ->getRepository('DkSystemBundle:Ruleset')

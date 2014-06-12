@@ -19,7 +19,8 @@ class PlayableRaceController extends Controller
      * Manage Playable races skills
      *
      * @param Request $request
-     * @param int $id
+     * @param int     $id
+     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      *
      * @return Response|RedirectResponse

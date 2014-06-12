@@ -4,6 +4,9 @@ namespace Dk\Bundle\SystemBundle\Controller\Ruleset;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetSkillCollectionType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class SkillController
@@ -12,14 +15,18 @@ use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetSkillCollectionType;
  */
 class SkillController extends Controller
 {
-   
    /**
     * Manage Ruleset skills
+    *
+    * @param Request $request
+    * @param int     $id
+    *
+    * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+    *
+    * @return Response|RedirectResponse
     */
-    public function manageSkillAction($id)
+    public function manageSkillAction(Request $request, $id)
     {
-        $request = $this->getRequest();
-        
         if(null !== $id) {
             $skills = $this
                 ->get('doctrine')
