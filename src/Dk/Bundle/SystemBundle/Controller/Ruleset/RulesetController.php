@@ -21,7 +21,11 @@ class RulesetController extends Controller
     {
         //A ruleset can't be created this way yet
         if(null !== $id) {
-            $ruleset = $this->get('doctrine')->getRepository('DkSystemBundle:Ruleset')->findOneWithRelationships($this->getUser(), $id);
+            $ruleset = $this
+                ->get('doctrine')
+                ->getRepository('DkSystemBundle:Ruleset')
+                ->findOneWithRelationships($this->getUser(), $id)
+            ;
         }
         
         if(null === $ruleset || null === $id) {
@@ -33,30 +37,17 @@ class RulesetController extends Controller
         $form = $this->createForm(new RulesetType(), $ruleset);
         $form->add('submit', 'submit');
 
-        if($request->getMethod() === 'GET') {
- 
-            return $this->render('DkSystemBundle:Ruleset:form.html.twig', ['form' => $form->createView()]);
-         
-        } else {
-    
-            $form->handleRequest($request);
-            
-            if($form->isValid()) {
-    
-                $em->persist($ruleset);
-                
-                $em->flush();
-                
-                return $this->redirect($this->generateUrl('board'));
-                
-            } else {
+        $form->handleRequest($request);
 
-                return $this->render('DkSystemBundle:Ruleset:form.html.twig', ['form' => $form->createView()]);
-            
-            }
-            
+        if($form->isValid()) {
+
+            $em->persist($ruleset);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('board'));
         }
-       
-    }
 
+        return $this->render('DkSystemBundle:Ruleset:form.html.twig', ['form' => $form->createView()]);
+    }
 }

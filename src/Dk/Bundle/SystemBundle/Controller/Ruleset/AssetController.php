@@ -23,8 +23,9 @@ class AssetController extends Controller
         
         if(null !== $id) {
             $ruleset = $this->get('doctrine')
-                           ->getRepository('DkSystemBundle:Ruleset')
-                           ->findOneWithAssets($this->getUser(), $id);
+               ->getRepository('DkSystemBundle:Ruleset')
+               ->findOneWithAssets($this->getUser(), $id)
+            ;
         }
 
         if(null === $id) {
@@ -35,29 +36,17 @@ class AssetController extends Controller
         
         $form = $this->createForm(new RulesetAssetCollectionType(), $ruleset);
 
-        if($request->getMethod() === 'GET') {
- 
-            return $this->render('DkSystemBundle:Ruleset:Asset/form.html.twig', ['form' => $form->createView()]);
-         
-        } else {
-    
-            $form->handleRequest($request);
-            
-            if($form->isValid()) {
-    
-                $em->persist($ruleset);
-                
-                $em->flush();
-                
-                return $this->redirect($this->generateUrl('manage_ruleset', ['id' => $id]));
-                
-            } else {
+        $form->handleRequest($request);
 
-                return $this->render('DkSystemBundle:Ruleset:Asset/form.html.twig', ['form' => $form->createView()]);
+        if($form->isValid()) {
 
-            }
-            
+            $em->persist($ruleset);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('manage_ruleset', ['id' => $id]));
         }
-       
+
+        return $this->render('DkSystemBundle:Ruleset:Asset/form.html.twig', ['form' => $form->createView()]);
     }
 }
