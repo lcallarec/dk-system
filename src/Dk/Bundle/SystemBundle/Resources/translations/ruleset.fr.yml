@@ -1,3 +1,5 @@
+ruleset.not.found: Ce système de règles n'existe pas ou n'existe plus.
+
 ruleset.update.header: modification du système %name%
 
 ruleset.name: nom du système

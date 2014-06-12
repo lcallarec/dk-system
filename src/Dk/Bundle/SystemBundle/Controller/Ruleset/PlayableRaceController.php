@@ -5,6 +5,8 @@ namespace Dk\Bundle\SystemBundle\Controller\Ruleset;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetPlayableRaceCollectionType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Class PlayableRaceController
@@ -13,28 +15,33 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class PlayableRaceController extends Controller
 {
-   /**
-    * Manage Playable races skills
-    */
+    /**
+     * Manage Playable races skills
+     *
+     * @param Request $request
+     * @param int $id
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
+     * @return Response|RedirectResponse
+     */
     public function managePlayableRaceAction(Request $request, $id)
     {
 
         if (null !== $id) {
             $ruleset = $this
-                            ->get('doctrine')
-                            ->getRepository('DkSystemBundle:Ruleset')
-                            ->findOneWithPlayableRaces($this->getUser(), $id)
+                ->get('doctrine')
+                ->getRepository('DkSystemBundle:Ruleset')
+                ->findOneWithPlayableRaces($this->getUser(), $id)
             ;
         }
 
         if (null === $id) {
-            throw $this->createNotFoundException("Ce système de règles n'existe pas ou n'existe plus. Aucune race jouable à gérer.");
+            throw $this->createNotFoundException($this->get('translator')->trans('ruleset.not.found', [], 'ruleset'));
         }
 
         $em = $this->get('doctrine')->getManager();
         
         $form = $this->createForm(new RulesetPlayableRaceCollectionType(), $ruleset);
-        
 
         $form->handleRequest($request);
 

@@ -28,7 +28,7 @@ class AssetController extends Controller
         }
 
         if(null === $id) {
-            throw $this->createNotFoundException("Ce système de règles n'existe pas ou n'existe plus. Aucun atouts à gérer.");
+            throw $this->createNotFoundException($this->get('translator')->trans('ruleset.not.found', [], 'ruleset'));
         }
 
         $em = $this->get('doctrine')->getManager();

@@ -25,7 +25,7 @@ class RulesetController extends Controller
         }
         
         if(null === $ruleset || null === $id) {
-            throw $this->createNotFoundException("Ce système de règles n'existe pas ou n'existe plus");
+            throw $this->createNotFoundException($this->get('translator')->trans('ruleset.not.found', [], 'ruleset'));
         }
 
         $em = $this->get('doctrine')->getManager();

@@ -25,7 +25,7 @@ class SkillController extends Controller
         }
 
         if(null === $id) {
-            throw $this->createNotFoundException("Ce système de règles n'existe pas ou n'existe plus. Aucune coméptence à gérer.");
+            throw $this->createNotFoundException($this->get('translator')->trans('ruleset.not.found', [], 'ruleset'));
         }
 
         $skillGroups = $this->get('doctrine')->getRepository('DkSystemBundle:RulesetSkillGroup')->findByRuleset($skills);
