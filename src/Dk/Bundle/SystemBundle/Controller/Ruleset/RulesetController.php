@@ -24,7 +24,7 @@ class RulesetController extends Controller
     *
     * @return Response|RedirectResponse
     */
-    public function manageSkillAction(Request $request, $id)
+    public function manageAction(Request $request, $id)
     {
         //A ruleset can't be created this way yet
         if(null !== $id) {

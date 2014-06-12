@@ -43,6 +43,7 @@ class PlayableRaceController extends Controller
         $em = $this->get('doctrine')->getManager();
         
         $form = $this->createForm(new RulesetPlayableRaceCollectionType(), $ruleset);
+        $form->add('submit', 'submit');
 
         $form->handleRequest($request);
 

@@ -2,8 +2,11 @@
 
 namespace Dk\Bundle\SystemBundle\Controller\Ruleset;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dk\Bundle\SystemBundle\Form\Type\Ruleset\RulesetAssetCollectionType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class AssetController
@@ -21,12 +24,13 @@ class AssetController extends Controller
      *
      * @return Response|RedirectResponse
      */
-    public function manageSkillAction(Request $request, $id)
+    public function manageAssetAction(Request $request, $id)
     {
         if(null !== $id) {
-            $ruleset = $this->get('doctrine')
-               ->getRepository('DkSystemBundle:Ruleset')
-               ->findOneWithAssets($this->getUser(), $id)
+            $ruleset = $this
+                ->get('doctrine')
+                ->getRepository('DkSystemBundle:Ruleset')
+                ->findOneWithAssets($this->getUser(), $id)
             ;
         }
 
@@ -37,6 +41,7 @@ class AssetController extends Controller
         $em = $this->get('doctrine')->getManager();
         
         $form = $this->createForm(new RulesetAssetCollectionType(), $ruleset);
+        $form->add('submit', 'submit');
 
         $form->handleRequest($request);
 

@@ -17,8 +17,6 @@ class RulesetAssetCollectionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('submit', 'submit');
-        
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
             
             $form = $event->getForm();
