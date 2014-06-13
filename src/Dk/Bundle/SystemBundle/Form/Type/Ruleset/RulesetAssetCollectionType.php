@@ -37,7 +37,8 @@ class RulesetAssetCollectionType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Dk\Bundle\SystemBundle\Entity\Ruleset'
+            'data_class' => 'Dk\Bundle\SystemBundle\Entity\Ruleset',
+            'translation_domain' => 'ruleset'
         ]);
     }
 

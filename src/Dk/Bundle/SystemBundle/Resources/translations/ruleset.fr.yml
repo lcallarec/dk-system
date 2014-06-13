@@ -9,3 +9,9 @@ ruleset.skill.update.header: gestion des compétences du système %name%
 ruleset.skill.name: compétence
 ruleset.skill.overloadMalus: malus d'emcombrement
 ruleset.skill.description: description
+
+ruleset.asset.update.header: gestion des atouts du système %name%
+ruleset.asset.useLimitation: limitation
+ruleset.asset.useCost: coût
+ruleset.asset.description: description
+ruleset.asset.preRequisite: pré-requis
