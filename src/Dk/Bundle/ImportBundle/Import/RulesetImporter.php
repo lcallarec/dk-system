@@ -25,8 +25,8 @@ class RulesetImporter extends Importer
     public function import(Ruleset $ruleset)
     {
          $ruleset
-            ->setName($this->getValue('[name]'))
-            ->setReference($this->getValue('[reference]'))
+            ->setName($this->getValue('[core][name]'))
+            ->setReference($this->getValue('[core][reference]'))
          ;
 
          return $ruleset;
