@@ -31,9 +31,43 @@
     {{ include('DkSystemBundle:Ruleset:menu.html.twig') }}    
     
     {{ form_start(form, {attr: {role: 'form', class: 'form-inline'}}) }}
-        
-        {% for asset in form.assets %}
-            {{ form_widget(asset) }}
+
+        {% set group = null %}
+        {% set parent_group = null %}
+        {% set assets = form.vars.value.assets %}
+
+        {% for child in form.assets %}
+
+            {% set index = loop.index0 %}
+
+            {% if assets[index].group.name != group %}
+                {% if loop.index0 != 0 %}
+                    </div>
+                {% endif %}
+
+                {% if assets[index].group.parent.id != parent_group %}
+                    {% if not loop.first%}
+                        </div>
+                    {% endif %}
+
+                    <div class="well col-xs-sm" id="asset-group-{{ assets[index].group.parent.id}}">
+
+                {% endif %}
+
+                <div class="row">
+                    <h2>{{ assets[index].group.parent.name }} / {{ assets[index].group.name }}</h2>
+
+            {% endif %}
+                {{ form_widget(child) }}
+
+            {% set group = assets[index].group.name %}
+            {% set parent_group = assets[index].group.parent.id %}
+
+            {% if loop.last %}
+                    </div>
+                </div>
+            {% endif %}
+
         {% endfor %}
       
     {{ form_end(form) }}
