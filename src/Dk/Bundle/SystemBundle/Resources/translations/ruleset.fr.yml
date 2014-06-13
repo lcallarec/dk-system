@@ -4,3 +4,8 @@ ruleset.update.header: modification du système %name%
 
 ruleset.name: nom du système
 ruleset.owner: propriétaire
+
+ruleset.skill.update.header: gestion des compétences du système %name%
+ruleset.skill.name: compétence
+ruleset.skill.overloadMalus: malus d'emcombrement
+ruleset.skill.description: description
