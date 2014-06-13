@@ -1,4 +1,7 @@
-ruleset.not.found: Ce système de règles n'existe pas ou n'existe plus.
+ruleset: règles
+ruleset.playableRaces: races jouables
+ruleset.skills: compétences
+ruleset.assets: atouts
 
 ruleset.update.header: modification du système %name%
 
@@ -15,3 +18,5 @@ ruleset.asset.useLimitation: limitation
 ruleset.asset.useCost: coût
 ruleset.asset.description: description
 ruleset.asset.preRequisite: pré-requis
+
+ruleset.not.found: Ce système de règles n'existe pas ou n'existe plus.
