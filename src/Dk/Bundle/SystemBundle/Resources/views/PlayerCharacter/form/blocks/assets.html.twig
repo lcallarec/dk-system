@@ -11,11 +11,13 @@
 </ul>
 
 <div class="sheet-block-body tab-content">
+
     {% set group = null %}
     {% set parent_group = null %}
-    {% for child in form.assets %}
-        {% set index = child.vars.value %}
 
+    {% for child in form.assets %}
+
+        {% set index = child.vars.value %}
 
         {% if assets[index].group.name != group %}
             {% if loop.index0 != 0 %}
@@ -27,6 +29,7 @@
             {% if not loop.first%}
         </div>
         {% endif %}
+
         <div class="tab-pane {% if loop.first %}active{% endif %}" id="asset-group-{{ assets[index].group.parent.id}}">
             {% endif %}
 
@@ -40,16 +43,21 @@
             </thead>
             <tbody>
         {% endif %}
+
         <tr>
             <td width="200px;">{{ form_widget(child) }}</td>
             <td>{{ assets[index].description }}</td>
         </tr>
+
         {% set group = assets[index].group.name %}
         {% set parent_group = assets[index].group.parent.id %}
+
         {% if loop.last %}
             </tbody>
             </table>
             </div>
         {% endif %}
+
     {% endfor %}
+
 </div>
