@@ -48,16 +48,15 @@ class AssetImporter extends Importer
     {
         return function($name, $data, $group) use ($groups, $ruleset) {
 
-            if(false === isset($data['desc'])) {
-                $description = $data;
-            } else {
-                $description = $data['desc'];
-            }
+            $description = isset($data['desc']) ? $data['desc'] : $data;
+
+            $use = isset($data['use']) ? $data['use'] : null;
 
             $asset = new RulesetAsset();
             $asset
                 ->setName($name)
                 ->setDescription($description)
+                ->getUseLimitation($use)
             ;
 
             $asset->setGroup($groups->get($group));
