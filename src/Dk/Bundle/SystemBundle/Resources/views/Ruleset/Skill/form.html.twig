@@ -1,21 +1,24 @@
 {% extends 'DkSystemBundle::board.html.twig' %}
+{% trans_default_domain 'ruleset' %}
 
 {% set current_page = 'skills' %}
 
 {% block title %}
-    Gestion des compétences du système <strong>{{ form.vars.value.name }}</strong>
+    {{ 'ruleset.skill.update.header' | trans({'%name%': form.vars.value.name }) }}
 {% endblock %}
 
 {% form_theme form _self %}
 
 {% block _ruleset_skills_entry_widget %}
-   <div class="form-group col-xs-12">
+   <div class="form-group col-xs-6">
        <h3>{{ form.vars.value.name }}</h3>
        {{ form_widget(form.name, {attr: {class: 'form-control input-sm'}}) }}
        {{ form_errors(form.name) }}
        {{ form_widget(form.char1, {attr: {class: 'form-control input-sm'}}) }}
        {{ form_widget(form.char2, {attr: {class: 'form-control input-sm'}}) }}
-       {{ form_widget(form.overloadMalus, {attr: {class: 'form-control input-sm'}}) }}
+       <div class="checkbox">
+           {{ form_widget(form.overloadMalus, {attr: {class: 'form-control input-sm'}}) }}
+       </div>
        <p>
           {{ form_widget(form.description, {attr: {class: 'form-control input-sm', style: 'width: 100%'}}) }}
           {{ form_errors(form.description) }}
@@ -33,7 +36,7 @@
         {% endfor %}
     </ul>
 
-    {{ form_start(form, {attr: {role: 'form', novalidate: 'novalidate', class: 'form-inline'}}) }}
+    {{ form_start(form, {attr: {role: 'form', class: 'form-inline'}}) }}
 
         <div class="tab-content">
 
@@ -55,6 +58,10 @@
                     </div>
                 {% endif %}
             {% endfor %}
+        </div>
+
+        <div class="col-sm-12 pull-right">
+            {{form_widget(form.submit, {attr: {class: 'pull-right'}}) }}
         </div>
 
     {{ form_end(form) }}
