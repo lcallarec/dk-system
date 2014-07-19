@@ -34,12 +34,12 @@ class AssetController extends Controller
             ;
         }
 
-        if(null === $id) {
+        if(null === $ruleset || null === $id) {
             throw $this->createNotFoundException($this->get('translator')->trans('ruleset.not.found', [], 'ruleset'));
         }
 
         $em = $this->get('doctrine')->getManager();
-        
+
         $form = $this->createForm(new RulesetAssetCollectionType(), $ruleset);
         $form->add('submit', 'submit');
 
