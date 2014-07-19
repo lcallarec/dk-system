@@ -128,6 +128,15 @@ sudo sed -i -e 's#DocumentRoot "/var/www/html"#DocumentRoot "/var/www"#' /etc/ht
 
 sudo service httpd restart
 
+#EPEL
+sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+
+#Redis
+sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+sudo yum -y install redis && sudo service redis start
+sudo chkconfig redis on
+
+#FS
 sudo rm -rf /var/www
 sudo ln -fs /vagrant /var/www
 

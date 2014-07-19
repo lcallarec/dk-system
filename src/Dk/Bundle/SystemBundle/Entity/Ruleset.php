@@ -41,6 +41,8 @@ class Ruleset
     /** @var ArrayCollection[RulesetAssetGroup] */
     private $assetGroups;
 
+    private $configs;
+
     public function __construct()
     {
         $this->characteristics = new ArrayCollection();
@@ -48,6 +50,7 @@ class Ruleset
         $this->assets          = new ArrayCollection();
         $this->assetGroups     = new ArrayCollection();
         $this->skillGroups     = new ArrayCollection();
+        $this->configs         = new ArrayCollection();
     }
     
     /**
@@ -292,5 +295,11 @@ class Ruleset
         $this->assets->removeElement($asset);
         
         return $this;
-    }      
+    }
+
+    public function addConfig(Ruleset\Config $config)
+    {
+        $config->setRuleset($this);
+        $this->configs->add($config);
+    }
 }

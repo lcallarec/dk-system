@@ -40,6 +40,10 @@
             <cascade><cascade-all/></cascade>
         </one-to-many>
 
+        <one-to-many target-entity="Dk\Bundle\SystemBundle\Entity\Ruleset\Config" mapped-by="ruleset" field="configs">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+
     </entity>
 
 </doctrine-mapping>

@@ -25,9 +25,16 @@ class RulesetImporter extends Importer
     public function import(Ruleset $ruleset)
     {
          $ruleset
-            ->setName($this->getValue('[name]'))
-            ->setReference($this->getValue('[reference]'))
+            ->setName($this->getValue('[core][name]'))
+            ->setReference($this->getValue('[core][reference]'))
          ;
+
+         foreach ($this->getValue('[config][asset]') as $hash => $values) {
+             foreach ($values as $key => $value) {
+                 $config = (new Ruleset\AssetConfig())->setHash(sprintf('%s:%d', $hash, $key))->setValue($value);
+                 $config->setRuleset($ruleset);
+             }
+         }
 
          return $ruleset;
     }
