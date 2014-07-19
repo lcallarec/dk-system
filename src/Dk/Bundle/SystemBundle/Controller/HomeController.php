@@ -28,37 +28,6 @@ class HomeController extends Controller
         /** @var EntityManager $em */
         $em = $this->get('doctrine')->getEntityManager();
 
-        $e1 = new Player();
-        $e1->setNickname('frfr');
-        $e2 = new Player();
-
-        $meta = $em->getClassMetadata(get_class($e1));
-
-        $identifiers = $meta->getIdentifierColumnNames();
-
-
-        $fields = $meta->getFieldNames();
-
-
-        $accessor = PropertyAccess::createPropertyAccessor();
-
-        $subjects = [$e1, $e2];
-        $diff = [];
-        foreach ($fields as $field) {
-
-            if ($accessor->getValue($e1, $field) !== $accessor->getValue($e2, $field)) {
-                $diff[$field] = true;
-            }
-
-
-        }
-
-        echo '<pre>';
-        \Doctrine\Common\Util\Debug::dump($diff, 4);
-        die();
-
-
-
         $session = $request->getSession();
         
         // get the login error if there is one
