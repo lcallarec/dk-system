@@ -25,9 +25,6 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        /** @var EntityManager $em */
-        $em = $this->get('doctrine')->getEntityManager();
-
         $session = $request->getSession();
         
         // get the login error if there is one
@@ -55,6 +52,7 @@ class HomeController extends Controller
 
             $player->setPassword($password);
 
+            /** @var EntityManager $em */
             $em = $this->get('doctrine')->getManager();
 
             $em->persist($player);
