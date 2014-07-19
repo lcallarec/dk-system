@@ -56,6 +56,6 @@ class PlayableRaceController extends Controller
             return $this->redirect($this->generateUrl('manage_ruleset', ['id' => $id]));
         }
 
-        return $this->render('DkSystemBundle:Ruleset:PlayableRace/form.html.twig', ['form' => $form->createView()]);
+            return $this->render('DkSystemBundle:Ruleset:PlayableRace/form.html.twig', ['form' => $form->createView()]);
     }
 }

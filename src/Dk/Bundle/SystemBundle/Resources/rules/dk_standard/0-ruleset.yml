@@ -4,3 +4,8 @@ ruleset:
         name: dk2 édition standard
         reference: dk-std
         owner: l.callarec@gmail.com
+
+
+    config:
+        asset:
+            "use:available": [limité, fatum, dk]

@@ -1,3 +1,7 @@
+lc_doctrine_entity_compare:
+    resource: "@LcDoctrineEntityCompareBundle/Resources/config/routing.xml"
+    prefix:   /
+
 homepage:
     pattern:   /
     defaults:  { _controller: DkSystemBundle:Home:index }

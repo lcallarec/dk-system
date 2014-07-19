@@ -35,6 +35,8 @@ abstract class Importer implements ImporterInterface
      * @param PropertyAccessor       $accessor
      * @param DataExtractorInterface $extractor
      * @param string                 $content
+     *
+     * @author Laurent Callarec <l.callarec@gmail.com>
      */
     public function __construct(PropertyAccessor $accessor, DataExtractorInterface $extractor, $content)
     {
@@ -61,6 +63,8 @@ abstract class Importer implements ImporterInterface
      * @param $parent
      * @param callable $addGroup
      * @param callable $addItem
+     *
+     * @author Laurent Callarec <l.callarec@gmail.com>
      */
     protected function recursiveItemManager(array &$value, $parent, Closure $addGroup, Closure $addItem )
     {
@@ -89,9 +93,13 @@ abstract class Importer implements ImporterInterface
     }
 
     /**
+     * Get the callable used in a to create Ruleset groups on-demand
+     *
      * @param Ruleset         $ruleset
      * @param ArrayCollection $groups
      * @param string          $groupClass   A RulesetGroup class name
+     *
+     * @author Laurent Callarec <l.callarec@gmail.com>
      *
      * @return Closure
      */

@@ -1,6 +1,7 @@
 <?php
 namespace Dk\Bundle\SystemBundle\Controller;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
@@ -8,7 +9,7 @@ use Dk\Bundle\SystemBundle\Form\Type\Player\RegisterType;
 use Dk\Bundle\SystemBundle\Form\Type\Player\LoginType;
 use Dk\Bundle\SystemBundle\Entity\Player;
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\PropertyAccess\PropertyAccess;
 /**
  * Class HomeController
  *
@@ -24,6 +25,40 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
+        /** @var EntityManager $em */
+        $em = $this->get('doctrine')->getEntityManager();
+
+        $e1 = new Player();
+        $e1->setNickname('frfr');
+        $e2 = new Player();
+
+        $meta = $em->getClassMetadata(get_class($e1));
+
+        $identifiers = $meta->getIdentifierColumnNames();
+
+
+        $fields = $meta->getFieldNames();
+
+
+        $accessor = PropertyAccess::createPropertyAccessor();
+
+        $subjects = [$e1, $e2];
+        $diff = [];
+        foreach ($fields as $field) {
+
+            if ($accessor->getValue($e1, $field) !== $accessor->getValue($e2, $field)) {
+                $diff[$field] = true;
+            }
+
+
+        }
+
+        echo '<pre>';
+        \Doctrine\Common\Util\Debug::dump($diff, 4);
+        die();
+
+
+
         $session = $request->getSession();
         
         // get the login error if there is one

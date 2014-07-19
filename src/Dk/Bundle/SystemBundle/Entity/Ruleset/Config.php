@@ -2,6 +2,8 @@
 
 namespace Dk\Bundle\SystemBundle\Entity\Ruleset;
 
+use Dk\Bundle\SystemBundle\Entity\Ruleset;
+
 /**
  * Class Config
  *
@@ -9,7 +11,7 @@ namespace Dk\Bundle\SystemBundle\Entity\Ruleset;
  *
  * @author Laurent Callarec <l.callarec@gmail.com>
  */
-abstract class Config
+class Config
 {
     /** @var integer */
     protected $id;

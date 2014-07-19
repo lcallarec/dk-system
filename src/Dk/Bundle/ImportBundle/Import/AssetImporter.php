@@ -23,6 +23,7 @@ class AssetImporter extends Importer
      * Import characteristics for the given ruleset
      *
      * @param Ruleset $ruleset
+     *
      * @return Ruleset
      */
     public function import(Ruleset $ruleset)
