@@ -1,0 +1,44 @@
+characteristics:
+    pui:
+        longname: puissance
+        desc: >
+              La Puissance représente la force physique brutale du personnage, l’énergie explosive et la tension qu’il dégage.
+              Ajoutez votre Puissance aux dégâts au corps à corps.
+    prec:
+        longname: précision
+        desc: >
+               La Précision montre la précision des gestes, du rapport entre l'espace et le corps, l'oeil et la main.
+               Utile pour ne pas trembler. Ajoutez votre Précision aux dégâts à distance.
+    vig:
+        longname: vigueur
+        desc: >
+              La Vigueur définit l'endurance du personnage et sa résistance à tout ce qui peut briser le corps humain.
+              Ajoutez votre Vigueur aux points de vie du personnage.
+    mem:
+        longname: mémoire
+        desc: >
+               La Mémoire représente la capacité à retenir des informations et à les régurgiter sans erreur au moment où on en a besoin.
+    log:
+        longname: logique
+        desc: >
+               La Logique est la capacité à traiter des informations pertinentes selon des schémas de causalité. C'est le pragmatisme et le bon sens.
+    int:
+        longname: intuition
+        desc: >
+              L'Intuition est la capacité à mettre en relation des informations non-pertinentes pour en tirer une conclusion pertinente.
+              C'est l'imagination et la projection.
+    res:
+        longname: résolution
+        desc: >
+              La Résolution mesure la force de volonté et le désir du personnage. Ajoutez-la à vos points d'énergie.
+    aur:
+        longname: aura
+        desc: >
+              L'Aura définit la présence naturelle et le charisme du personnage.
+    apl:
+        longname: aplomb
+        desc: >
+              L'Aplomb mesure le calme et l'assurance. Vous commencez chaque séance avec un nombre de dK égal à votre Aplomb.
+
+
+
