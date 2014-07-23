@@ -1,0 +1,11 @@
+ruleset:
+
+    core:
+        name: dk2 Star Wars
+        reference: dk-sw
+        owner: l.callarec@gmail.com
+
+
+    config:
+        asset:
+            "use:available": [limité, fatum, dk]
