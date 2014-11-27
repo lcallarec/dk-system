@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Dk\Bundle\SystemBundle\DkSystemBundle(),
             new Dk\Bundle\ImportBundle\DkImportBundle(),
+            new Lc\Bundle\DoctrineBundle\LcDoctrineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

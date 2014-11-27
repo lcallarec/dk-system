@@ -11,7 +11,7 @@ use Dk\Bundle\SystemBundle\Entity\Ruleset;
  *
  * @author Laurent Callarec <l.callarec@gmail.com>
  */
-class Config
+abstract class Config
 {
     /** @var integer */
     protected $id;

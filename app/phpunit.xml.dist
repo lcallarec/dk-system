@@ -38,4 +38,8 @@
         </whitelist>
     </filter>
 
+    <php>
+        <env name="SYMFONY_ENV" value="test" />
+    </php>
+
 </phpunit>

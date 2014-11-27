@@ -1,6 +1,8 @@
 <?php
 namespace Dk\Bundle\SystemBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -10,6 +12,31 @@ use Dk\Bundle\SystemBundle\Form\Type\Player\LoginType;
 use Dk\Bundle\SystemBundle\Entity\Player;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+
+
+
+
+
+class A
+{
+    private $client;
+
+    public function __construct($client = null)
+    {
+        $this->client = $client;
+    }
+
+    public function getClient()
+    {
+        return $this->client;
+    }
+}
+
+
+
+
+
+
 /**
  * Class HomeController
  *
@@ -26,7 +53,7 @@ class HomeController extends Controller
     public function indexAction(Request $request)
     {
         $session = $request->getSession();
-        
+
         // get the login error if there is one
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
@@ -39,7 +66,7 @@ class HomeController extends Controller
         $loginForm    = $this->createForm(new LoginType());
           
         $player = new Player();
-
+$this->get('logger')->critical('RRR', ['mycont' => 'blabla']);
         $registerForm->setData($player);
 
         $registerForm->handleRequest($request);

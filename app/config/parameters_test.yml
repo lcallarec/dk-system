@@ -1,9 +1,8 @@
-# This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
     database_host: 127.0.0.1
     database_port: 3306
-    database_name: dk
+    database_name: dk_test
     database_user: root
     database_password: root
     mailer_transport: smtp
@@ -11,4 +10,4 @@ parameters:
     mailer_user: null
     mailer_password: null
     locale: fr
-    secret: hgel
+    secret: this_is_secret

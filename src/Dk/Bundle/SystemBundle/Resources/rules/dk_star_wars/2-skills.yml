@@ -1,0 +1,197 @@
+skills:
+    Compétences pratiques:
+        desc: >
+              Cette catégorie regroupe toutes les compétences d’aventure, physiques et sociales, qui sont utilisées par
+              les aventuriers dans de nombreuses situations.
+              Ce sont des compétences actives, cela veut dire qu’il faut que vous soyez en mesure de les accomplir par
+              un effort conscient pour pouvoir les utiliser.
+        list:
+            athlétisme:
+                chars: [PUI, VIG]
+                malus: true
+                desc: >
+                      Pour courir, sauter... C’est la compétence des sports et de presque toutes les activités physiques athlétiques.
+            bluff:
+                chars: [LOG, APL]
+                desc: >
+                      Vous permet de mentir ou de baratiner. On peut résister à l’utilisation de cette compétence
+                      grâce à un jet de Psychologie en opposition.
+            déguisement:
+                chars: [LOG, AUR]
+                desc: >
+                      Cette compétence
+                      est utile pour se travestir ou se maquiller. On peut percer à jour
+                      un déguisement grâce à un jet de Perception en opposition. Il
+                      faut un minimum de 10 tours pour se déguiser, à condition
+                      d’avoir le matériel adéquat.
+            diplomatie:
+                chars: [RES, AUR]
+                desc: >
+                      Utilisez cette compétence pour parler à un auditoire, chercher à convaincre un
+                      interlocuteur grâce à des arguments cohérents ou calmer des
+                      personnes hostiles.
+            discrétion:
+                chars: [PREC, APL]
+                desc: >
+                      Elle vous servira pour vous déplacer en silence, vous dissimuler ou camoufler un
+                      objet. On peut repérer un personnage discret grâce à un jet de
+                      Perception en opposition.
+            escalade:
+                chars: [PUI, VIG]
+                desc: >
+                      Ayez recours à cette compétence pour grimper sur des surfaces plus ou moins verticales.
+                      Il faut faire un jet à chaque fois que la paroi change de nature. Un jet raté indique que le personnage a raté une prise
+                      et n’a pas pu avancer. Un deuxième jet raté à la suite entraîne une chute.
+            escamotage:
+                chars: [PREC, APL]
+                desc: >
+                      Cette compétence est utile pour faire des tours de prestidigitation, du vol à l’étalage ou à la tire.
+                      On peut repérer un pickpocket en faisant un jet de Perception en opposition.
+            évasion:
+                chars: [PRE, RES]
+                desc: >
+                      Utilisez cette compétence pour vous faufiler dans les passages étroits, vous contorsionner ou échapper à des liens.
+            fouille:
+                chars: [MEM, INT]
+                desc: >
+                      Très pratique pour fouiller une pièce ou une personne, pour repérer pièges et dangers dis simulés.
+            intimidation:
+                chars: [PUI, AUR]
+                desc: >
+                      Utilisez cette compétence pour impressionner un adversaire. On peut résister à
+                      cette compétence grâce à un jet de sauvegarde. Un héros (ou un
+                      second rôle) peut toujours tenter un jet d’Intimidation en début de combat, contre un jet de sauvegarde/Courage de la part
+                      de tous les adversaires présents. Le personnage gagne alors 1dK
+                      gratuit par adversaire qui a échoué au jet de sauvegarde, à utiliser durant l’affrontement contre n’importe lesquels d’entre eux.
+                      Plusieurs personnes peuvent s’intimider les unes les autres et
+                      ainsi gagner des dK en début de combat. Si vous avez l’atout Cri
+                      de guerre, le malus de -2 s’applique aussi au jet de sauvegarde.
+            mêlée:
+                chars: [PUI, RES]
+                desc: >
+                      Utilisez cette compétence
+                      pour combattre au corps à corps, avec des armes de mêlée ou à
+                      mains nues. Vous pouvez aussi utiliser cette compétence pour
+                      parer une attaque de mêlée, avec ou sans arme, mais pas des
+                      projectiles.
+            natation:
+                chars: [PUI, VIG]
+                desc: >
+                      Étonnamment, cette
+                      compétence sert à nager. Un jet n’est nécessaire que dans des
+                      conditions difficiles.
+            psychologie:
+                chars: [INT, APL]
+                desc: >
+                      Utilisez cette compétence pour savoir si une personne vous ment ou cache des choses, pour ressentir un malaise, la peur, un détail qui cloche.
+            renseignements:
+                chars: [SAG, CHA]
+                desc: >
+                      Cette compétence vous servira à trouver des renseignements en traînant
+                      dans des endroits publics et en posant des questions. Il faut
+                      l’équivalent d’une demi-journée pour obtenir des informations.
+            représentation:
+                chars: [AUR, INT]
+                desc: >
+                      Cette compétence sert à chanter, danser, jouer la comédie.
+            survie:
+                chars: [VIG, RES]
+                desc: >
+                      La compétence préférée de
+                      tous les asociaux qui s’en servent pour chasser, monter un camp,
+                      suivre des traces, trouver leur chemin et de manière générale
+                      survivre en milieu hostile.
+            tir:
+                chars: [PRE, RES]
+                desc: >
+                      Utilisez cette compétence pour
+                      tirer aux blasters, avec des armes de jet et des projectiles divers (grenades...)
+
+    Compétences de sauvegarde:
+        list:
+            concentration:
+                chars: [CON, SAG]
+                desc: >
+                      Cette compétence
+                      sert à deux choses : d’une part à vous concentrer sur une tâche
+                      donnée en évacuant le stress et les parasites environnementaux
+                      qui peuvent vous distraire, d’autre part à méditer ou à vous reposer pour récupérer des points d’énergie.
+            courage:
+                chars: [FOR, CHA]
+                desc: >
+                      Lorsqu’il faut aller au
+                      feu, sortir de son abri sous les balles de ses adversaires, approcher le dragon ancien énorme qui roupille ou résister au regard
+                      noir d’un adversaire, c’est Courage qu’il faut utiliser.
+            équilibre:
+                chars: [FOR, SAG]
+                desc: >
+                      Tenir debout, en combat ou sur le toit d’un édifice, c’est vraiment important. Utilisez cette compétence à chaque fois que vous manquez perdre
+                      l’équilibre parce qu’on vous pousse, vous entrave, vous agrippe
+                      ou vous bouscule, mais aussi lorsque vous devez conserver votre
+                      position sans faillir.
+            esquive:
+                chars: [DEX, CHA]
+                desc: >
+                      tte compétence vous
+                      permet d’éviter les coups. Il s’agit donc d’une défense. Si vous
+                      l’utilisez, vous pouvez dépenser un dK pour réduire les dégâts
+                      que vous subissez de 2 points en roulant sur vous-même. Vous devez dépenser le dK avant que votre jet d’esquive ne soit effectué.
+                      Vous pouvez aussi défendre contre les projectiles à condition de ne faire que cela pendant le tour - on appelle ça «se planquer».
+            idée:
+                chars: [INT, SAG]
+                desc: >
+                      Si vous ne savez pas quoi faire
+                      ou par où aller, utilisez cette compétence. Utilisez-là aussi si
+                      vous manquez vraiment de sens commun ou si vous espérez
+                      que le conteur vous évitera de commettre l’irréparable bévue
+                      que vous êtes en train de préparer.
+            impression:
+                chars: [CHA, SAG]
+                desc: >
+                      Cette compétence
+                      détermine la manière dont vous apparaissez aux yeux des gens
+                      quand vous ne faites pas vraiment d’effort.
+            initiative:
+                chars: [DEX, INT]
+                desc: >
+                      Qui agit le premier ? En
+                      cas de doute, faites un jet de cette compétence. En cas d’égalité,
+                      les joueurs ont toujours l’avantage.
+            muscles:
+                chars: [FOR, CON]
+                desc: >
+                      Cette compétence est à
+                      utiliser lorsque vous devez effectuer une action purement physique sans aucune technique derrière - rattraper la princesse qui
+                      passe par dessus bord ou forcer ces satanés barres de fer qui vous empêchent d’accéder à la liberté.
+            perception:
+                chars: [INT, SAG]
+                desc: >
+                      Cette compétence vous permet de rester conscient de votre environnement en toutes circonstances,
+                      même endormi ou aveuglé. Les cinq sens sont couverts.
+            préparation:
+                chars: [INT, CHA]
+                desc: >
+                      Êtes-vous un véritable aventurier ? Avez-vous toujours ce qu’il faut au fond des
+                      poches ou du sac pour vous en sortir dans toutes les situations ?
+                      C’est à cela que sert cette compétence. Exit les listes de matériel.
+                      Faites un jet de Préparation pour voir si vous avez bien l’objet
+                      ou l’outil nécessaire au moment adéquat.
+
+            réflexes:
+                chars: [DEX, CON]
+                desc: >
+                      Vous pouvez utiliser cette compétence pour tester la vitesse de vos réactions face à
+                      un danger, pour rattraper un objet qui va tomber ou attraper la
+                      saucisse dans la main du sifu.
+
+            volonté:
+                chars: [SAG, CHA]
+                desc: >
+                      Soyez plus fort mentalement, plus solide nerveusement, plus résistant psychiquement.
+                      Orientez votre énergie mentale pour mieux vous défendre
+                      contre les attaques.
+
+    Connaissances:
+        loadBy: campaign
+    Compétences techniques et métiers:
+        loadBy: campaign

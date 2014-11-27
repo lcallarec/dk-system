@@ -8,7 +8,7 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "~2.4",
+        "symfony/symfony": "~2.5",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
         "doctrine/doctrine-fixtures-bundle": "dev-master",        
@@ -21,10 +21,11 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
         "gedmo/doctrine-extensions": "2.3.9",
-        "doctrine/doctrine-cache-bundle": "~1.0"
+        "doctrine/doctrine-cache-bundle": "~1.0",
+        "graylog2/gelf-php": "dev-master"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0.0",
+        "phpunit/phpunit": "~3.7",
         "behat/behat": "~3.0",
         "behat/symfony2-extension": "~2.0@dev"
     },

@@ -34,7 +34,7 @@ class RulesetController extends Controller
                 ->findOneWithRelationships($this->getUser(), $id)
             ;
         }
-        
+
         if(null === $ruleset || null === $id) {
             throw $this->createNotFoundException($this->get('translator')->trans('ruleset.not.found', [], 'ruleset'));
         }

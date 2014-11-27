@@ -14,9 +14,12 @@ web_profiler:
 monolog:
     handlers:
         main:
-            type:   stream
-            path:   "%kernel.logs_dir%/%kernel.environment%.log"
-            level:  debug
+            type:   gelf
+            formatter: my_formatter
+            publisher:
+                hostname: 192.168.100.100
+                port: 12201
+            level: info
         console:
             type:   console
             bubble: false

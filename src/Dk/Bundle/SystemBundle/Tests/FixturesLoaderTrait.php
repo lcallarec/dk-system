@@ -20,11 +20,13 @@ trait FixturesLoaderTrait
     {
         $dbPlatform = $connection->getDatabasePlatform();
 
+        $connection->query('SET FOREIGN_KEY_CHECKS=0');
+
         foreach ($connection->getSchemaManager()->listTables() as $table) {
-            $connection->query('SET FOREIGN_KEY_CHECKS=0');
             $q = $dbPlatform->getTruncateTableSql($table->getName());
             $connection->executeUpdate($q);
-            $connection->query('SET FOREIGN_KEY_CHECKS=1');
         }
+
+        $connection->query('SET FOREIGN_KEY_CHECKS=1');
     }
 }
